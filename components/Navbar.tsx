@@ -9,17 +9,19 @@ export default function Navbar() {
 			className='fixed top-0 left-0 px-32 mt-8 flex justify-between items-center h-[7.5vh] w-full overflow-hidden'
 		>
 			<div id='imgContainer' className='w-[7.5vh] h-full'>
-				<Image
-					src={logo}
-					alt='logo'
-					objectFit='contain'
-					className='rounded-full'
-				/>
+				<Link href='/' passHref>
+					<Image
+						src={logo}
+						alt='logo'
+						objectFit='contain'
+						className='rounded-full cursor-pointer'
+					/>
+				</Link>
 			</div>
 
 			<ul id='navLinks' className='w-1/3 flex justify-between ist-none'>
 				<li>
-					<Link href='/about'>
+					<Link href=''>
 						<a>About</a>
 					</Link>
 				</li>
@@ -29,7 +31,7 @@ export default function Navbar() {
 					</Link>
 				</li>
 				<li>
-					<Link href='/contact'>
+					<Link href=''>
 						<a>Contact</a>
 					</Link>
 				</li>

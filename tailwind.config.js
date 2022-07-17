@@ -8,6 +8,7 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				mainBg: "url('../public/bg.png')",
+				mainBgFaded: "url('../public/bgFaded.png')",
 			},
 		},
 	},

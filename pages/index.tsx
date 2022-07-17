@@ -1,11 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Navbar from '../components/Navbar'
 import cloud from '../public/Cloud.svg'
 
 export default function Home() {
 	return (
-		<div className='p-8 bg-mainBg h-full flex flex-col justify-center relative overflow-hidden'>
+		<div className='p-8 bg-mainBg bg-cover h-full flex flex-col justify-center relative overflow-hidden'>
 			<Head>
 				<title>Julian's Portfolio</title>
 				<meta
@@ -15,14 +14,12 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<Navbar />
-
 			<main id='hero' className='px-32 mt-16'>
 				<h2 className='text-6xl'>Welcome</h2>
 				<h3 className='text-5xl ml-[15%] mt-16'>to the</h3>
 				<div
 					id='cloudContainer'
-					className='flex justify-between items-center'
+					className='flex justify-evenly items-center'
 				>
 					<h2 className='text-8xl'>FRONTIER</h2>
 					<Image src={cloud} alt='illustration' />
@@ -42,16 +39,6 @@ export default function Home() {
 				<p>
 					I'm a full stack web developer located in NC, USA with a
 					passion for creative design and puzzle solving.
-				</p>
-			</article>
-
-			<article>
-				<h2>My Portfolio</h2>
-				<p>
-					Here you can find links to some of my projects as well as
-					the source code. A brief stack summary is provided for each
-					one, if you are curious about some of the technologies that
-					I like to work with.
 				</p>
 			</article>
 
