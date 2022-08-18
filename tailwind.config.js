@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
 	content: [
 		'./pages/**/*.{js,ts,jsx,tsx}',
@@ -7,6 +8,8 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: {
+				tomatoToLightPink:
+					'linear-gradient(180deg, #FF5B23, #FFACC6 65%)',
 				mainBg: "url('../public/bg.png')",
 				mainBgFaded: "url('../public/bgFaded.png')",
 			},

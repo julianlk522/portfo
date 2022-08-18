@@ -6,7 +6,7 @@ export default function Navbar() {
 	return (
 		<nav
 			id='navbar'
-			className='fixed top-0 left-0 w-full px-32 py-8 flex justify-between items-center'
+			className='fixed top-0 left-0 w-full px-32 py-16 flex justify-between items-center'
 		>
 			<Link href='/' passHref>
 				{/* <Image
@@ -17,13 +17,16 @@ export default function Navbar() {
 					/> */}
 				<h3
 					id='logoText'
-					className='cursor-pointer uppercase h-[7.5vh] w-full flex items-center opacity-50'
+					className='cursor-pointer text-lg uppercase h-[7.5vh] w-full flex items-center opacity-50'
 				>
 					Julian Lindsay-Kaufman
 				</h3>
 			</Link>
 
-			<ul id='navLinks' className='w-1/3 flex justify-between ist-none'>
+			<ul
+				id='navLinks'
+				className='w-1/3 flex justify-between ist-none text-lg'
+			>
 				<li>
 					<Link href=''>
 						<a>About</a>

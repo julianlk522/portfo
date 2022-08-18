@@ -4,7 +4,7 @@ import cloud from '../public/Cloud.svg'
 
 export default function Home() {
 	return (
-		<div className='h-full p-8 flex flex-col justify-center relative overflow-hidden'>
+		<div className='h-full py-16 px-32 flex flex-col justify-center relative overflow-hidden'>
 			<Head>
 				<title>Julian's Portfolio</title>
 				<meta
@@ -14,23 +14,28 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main id='hero' className='px-16 mt-16 flex justify-between'>
+			<main id='hero' className='mt-16 flex justify-between'>
 				<section
-					id='textSection'
-					className='flex flex-col h-full w-[40vw]'
+					id='leftSection'
+					className='flex flex-col h-full w-1/2'
 				>
-					<h2 className='text-8xl'>Welcome</h2>
+					<div id='welcomeContainer' className='flex'>
+						<h2 className='text-8xl'>Welcome</h2>
+						<div className='relative self-center ml-16 w-8 h-8 rounded-full border-8 border-opacity-20 border-[#00d8ff] after:absolute after:top-[-150%] after:left-[-150%] after:w-16 after:h-16 after:rounded-full after:border-8 after:border-opacity-20 after:border-[#00d8ff] before:absolute before:top-[-250%] before:left-[-250%] before:w-24 before:h-24 before:rounded-full before:border-8 before:border-opacity-20 before:border-[#00d8ff]'></div>
+					</div>
 					<h3 className='text-4xl ml-[50%] mt-24'>to the</h3>
-					<h2 className='text-8xl ml-[25%] mt-24'>frontier</h2>
-					<h3 className='text-4xl mt-24'>of web development.</h3>
+					<h2 className='ml-[25%] mt-24 relative text-8xl bg-tomatoToLightPink text-transparent bg-clip-text after:absolute after:top-[50%] after:left-[-75%] after:w-96 after:h-96 after:rounded-full after:border-[12px] after:border-opacity-10 after:border-[#00d8ff] drop-shadow-lg'>
+						frontier
+					</h2>
+					<h3 className='text-5xl mt-24'>of web development.</h3>
 					{/* <div
 						id='circleSplotch'
-						className='bg-[#FFACC6] bg-opacity-20 rounded-full overflow-hidden w-[90vh] h-[90vh] absolute top-[20%] left-[-5%]'
+						className='bg-[#00D8FF] bg-opacity-20 rounded-full overflow-hidden w-[25vh] h-[90vh] absolute top-[20%] left-[-5%]'
 					></div> */}
 				</section>
 				<section
-					id='mediaSection'
-					className='flex flex-col justify-between items-center h-full w-[40vw]'
+					id='rightSection'
+					className='flex flex-col justify-between items-center h-full max-w-[50vw]'
 				>
 					<Image src={cloud} alt='illustration' layout='intrinsic' />
 					<button
