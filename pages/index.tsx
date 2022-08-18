@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Image from 'next/image'
 import cloud from '../public/Cloud.svg'
+import curvedArrow from '../public/curved-arrow-right.png'
 
 export default function Home() {
 	return (
@@ -17,7 +19,7 @@ export default function Home() {
 			<main id='hero' className='mt-16 flex justify-between'>
 				<section
 					id='leftSection'
-					className='flex flex-col h-full w-1/2'
+					className='flex flex-col h-full min-w-1/2 grow'
 				>
 					<div id='welcomeContainer' className='flex'>
 						<h2 className='text-8xl'>Welcome</h2>
@@ -28,22 +30,25 @@ export default function Home() {
 						frontier
 					</h2>
 					<h3 className='text-5xl mt-24'>of web development.</h3>
-					{/* <div
-						id='circleSplotch'
-						className='bg-[#00D8FF] bg-opacity-20 rounded-full overflow-hidden w-[25vh] h-[90vh] absolute top-[20%] left-[-5%]'
-					></div> */}
 				</section>
 				<section
 					id='rightSection'
 					className='flex flex-col justify-between items-center h-full max-w-[50vw]'
 				>
-					<Image src={cloud} alt='illustration' layout='intrinsic' />
-					<button
-						id='continueButton'
-						className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#FFACC6] drop-shadow-mediumDark'
-					>
-						Click here to Enter
-					</button>
+					<Image src={cloud} alt='illustration' />
+					<Image
+						src={curvedArrow}
+						alt='arrow to continue button'
+						className='rotate-[25deg] -translate-x-1 opacity-50'
+					/>
+					<Link passHref href='/work'>
+						<button
+							id='continueButton'
+							className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#FFACC6] drop-shadow-mediumDark hover:translate-y-1 hover:translate-x-1 hover:scale-110 hover:text-2xl'
+						>
+							Click here to Enter
+						</button>
+					</Link>
 				</section>
 			</main>
 

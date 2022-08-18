@@ -6,7 +6,7 @@ export default function Work() {
 	return (
 		<div
 			id='workContainer'
-			className='py-8 px-16 bg-mainBgFaded bg-cover h-full flex flex-col justify-evenly text-center relative overflow-hidden'
+			className=' h-full py-16 px-32 flex flex-col justify-evenly text-center relative overflow-hidden'
 		>
 			<div
 				id='pillWrapperDiv'
@@ -19,7 +19,7 @@ export default function Work() {
 					className='opacity-20 object-contain'
 				/>
 			</div>
-			<h1 id='workTitleBanner' className='text-8xl'>
+			<h1 id='workTitleBanner' className='text-8xl mt-16'>
 				Scenes from the lab
 			</h1>
 			<section id='projectsSection' className='flex w-full h-[60%]'>
