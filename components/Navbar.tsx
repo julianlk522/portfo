@@ -6,18 +6,22 @@ export default function Navbar() {
 	return (
 		<nav
 			id='navbar'
-			className='fixed top-0 left-0 px-32 mt-8 flex justify-between items-center h-[7.5vh] w-full overflow-hidden'
+			className='fixed top-0 left-0 w-full px-32 py-8 flex justify-between items-center'
 		>
-			<div id='imgContainer' className='w-[7.5vh] h-full'>
-				<Link href='/' passHref>
-					<Image
+			<Link href='/' passHref>
+				{/* <Image
 						src={logo}
 						alt='logo'
 						objectFit='contain'
 						className='rounded-full cursor-pointer'
-					/>
-				</Link>
-			</div>
+					/> */}
+				<h3
+					id='logoText'
+					className='cursor-pointer uppercase h-[7.5vh] w-full flex items-center opacity-50'
+				>
+					Julian Lindsay-Kaufman
+				</h3>
+			</Link>
 
 			<ul id='navLinks' className='w-1/3 flex justify-between ist-none'>
 				<li>

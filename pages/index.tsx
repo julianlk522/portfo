@@ -4,7 +4,7 @@ import cloud from '../public/Cloud.svg'
 
 export default function Home() {
 	return (
-		<div className='p-8 bg-mainBg bg-cover h-full flex flex-col justify-center relative overflow-hidden'>
+		<div className='h-full p-8 flex flex-col justify-center relative overflow-hidden'>
 			<Head>
 				<title>Julian's Portfolio</title>
 				<meta
@@ -14,22 +14,32 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main id='hero' className='px-32 mt-16'>
-				<h2 className='text-6xl'>Welcome</h2>
-				<h3 className='text-5xl ml-[15%] mt-16'>to the</h3>
-				<div
-					id='cloudContainer'
-					className='flex justify-evenly items-center'
+			<main id='hero' className='px-16 mt-16 flex justify-between'>
+				<section
+					id='textSection'
+					className='flex flex-col h-full w-[40vw]'
 				>
-					<h2 className='text-8xl'>FRONTIER</h2>
-					<Image src={cloud} alt='illustration' />
-				</div>
-				<h3 className='text-5xl ml-[15%] my-16'>of web development.</h3>
-
-				<div
-					id='circleSplotch'
-					className='bg-[#FFACC6] bg-opacity-20 rounded-full overflow-hidden w-[90vh] h-[90vh] absolute top-[20%] left-[-5%]'
-				></div>
+					<h2 className='text-8xl'>Welcome</h2>
+					<h3 className='text-4xl ml-[50%] mt-24'>to the</h3>
+					<h2 className='text-8xl ml-[25%] mt-24'>frontier</h2>
+					<h3 className='text-4xl mt-24'>of web development.</h3>
+					{/* <div
+						id='circleSplotch'
+						className='bg-[#FFACC6] bg-opacity-20 rounded-full overflow-hidden w-[90vh] h-[90vh] absolute top-[20%] left-[-5%]'
+					></div> */}
+				</section>
+				<section
+					id='mediaSection'
+					className='flex flex-col justify-between items-center h-full w-[40vw]'
+				>
+					<Image src={cloud} alt='illustration' layout='intrinsic' />
+					<button
+						id='continueButton'
+						className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#FFACC6] drop-shadow-mediumDark'
+					>
+						Click here to Enter
+					</button>
+				</section>
 			</main>
 
 			{/* <h1>Hi there, welcome to my website!</h1>
