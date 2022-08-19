@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PageContext } from '../context/pageContext'
 
 export default function Navbar() {
-	const { currentPage, setCurrentPage } = useContext(PageContext)
+	const { currentPage } = useContext(PageContext)
 
 	return (
 		<nav
@@ -25,7 +25,14 @@ export default function Navbar() {
 			>
 				<li>
 					<Link href='/'>
-						<a>About</a>
+						<a
+							className={`relative ${
+								currentPage === '/' &&
+								'after:absolute after:bottom-[-0.5rem] after:left-[-25%] after:w-[150%] after:h-1 after:bg-[#FF5B23] after:opacity-50 after:rounded-full'
+							}`}
+						>
+							About
+						</a>
 					</Link>
 				</li>
 				<li>
@@ -42,7 +49,14 @@ export default function Navbar() {
 				</li>
 				<li>
 					<Link href='/'>
-						<a>Contact</a>
+						<a
+							className={`relative ${
+								currentPage === '/contact' &&
+								'after:absolute after:bottom-[-0.5rem] after:left-[-25%] after:w-[150%] after:h-1 after:bg-[#FF5B23] after:opacity-50 after:rounded-full'
+							}`}
+						>
+							Contact
+						</a>
 					</Link>
 				</li>
 			</ul>

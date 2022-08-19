@@ -1,5 +1,7 @@
 import pill from '../public/pill.png'
 import socialScreenshot from '../public/socialScreenshot.png'
+import dancingScreenshot from '../public/dancingScreenshot.png'
+import typingScreenshot from '../public/typingScreenshot.png'
 import Image from 'next/image'
 
 export default function Work() {
@@ -16,10 +18,10 @@ export default function Work() {
 					src={pill}
 					alt='laboratory scenery'
 					layout='fill'
-					className='opacity-20 object-contain'
+					className='object-contain'
 				/>
 			</div>
-			<h1 id='workTitleBanner' className='text-8xl mt-16'>
+			<h1 id='workTitleBanner' className='text-8xl my-16'>
 				Scenes from the lab
 			</h1>
 			<section id='projectsSection' className='flex w-full h-[60%]'>
@@ -43,8 +45,9 @@ export default function Work() {
 				>
 					<div
 						id='gridSection1'
-						className='relative overflow-hidden w-full h-full rounded-[3rem] border-4 border-[#FF5B23] col-start-1 col-span-2'
+						className='relative overflow-hidden w-full h-full rounded-[3rem] border-4 border-[#FF5B23] border-opacity-40 col-start-1 col-span-2'
 					>
+						{/* to-do: make this p tag visible */}
 						<p className='absolute bottom-[-20%] left-[10%] w-[80%] text-xs'>
 							React, Redux, NodeJS, Express, MongoDB, Material UI
 						</p>
@@ -57,12 +60,26 @@ export default function Work() {
 					</div>
 					<div
 						id='gridSection2'
-						className='w-full h-full rounded-[3rem] border-4 border-[#FF5B23]'
-					></div>
+						className='relative w-full h-full overflow-hidden rounded-[3rem] border-4 border-[#FFACC6] border-opacity-40 drop-shadow-mediumDark'
+					>
+						<Image
+							src={typingScreenshot}
+							alt='a React-based typing game [add more later]'
+							className='object-cover object-left-bottom'
+							layout='fill'
+						/>
+					</div>
 					<div
 						id='gridSection3'
-						className='w-full h-full rounded-[3rem] border-4 border-[#FF5B23]'
-					></div>
+						className='relative w-full h-full overflow-hidden rounded-[3rem] border-4 border-[#00d8ff] border-opacity-40 drop-shadow-mediumDark'
+					>
+						<Image
+							src={dancingScreenshot}
+							alt='a simple game to test your reactions and accuracy usig the mouse'
+							className='object-cover object-left-bottom'
+							layout='fill'
+						/>
+					</div>
 					<div
 						id='gridSection4'
 						className='w-full h-full rounded-[3rem] border-4 border-[#FF5B23] col-start-2 col-span-2'

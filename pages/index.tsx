@@ -6,7 +6,7 @@ import curvedArrow from '../public/curved-arrow-right.png'
 
 export default function Home() {
 	return (
-		<div className='h-full py-16 px-32 flex flex-col justify-center relative overflow-hidden'>
+		<div className='h-full pt-16 px-32 flex flex-col justify-center relative overflow-hidden'>
 			<Head>
 				<title>Julian's Portfolio</title>
 				<meta
@@ -16,7 +16,7 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main id='hero' className='mt-16 flex justify-between'>
+			<main id='hero' className='flex justify-between'>
 				<section
 					id='leftSection'
 					className='flex flex-col h-full min-w-1/2 grow'

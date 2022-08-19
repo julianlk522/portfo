@@ -1,18 +1,7 @@
-import {
-	createContext,
-	Dispatch,
-	SetStateAction,
-	useEffect,
-	useState,
-} from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-interface AppContext {
-	currentPage: string
-	setCurrentPage?: Dispatch<SetStateAction<string>>
-}
-
-export const PageContext = createContext<AppContext>({ currentPage: '' })
+export const PageContext = createContext({ currentPage: '' })
 
 export const ContextProvider = ({ children }) => {
 	const [currentPage, setCurrentPage] = useState<string>('/')
@@ -24,7 +13,7 @@ export const ContextProvider = ({ children }) => {
 	}, [path])
 
 	return (
-		<PageContext.Provider value={{ currentPage, setCurrentPage }}>
+		<PageContext.Provider value={{ currentPage }}>
 			{children}
 		</PageContext.Provider>
 	)
