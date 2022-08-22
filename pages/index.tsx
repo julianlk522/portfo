@@ -33,7 +33,7 @@ export default function Home() {
 				</section>
 				<section
 					id='rightSection'
-					className='flex flex-col justify-between items-center h-full max-w-[50vw]'
+					className='flex flex-col justify-between items-center h-full max-w-[50vw] pt-[10%]'
 				>
 					<Image src={cloud} alt='illustration' />
 					<Image

@@ -2,6 +2,7 @@ import pill from '../public/pill.png'
 import socialScreenshot from '../public/socialScreenshot.png'
 import dancingScreenshot from '../public/dancingScreenshot.png'
 import typingScreenshot from '../public/typingScreenshot.png'
+import chatScreenshot from '../public/chatScreenshot.png'
 import Image from 'next/image'
 
 export default function Work() {
@@ -41,11 +42,11 @@ export default function Work() {
 
 				<div
 					id='projectsGrid'
-					className='w-[60%] grid grid-rows-2 grid-cols-3 gap-4 items-center'
+					className='w-[60%] grid grid-rows-2 grid-cols-3 gap-8 items-center'
 				>
 					<div
 						id='gridSection1'
-						className='relative overflow-hidden w-full h-full rounded-[3rem] border-4 border-[#FF5B23] border-opacity-40 col-start-1 col-span-2'
+						className='relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-[#FFACC6] border-opacity-40 col-start-1 col-span-2 shadow-thicc'
 					>
 						{/* to-do: make this p tag visible */}
 						<p className='absolute bottom-[-20%] left-[10%] w-[80%] text-xs'>
@@ -54,24 +55,23 @@ export default function Work() {
 						<Image
 							src={socialScreenshot}
 							alt='a Social Media app for pet owners'
-							className='object-cover'
 							layout='fill'
 						/>
 					</div>
 					<div
 						id='gridSection2'
-						className='relative w-full h-full overflow-hidden rounded-[3rem] border-4 border-[#FFACC6] border-opacity-40 drop-shadow-mediumDark'
+						className='relative w-full h-full overflow-hidden rounded-[3rem] border-8 border-[#FF5B23] border-opacity-40 shadow-thicc'
 					>
 						<Image
 							src={typingScreenshot}
 							alt='a React-based typing game [add more later]'
-							className='object-cover object-left-bottom'
+							className='object-cover object-left'
 							layout='fill'
 						/>
 					</div>
 					<div
 						id='gridSection3'
-						className='relative w-full h-full overflow-hidden rounded-[3rem] border-4 border-[#00d8ff] border-opacity-40 drop-shadow-mediumDark'
+						className='relative w-full h-full overflow-hidden rounded-[3rem] border-8 border-[#FF5B23] border-opacity-40 shadow-thicc'
 					>
 						<Image
 							src={dancingScreenshot}
@@ -82,8 +82,15 @@ export default function Work() {
 					</div>
 					<div
 						id='gridSection4'
-						className='w-full h-full rounded-[3rem] border-4 border-[#FF5B23] col-start-2 col-span-2'
-					></div>
+						className='relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-[#00d8ff] border-opacity-40 col-start-2 col-span-2 shadow-thicc'
+					>
+						<Image
+							src={chatScreenshot}
+							alt='a chat app for messaging your friends'
+							className='object-cover object-left-bottom'
+							layout='fill'
+						/>
+					</div>
 				</div>
 			</section>
 		</div>
