@@ -49,25 +49,32 @@ export default function Work() {
 
 				<div
 					id='projectsGrid'
-					className='relative grow grid grid-rows-2 grid-cols-3 gap-8 items-center'
+					className='relative grid grid-rows-12 grid-cols-3 gap-8 items-center'
 				>
-					<div className='absolute top-[-2rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+4rem)] bg-slate-200 p-8 rounded-[3rem] blur-sm'></div>
+					<div className='absolute top-[-1rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+2rem)] bg-slate-200 rounded-[3rem] blur-sm'></div>
+					<p className='mb-[-1rem] col-span-2 text-xs z-[1]'>
+						React, Redux, NodeJS, Express, MongoDB, Material UI
+					</p>
+					<p className='mb-[-1rem] col-start-3 text-xs z-[1]'>
+						React, Typescript, Context API, Cypress, TailwindCSS,
+						DaisyUI
+					</p>
 					<div
 						id='gridSection1'
-						className='relative overflow-hidden w-full h-full rounded-[3rem] border-4 border-[#FF5B23] border-opacity-50 col-start-1 col-span-2 shadow-thicc hover:bg-black'
+						className='relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-1 col-span-2 row-start-2 row-span-5 shadow-thicc hover:bg-black hover:border-[#FF5B23]'
 					>
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
-							<p>
-								PetSocial: Media sharing for pet owners and pet
-								lovers
+							<p id='petSocial' className='text-4xl'>
+								PetSocial
 							</p>
-							<p>Github</p>
-							<p>Live demo</p>
+							<p className='text-lg'>
+								Media sharing for pet owners and pet lovers
+							</p>
+							<div className='flex justify-evenly w-full'>
+								<p className='text-sm'>Github</p>
+								<p className='text-sm'>Live demo</p>
+							</div>
 						</div>
-						{/* to-do: make this p tag visible */}
-						<p className='absolute bottom-[-20%] left-[10%] w-[80%] text-xs'>
-							React, Redux, NodeJS, Express, MongoDB, Material UI
-						</p>
 						<Image
 							src={socialScreenshot}
 							alt='a Social Media app for pet owners'
@@ -77,7 +84,7 @@ export default function Work() {
 					</div>
 					<div
 						id='gridSection2'
-						className='relative w-full h-full overflow-hidden rounded-[3rem] border-4 border-[#FFACC6] border-opacity-50 shadow-thicc hover:bg-black'
+						className='relative w-full h-full row-start-2 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent shadow-thicc hover:bg-black hover:border-[#FFACC6]'
 					>
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
 							<p>Timed Typing Game</p>
@@ -95,26 +102,33 @@ export default function Work() {
 					</div>
 					<div
 						id='gridSection3'
-						className='relative w-full h-full overflow-hidden rounded-[3rem] border-4 border-[#00d8ff] border-opacity-50 shadow-thicc'
+						className='relative w-full h-full row-start-7 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent border-opacity-50 shadow-thicc hover:bg-black hover:border-[#00d8ff]'
 					>
 						<Image
 							src={dancingScreenshot}
 							alt='a simple game to test your reactions and accuracy usig the mouse'
-							className='object-cover object-left-bottom'
+							className='object-cover object-left-bottom hover:opacity-20'
 							layout='fill'
 						/>
 					</div>
 					<div
 						id='gridSection4'
-						className='relative overflow-hidden w-full h-full rounded-[3rem] border-4 border-[#FF5B23] border-opacity-50 col-start-2 col-span-2 shadow-thicc'
+						className='relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-2 col-span-2 row-start-7 row-span-5 shadow-thicc hover:bg-black hover:border-[#FF5B23]'
 					>
 						<Image
 							src={chatScreenshot}
 							alt='a chat app for messaging your friends'
-							className='object-cover object-left-bottom'
+							className='object-cover object-left-bottom hover:opacity-20'
 							layout='fill'
 						/>
 					</div>
+					<p className='mt-[-1rem] col-start-1 row-start-12 row-span-1 text-xs z-[1]'>
+						Javascript, HTML, CSS
+					</p>
+					<p className='mt-[-1rem] col-start-2 col-span-2 row-start-12 row-span-1 text-xs z-[1]'>
+						React, Typescript, Context API, TailwindCSS, MySQL,
+						NodeJS, Express
+					</p>
 				</div>
 			</section>
 		</div>
