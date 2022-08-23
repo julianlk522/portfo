@@ -8,7 +8,7 @@ export default function Navbar() {
 	return (
 		<nav
 			id='navbar'
-			className='z-[1] fixed top-0 left-0 w-full px-32 py-16 flex justify-between items-center'
+			className='z-[1] fixed top-0 left-0 w-full px-32 h-[10%] flex justify-between items-center'
 		>
 			<Link href='/'>
 				<a

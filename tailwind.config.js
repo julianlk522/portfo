@@ -10,6 +10,7 @@ module.exports = {
 			backgroundImage: {
 				tomatoToLightPink:
 					'linear-gradient(180deg, #FF5B23, #FFACC6 65%)',
+				sunset: 'linear-gradient(180deg, rgba(255, 0, 0, 0.9) 0%, rgba(255, 91, 35, 0.3) 100%)',
 				mainBg: "url('../public/bg.png')",
 				mainBgFaded: "url('../public/bgFaded.png')",
 			},

@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
 		<ContextProvider>
 			<div
 				id='container'
-				className='bg-mainBg bg-cover h-[100vh] w-[100vw]'
+				className='bg-mainBgFaded bg-cover h-[100vh] w-[100vw]'
 			>
 				<Navbar />
 				<Component {...pageProps} />

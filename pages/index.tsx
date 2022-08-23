@@ -44,7 +44,7 @@ export default function Home() {
 					<Link passHref href='/work'>
 						<button
 							id='continueButton'
-							className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#FFACC6] drop-shadow-mediumDark hover:translate-y-1 hover:translate-x-1 hover:scale-110 hover:text-2xl'
+							className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#ffacc6] border-2 border-[#ffacc6] drop-shadow-mediumDark hover:translate-y-1 hover:translate-x-1 hover:scale-110 hover:text-2xl'
 						>
 							Click here to Enter
 						</button>
