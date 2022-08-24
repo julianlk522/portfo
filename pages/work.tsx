@@ -24,7 +24,7 @@ export default function Work() {
 			</div>
 			<h1 id='workTitleBanner' className='text-8xl pt-8'>
 				Scenes from the
-				<span className='ml-8 bg-sunset text-transparent bg-clip-text'>
+				<span className='ml-8 bg-sunrise text-transparent bg-clip-text'>
 					lab
 				</span>
 			</h1>
@@ -79,7 +79,7 @@ export default function Work() {
 							src={socialScreenshot}
 							alt='a Social Media app for pet owners'
 							layout='fill'
-							className='hover:opacity-10'
+							className='object-cover object-center hover:opacity-10'
 						/>
 					</div>
 					<div

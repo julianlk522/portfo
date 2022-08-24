@@ -48,7 +48,7 @@ export default function Navbar() {
 					</Link>
 				</li>
 				<li>
-					<Link href='/'>
+					<Link href='/contact'>
 						<a
 							className={`relative ${
 								currentPage === '/contact' &&
