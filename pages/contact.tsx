@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import laugh from '../public/laugh.png'
-import visual from '../public/visual-inspection.png'
+import laugh from '../public/laugh.svg'
+import visual from '../public/visual.svg'
 import route from '../public/route.svg'
 import react from '../public/react.svg'
 

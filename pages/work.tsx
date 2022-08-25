@@ -1,4 +1,4 @@
-import pill from '../public/pill.png'
+import pill from '../public/pill.svg'
 import socialScreenshot from '../public/socialScreenshot.png'
 import dancingScreenshot from '../public/dancingScreenshot.png'
 import typingScreenshot from '../public/typingScreenshot.png'

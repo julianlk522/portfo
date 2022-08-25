@@ -22,7 +22,7 @@ export default function Home() {
 				id='hero'
 				className='flex justify-between'
 				onMouseMove={(e: React.MouseEvent) => {
-					setHueCoef(e.clientX / 4)
+					setHueCoef((prev) => prev + e.movementX / 4)
 					document.getElementById(
 						'hueRotateRef'
 					).style.filter = `hue-rotate(${hueCoef}deg)`
