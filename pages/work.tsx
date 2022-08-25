@@ -64,9 +64,7 @@ export default function Work() {
 						className='relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-1 col-span-2 row-start-2 row-span-5 shadow-thicc hover:bg-black hover:border-[#FF5B23]'
 					>
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
-							<p id='petSocial' className='text-4xl'>
-								PetSocial
-							</p>
+							<p className='projectTitle text-4xl'>PetSocial</p>
 							<p className='text-lg'>
 								Media sharing for pet owners and pet lovers
 							</p>
@@ -87,7 +85,9 @@ export default function Work() {
 						className='relative w-full h-full row-start-2 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent shadow-thicc hover:bg-black hover:border-[#FFACC6]'
 					>
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
-							<p>Timed Typing Game</p>
+							<p className='projectTitle text-2xl'>
+								Timed Typing Game
+							</p>
 							<div className='flex justify-evenly w-full'>
 								<p>Github</p>
 								<p>Live</p>
@@ -104,6 +104,15 @@ export default function Work() {
 						id='gridSection3'
 						className='relative w-full h-full row-start-7 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent border-opacity-50 shadow-thicc hover:bg-black hover:border-[#00d8ff]'
 					>
+						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
+							<p className='projectTitle text-2xl'>
+								Dancing Button
+							</p>
+							<div className='flex justify-evenly w-full'>
+								<p>Github</p>
+								<p>Live</p>
+							</div>
+						</div>
 						<Image
 							src={dancingScreenshot}
 							alt='a simple game to test your reactions and accuracy usig the mouse'
@@ -115,10 +124,22 @@ export default function Work() {
 						id='gridSection4'
 						className='relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-2 col-span-2 row-start-7 row-span-5 shadow-thicc hover:bg-black hover:border-[#FF5B23]'
 					>
+						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
+							<p className='projectTitle text-4xl'>
+								Chat Station
+							</p>
+							<p className='text-lg'>
+								Quickly and conveniently message your friends
+							</p>
+							<div className='flex justify-evenly w-full'>
+								<p className='text-sm'>Github</p>
+								<p className='text-sm'>Live demo</p>
+							</div>
+						</div>
 						<Image
 							src={chatScreenshot}
 							alt='a chat app for messaging your friends'
-							className='object-cover object-left-bottom hover:opacity-20'
+							className='object-cover object-left-bottom hover:opacity-10'
 							layout='fill'
 						/>
 					</div>
