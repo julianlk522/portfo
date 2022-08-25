@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -5,6 +6,7 @@ import cloud from '../public/Cloud.svg'
 import curvedArrow from '../public/curved-arrow-right.png'
 
 export default function Home() {
+	const [hueCoef, setHueCoef] = useState<number>(0)
 	return (
 		<div className='h-full pt-16 px-32 flex flex-col justify-center relative overflow-hidden'>
 			<Head>
@@ -16,7 +18,16 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main id='hero' className='flex justify-between'>
+			<main
+				id='hero'
+				className='flex justify-between'
+				onMouseMove={(e: React.MouseEvent) => {
+					setHueCoef(e.clientX / 4)
+					document.getElementById(
+						'hueRotateRef'
+					).style.filter = `hue-rotate(${hueCoef}deg)`
+				}}
+			>
 				<section
 					id='leftSection'
 					className='flex flex-col h-full min-w-1/2 grow'
@@ -35,7 +46,9 @@ export default function Home() {
 					id='rightSection'
 					className='flex flex-col justify-between items-center h-full max-w-[50vw] pt-[10%]'
 				>
-					<Image src={cloud} alt='illustration' />
+					<div id='hueRotateRef'>
+						<Image src={cloud} alt='illustration' />
+					</div>
 					<Image
 						src={curvedArrow}
 						alt='arrow to continue button'
