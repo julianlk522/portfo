@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import laugh from '../public/laugh.svg'
 import visual from '../public/visual.svg'
 import route from '../public/route.svg'
@@ -16,7 +17,10 @@ export default function Contact() {
 			<main className='flex justify-between w-full h-[75%]'>
 				<section id='form' className='w-[40%] h-full'>
 					<form
-						onSubmit={() => console.log('thanks for submitting!')}
+						onSubmit={(e) => {
+							e.preventDefault()
+							console.log('thanks for submitting!')
+						}}
 						className='relative h-full flex flex-col justify-evenly items-center overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-sunset rounded-[3rem] py-8 px-12 after:border-4 after:border-[#FF5B23] after:rounded-[3rem] after:border-opacity-50 after:blur-sm shadow-thicc'
 					>
 						<h3 className='self-start z-[1] text-white text-lg'>
@@ -53,11 +57,14 @@ export default function Contact() {
 							placeholder='your message'
 							rows={5}
 						></textarea>
-						<button
-							type='submit'
-							className='w-1/2 py-2 px-4 text-white text-2xl z-[1] bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark'
-						>
-							Submit!
+						<button type='submit' className='w-1/2 text-2xl z-[1]'>
+							<motion.button
+								className='py-2 px-4 text-white bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark'
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
+							>
+								Submit!
+							</motion.button>
 						</button>
 					</form>
 				</section>

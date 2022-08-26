@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import cloud from '../public/Cloud.svg'
-import curvedArrow from '../public/curved-arrow-right.png'
+import { motion } from 'framer-motion'
 import Work from '../components/Work'
 import Contact from '../components/Contact'
+import cloud from '../public/Cloud.svg'
+import curvedArrow from '../public/curved-arrow-right.png'
 
 export default function Home() {
 	const [hueCoef, setHueCoef] = useState<number>(0)
@@ -57,13 +58,15 @@ export default function Home() {
 							alt='arrow to continue button'
 							className='rotate-[25deg] -translate-x-1 opacity-50'
 						/>
-						<Link passHref href='/work'>
-							<button
+						<Link passHref href='#workContainer'>
+							<motion.button
 								id='continueButton'
-								className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#ffacc6] border-2 border-[#ffacc6] drop-shadow-mediumDark hover:translate-y-1 hover:translate-x-1 hover:scale-110 hover:text-2xl'
+								className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#ffacc6] border-2 border-[#ffacc6] drop-shadow-mediumDark'
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
 							>
-								Click here to Enter
-							</button>
+								Continue
+							</motion.button>
 						</Link>
 					</section>
 				</main>
