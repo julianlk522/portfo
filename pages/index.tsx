@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Work from '../components/Work'
 import Contact from '../components/Contact'
 import cloud from '../public/Cloud.svg'
@@ -10,9 +10,17 @@ import curvedArrow from '../public/curved-arrow-right.png'
 
 export default function Home() {
 	const [hueCoef, setHueCoef] = useState<number>(0)
+	const containerRef = useRef(null)
+	const { scrollYProgress } = useScroll()
+
+	const opacityTransform = useTransform(scrollYProgress, [0, 0.33], [1, 0])
 	return (
 		<>
-			<div className='bg-mainBgFaded bg-cover h-full pt-16 px-32 flex flex-col justify-center relative overflow-hidden'>
+			<motion.div
+				className='bg-mainBgFaded bg-cover h-full pt-16 px-32 flex flex-col justify-center relative overflow-hidden'
+				style={{ opacity: opacityTransform }}
+				ref={containerRef}
+			>
 				<Head>
 					<title>Julian's Portfolio</title>
 					<meta
@@ -94,7 +102,7 @@ export default function Home() {
 			</article>
 
 			<p>All questions and other feedback are welcome!</p> */}
-			</div>
+			</motion.div>
 			<Work />
 			<Contact />
 		</>
