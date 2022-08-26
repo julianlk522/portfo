@@ -5,13 +5,10 @@ import { ContextProvider } from '../context/pageContext'
 function MyApp({ Component, pageProps }) {
 	return (
 		<ContextProvider>
-			<div
-				id='container'
-				className='bg-mainBgFaded bg-cover h-[100vh] w-[100vw]'
-			>
+			<>
 				<Navbar />
 				<Component {...pageProps} />
-			</div>
+			</>
 		</ContextProvider>
 	)
 }

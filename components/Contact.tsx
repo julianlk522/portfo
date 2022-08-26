@@ -4,11 +4,11 @@ import visual from '../public/visual.svg'
 import route from '../public/route.svg'
 import react from '../public/react.svg'
 
-export default function Work() {
+export default function Contact() {
 	return (
 		<div
 			id='contactContainer'
-			className=' h-full py-16 px-32 flex flex-col justify-between text-center relative overflow-hidden'
+			className='bg-mainBgFaded bg-cover h-full py-16 px-32 flex flex-col justify-between text-center relative overflow-hidden'
 		>
 			<h1 id='contactTitle' className='text-6xl pt-8'>
 				Let's design your dream web app.

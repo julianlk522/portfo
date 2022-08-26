@@ -46,7 +46,6 @@ export default function Work() {
 						narrow your focus.
 					</p>
 				</article>
-
 				<div
 					id='projectsGrid'
 					className='relative grid grid-rows-12 grid-cols-3 gap-8 items-center'

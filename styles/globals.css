@@ -9,9 +9,15 @@ body,
 	margin: 0;
 	height: 100%;
 	font-family: 'Domine';
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 
 	/* -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+}
+
+html::-webkit-scrollbar {
+	display: none; /* Chrome, Safari and Opera */
 }
 
 a {
