@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -10,16 +10,14 @@ import curvedArrow from '../public/curved-arrow-right.png'
 
 export default function Home() {
 	const [hueCoef, setHueCoef] = useState<number>(0)
-	const containerRef = useRef(null)
 	const { scrollYProgress } = useScroll()
 
-	const opacityTransform = useTransform(scrollYProgress, [0, 0.33], [1, 0])
+	const opacityTransform = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 	return (
 		<>
 			<motion.div
-				className='bg-mainBgFaded bg-cover h-full pt-16 px-32 flex flex-col justify-center relative overflow-hidden'
+				className='bg-mainBgFaded bg-cover h-full pt-16 px-32 flex flex-col justify-center relative'
 				style={{ opacity: opacityTransform }}
-				ref={containerRef}
 			>
 				<Head>
 					<title>Julian's Portfolio</title>

@@ -4,12 +4,20 @@ import dancingScreenshot from '../public/dancingScreenshot.png'
 import typingScreenshot from '../public/typingScreenshot.png'
 import chatScreenshot from '../public/chatScreenshot.png'
 import Image from 'next/image'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function Work() {
+	const { scrollYProgress } = useScroll()
+	const opacityTransform = useTransform(
+		scrollYProgress,
+		[0.25, 0.5, 0.7],
+		[0, 1, 0]
+	)
 	return (
-		<div
+		<motion.div
 			id='workContainer'
-			className=' h-full py-16 px-32 flex flex-col justify-between text-center relative overflow-hidden'
+			className=' h-full py-16 px-32 flex flex-col justify-between text-center relative'
+			style={{ opacity: opacityTransform }}
 		>
 			<div
 				id='pillWrapperDiv'
@@ -50,9 +58,10 @@ export default function Work() {
 					id='projectsGrid'
 					className='relative grid grid-rows-12 grid-cols-3 gap-8 items-center'
 				>
-					<div className='absolute top-[-1rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+2rem)] bg-slate-200 rounded-[3rem] blur-sm'></div>
+					<div className='absolute top-[-1rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+2rem)] bg-slate-100 rounded-[3rem] blur-sm'></div>
 					<p className='mb-[-1rem] col-span-2 text-xs z-[1]'>
-						React, Redux, NodeJS, Express, MongoDB, Material UI
+						React, Typescript, Redux, NodeJS, Express, MongoDB,
+						Material UI
 					</p>
 					<p className='mb-[-1rem] col-start-3 text-xs z-[1]'>
 						React, Typescript, Context API, Cypress, TailwindCSS,
@@ -151,6 +160,6 @@ export default function Work() {
 					</p>
 				</div>
 			</section>
-		</div>
+		</motion.div>
 	)
 }
