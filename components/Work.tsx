@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import pill from '../public/pill.svg'
 import socialScreenshot from '../public/socialScreenshot.png'
 import dancingScreenshot from '../public/dancingScreenshot.png'
 import typingScreenshot from '../public/typingScreenshot.png'
 import chatScreenshot from '../public/chatScreenshot.png'
 import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import {
+	motion,
+	useScroll,
+	useTransform,
+	useInView,
+	useAnimationControls,
+} from 'framer-motion'
 
 export default function Work() {
 	const [topLeftHovered, setTopLeftHovered] = useState(false)
@@ -13,11 +19,49 @@ export default function Work() {
 	const [bottomLeftHovered, setBottomLeftHovered] = useState(false)
 	const [bottomRightHovered, setBottomRightHovered] = useState(false)
 	const { scrollYProgress } = useScroll()
+	const textBodyControls = useAnimationControls()
+	const textBodyRef = useRef(null)
+	const isInView = useInView(textBodyRef, { amount: 'all' })
 	const opacityTransform = useTransform(
 		scrollYProgress,
 		[0.25, 0.5, 0.7],
 		[0, 1, 0]
 	)
+
+	const textBodyVariants = {
+		initial: {
+			y: -100,
+			transition: {
+				delay: 0.5,
+			},
+		},
+		visible: {
+			y: 0,
+			transition: {
+				delayChildren: 0.25,
+				staggerChildren: 0.5,
+			},
+		},
+	}
+
+	const textBodyChildVariants = {
+		initial: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	}
+
+	useEffect(() => {
+		console.log('Element is in view: ', isInView)
+		if (isInView) {
+			textBodyControls.start('visible')
+		} else {
+			textBodyControls.start('initial')
+		}
+	}, [isInView])
+
 	return (
 		<motion.div
 			id='workContainer'
@@ -35,7 +79,7 @@ export default function Work() {
 					className='object-contain'
 				/>
 			</div>
-			<h1 id='workTitleBanner' className='text-8xl pt-8'>
+			<h1 id='workTitle' className='text-8xl pt-8'>
 				Scenes from the
 				<span className='ml-8 bg-sunrise text-transparent bg-clip-text'>
 					lab
@@ -45,20 +89,33 @@ export default function Work() {
 				id='projectsSection'
 				className='flex justify-evenly w-full h-[75%]'
 			>
-				<article
+				<motion.div
+					ref={textBodyRef}
 					id='projectsSectionComments'
 					className='max-w-[25%] flex flex-col justify-between items-center p-16'
+					animate={textBodyControls}
+					initial='initial'
+					variants={textBodyVariants}
 				>
-					<p className='text-md'>
+					<motion.p
+						className='text-md'
+						variants={textBodyChildVariants}
+					>
 						Here you can find links to some of my projects and the
 						code behind them.
-					</p>
-					<hr className='h-[2px] w-1/2 bg-black bg-opacity-25 rounded-full' />
-					<p className='text-md'>
+					</motion.p>
+					<motion.hr
+						className='h-[2px] w-1/2 bg-black bg-opacity-25 rounded-full'
+						variants={textBodyChildVariants}
+					/>
+					<motion.p
+						className='text-md'
+						variants={textBodyChildVariants}
+					>
 						A stack summary is provided for each project to help you
 						narrow your focus.
-					</p>
-				</article>
+					</motion.p>
+				</motion.div>
 				<div
 					id='projectsGrid'
 					className='relative grid grid-rows-12 grid-cols-3 gap-8 items-center'

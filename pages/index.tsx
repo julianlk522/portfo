@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Work from '../components/Work'
@@ -9,6 +8,7 @@ import cloud from '../public/Cloud.svg'
 import curvedArrow from '../public/curved-arrow-right.png'
 
 export default function Home() {
+	const continueRef = useRef(null)
 	const [hueCoef, setHueCoef] = useState<number>(0)
 	const { scrollYProgress } = useScroll()
 
@@ -64,16 +64,19 @@ export default function Home() {
 							alt='arrow to continue button'
 							className='rotate-[25deg] -translate-x-1 opacity-50'
 						/>
-						<Link passHref href='#workContainer'>
-							<motion.button
-								id='continueButton'
-								className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#ffacc6] border-2 border-[#ffacc6] drop-shadow-mediumDark'
-								whileHover={{ scale: 1.1 }}
-								whileTap={{ scale: 0.9 }}
-							>
-								Continue
-							</motion.button>
-						</Link>
+						<motion.button
+							id='continueButton'
+							className='text-xl text-white w-1/2 h-16 rounded-xl bg-gradient-to-r from-[#FF5B23] to-[#ffacc6] border-2 border-[#ffacc6] drop-shadow-mediumDark'
+							whileHover={{ scale: 1.1 }}
+							whileTap={{ scale: 0.9 }}
+							onClick={() =>
+								continueRef.current.scrollIntoView({
+									behavior: 'smooth',
+								})
+							}
+						>
+							Continue
+						</motion.button>
 					</section>
 				</main>
 
@@ -101,6 +104,7 @@ export default function Home() {
 
 			<p>All questions and other feedback are welcome!</p> */}
 			</motion.div>
+			<div ref={continueRef}></div>
 			<Work />
 			<Contact />
 		</>
