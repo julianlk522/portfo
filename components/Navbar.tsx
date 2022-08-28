@@ -1,10 +1,24 @@
-import { useState, useEffect, useContext } from 'react'
-import { PageContext } from '../context/pageContext'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function Navbar({ navVisible }) {
-	const { currentPage } = useContext(PageContext)
+	const { scrollYProgress } = useScroll()
+
+	const underlineOpacityTransformWelcome = useTransform(
+		scrollYProgress,
+		[0, 0.17, 0.2],
+		[0.5, 0.5, 0]
+	)
+	const underlineOpacityTransformWork = useTransform(
+		scrollYProgress,
+		[0.22, 0.25, 0.67, 0.7],
+		[0, 0.5, 0.5, 0]
+	)
+	const underlineOpacityTransformContact = useTransform(
+		scrollYProgress,
+		[0.72, 0.75],
+		[0, 0.5]
+	)
 
 	return (
 		<motion.nav
@@ -23,41 +37,55 @@ export default function Navbar({ navVisible }) {
 					id='navLinks'
 					className='w-1/3 flex justify-between items-center list-none text-md'
 				>
-					<li>
-						<Link href='/'>
-							<a
-								className={`relative ${
-									currentPage === '/' &&
-									'after:absolute after:bottom-[-0.5rem] after:left-[-25%] after:w-[150%] after:h-1 after:bg-[#FF5B23] after:opacity-50 after:rounded-full'
-								}`}
-							>
-								About
-							</a>
-						</Link>
+					<li
+						className='relative cursor-pointer'
+						onClick={() =>
+							window.scrollTo({
+								top: 0,
+								left: 0,
+								behavior: 'smooth',
+							})
+						}
+					>
+						About
+						<motion.div
+							className='absolute bottom-[-0.5rem] left-[-25%] w-[150%] h-1 rounded-full bg-[#FF5B23]'
+							style={{
+								opacity: underlineOpacityTransformWelcome,
+							}}
+						></motion.div>
 					</li>
-					<li>
-						<Link href='#workContainer'>
-							<a
-								className={`relative ${
-									currentPage === '/work' &&
-									'after:absolute after:bottom-[-0.5rem] after:left-[-25%] after:w-[150%] after:h-1 after:bg-[#FF5B23] after:opacity-50 after:rounded-full'
-								}`}
-							>
-								Work
-							</a>
-						</Link>
+					<li
+						className='relative cursor-pointer'
+						onClick={() =>
+							document
+								.getElementById('workContainer')
+								.scrollIntoView({ behavior: 'smooth' })
+						}
+					>
+						Work
+						<motion.div
+							className='absolute bottom-[-0.5rem] left-[-25%] w-[150%] h-1 rounded-full bg-[#FF5B23]'
+							style={{
+								opacity: underlineOpacityTransformWork,
+							}}
+						></motion.div>
 					</li>
-					<li>
-						<Link href='#contactContainer'>
-							<a
-								className={`relative ${
-									currentPage === '/contact' &&
-									'after:absolute after:bottom-[-0.5rem] after:left-[-25%] after:w-[150%] after:h-1 after:bg-[#FF5B23] after:opacity-50 after:rounded-full'
-								}`}
-							>
-								Contact
-							</a>
-						</Link>
+					<li
+						className='relative cursor-pointer'
+						onClick={() =>
+							document
+								.getElementById('contactContainer')
+								.scrollIntoView({ behavior: 'smooth' })
+						}
+					>
+						Contact
+						<motion.div
+							className='absolute bottom-[-0.5rem] left-[-25%] w-[150%] h-1 rounded-full bg-[#FF5B23]'
+							style={{
+								opacity: underlineOpacityTransformContact,
+							}}
+						></motion.div>
 					</li>
 				</ul>
 			)}
