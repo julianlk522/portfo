@@ -14,10 +14,11 @@ import {
 } from 'framer-motion'
 
 export default function Work() {
-	const [topLeftHovered, setTopLeftHovered] = useState(false)
-	const [topRightHovered, setTopRightHovered] = useState(false)
-	const [bottomLeftHovered, setBottomLeftHovered] = useState(false)
-	const [bottomRightHovered, setBottomRightHovered] = useState(false)
+	const [gridTopLeftHovered, setGridTopLeftHovered] = useState(false)
+	const [gridTopRightHovered, setGridTopRightHovered] = useState(false)
+	const [gridBottomLeftHovered, setGridBottomLeftHovered] = useState(false)
+	const [gridBottomRightHovered, setGridBottomRightHovered] = useState(false)
+
 	const { scrollYProgress } = useScroll()
 	const textBodyControls = useAnimationControls()
 	const textBodyRef = useRef(null)
@@ -62,13 +63,13 @@ export default function Work() {
 	}, [isInView])
 
 	return (
-		<motion.div
+		<motion.section
 			id='workContainer'
 			className=' h-full py-16 px-32 flex flex-col justify-between text-center relative'
 			style={{ opacity: opacityTransform }}
 		>
-			<div
-				id='pillWrapperDiv'
+			<figure
+				id='pillWrapper'
 				className='h-[75%] w-1/2 absolute left-[-22%] top-[20%]'
 			>
 				<Image
@@ -77,20 +78,20 @@ export default function Work() {
 					layout='fill'
 					className='object-contain'
 				/>
-			</div>
-			<h1 id='workTitle' className='text-8xl pt-8'>
+			</figure>
+			<h2 id='workTitle' className='text-8xl pt-8'>
 				Scenes from the
 				<span className='ml-8 bg-sunrise text-transparent bg-clip-text'>
 					lab
 				</span>
-			</h1>
-			<section
-				id='projectsSection'
+			</h2>
+			<div
+				id='projectsContentBody'
 				className='flex justify-evenly w-full h-[75%]'
 			>
 				<motion.div
 					ref={textBodyRef}
-					id='projectsSectionComments'
+					id='projectsComments'
 					className='max-w-[25%] flex flex-col justify-between items-center p-16'
 					animate={textBodyControls}
 					initial='initial'
@@ -119,7 +120,10 @@ export default function Work() {
 					id='projectsGrid'
 					className='relative grid grid-rows-12 grid-cols-3 gap-8 items-center'
 				>
-					<div className='absolute top-[-1rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+2rem)] bg-slate-100 rounded-[3rem] blur-sm'></div>
+					<div
+						id='projectsGridShadow'
+						className='absolute top-[-1rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+2rem)] bg-slate-100 rounded-[3rem] blur-sm'
+					></div>
 					<p className='mb-[-1rem] col-span-2 text-xs z-[1]'>
 						React, Typescript, Redux, NodeJS, Express, MongoDB,
 						Material UI
@@ -129,16 +133,16 @@ export default function Work() {
 						DaisyUI
 					</p>
 					<div
-						className='gridSection relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-1 col-span-2 row-start-2 row-span-5 shadow-thicc'
+						className='gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-1 col-span-2 row-start-2 row-span-5 shadow-thicc'
 						style={{
-							background: topLeftHovered && 'black',
-							border: topLeftHovered && '8px solid #FF5B23',
+							background: gridTopLeftHovered && 'black',
+							border: gridTopLeftHovered && '8px solid #FF5B23',
 						}}
 						onMouseEnter={() => {
-							setTopLeftHovered(true)
+							setGridTopLeftHovered(true)
 						}}
 						onMouseLeave={() => {
-							setTopLeftHovered(false)
+							setGridTopLeftHovered(false)
 						}}
 					>
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
@@ -147,13 +151,13 @@ export default function Work() {
 								alt='a Social Media app for pet owners'
 								layout='fill'
 								className='object-cover object-center'
-								style={{ opacity: topLeftHovered && '10%' }}
+								style={{ opacity: gridTopLeftHovered && '10%' }}
 							/>
 							<p className='projectTitle text-4xl'>PetSocial</p>
 							<p className='text-lg'>
 								Media sharing for pet owners and pet lovers
 							</p>
-							<div className='projectDetails flex justify-evenly w-full'>
+							<div className='projectLinks flex justify-evenly w-full'>
 								<a
 									className='text-sm'
 									href='https://github.com/julianlk522/pet-social-media'
@@ -166,16 +170,16 @@ export default function Work() {
 						</div>
 					</div>
 					<div
-						className='gridSection relative w-full h-full row-start-2 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent shadow-thicc'
+						className='gridMember relative w-full h-full row-start-2 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent shadow-thicc'
 						style={{
-							background: topRightHovered && 'black',
-							border: topRightHovered && '8px solid #FFACC6',
+							background: gridTopRightHovered && 'black',
+							border: gridTopRightHovered && '8px solid #FFACC6',
 						}}
 						onMouseEnter={() => {
-							setTopRightHovered(true)
+							setGridTopRightHovered(true)
 						}}
 						onMouseLeave={() => {
-							setTopRightHovered(false)
+							setGridTopRightHovered(false)
 						}}
 					>
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
@@ -184,12 +188,14 @@ export default function Work() {
 								alt='a React-based typing game'
 								className='object-cover object-bottom hover:opacity-20'
 								layout='fill'
-								style={{ opacity: topRightHovered && '20%' }}
+								style={{
+									opacity: gridTopRightHovered && '20%',
+								}}
 							/>
 							<p className='projectTitle text-2xl'>
 								Timed Typing Game
 							</p>
-							<div className='projectDetails flex justify-evenly w-full'>
+							<div className='projectLinks flex justify-evenly w-full'>
 								<a href='https://github.com/julianlk522/click-game-react-port'>
 									Github
 								</a>
@@ -198,16 +204,17 @@ export default function Work() {
 						</div>
 					</div>
 					<div
-						className='gridSection relative w-full h-full row-start-7 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent border-opacity-50 shadow-thicc'
+						className='gridMember relative w-full h-full row-start-7 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent border-opacity-50 shadow-thicc'
 						style={{
-							background: bottomLeftHovered && 'black',
-							border: bottomLeftHovered && '8px solid #00D8FF',
+							background: gridBottomLeftHovered && 'black',
+							border:
+								gridBottomLeftHovered && '8px solid #00D8FF',
 						}}
 						onMouseEnter={() => {
-							setBottomLeftHovered(true)
+							setGridBottomLeftHovered(true)
 						}}
 						onMouseLeave={() => {
-							setBottomLeftHovered(false)
+							setGridBottomLeftHovered(false)
 						}}
 					>
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
@@ -216,12 +223,14 @@ export default function Work() {
 								alt='a simple game to test your reactions and accuracy usig the mouse'
 								className='object-cover object-left-bottom'
 								layout='fill'
-								style={{ opacity: bottomLeftHovered && '20%' }}
+								style={{
+									opacity: gridBottomLeftHovered && '20%',
+								}}
 							/>
 							<p className='projectTitle text-2xl'>
 								Dancing Button
 							</p>
-							<div className='projectDetails flex justify-evenly w-full'>
+							<div className='projectLinks flex justify-evenly w-full'>
 								<a href='https://github.com/julianlk522/dancing-button'>
 									Github
 								</a>
@@ -230,16 +239,17 @@ export default function Work() {
 						</div>
 					</div>
 					<div
-						className='gridSection relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-2 col-span-2 row-start-7 row-span-5 shadow-thicc'
+						className='gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-2 col-span-2 row-start-7 row-span-5 shadow-thicc'
 						style={{
-							background: bottomRightHovered && 'black',
-							border: bottomRightHovered && '8px solid #FF5B23',
+							background: gridBottomRightHovered && 'black',
+							border:
+								gridBottomRightHovered && '8px solid #FF5B23',
 						}}
 						onMouseEnter={() => {
-							setBottomRightHovered(true)
+							setGridBottomRightHovered(true)
 						}}
 						onMouseLeave={() => {
-							setBottomRightHovered(false)
+							setGridBottomRightHovered(false)
 						}}
 					>
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
@@ -248,7 +258,9 @@ export default function Work() {
 								alt='a chat app for messaging your friends'
 								className='object-cover object-left-bottom'
 								layout='fill'
-								style={{ opacity: bottomRightHovered && '10%' }}
+								style={{
+									opacity: gridBottomRightHovered && '10%',
+								}}
 							/>
 							<p className='projectTitle text-4xl'>
 								Chat Station
@@ -256,7 +268,7 @@ export default function Work() {
 							<p className='text-lg'>
 								Quickly and conveniently message your friends
 							</p>
-							<div className='projectDetails flex justify-evenly w-full'>
+							<div className='projectLinks flex justify-evenly w-full'>
 								<a
 									href='https://github.com/julianlk522/chat-app'
 									className='text-sm'
@@ -275,7 +287,7 @@ export default function Work() {
 						NodeJS, Express
 					</p>
 				</div>
-			</section>
-		</motion.div>
+			</div>
+		</motion.section>
 	)
 }

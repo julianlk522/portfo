@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import {
 	motion,
@@ -52,67 +52,63 @@ export default function Contact() {
 	}, [isInView])
 
 	return (
-		<motion.div
+		<motion.section
 			id='contactContainer'
 			className='bg-mainBgFaded bg-cover h-full py-16 px-32 flex flex-col justify-between text-center relative'
 			style={{ opacity: opacityTransform }}
 		>
-			<h1 id='contactTitle' className='text-6xl pt-8'>
+			<h2 id='contactTitle' className='text-6xl pt-8'>
 				Let's design your dream web app.
-			</h1>
-			<main className='flex justify-between w-full h-[75%]'>
-				<section id='form' className='w-[40%] h-full'>
-					<form
-						onSubmit={(e) => {
-							e.preventDefault()
-							console.log('thanks for submitting!')
-						}}
-						className='relative h-full flex flex-col justify-evenly items-center overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-sunset rounded-[3rem] py-8 px-12 after:border-4 after:border-[#FF5B23] after:rounded-[3rem] after:border-opacity-50 after:blur-sm shadow-thicc'
+			</h2>
+			<div
+				id='contactContentBody'
+				className='flex justify-between w-full h-[75%]'
+			>
+				<form
+					className='relative w-[40%] h-full flex flex-col justify-evenly items-center overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-sunset rounded-[3rem] py-8 px-12 after:border-4 after:border-[#FF5B23] after:rounded-[3rem] after:border-opacity-50 after:blur-sm shadow-thicc text-white'
+					//	todo: update with email logic
+					onSubmit={(e) => {
+						e.preventDefault()
+						console.log('thanks for submitting!')
+					}}
+				>
+					<h4 className='self-start z-[1] text-lg'>Name</h4>
+					<input
+						type='text'
+						id='nameInput'
+						className='w-full z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
+					/>
+					<h4 className='self-start z-[1] text-lg'>Email</h4>
+					<input
+						type='email'
+						id='emailInput'
+						className='w-full z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
+					/>
+					<div className='flex justify-between items-center w-full'>
+						<h4 className='self-start z-[1] text-lg'>Message</h4>
+						<Image
+							src={laugh}
+							className='z-[1]'
+							width={32}
+							height={32}
+						/>
+					</div>
+					<textarea
+						name='messageContent'
+						id='messageInput'
+						className='w-full resize-none z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
+						rows={5}
+					></textarea>
+					<motion.button
+						className='w-1/2 text-2xl z-[1] py-2 px-4 text-white bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark'
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
 					>
-						<h3 className='self-start z-[1] text-white text-lg'>
-							Name
-						</h3>
-						<input
-							type='text'
-							id='nameInput'
-							className='w-full z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
-						/>
-						<h3 className='self-start z-[1] text-white text-lg'>
-							Email
-						</h3>
-						<input
-							type='email'
-							id='emailInput'
-							className='w-full z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
-						/>
-						<div className='flex justify-between items-center w-full'>
-							<h3 className='self-start z-[1] text-white text-lg'>
-								Message
-							</h3>
-							<Image
-								src={laugh}
-								className='z-[1]'
-								width={32}
-								height={32}
-							/>
-						</div>
-						<textarea
-							name='messageContent'
-							id='messageInput'
-							className='w-full resize-none z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
-							rows={5}
-						></textarea>
-						<motion.button
-							className='w-1/2 text-2xl z-[1] py-2 px-4 text-white bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark'
-							whileHover={{ scale: 1.1 }}
-							whileTap={{ scale: 0.9 }}
-						>
-							Submit!
-						</motion.button>
-					</form>
-				</section>
+						Submit!
+					</motion.button>
+				</form>
 
-				<section
+				<div
 					id='experience'
 					className='relative w-[60%] h-full flex flex-col justify-evenly'
 				>
@@ -249,9 +245,9 @@ export default function Contact() {
 							Scroll to top
 						</motion.p>
 					</motion.button>
-				</section>
-			</main>
+				</div>
+			</div>
 			<div id='scrollRefDiv' ref={scrollUpRef}></div>
-		</motion.div>
+		</motion.section>
 	)
 }

@@ -35,6 +35,6 @@ a {
 	font-family: 'Lobster', cursive;
 }
 
-.gridSection:hover .projectDetails {
+.gridMember:hover .projectLinks {
 	z-index: 2;
 }
