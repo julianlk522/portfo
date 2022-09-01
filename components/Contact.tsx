@@ -1,15 +1,61 @@
+import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import {
+	motion,
+	useScroll,
+	useTransform,
+	useInView,
+	useAnimationControls,
+} from 'framer-motion'
 import laugh from '../public/laugh.svg'
 import visual from '../public/visual.svg'
 import route from '../public/route.svg'
 import react from '../public/react.svg'
+import scrollUp from '../public/scrollUp.png'
 
 export default function Contact() {
+	const scrollUpRef = useRef(null)
+	const scrollPromptControls = useAnimationControls()
+	const { scrollYProgress } = useScroll()
+	const isInView = useInView(scrollUpRef, { amount: 'all' })
+	const opacityTransform = useTransform(scrollYProgress, [0.75, 1], [0, 1])
+
+	const scrollPromptVariants = {
+		initial: {
+			transition: {
+				delay: 1,
+			},
+		},
+		visible: {
+			transition: {
+				delayChildren: 0.5,
+				staggerChildren: 0.5,
+			},
+		},
+	}
+
+	const scrollPromptChildVariants = {
+		initial: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	}
+
+	useEffect(() => {
+		if (isInView) {
+			scrollPromptControls.start('visible')
+		} else {
+			scrollPromptControls.start('initial')
+		}
+	}, [isInView])
+
 	return (
-		<div
+		<motion.div
 			id='contactContainer'
-			className='bg-mainBgFaded bg-cover h-full py-16 px-32 flex flex-col justify-between text-center relative overflow-hidden'
+			className='bg-mainBgFaded bg-cover h-full py-16 px-32 flex flex-col justify-between text-center relative'
+			style={{ opacity: opacityTransform }}
 		>
 			<h1 id='contactTitle' className='text-6xl pt-8'>
 				Let's design your dream web app.
@@ -54,24 +100,21 @@ export default function Contact() {
 							name='messageContent'
 							id='messageInput'
 							className='w-full resize-none z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
-							placeholder='your message'
 							rows={5}
 						></textarea>
-						<button type='submit' className='w-1/2 text-2xl z-[1]'>
-							<motion.button
-								className='py-2 px-4 text-white bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark'
-								whileHover={{ scale: 1.1 }}
-								whileTap={{ scale: 0.9 }}
-							>
-								Submit!
-							</motion.button>
-						</button>
+						<motion.button
+							className='w-1/2 text-2xl z-[1] py-2 px-4 text-white bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark'
+							whileHover={{ scale: 1.1 }}
+							whileTap={{ scale: 0.9 }}
+						>
+							Submit!
+						</motion.button>
 					</form>
 				</section>
 
 				<section
 					id='experience'
-					className='w-[60%] h-full flex flex-col justify-evenly'
+					className='relative w-[60%] h-full flex flex-col justify-evenly'
 				>
 					<div className='flex justify-end items-center'>
 						<div className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'>
@@ -139,8 +182,43 @@ export default function Contact() {
 							</p>
 						</div>
 					</div>
+					<motion.button
+						id='scrollUpPrompt'
+						className='absolute w-[5vw] left-[50%] bottom-[-3vh] flex flex-col justify-between items-center'
+						animate={scrollPromptControls}
+						initial='initial'
+						variants={scrollPromptVariants}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+						onClick={() =>
+							window.scrollTo({
+								top: 0,
+								left: 0,
+								behavior: 'smooth',
+							})
+						}
+					>
+						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+						<motion.div
+							id='scrollImageAnimationWrapper'
+							variants={scrollPromptChildVariants}
+						>
+							<Image
+								src={scrollUp}
+								alt='button to scroll to the top of the page'
+								className='scale-[.25] opacity-20'
+							/>
+						</motion.div>
+						<motion.p
+							className='text-[0.5rem] mt-[-0.5rem] opacity-50'
+							variants={scrollPromptChildVariants}
+						>
+							Scroll to top
+						</motion.p>
+					</motion.button>
 				</section>
 			</main>
-		</div>
+			<div id='scrollRefDiv' ref={scrollUpRef}></div>
+		</motion.div>
 	)
 }
