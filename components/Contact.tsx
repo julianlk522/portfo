@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import {
 	motion,
@@ -117,7 +117,18 @@ export default function Contact() {
 					className='relative w-[60%] h-full flex flex-col justify-evenly'
 				>
 					<div className='flex justify-end items-center'>
-						<div className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'>
+						<motion.div
+							className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'
+							whileHover={{
+								y: [null, -4, 4],
+								transition: {
+									duration: 1,
+									repeat: Infinity,
+									repeatType: 'reverse',
+									bounce: 1,
+								},
+							}}
+						>
 							<Image
 								src={visual}
 								width={80}
@@ -125,7 +136,7 @@ export default function Contact() {
 								layout='intrinsic'
 								className='object-contain object-center'
 							/>
-						</div>
+						</motion.div>
 						<div className='flex flex-col justify-end items-center max-w-[60%]'>
 							<h3 className='text-2xl'>
 								UI/UX and Layout Design
@@ -139,7 +150,18 @@ export default function Contact() {
 						</div>
 					</div>
 					<div className='flex justify-end items-center'>
-						<div className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'>
+						<motion.div
+							className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'
+							whileHover={{
+								y: [null, -4, 4],
+								transition: {
+									duration: 1,
+									repeat: Infinity,
+									repeatType: 'reverse',
+									bounce: 1,
+								},
+							}}
+						>
 							<Image
 								src={route}
 								width={80}
@@ -147,7 +169,7 @@ export default function Contact() {
 								layout='intrinsic'
 								className='object-contain object-center'
 							/>
-						</div>
+						</motion.div>
 						<div className='flex flex-col justify-center items-center max-w-[60%]'>
 							<h3 className='text-2xl'>
 								Backend APIs and Routing
@@ -161,7 +183,18 @@ export default function Contact() {
 						</div>
 					</div>
 					<div className='flex justify-end items-center'>
-						<div className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'>
+						<motion.div
+							className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'
+							whileHover={{
+								y: [null, -4, 4],
+								transition: {
+									duration: 1,
+									repeat: Infinity,
+									repeatType: 'reverse',
+									bounce: 1,
+								},
+							}}
+						>
 							<Image
 								src={react}
 								width={80}
@@ -169,7 +202,7 @@ export default function Contact() {
 								layout='intrinsic'
 								className='object-contain object-center'
 							/>
-						</div>
+						</motion.div>
 						<div className='flex flex-col justify-center items-center max-w-[60%]'>
 							<h3 className='text-2xl'>
 								Modern Frameworks and Tech
@@ -198,11 +231,11 @@ export default function Contact() {
 							})
 						}
 					>
-						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
 						<motion.div
 							id='scrollImageAnimationWrapper'
 							variants={scrollPromptChildVariants}
 						>
+							{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
 							<Image
 								src={scrollUp}
 								alt='button to scroll to the top of the page'
