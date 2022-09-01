@@ -54,7 +54,6 @@ export default function Work() {
 	}
 
 	useEffect(() => {
-		console.log('Element is in view: ', isInView)
 		if (isInView) {
 			textBodyControls.start('visible')
 		} else {
@@ -182,8 +181,8 @@ export default function Work() {
 						<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
 							<Image
 								src={typingScreenshot}
-								alt='a React-based typing game [add more later]'
-								className='object-cover object-left hover:opacity-20'
+								alt='a React-based typing game'
+								className='object-cover object-bottom hover:opacity-20'
 								layout='fill'
 								style={{ opacity: topRightHovered && '20%' }}
 							/>

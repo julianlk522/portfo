@@ -29,6 +29,8 @@ a {
 	box-sizing: border-box;
 }
 
+/* move to work.module.css */
+
 .projectTitle {
 	font-family: 'Lobster', cursive;
 }
