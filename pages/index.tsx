@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
@@ -7,12 +7,38 @@ import Contact from '../components/Contact'
 import cloud from '../public/Cloud.svg'
 import curvedArrow from '../public/curved-arrow-right.png'
 
-export default function Home() {
+export default function Home({ userScrolling, currentScrollY }) {
 	const continueRef = useRef(null)
 	const [hueCoef, setHueCoef] = useState<number>(0)
 	const { scrollYProgress } = useScroll()
 
 	const opacityTransform = useTransform(scrollYProgress, [0, 0.2], [1, 0])
+
+	useEffect(() => {
+		if (userScrolling) return
+
+		const documentHeight =
+			document.getElementById('welcomeContainer').clientHeight * 2
+
+		const currentScrollPercent = currentScrollY / documentHeight
+
+		if (currentScrollPercent < 0.25) {
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth',
+			})
+		} else if (currentScrollPercent < 0.75) {
+			document
+				.getElementById('workContainer')
+				.scrollIntoView({ behavior: 'smooth' })
+		} else {
+			document
+				.getElementById('contactContainer')
+				.scrollIntoView({ behavior: 'smooth' })
+		}
+	}, [userScrolling])
+
 	return (
 		<>
 			<motion.section
