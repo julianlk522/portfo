@@ -24,6 +24,7 @@ module.exports = {
 			},
 			boxShadow: {
 				thicc: '0px 6px 20px 0px rgba(0,0,0,0.65)',
+				navbarDarkMild: '0px 0px 10px #999',
 			},
 		},
 	},

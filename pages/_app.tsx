@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
 	const [navReactsToScroll, setNavReactsToScroll] = useState(true)
 	const [navVisible, setNavVisible] = useState(true)
 	const [userScrolling, setUserScrolling] = useState(false)
+	const [darkMode, setDarkMode] = useState(false)
 
 	//	note: useScroll seems not to allow you to set state to the current progress (percent or pixels) using a useEffect dependency nor with an onChange listener per the example here in the FM docs: https://www.framer.com/docs/use-scroll/##page-scroll. So a scroll listener on the window object seemed necessary to set currentScrollY state
 
@@ -79,13 +80,33 @@ function MyApp({ Component, pageProps }) {
 		}
 	}, [userScrolling])
 
+	//	check for dark mode preferences, assign to localstorage if none
+	useEffect(() => {
+		if (localStorage.theme) {
+			if (localStorage.theme === 'dark') {
+				setDarkMode(true)
+			} else setDarkMode(false)
+		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			setDarkMode(true)
+			localStorage.setItem('theme', 'dark')
+		} else {
+			setDarkMode(false)
+			localStorage.setItem('theme', 'light')
+		}
+	}, [])
+
 	return (
 		<>
-			<Navbar navVisible={navVisible} />
+			<Navbar
+				navVisible={navVisible}
+				darkMode={darkMode}
+				setDarkMode={setDarkMode}
+			/>
 			<Component
 				{...pageProps}
 				currentScrollY={currentScrollY}
 				userScrolling={userScrolling}
+				darkMode={darkMode}
 			/>
 		</>
 	)
