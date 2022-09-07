@@ -49,7 +49,7 @@ export default function Home({ darkMode }) {
 				id='welcomeContainer'
 				className={`${
 					darkMode ? 'bg-slate-800' : 'bg-mainBgFaded'
-				} bg-cover h-full pt-16 px-32 flex flex-col justify-center relative`}
+				} bg-cover h-full pt-16 px-32 flex flex-col justify-center relative z-[1]`}
 				style={{ opacity: opacityTransform }}
 				onMouseMove={updateCloudOpacity}
 			>

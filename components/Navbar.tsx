@@ -26,7 +26,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 				darkMode
 					? 'bg-slate-700 text-white shadow-navbarDarkMild'
 					: 'bg-white'
-			} h-[5%] z-[1] fixed top-0 left-0 w-full px-32 justify-between items-center`}
+			} h-[5%] fixed top-0 left-0 w-full px-32 justify-between items-center z-[2]`}
 			style={{ display: navVisible ? 'flex' : 'none' }}
 		>
 			<div className='flex items-center h-[7.5vh] w-full'>

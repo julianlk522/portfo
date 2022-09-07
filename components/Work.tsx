@@ -82,6 +82,11 @@ export default function Work({ darkMode }) {
 		}
 	}, [isInView])
 
+	useEffect(() => {
+		if (darkMode)
+			document.getElementById('workContainer').style.opacity = '1'
+	}, [darkMode])
+
 	return (
 		<motion.section
 			id='workContainer'
@@ -104,12 +109,10 @@ export default function Work({ darkMode }) {
 			<motion.h2
 				id='workTitle'
 				className={`${darkMode && 'text-white'} text-8xl pt-8`}
-				style={
-					darkMode && {
-						opacity: headerOpacityTransform,
-						y: headerYTransform,
-					}
-				}
+				style={{
+					opacity: darkMode ? headerOpacityTransform : 1,
+					y: darkMode ? headerYTransform : 0,
+				}}
 			>
 				Scenes from the
 				<span className='ml-8 bg-sunrise text-transparent bg-clip-text'>
@@ -119,12 +122,10 @@ export default function Work({ darkMode }) {
 			<motion.div
 				id='projectsContentBody'
 				className='flex justify-evenly w-full h-[75%]'
-				style={
-					darkMode && {
-						opacity: contentOpacityTransform,
-						x: contentXTransform,
-					}
-				}
+				style={{
+					opacity: darkMode ? contentOpacityTransform : 1,
+					x: darkMode ? contentXTransform : 0,
+				}}
 			>
 				<motion.div
 					ref={textBodyRef}
