@@ -41,7 +41,10 @@ export default function Home({ darkMode }) {
 	}
 
 	return (
-		<>
+		<div
+			id='darkModeBgContainer'
+			className={`${darkMode && 'bg-slate-800'} w-full h-full`}
+		>
 			<motion.section
 				id='welcomeContainer'
 				className={`${
@@ -161,8 +164,8 @@ export default function Home({ darkMode }) {
 			<p>All questions and other feedback are welcome!</p> */}
 			</motion.section>
 			<div ref={continueRef}></div>
-			<Work />
+			<Work darkMode={darkMode} />
 			<Contact />
-		</>
+		</div>
 	)
 }

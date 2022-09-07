@@ -13,7 +13,7 @@ import {
 	useAnimationControls,
 } from 'framer-motion'
 
-export default function Work() {
+export default function Work({ darkMode }) {
 	const [gridTopLeftHovered, setGridTopLeftHovered] = useState(false)
 	const [gridTopRightHovered, setGridTopRightHovered] = useState(false)
 	const [gridBottomLeftHovered, setGridBottomLeftHovered] = useState(false)
@@ -23,10 +23,30 @@ export default function Work() {
 	const textBodyControls = useAnimationControls()
 	const textBodyRef = useRef(null)
 	const isInView = useInView(textBodyRef, { amount: 'all' })
-	const opacityTransform = useTransform(
+	const allOpacityTransform = useTransform(
 		scrollYProgress,
 		[0.25, 0.5, 0.7],
 		[0, 1, 0]
+	)
+
+	const headerOpacityTransform = useTransform(
+		scrollYProgress,
+		[0.4, 0.5],
+		[0, 1]
+	)
+
+	const headerYTransform = useTransform(scrollYProgress, [0.48, 0.5], [16, 0])
+
+	const contentOpacityTransform = useTransform(
+		scrollYProgress,
+		[0.35, 0.5],
+		[0, 1]
+	)
+
+	const contentXTransform = useTransform(
+		scrollYProgress,
+		[0.3, 0.5],
+		[150, 0]
 	)
 
 	const textBodyVariants = {
@@ -65,10 +85,12 @@ export default function Work() {
 	return (
 		<motion.section
 			id='workContainer'
-			className=' h-full py-16 px-32 flex flex-col justify-between text-center relative'
-			style={{ opacity: opacityTransform }}
+			className={`${
+				darkMode && 'bg-slate-800'
+			} h-full py-16 px-32 flex flex-col justify-between text-center relative`}
+			style={!darkMode && { opacity: allOpacityTransform }}
 		>
-			<figure
+			<motion.figure
 				id='pillWrapper'
 				className='h-[75%] w-1/2 absolute left-[-22%] top-[20%]'
 			>
@@ -78,21 +100,38 @@ export default function Work() {
 					layout='fill'
 					className='object-contain'
 				/>
-			</figure>
-			<h2 id='workTitle' className='text-8xl pt-8'>
+			</motion.figure>
+			<motion.h2
+				id='workTitle'
+				className={`${darkMode && 'text-white'} text-8xl pt-8`}
+				style={
+					darkMode && {
+						opacity: headerOpacityTransform,
+						y: headerYTransform,
+					}
+				}
+			>
 				Scenes from the
 				<span className='ml-8 bg-sunrise text-transparent bg-clip-text'>
 					lab
 				</span>
-			</h2>
-			<div
+			</motion.h2>
+			<motion.div
 				id='projectsContentBody'
 				className='flex justify-evenly w-full h-[75%]'
+				style={
+					darkMode && {
+						opacity: contentOpacityTransform,
+						x: contentXTransform,
+					}
+				}
 			>
 				<motion.div
 					ref={textBodyRef}
 					id='projectsComments'
-					className='max-w-[25%] flex flex-col justify-between items-center p-16'
+					className={`${
+						darkMode && 'text-white'
+					} max-w-[25%] flex flex-col justify-between items-center p-16`}
 					animate={textBodyControls}
 					initial='initial'
 					variants={textBodyVariants}
@@ -118,11 +157,15 @@ export default function Work() {
 				</motion.div>
 				<div
 					id='projectsGrid'
-					className='relative grid grid-rows-12 grid-cols-3 gap-8 items-center'
+					className={`${
+						darkMode && 'text-white'
+					} relative grid grid-rows-12 grid-cols-3 gap-8 items-center`}
 				>
 					<div
 						id='projectsGridShadow'
-						className='absolute top-[-1rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+2rem)] bg-slate-100 rounded-[3rem] blur-sm'
+						className={`${
+							darkMode ? 'bg-[#00d8ff] opacity-5' : 'bg-slate-100'
+						} absolute top-[-1rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+2rem)] rounded-[3rem] blur-sm`}
 					></div>
 					<p className='mb-[-1rem] col-span-2 text-xs z-[1]'>
 						React, Typescript, Redux, NodeJS, Express, MongoDB,
@@ -133,7 +176,11 @@ export default function Work() {
 						DaisyUI
 					</p>
 					<div
-						className='gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-1 col-span-2 row-start-2 row-span-5 shadow-thicc'
+						className={`${
+							darkMode
+								? 'border-slate-100 border-opacity-10'
+								: 'border-transparent'
+						} gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-8 col-start-1 col-span-2 row-start-2 row-span-5 shadow-thicc`}
 						style={{
 							background: gridTopLeftHovered && 'black',
 							border: gridTopLeftHovered && '8px solid #FF5B23',
@@ -170,7 +217,11 @@ export default function Work() {
 						</div>
 					</div>
 					<div
-						className='gridMember relative w-full h-full row-start-2 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent shadow-thicc'
+						className={`${
+							darkMode
+								? 'border-slate-100 border-opacity-10'
+								: 'border-transparent'
+						} gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-8 row-start-2 row-span-5 shadow-thicc`}
 						style={{
 							background: gridTopRightHovered && 'black',
 							border: gridTopRightHovered && '8px solid #FFACC6',
@@ -204,7 +255,11 @@ export default function Work() {
 						</div>
 					</div>
 					<div
-						className='gridMember relative w-full h-full row-start-7 row-span-5 overflow-hidden rounded-[3rem] border-8 border-transparent border-opacity-50 shadow-thicc'
+						className={`${
+							darkMode
+								? 'border-slate-100 border-opacity-10'
+								: 'border-transparent'
+						} gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-8 row-start-7 row-span-5 shadow-thicc`}
 						style={{
 							background: gridBottomLeftHovered && 'black',
 							border:
@@ -239,7 +294,11 @@ export default function Work() {
 						</div>
 					</div>
 					<div
-						className='gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-8 border-transparent col-start-2 col-span-2 row-start-7 row-span-5 shadow-thicc'
+						className={`${
+							darkMode
+								? 'border-slate-100 border-opacity-10'
+								: 'border-transparent'
+						} gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-8 col-start-2 col-span-2 row-start-7 row-span-5 shadow-thicc`}
 						style={{
 							background: gridBottomRightHovered && 'black',
 							border:
@@ -287,7 +346,7 @@ export default function Work() {
 						NodeJS, Express
 					</p>
 				</div>
-			</div>
+			</motion.div>
 		</motion.section>
 	)
 }
