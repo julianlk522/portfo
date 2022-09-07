@@ -15,6 +15,7 @@ module.exports = {
 				sunset: 'linear-gradient(180deg, rgba(252, 17, 17, 0.4) 42.19%, rgba(151, 71, 255, 0.4) 100%)',
 				mainBg: "url('../public/bg.png')",
 				mainBgFaded: "url('../public/bgFaded.png')",
+				mainBgDark: "url('../public/bgFadedDark.png')",
 			},
 			borderColor: {
 				softLightPink: 'rgba(255, 172, 198, 0.5)',

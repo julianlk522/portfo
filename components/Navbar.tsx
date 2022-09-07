@@ -48,25 +48,25 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 
 			{navVisible && (
 				<>
-					<div
-						id='darkModeSwitch'
-						className={`${
-							darkMode
-								? 'justify-end bg-slate-800'
-								: 'bg-slate-300'
-						} flex items-center rounded-[2rem] w-16 h-6 mr-12 px-1`}
-						onClick={() => setDarkMode(!darkMode)}
-					>
-						<motion.div
-							layout
-							id='slider'
-							className='bg-slate-100 h-4 w-4 cursor-pointer rounded-full'
-						></motion.div>
-					</div>
 					<ul
 						id='navLinks'
-						className='w-1/3 flex justify-between items-center list-none text-md'
+						className='w-1/2 flex justify-between items-center list-none text-md'
 					>
+						<li
+							id='darkModeSwitch'
+							className={`${
+								darkMode
+									? 'justify-end bg-slate-800'
+									: 'bg-slate-300'
+							} flex items-center rounded-[2rem] w-12 h-6 px-1`}
+							onClick={() => setDarkMode(!darkMode)}
+						>
+							<motion.div
+								layout
+								id='slider'
+								className='bg-slate-100 h-4 w-4 cursor-pointer rounded-full'
+							></motion.div>
+						</li>
 						<li
 							className='relative cursor-pointer'
 							onClick={() =>

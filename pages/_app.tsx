@@ -102,12 +102,7 @@ function MyApp({ Component, pageProps }) {
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
 			/>
-			<Component
-				{...pageProps}
-				currentScrollY={currentScrollY}
-				userScrolling={userScrolling}
-				darkMode={darkMode}
-			/>
+			<Component {...pageProps} darkMode={darkMode} />
 		</>
 	)
 }
