@@ -4,6 +4,7 @@ import socialScreenshot from '../public/socialScreenshot.png'
 import dancingScreenshot from '../public/dancingScreenshot.png'
 import typingScreenshot from '../public/typingScreenshot.png'
 import chatScreenshot from '../public/chatScreenshot.png'
+import scrollUp from '../public/scrollUp.png'
 import Image from 'next/image'
 import {
 	motion,
@@ -14,6 +15,7 @@ import {
 } from 'framer-motion'
 
 export default function Work({ darkMode }) {
+	const [scrollDownVisible, setScrollDownVisible] = useState(false)
 	const [gridTopLeftHovered, setGridTopLeftHovered] = useState(false)
 	const [gridTopRightHovered, setGridTopRightHovered] = useState(false)
 	const [gridBottomLeftHovered, setGridBottomLeftHovered] = useState(false)
@@ -22,7 +24,7 @@ export default function Work({ darkMode }) {
 	const { scrollYProgress } = useScroll()
 	const textBodyControls = useAnimationControls()
 	const textBodyRef = useRef(null)
-	const isInView = useInView(textBodyRef, { amount: 'all' })
+	const textIsInView = useInView(textBodyRef, { amount: 'all' })
 	const allOpacityTransform = useTransform(
 		scrollYProgress,
 		[0.25, 0.5, 0.7],
@@ -39,14 +41,14 @@ export default function Work({ darkMode }) {
 
 	const contentOpacityTransform = useTransform(
 		scrollYProgress,
-		[0.35, 0.5],
-		[0, 1]
+		[0.3, 0.5, 0.7],
+		[0, 1, 0]
 	)
 
 	const contentXTransform = useTransform(
 		scrollYProgress,
-		[0.3, 0.5],
-		[150, 0]
+		[0.25, 0.5, 0.75],
+		[150, 0, 150]
 	)
 
 	const textBodyVariants = {
@@ -75,12 +77,13 @@ export default function Work({ darkMode }) {
 	}
 
 	useEffect(() => {
-		if (isInView) {
+		if (textIsInView) {
 			textBodyControls.start('visible')
 		} else {
 			textBodyControls.start('initial')
+			setScrollDownVisible(false)
 		}
-	}, [isInView])
+	}, [textIsInView])
 
 	useEffect(() => {
 		if (darkMode)
@@ -136,6 +139,11 @@ export default function Work({ darkMode }) {
 					animate={textBodyControls}
 					initial='initial'
 					variants={textBodyVariants}
+					onAnimationComplete={() => {
+						if (scrollYProgress.get() === 0.5) {
+							setScrollDownVisible(true)
+						}
+					}}
 				>
 					<motion.p
 						className='text-md'
@@ -155,6 +163,43 @@ export default function Work({ darkMode }) {
 						A stack summary is provided for each project to help you
 						narrow your focus.
 					</motion.p>
+					<motion.button
+						id='scrollDownButton'
+						variants={textBodyChildVariants}
+						animate={
+							scrollDownVisible
+								? {
+										y: [0, 16],
+										opacity: 1,
+								  }
+								: { y: 0, opacity: 0, scale: 1 }
+						}
+						transition={
+							scrollDownVisible
+								? {
+										repeat: Infinity,
+										repeatType: 'reverse',
+										duration: 2,
+								  }
+								: {}
+						}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+						onClick={() =>
+							document
+								.getElementById('contactContainer')
+								.scrollIntoView({ behavior: 'smooth' })
+						}
+					>
+						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+						<Image
+							src={scrollUp}
+							alt='button to scroll to the next section'
+							className={`${
+								darkMode && 'invert'
+							} scale-[.25] opacity-20 rotate-180`}
+						/>
+					</motion.button>
 				</motion.div>
 				<div
 					id='projectsGrid'

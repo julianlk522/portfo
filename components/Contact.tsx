@@ -13,7 +13,7 @@ import route from '../public/route.svg'
 import react from '../public/react.svg'
 import scrollUp from '../public/scrollUp.png'
 
-export default function Contact() {
+export default function Contact({ darkMode }) {
 	const scrollUpRef = useRef(null)
 	const scrollPromptControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
@@ -51,13 +51,23 @@ export default function Contact() {
 		}
 	}, [isInView])
 
+	useEffect(() => {
+		if (darkMode)
+			document.getElementById('contactContainer').style.opacity = '1'
+	}, [darkMode])
+
 	return (
 		<motion.section
 			id='contactContainer'
-			className='bg-mainBgFaded bg-cover h-full py-16 px-32 flex flex-col justify-between text-center relative'
-			style={{ opacity: opacityTransform }}
+			className={`${
+				darkMode ? 'bg-slate-800' : 'bg-mainBgFaded'
+			} bg-cover h-full py-16 px-32 flex flex-col justify-between text-center relative`}
+			style={!darkMode && { opacity: opacityTransform }}
 		>
-			<h2 id='contactTitle' className='text-6xl pt-8'>
+			<h2
+				id='contactTitle'
+				className={`${darkMode && 'text-white'} text-6xl pt-8`}
+			>
 				Let's design your dream web app.
 			</h2>
 			<div
@@ -110,7 +120,9 @@ export default function Contact() {
 
 				<div
 					id='experience'
-					className='relative w-[60%] h-full flex flex-col justify-evenly'
+					className={`${
+						darkMode && 'text-white'
+					} relative w-[60%] h-full flex flex-col justify-evenly`}
 				>
 					<div className='flex justify-end items-center'>
 						<motion.div
@@ -235,7 +247,9 @@ export default function Contact() {
 							<Image
 								src={scrollUp}
 								alt='button to scroll to the top of the page'
-								className='scale-[.25] opacity-20'
+								className={`${
+									darkMode && 'invert'
+								} scale-[.25] opacity-20`}
 							/>
 						</motion.div>
 						<motion.p

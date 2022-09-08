@@ -165,7 +165,7 @@ export default function Home({ darkMode }) {
 			</motion.section>
 			<div ref={continueRef}></div>
 			<Work darkMode={darkMode} />
-			<Contact />
+			<Contact darkMode={darkMode} />
 		</div>
 	)
 }
