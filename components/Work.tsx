@@ -86,8 +86,12 @@ export default function Work({ darkMode }) {
 	}, [textIsInView])
 
 	useEffect(() => {
-		if (darkMode)
+		if (darkMode) {
 			document.getElementById('workContainer').style.opacity = '1'
+		} else {
+			document.getElementById('projectsContentBody').style.opacity = '1'
+			document.getElementById('workTitle').style.opacity = '1'
+		}
 	}, [darkMode])
 
 	return (
@@ -153,7 +157,7 @@ export default function Work({ darkMode }) {
 						code behind them.
 					</motion.p>
 					<motion.hr
-						className='h-[2px] w-1/2 bg-black bg-opacity-25 rounded-full'
+						className='h-[2px] w-1/2 bg-slate-500]'
 						variants={textBodyChildVariants}
 					/>
 					<motion.p
@@ -197,7 +201,7 @@ export default function Work({ darkMode }) {
 							alt='button to scroll to the next section'
 							className={`${
 								darkMode && 'invert'
-							} scale-[.25] opacity-20 rotate-180`}
+							} scale-[.25] opacity-10 rotate-180`}
 						/>
 					</motion.button>
 				</motion.div>

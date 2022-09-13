@@ -10,6 +10,9 @@ import curvedArrow from '../public/curved-arrow-right.png'
 export default function Home({ darkMode }) {
 	const continueRef = useRef(null)
 	const hueRotateRef = useRef(null)
+	const innerCircleRef = useRef(null)
+	const middleCircleRef = useRef(null)
+	const outerCircleRef = useRef(null)
 	const [hueCoef, setHueCoef] = useState<number>(0)
 	const [brightnessMagnitude, setBrightnessMagnitude] = useState(1)
 	const { scrollYProgress } = useScroll()
@@ -84,10 +87,36 @@ export default function Home({ darkMode }) {
 							>
 								Welcome
 							</h1>
-							<div
+							<motion.div
 								id='welcomeTextCircles'
-								className='relative self-center ml-16 w-8 h-8 rounded-full border-8 border-opacity-20 border-[#00d8ff] after:absolute after:top-[-150%] after:left-[-150%] after:w-16 after:h-16 after:rounded-full after:border-8 after:border-opacity-20 after:border-[#00d8ff] before:absolute before:top-[-250%] before:left-[-250%] before:w-24 before:h-24 before:rounded-full before:border-8 before:border-opacity-20 before:border-[#00d8ff]'
-							></div>
+								ref={outerCircleRef}
+								className='relative self-center ml-16 w-24 h-24 rounded-full border-8 opacity-20 border-[#00d8ff]'
+								onHoverStart={() => {
+									innerCircleRef.current.style.animation =
+										'innerCircleGlow 1.5s ease-in-out infinite'
+									middleCircleRef.current.style.animation =
+										'middleCircleGlow 1.5s ease-in-out infinite'
+									outerCircleRef.current.style.animation =
+										'outerCircleGlow 1.5s ease-in-out infinite'
+								}}
+								onHoverEnd={() => {
+									innerCircleRef.current.style.animation = ''
+									middleCircleRef.current.style.animation = ''
+									outerCircleRef.current.style.animation = ''
+								}}
+							>
+								<div
+									id='middleCircle'
+									ref={middleCircleRef}
+									className='absolute top-[10%] left-[10%] w-16 h-16 rounded-full border-8 border-[#00d8ff]'
+								></div>
+
+								<div
+									id='innerCircle'
+									ref={innerCircleRef}
+									className='absolute w-8 h-8 left-[30%] top-[30%] rounded-full border-8 border-[#00d8ff]'
+								></div>
+							</motion.div>
 						</div>
 						<h3
 							className={`${

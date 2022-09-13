@@ -82,20 +82,26 @@ export default function Contact({ darkMode }) {
 						console.log('thanks for submitting!')
 					}}
 				>
-					<h4 className='self-start z-[1] text-lg'>Name</h4>
+					<h4 className='self-start z-[1] text-lg underline underline-offset-2'>
+						Name
+					</h4>
 					<input
 						type='text'
 						id='nameInput'
 						className='w-full z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
 					/>
-					<h4 className='self-start z-[1] text-lg'>Email</h4>
+					<h4 className='self-start z-[1] text-lg underline underline-offset-2'>
+						Email
+					</h4>
 					<input
 						type='email'
 						id='emailInput'
 						className='w-full z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
 					/>
 					<div className='flex justify-between items-center w-full'>
-						<h4 className='self-start z-[1] text-lg'>Message</h4>
+						<h4 className='self-start z-[1] text-lg underline underline-offset-2'>
+							Message
+						</h4>
 						<Image
 							src={laugh}
 							className='z-[1]'
@@ -110,7 +116,7 @@ export default function Contact({ darkMode }) {
 						rows={5}
 					></textarea>
 					<motion.button
-						className='w-1/2 text-2xl z-[1] py-2 px-4 text-white bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark'
+						className='w-1/2 text-2xl z-[1] py-2 px-4 text-white bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark border-2 border-[rgba(255,255,255,0.1)]'
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
 					>
@@ -126,7 +132,12 @@ export default function Contact({ darkMode }) {
 				>
 					<div className='flex justify-end items-center'>
 						<motion.div
-							className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'
+							className={`${
+								darkMode
+									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thicc'
+									: 'bg-slate-300 border-2  border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
+							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
+							style={{ padding: 'max(0.5rem, 0.5vw)' }}
 							whileHover={{
 								y: [null, -4, 4],
 								transition: {
@@ -159,7 +170,11 @@ export default function Contact({ darkMode }) {
 					</div>
 					<div className='flex justify-end items-center'>
 						<motion.div
-							className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'
+							className={`${
+								darkMode
+									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thicc'
+									: 'bg-slate-300 border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
+							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
 							whileHover={{
 								y: [null, -4, 4],
 								transition: {
@@ -169,6 +184,7 @@ export default function Contact({ darkMode }) {
 									bounce: 1,
 								},
 							}}
+							style={{ padding: 'max(0.5rem, 0.5vw)' }}
 						>
 							<Image
 								src={route}
@@ -192,7 +208,12 @@ export default function Contact({ darkMode }) {
 					</div>
 					<div className='flex justify-end items-center'>
 						<motion.div
-							className='flex justify-center items-center mx-16 w-24 h-24 rounded-full bg-slate-300 drop-shadow-mediumDark'
+							className={`${
+								darkMode
+									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thicc'
+									: 'bg-slate-300 border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
+							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
+							style={{ padding: 'max(0.5rem, 0.5vw)' }}
 							whileHover={{
 								y: [null, -4, 4],
 								transition: {
