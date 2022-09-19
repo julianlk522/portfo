@@ -29,6 +29,8 @@ a {
 	box-sizing: border-box;
 }
 
+/* move to Index.module.css */
+
 @keyframes innerCircleGlow {
 	0% {
 		opacity: 0;
@@ -69,7 +71,12 @@ a {
 	}
 }
 
-/* move to work.module.css */
+/* thanks Next.js! *facepalm* */
+#hueRotateRef > span {
+	max-height: 20vh;
+}
+
+/* move to Work.module.css */
 
 .projectTitle {
 	font-family: 'Lobster', cursive;

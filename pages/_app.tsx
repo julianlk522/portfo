@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
 		if (!navReactsToScroll) {
 			return
 		} else {
-			if (currentScrollY < prevScrollY) {
+			if (currentScrollY <= prevScrollY) {
 				setNavVisible(true)
 			} else {
 				setNavVisible(false)
