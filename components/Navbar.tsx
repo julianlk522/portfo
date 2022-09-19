@@ -26,14 +26,20 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 				darkMode
 					? 'bg-slate-700 text-white shadow-navbarDarkMild'
 					: 'bg-white'
-			} h-[5%] fixed top-0 left-0 w-full px-32 justify-between items-center z-[2]`}
-			style={{ display: navVisible ? 'flex' : 'none' }}
+			} h-[5%] fixed top-0 left-0 w-full justify-between items-center z-[2]`}
+			style={{
+				display: navVisible ? 'flex' : 'none',
+				padding: 'clamp(1rem, 3vw, 3vh) clamp(2rem, 6vw, 6vh)',
+			}}
 		>
-			<div className='flex items-center h-[7.5vh] w-full'>
+			<div className='hidden xs:flex items-center h-[7.5vh] w-full'>
 				<h3
 					className={`${
 						darkMode ? 'opacity-75' : 'opacity-50'
-					} cursor-pointer text-md uppercase`}
+					} cursor-pointer uppercase whitespace-nowrap`}
+					style={{
+						fontSize: 'clamp(0.75rem, 2vw, 2vh)',
+					}}
 					onClick={() => {
 						window.scrollTo({
 							top: 0,
@@ -50,7 +56,10 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 				<>
 					<ul
 						id='navLinks'
-						className='w-1/2 flex justify-between items-center list-none text-md'
+						className='flex justify-between items-center list-none w-full md:w-[50vw]'
+						style={{
+							fontSize: 'clamp(0.5rem, 2vw, 2vh)',
+						}}
 					>
 						<li
 							id='darkModeSwitch'
@@ -58,7 +67,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 								darkMode
 									? 'justify-end bg-slate-800'
 									: 'bg-slate-300'
-							} flex items-center rounded-[2rem] w-12 h-6 px-1`}
+							} flex items-center rounded-[2rem] w-12 h-6 px-1 mx-4`}
 							onClick={() => setDarkMode(!darkMode)}
 						>
 							<motion.div
@@ -86,7 +95,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 							></motion.div>
 						</li>
 						<li
-							className='relative cursor-pointer'
+							className='relative cursor-pointer mx-2'
 							onClick={() =>
 								document
 									.getElementById('workContainer')
