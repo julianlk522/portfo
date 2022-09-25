@@ -23,9 +23,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 		<motion.nav
 			id='navbar'
 			className={`${
-				darkMode
-					? 'bg-slate-700 text-white shadow-navbarDarkMild'
-					: 'bg-white'
+				darkMode ? 'bg-slate-700 text-white shadow-navbar' : 'bg-white'
 			} h-[5%] fixed top-0 left-0 w-full justify-between items-center z-[2]`}
 			style={{
 				display: navVisible ? 'flex' : 'none',

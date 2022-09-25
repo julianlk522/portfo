@@ -73,7 +73,7 @@ a {
 
 /* thanks Next.js! *facepalm* */
 #hueRotateRef > span {
-	max-height: 20vh;
+	overflow: visible;
 }
 
 /* move to Work.module.css */

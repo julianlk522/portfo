@@ -16,7 +16,7 @@ function ProjectsGrid({ darkMode }) {
 			id='projectsGrid'
 			className={`${
 				darkMode && 'text-white'
-			} max-w-2xl lg:my-0 mx-4 relative grid grid-rows-12 grid-cols-4 sm:grid-cols-3 gap-8 items-center`}
+			} max-w-3xl lg:my-0 mx-4 relative grid grid-rows-12 grid-cols-4 sm:grid-cols-3 gap-8 items-center`}
 		>
 			<div
 				id='projectsGridShadow'

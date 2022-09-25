@@ -9,7 +9,7 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				tomatoToLightPink:
-					'linear-gradient(180deg, #FF5B23, #FFACC6 65%)',
+					'linear-gradient(166deg, rgba(255,172,198,1) 25%, rgba(255,91,35,1) 100%)',
 				sunrise:
 					'linear-gradient(180deg, rgba(255, 0, 0, 0.9) 0%, rgba(255, 91, 35, 0.3) 100%)',
 				sunset: 'linear-gradient(180deg, rgba(252, 17, 17, 0.4) 42.19%, rgba(151, 71, 255, 0.4) 100%)',
@@ -25,7 +25,7 @@ module.exports = {
 			},
 			boxShadow: {
 				thick: '0px 6px 20px 0px rgba(0,0,0,0.65)',
-				navbarDarkMild: '0px 0px 10px #999',
+				navbar: '0px 0px 10px #999',
 			},
 		},
 		screens: {
