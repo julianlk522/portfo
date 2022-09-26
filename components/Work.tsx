@@ -72,7 +72,7 @@ export default function Work({ darkMode }) {
 			id='workContainer'
 			className={`${
 				darkMode && 'bg-slate-800'
-			} h-full flex flex-col items-center text-center relative overflow-hidden`}
+			} h-full flex flex-col items-center text-center relative overflow-x-hidden`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
 				opacity: !darkMode && allOpacityTransform,
@@ -103,12 +103,12 @@ export default function Work({ darkMode }) {
 			</motion.h2>
 			<motion.div
 				id='projectsContentBody'
-				className='md:max-h-[60vh] flex flex-col justify-between w-full h-full'
+				className='md:max-h-[60vh] flex flex-col justify-between items-center w-full h-full'
 			>
 				<div className='h-full flex justify-between'>
 					<motion.div
 						ref={textBodyRef}
-						id='projectsSideText'
+						id='projectsSideTextLg'
 						className={`${
 							darkMode && 'text-white'
 						} hidden mx-8 max-w-[25%] lg:flex flex-col justify-center items-center`}
@@ -168,47 +168,15 @@ export default function Work({ darkMode }) {
 					<ProjectsGrid darkMode={darkMode} />
 				</div>
 				<motion.p
-					className={`w-full lg:text-end text-xs mt-8 pr-8 bg-workStackTextSm lg:bg-workStackTextLg ${
+					className={`hidden lg:block w-full lg:text-end text-xs mt-8 pr-8 bg-workStackTextSm lg:bg-workStackTextLg ${
 						darkMode ? 'text-white' : ''
 					}`}
 					variants={textBodyChildVariants}
 				>
-					This page was made with Next.JS, Tailwind CSS, and with
-					animation support from Framer Motion
+					This page was made using Next.JS, Tailwind CSS and Framer
+					Motion
 				</motion.p>
 			</motion.div>
-			<motion.button
-				id='scrollDownButtonSmall'
-				className='lg:hidden mx-8 absolute bottom-[-10%]'
-				whileHover={{ scale: 1.1 }}
-				whileTap={{ scale: 0.9 }}
-				animate={{
-					y: [0, 16],
-					opacity: 1,
-				}}
-				transition={{
-					y: {
-						repeat: Infinity,
-						repeatType: 'reverse',
-						duration: 2,
-					},
-				}}
-				variants={textBodyChildVariants}
-				onClick={() =>
-					document
-						.getElementById('contactContainer')
-						.scrollIntoView({ behavior: 'smooth' })
-				}
-			>
-				{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-				<Image
-					src={scrollUp}
-					alt='button to scroll to the next section'
-					className={`${
-						darkMode && 'invert'
-					} scale-[.1] opacity-5 rotate-180`}
-				/>
-			</motion.button>
 		</motion.section>
 	)
 }

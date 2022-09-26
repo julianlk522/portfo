@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import socialScreenshot from '../public/socialScreenshot.png'
 import dancingScreenshot from '../public/dancingScreenshot.png'
 import typingScreenshot from '../public/typingScreenshot.png'
 import chatScreenshot from '../public/chatScreenshot.png'
+import scrollUp from '../public/scrollUp.png'
 
 function ProjectsGrid({ darkMode }) {
 	const [gridTopLeftHovered, setGridTopLeftHovered] = useState(false)
@@ -13,185 +15,208 @@ function ProjectsGrid({ darkMode }) {
 
 	return (
 		<div
-			id='projectsGrid'
-			className={`${
-				darkMode && 'text-white'
-			} max-w-3xl lg:my-0 mx-4 relative grid grid-rows-12 grid-cols-4 sm:grid-cols-3 gap-8 items-center`}
+			id='gridContentContainer'
+			className='h-[200%] xs:h-[300%] md:h-full w-full flex flex-col justify-between items-center overflow-x-hidden lg:overflow-y-scroll lg:overscroll-contain'
 		>
+			<motion.p className='md:hidden mb-4 opacity-40 text-xs my-4 text-white'>
+				Scroll down to see more
+			</motion.p>
 			<div
-				id='projectsGridShadow'
+				id='projectsGrid'
 				className={`${
-					darkMode ? 'bg-[#00d8ff] opacity-5' : 'bg-slate-100'
-				} absolute top-[-1rem] left-[-2rem] w-[calc(100%+4rem)] h-[calc(100%+2rem)] rounded-[3rem] blur-sm`}
-			></div>
-			<p className='mb-[-1rem] col-span-2 text-xs z-[1]'>
-				React, Typescript, Redux, NodeJS, Express, MongoDB, Material UI
-			</p>
-			<p className='mb-[-1rem] col-start-3 col-span-2 sm:col-span-1 text-xs z-[1]'>
-				React, Typescript, Context API, Cypress, TailwindCSS, DaisyUI
-			</p>
-			<div
-				className={`${
-					darkMode
-						? 'border-slate-100 border-opacity-10'
-						: 'border-transparent'
-				} gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-4 sm:border-8 col-start-1 col-span-2 row-start-2 row-span-5 shadow-thick`}
-				style={{
-					background: gridTopLeftHovered && 'black',
-					border: gridTopLeftHovered && '8px solid #FF5B23',
-				}}
-				onMouseEnter={() => {
-					setGridTopLeftHovered(true)
-				}}
-				onMouseLeave={() => {
-					setGridTopLeftHovered(false)
-				}}
+					darkMode && 'text-white'
+				} h-full md:h-full w-full max-w-3xl lg:ml-4 mb-8 md:mb-0 relative grid grid-rows-4 md:grid-rows-2 grid-cols-3 gap-8 items-center`}
 			>
-				<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
-					<Image
-						src={socialScreenshot}
-						alt='a Social Media app for pet owners'
-						layout='fill'
-						className='object-cover object-center'
-						style={{ opacity: gridTopLeftHovered && '10%' }}
-					/>
-					<p className='projectTitle text-4xl'>PetSocial</p>
-					<p className='text-lg'>
-						Media sharing for pet owners and pet lovers
-					</p>
-					<div className='projectLinks flex justify-evenly w-full'>
-						<a
-							className='text-sm'
-							href='https://github.com/julianlk522/pet-social-media'
-						>
-							Github
-						</a>
-
-						<p className='text-sm'>Live demo</p>
+				<div
+					className={`${
+						darkMode ? '' : ''
+					} gridMember relative overflow-hidden h-full w-full rounded-[2rem] col-span-3 md:col-span-2 shadow-xl`}
+					style={{
+						background: gridTopLeftHovered && 'black',
+					}}
+					onMouseEnter={() => {
+						setGridTopLeftHovered(true)
+					}}
+					onMouseLeave={() => {
+						setGridTopLeftHovered(false)
+					}}
+				>
+					<div className='p-4 flex flex-col justify-evenly items-center w-full text-white'>
+						<Image
+							src={socialScreenshot}
+							alt='a Social Media app for pet owners'
+							layout='fill'
+							className='object-cover object-center'
+							style={{ opacity: gridTopLeftHovered && '10%' }}
+						/>
+						<p className='projectTitle text-4xl'>PetSocial</p>
+						<p className='text-lg'>
+							Media sharing for pet owners and pet lovers
+						</p>
+						<div className='projectLinks flex justify-evenly w-full'>
+							<a
+								className='text-sm'
+								href='https://github.com/julianlk522/pet-social-media'
+							>
+								Github
+							</a>
+							<p className='text-sm'>Live demo</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div
-				className={`${
-					darkMode
-						? 'border-slate-100 border-opacity-10'
-						: 'border-transparent'
-				} gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-4 sm:border-8 row-start-2 col-span-2 sm:col-span-1 row-span-5 shadow-thick`}
-				style={{
-					background: gridTopRightHovered && 'black',
-					border: gridTopRightHovered && '8px solid #FFACC6',
-				}}
-				onMouseEnter={() => {
-					setGridTopRightHovered(true)
-				}}
-				onMouseLeave={() => {
-					setGridTopRightHovered(false)
-				}}
-			>
-				<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
-					<Image
-						src={typingScreenshot}
-						alt='a React-based typing game'
-						className='object-cover object-bottom hover:opacity-20'
-						layout='fill'
-						style={{
-							opacity: gridTopRightHovered && '20%',
-						}}
-					/>
-					<p className='projectTitle text-2xl'>Timed Typing Game</p>
-					<div className='projectLinks flex justify-evenly w-full'>
-						<a href='https://github.com/julianlk522/click-game-react-port'>
-							Github
-						</a>
-						<p>Live</p>
+				<div
+					className={`${
+						darkMode ? '' : ''
+					} gridMember relative overflow-hidden h-full w-full rounded-[2rem] row-start-2 md:row-start-1 col-span-3 md:col-span-1 md:col-start-3 shadow-xl`}
+					style={{
+						background: gridTopRightHovered && 'black',
+					}}
+					onMouseEnter={() => {
+						setGridTopRightHovered(true)
+					}}
+					onMouseLeave={() => {
+						setGridTopRightHovered(false)
+					}}
+				>
+					<div className='p-4 flex flex-col justify-evenly items-center w-full text-white'>
+						<Image
+							src={typingScreenshot}
+							alt='a React-based typing game'
+							className='object-cover object-bottom hover:opacity-20'
+							layout='fill'
+							style={{
+								opacity: gridTopRightHovered && '20%',
+							}}
+						/>
+						<p className='projectTitle text-2xl'>
+							Timed Typing Game
+						</p>
+						<div className='projectLinks flex justify-evenly w-full'>
+							<a href='https://github.com/julianlk522/click-game-react-port'>
+								Github
+							</a>
+							<p>Live</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div
-				className={`${
-					darkMode
-						? 'border-slate-100 border-opacity-10'
-						: 'border-transparent'
-				} gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-4 sm:border-8 row-start-7 row-span-5 col-span-2 sm:col-span-1 shadow-thick`}
-				style={{
-					background: gridBottomLeftHovered && 'black',
-					border: gridBottomLeftHovered && '8px solid #00D8FF',
-				}}
-				onMouseEnter={() => {
-					setGridBottomLeftHovered(true)
-				}}
-				onMouseLeave={() => {
-					setGridBottomLeftHovered(false)
-				}}
-			>
-				<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
-					<Image
-						src={dancingScreenshot}
-						alt='a simple game to test your reactions and accuracy usig the mouse'
-						className='object-cover object-left-bottom'
-						layout='fill'
-						style={{
-							opacity: gridBottomLeftHovered && '20%',
-						}}
-					/>
-					<p className='projectTitle text-2xl'>Dancing Button</p>
-					<div className='projectLinks flex justify-evenly w-full'>
-						<a href='https://github.com/julianlk522/dancing-button'>
-							Github
-						</a>
-						<p>Live</p>
+				<div
+					className={`${
+						darkMode ? '' : ''
+					} gridMember relative overflow-hidden w-full h-full rounded-[2rem] col-span-3 md:col-span-1 row-start-3 md:row-start-2 shadow-xl`}
+					style={{
+						background: gridBottomLeftHovered && 'black',
+					}}
+					onMouseEnter={() => {
+						setGridBottomLeftHovered(true)
+					}}
+					onMouseLeave={() => {
+						setGridBottomLeftHovered(false)
+					}}
+				>
+					<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
+						<Image
+							src={dancingScreenshot}
+							alt='a simple game to test your reactions and accuracy usig the mouse'
+							className='object-cover object-left-bottom'
+							layout='fill'
+							style={{
+								opacity: gridBottomLeftHovered && '20%',
+							}}
+						/>
+						<p className='projectTitle text-2xl'>Dancing Button</p>
+						<div className='projectLinks flex justify-evenly w-full'>
+							<a href='https://github.com/julianlk522/dancing-button'>
+								Github
+							</a>
+							<p>Live</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div
-				className={`${
-					darkMode
-						? 'border-slate-100 border-opacity-10'
-						: 'border-transparent'
-				} gridMember relative overflow-hidden w-full h-full rounded-[3rem] border-4 sm:border-8 col-span-2 row-start-7 row-span-5 shadow-thick`}
-				style={{
-					background: gridBottomRightHovered && 'black',
-					border: gridBottomRightHovered && '8px solid #FF5B23',
-				}}
-				onMouseEnter={() => {
-					setGridBottomRightHovered(true)
-				}}
-				onMouseLeave={() => {
-					setGridBottomRightHovered(false)
-				}}
-			>
-				<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
-					<Image
-						src={chatScreenshot}
-						alt='a chat app for messaging your friends'
-						className='object-cover object-left-bottom'
-						layout='fill'
-						style={{
-							opacity: gridBottomRightHovered && '10%',
-						}}
-					/>
-					<p className='projectTitle text-4xl'>Chat Station</p>
-					<p className='text-lg'>
-						Quickly and conveniently message your friends
-					</p>
-					<div className='projectLinks flex justify-evenly w-full'>
-						<a
-							href='https://github.com/julianlk522/chat-app'
-							className='text-sm'
-						>
-							Github
-						</a>
-						<p className='text-sm'>Live demo</p>
+				<div
+					className={`${
+						darkMode ? '' : ''
+					} gridMember relative overflow-hidden w-full h-full rounded-[2rem] col-span-3 md:col-span-2 row-start-4 md:row-start-2 shadow-xl`}
+					style={{
+						background: gridBottomRightHovered && 'black',
+					}}
+					onMouseEnter={() => {
+						setGridBottomRightHovered(true)
+					}}
+					onMouseLeave={() => {
+						setGridBottomRightHovered(false)
+					}}
+				>
+					<div className='p-4 flex flex-col justify-evenly items-center w-full h-full text-white'>
+						<Image
+							src={chatScreenshot}
+							alt='a chat app for messaging your friends'
+							className='object-cover object-left-bottom'
+							layout='fill'
+							style={{
+								opacity: gridBottomRightHovered && '10%',
+							}}
+						/>
+						<p className='projectTitle text-4xl'>Chat Station</p>
+						<p className='text-lg'>
+							Quickly and conveniently message your friends
+						</p>
+						<div className='projectLinks flex justify-evenly w-full'>
+							<a
+								href='https://github.com/julianlk522/chat-app'
+								className='text-sm'
+							>
+								Github
+							</a>
+							<p className='text-sm'>Live demo</p>
+						</div>
 					</div>
 				</div>
+				{/* <p className='mt-[-1rem] col-start-1 col-span-2 sm:col-span-1 row-start-12 row-span-1 text-xs z-[1]'>
+					Javascript, HTML, CSS
+				</p> */}
+				{/* <p className='mt-[-1rem] col-start-3 sm:col-start-2 col-span-2 row-start-12 row-span-1 text-xs z-[1]'>
+					React, Typescript, Context API, TailwindCSS, MySQL, NodeJS,
+					Express
+				</p> */}
 			</div>
-			<p className='mt-[-1rem] col-start-1 col-span-2 sm:col-span-1 row-start-12 row-span-1 text-xs z-[1]'>
-				Javascript, HTML, CSS
-			</p>
-			<p className='mt-[-1rem] col-start-3 sm:col-start-2 col-span-2 row-start-12 row-span-1 text-xs z-[1]'>
-				React, Typescript, Context API, TailwindCSS, MySQL, NodeJS,
-				Express
-			</p>
+			<motion.p
+				className={`md:hidden w-full lg:text-end text-xs mt-16 bg-workStackTextSm lg:bg-workStackTextLg ${
+					darkMode ? 'text-white' : ''
+				}`}
+			>
+				This page uses Next.JS, Tailwind CSS and Framer Motion
+			</motion.p>
+			<motion.button
+				id='scrollDownButtonSmall'
+				className='md:hidden mb-[15rem]'
+				whileHover={{ scale: 1.1 }}
+				whileTap={{ scale: 0.9 }}
+				animate={{
+					y: [0, -16],
+					opacity: 1,
+				}}
+				transition={{
+					y: {
+						repeat: Infinity,
+						repeatType: 'reverse',
+						duration: 1,
+					},
+				}}
+				onClick={() =>
+					document
+						.getElementById('contactContainer')
+						.scrollIntoView({ behavior: 'smooth' })
+				}
+			>
+				{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+				<Image
+					src={scrollUp}
+					alt='button to scroll to the next section'
+					className={`${
+						darkMode && 'invert'
+					} scale-[.1] opacity-5 rotate-180`}
+				/>
+			</motion.button>
 		</div>
 	)
 }
