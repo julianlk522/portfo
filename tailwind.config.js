@@ -16,6 +16,10 @@ module.exports = {
 				mainBg: "url('../public/bg.png')",
 				mainBgFaded: "url('../public/bgFaded.png')",
 				mainBgDark: "url('../public/bgFadedDark.png')",
+				workStackTextSm:
+					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.0984768907563025) 20%, rgba(255,91,35,0.14889705882352944) 45%, rgba(255,0,0,0.1) 70%, rgba(255,91,35,0) 100%)',
+				workStackTextLg:
+					'linear-gradient(135deg, rgba(255,91,35,0) 35%, rgba(255,91,35,0.1) 60%, rgba(255,0,0,0.15) 85%, rgba(255,91,35,0.1) 95%, rgba(255,91,35,0) 100%)',
 			},
 			borderColor: {
 				softLightPink: 'rgba(255, 172, 198, 0.5)',
