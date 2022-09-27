@@ -18,7 +18,7 @@ export default function Contact({ darkMode }) {
 	const scrollPromptControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
 	const isInView = useInView(scrollUpRef, { amount: 'all' })
-	const opacityTransform = useTransform(scrollYProgress, [0.75, 1], [0, 1])
+	const opacityTransform = useTransform(scrollYProgress, [0.8, 1], [0, 1])
 
 	const scrollPromptVariants = {
 		initial: {
@@ -62,11 +62,14 @@ export default function Contact({ darkMode }) {
 			className={`${
 				darkMode ? 'bg-slate-800' : 'bg-mainBgFaded'
 			} bg-cover h-full py-16 px-32 flex flex-col justify-between text-center relative`}
-			style={!darkMode && { opacity: opacityTransform }}
+			style={{
+				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
+				opacity: !darkMode && opacityTransform,
+			}}
 		>
 			<h2
 				id='contactTitle'
-				className={`${darkMode && 'text-white'} text-6xl pt-8`}
+				className={`${darkMode && 'text-white'} text-6xl`}
 			>
 				Let's design your dream web app.
 			</h2>
@@ -75,52 +78,57 @@ export default function Contact({ darkMode }) {
 				className='flex justify-between w-full h-[75%]'
 			>
 				<form
-					className='relative w-[40%] h-full flex flex-col justify-evenly items-center overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-sunset rounded-[3rem] py-8 px-12 after:border-4 after:border-[#FF5B23] after:rounded-[3rem] after:border-opacity-50 after:blur-sm shadow-thicc text-white'
+					className={`relative w-[40%] h-full flex flex-col justify-between items-center z-[1] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-[#00d8ff] after:bg-opacity-5 rounded-[2rem] py-16 px-12 after:rounded-[3rem] after:blur-sm after:z-[-1] shadow-2xl ${
+						darkMode ? 'text-white' : ''
+					}`}
 					//	todo: update with email logic
 					onSubmit={(e) => {
 						e.preventDefault()
 						console.log('thanks for submitting!')
 					}}
 				>
-					<h4 className='self-start z-[1] text-lg underline underline-offset-2'>
-						Name
-					</h4>
+					<h4 className='self-start text-lg'>Name</h4>
 					<input
 						type='text'
 						id='nameInput'
-						className='w-full z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
+						className={`w-full rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
+							darkMode ? 'border-white' : 'border-black'
+						}`}
 					/>
-					<h4 className='self-start z-[1] text-lg underline underline-offset-2'>
-						Email
-					</h4>
+					<h4 className='self-start text-lg'>Email</h4>
 					<input
 						type='email'
 						id='emailInput'
-						className='w-full z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
+						className={`w-full rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
+							darkMode ? 'border-white' : 'border-black'
+						}`}
 					/>
-					<div className='flex justify-between items-center w-full'>
-						<h4 className='self-start z-[1] text-lg underline underline-offset-2'>
-							Message
-						</h4>
-						<Image
-							src={laugh}
-							className='z-[1]'
-							width={32}
-							height={32}
-						/>
-					</div>
+					<h4 className='self-start text-lg'>Message</h4>
+
 					<textarea
 						name='messageContent'
 						id='messageInput'
-						className='w-full resize-none z-[1] rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none'
+						className={`w-full resize-none rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
+							darkMode ? 'border-white' : 'border-black'
+						}`}
 						rows={5}
 					></textarea>
 					<motion.button
-						className='w-1/2 text-2xl z-[1] py-2 px-4 text-white bg-[#FF5B23] bg-opacity-30 rounded-xl drop-shadow-mediumDark border-2 border-[rgba(255,255,255,0.1)]'
-						whileHover={{ scale: 1.1 }}
+						id='submitButton'
+						className={`relative flex mt-4 px-4 py-2 rounded-[2rem] after:absolute after:top-[-2px] after:left-[-2px] after:right-[-2px] after:bottom-[-2px] after:rounded-[2rem] after:bg-contactFormBackdrop after:z-[-1] hover:bg-contactFormBackdrop hover:bg-no-repeat overflow-visible hover:text-white ${
+							darkMode
+								? 'bg-slate-800'
+								: 'shadow-md bg-[rgba(255,255,255,0.75)]'
+						}`}
+						whileHover={{
+							scale: 1.1,
+						}}
 						whileTap={{ scale: 0.9 }}
 					>
-						Submit!
+						Submit
+						<div className='ml-4'>
+							<Image src={laugh} width={16} height={16} />
+						</div>
 					</motion.button>
 				</form>
 
@@ -134,12 +142,12 @@ export default function Contact({ darkMode }) {
 						<motion.div
 							className={`${
 								darkMode
-									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thicc'
+									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'bg-slate-300 border-2  border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
 							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
 							style={{ padding: 'max(0.5rem, 0.5vw)' }}
 							whileHover={{
-								y: [null, -4, 4],
+								y: [null, -8, 8],
 								transition: {
 									duration: 1,
 									repeat: Infinity,
@@ -172,11 +180,11 @@ export default function Contact({ darkMode }) {
 						<motion.div
 							className={`${
 								darkMode
-									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thicc'
+									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'bg-slate-300 border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
 							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
 							whileHover={{
-								y: [null, -4, 4],
+								y: [null, -8, 8],
 								transition: {
 									duration: 1,
 									repeat: Infinity,
@@ -210,12 +218,12 @@ export default function Contact({ darkMode }) {
 						<motion.div
 							className={`${
 								darkMode
-									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thicc'
+									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'bg-slate-300 border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
 							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
 							style={{ padding: 'max(0.5rem, 0.5vw)' }}
 							whileHover={{
-								y: [null, -4, 4],
+								y: [null, -8, 8],
 								transition: {
 									duration: 1,
 									repeat: Infinity,

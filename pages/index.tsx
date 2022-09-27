@@ -8,7 +8,7 @@ import cloud from '../public/Cloud.svg'
 
 export default function Home({ darkMode }) {
 	const welcomeContainerRef = useRef(null)
-	const continueRef = useRef(null)
+	const workSectionRef = useRef(null)
 	const hueRotateRef = useRef(null)
 	const innerCircleRef = useRef(null)
 	const middleCircleRef = useRef(null)
@@ -65,9 +65,9 @@ export default function Home({ darkMode }) {
 					darkMode
 						? 'bg-slate-800 text-white'
 						: 'bg-mainBgFaded text-stone-500'
-				} bg-cover h-full flex flex-col items-center relative z-[1]`}
+				} bg-cover h-full flex flex-col justify-between items-center relative z-[1] overflow-x-hidden overflow-y-auto`}
 				style={{
-					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 6vw, 6vh)',
+					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 					opacity: darkMode ? '1' : opacityTransform,
 				}}
 				onMouseMove={(e: React.MouseEvent) => {
@@ -84,7 +84,7 @@ export default function Home({ darkMode }) {
 					ref={hueRotateRef}
 					className={`${
 						darkMode ? 'opacity-5' : 'opacity-10'
-					} absolute bottom-[-5%] right-[-10%] h-3/4 w-3/4`}
+					} absolute bottom-0 right-[-10%] h-3/4 w-3/4`}
 				>
 					<Image
 						src={cloud}
@@ -96,7 +96,7 @@ export default function Home({ darkMode }) {
 				<motion.div
 					id='welcomeTitleContainer'
 					className='flex justify-center items-center'
-					style={{ marginBottom: 'clamp(2rem, 12vw, 12vh)' }}
+					style={{ marginBottom: 'clamp(1rem, 3vw, 4vh)' }}
 					variants={childVariants}
 				>
 					<motion.h1
@@ -140,73 +140,70 @@ export default function Home({ darkMode }) {
 					</motion.div>
 				</motion.div>
 
-				<div
-					id='welcomeContentContainer'
-					className='h-full flex justify-between'
+				<motion.div
+					id='toTheFrontierContainer'
+					className='flex justify-center items-center'
+					style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
+					variants={childVariants}
 				>
-					<div
-						id='welcomeTextContent'
-						className='flex flex-col h-full w-full justify-evenly max-h-[50vw]'
+					<span
+						className={`${
+							darkMode && 'text-white opacity-40'
+						} min-w-fit`}
 					>
-						<motion.div
-							className='flex justify-between items-center'
-							style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
-							variants={childVariants}
-						>
-							<span
-								className={`${
-									darkMode && 'text-white opacity-40'
-								} min-w-fit`}
-							>
-								to the
-							</span>
-							<h2
-								className='relative bg-tomatoToLightPink text-transparent bg-clip-text after:absolute after:top-[-125%] md:after:top-[50%] after:left-[-200%] after:border-[6px] after:w-48 after:h-48 md:after:w-96 md:after:h-96 after:rounded-full md:after:border-[12px] after:border-opacity-5 after:border-[#00d8ff] drop-shadow-lg'
-								style={{
-									marginLeft: 'min(25%, 2rem)',
-								}}
-							>
-								frontier
-							</h2>
-						</motion.div>
-						<div
-							className='flex justify-between items-center mt-8 md:mt-12'
-							style={{
-								fontSize: 'clamp(1.25rem, 4vw, 4vh)',
-							}}
-						>
-							<motion.h3
-								className={`${
-									darkMode && 'text-white'
-								} text-center`}
-								variants={childVariants}
-							>
-								of web development.
-							</motion.h3>
-							<motion.button
-								id='continueButton'
-								className={`relative px-4 hidden md:block rounded-[2rem] bg-tomatoToLightPink before:absolute before:top-[4px] before:left-[4px] before:right-[4px] before:bottom-[4px] before:bg-[rgba(255,255,255,0.9)] before:z-[-1] before:rounded-[3rem] hover:before:bg-transparent hover:text-white ${
-									darkMode
-										? 'border-slate-100 shadow-2xl text-white'
-										: 'drop-shadow-mediumDark'
-								}`}
-								style={{ marginLeft: 'min(25%, 2rem)' }}
-								whileHover={{ scale: 1.1 }}
-								whileTap={{ scale: 0.9 }}
-								onClick={() =>
-									continueRef.current.scrollIntoView({
-										behavior: 'smooth',
-									})
-								}
-								variants={childVariants}
-							>
-								Continue
-							</motion.button>
-						</div>
-					</div>
+						to the
+					</span>
+					<h2
+						className='relative bg-tomatoToLightPink text-transparent bg-clip-text after:absolute after:top-[-125%] sm:after:top-[50%] after:left-[-200%] after:border-[6px] after:w-48 after:h-48 sm:after:w-96 sm:after:h-96 after:rounded-full sm:after:border-[12px] after:border-opacity-5 after:border-[#00d8ff] drop-shadow-lg'
+						style={{
+							marginLeft: 'max(4%, 0.75rem)',
+						}}
+					>
+						frontier
+					</h2>
+				</motion.div>
+				<motion.h3
+					className={`text-center ${darkMode ? 'text-white' : ''}`}
+					style={{
+						fontSize: 'clamp(1.25rem, 4vw, 4vh)',
+						margin: 'clamp(1rem, 3vw, 4vh) 0',
+					}}
+					variants={childVariants}
+				>
+					of web development.
+				</motion.h3>
+
+				<div
+					id='continueButtonContainer'
+					className='w-full max-w-3xl flex justify-center md:justify-end'
+				>
+					<motion.button
+						id='continueButton'
+						className={`relative px-4 rounded-[2rem] before:absolute before:top-[-2px] before:left-[-2px] before:right-[-2px] before:bottom-[-2px] before:rounded-[2rem] before:bg-tomatoToLightPink before:z-[-1] hover:bg-tomatoToLightPink hover:bg-no-repeat self-end ${
+							darkMode
+								? 'shadow-2xl bg-slate-800'
+								: 'hover:text-white bg-[rgba(255,255,255,0.9)]'
+						}`}
+						style={{
+							fontSize: 'clamp(1.25rem, 4vw, 4vh)',
+							width: 'min(100%, 250px)',
+						}}
+						whileHover={{
+							scale: 1.1,
+						}}
+						whileTap={{ scale: 0.9 }}
+						onClick={() =>
+							workSectionRef.current.scrollIntoView({
+								behavior: 'smooth',
+							})
+						}
+						variants={childVariants}
+					>
+						Continue
+					</motion.button>
 				</div>
 			</motion.section>
-			<div ref={continueRef}></div>
+			<div ref={workSectionRef}></div>
 			<Work darkMode={darkMode} />
 			<Contact darkMode={darkMode} />
 		</>
