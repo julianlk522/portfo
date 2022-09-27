@@ -26,25 +26,28 @@ export default function Work({ darkMode }) {
 
 	const textBodyVariants = {
 		initial: {
-			y: -100,
+			opacity: 0,
 			transition: {
-				delay: 0.5,
+				delay: 1,
+				duration: 2,
 			},
 		},
 		visible: {
-			y: 0,
+			opacity: 1,
 			transition: {
 				delayChildren: 0.5,
-				staggerChildren: 1,
+				staggerChildren: 0.5,
 			},
 		},
 	}
 
 	const textBodyChildVariants = {
 		initial: {
+			x: '-100%',
 			opacity: 0,
 		},
 		visible: {
+			x: 0,
 			opacity: 1,
 		},
 	}
@@ -52,9 +55,6 @@ export default function Work({ darkMode }) {
 	useEffect(() => {
 		if (textIsInView) {
 			textBodyControls.start('visible')
-		} else {
-			textBodyControls.start('initial')
-			setScrollDownVisible(false)
 		}
 	}, [textIsInView])
 
@@ -72,23 +72,12 @@ export default function Work({ darkMode }) {
 			id='workContainer'
 			className={`${
 				darkMode && 'bg-slate-800'
-			} h-full flex flex-col items-center text-center relative overflow-x-hidden`}
+			} h-full flex flex-col items-center text-center relative overflow-x-hidden md:overflow-y-hidden`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
 				opacity: !darkMode && allOpacityTransform,
 			}}
 		>
-			<motion.figure
-				id='pillWrapper'
-				className='hidden lg:block h-full w-1/2 absolute left-[-7vw] top-0 opacity-20'
-			>
-				<Image
-					src={pill}
-					alt='laboratory scenery'
-					layout='fill'
-					className='object-contain'
-				/>
-			</motion.figure>
 			<motion.h2
 				id='workTitle'
 				className={`${darkMode && 'text-white'} mb-8`}
@@ -103,15 +92,15 @@ export default function Work({ darkMode }) {
 			</motion.h2>
 			<motion.div
 				id='projectsContentBody'
-				className='md:max-h-[60vh] flex flex-col justify-between items-center w-full h-full'
+				className='flex flex-col justify-between items-center w-full h-full'
 			>
-				<div className='h-full flex justify-between'>
+				<div className='w-full h-full flex justify-between'>
 					<motion.div
 						ref={textBodyRef}
 						id='projectsSideTextLg'
 						className={`${
 							darkMode && 'text-white'
-						} hidden mx-8 max-w-[25%] lg:flex flex-col justify-center items-center`}
+						} relative hidden mx-8 max-w-[25%] lg:flex flex-col justify-center items-center`}
 						animate={textBodyControls}
 						initial='initial'
 						variants={textBodyVariants}
@@ -121,6 +110,17 @@ export default function Work({ darkMode }) {
 							}
 						}}
 					>
+						<motion.figure
+							id='pillWrapper'
+							className='hidden lg:block h-[150%] w-[150%] absolute left-[-25%] top-[-33%] opacity-20'
+						>
+							<Image
+								src={pill}
+								alt='laboratory scenery'
+								layout='fill'
+								className='object-contain'
+							/>
+						</motion.figure>
 						<motion.p
 							className='text-md my-8'
 							variants={textBodyChildVariants}
@@ -141,9 +141,11 @@ export default function Work({ darkMode }) {
 							transition={
 								scrollDownVisible
 									? {
-											repeat: Infinity,
-											repeatType: 'reverse',
-											duration: 2,
+											y: {
+												repeat: Infinity,
+												repeatType: 'reverse',
+												duration: 2,
+											},
 									  }
 									: {}
 							}
@@ -167,15 +169,14 @@ export default function Work({ darkMode }) {
 					</motion.div>
 					<ProjectsGrid darkMode={darkMode} />
 				</div>
-				<motion.p
+				<p
 					className={`hidden lg:block w-full lg:text-end text-xs mt-8 pr-8 bg-workStackTextSm lg:bg-workStackTextLg ${
 						darkMode ? 'text-white' : ''
 					}`}
-					variants={textBodyChildVariants}
 				>
 					This page was made using Next.JS, Tailwind CSS and Framer
 					Motion
-				</motion.p>
+				</p>
 			</motion.div>
 		</motion.section>
 	)
