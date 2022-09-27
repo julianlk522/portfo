@@ -69,83 +69,29 @@ export default function Contact({ darkMode }) {
 		>
 			<h2
 				id='contactTitle'
-				className={`${darkMode && 'text-white'} text-6xl`}
+				className={`mb-8 ${darkMode && 'text-white'}`}
+				style={{ fontSize: 'clamp(2rem, 5vw, 6vh)' }}
 			>
-				Let's design your dream web app.
+				Let's design your dream web app
 			</h2>
 			<div
 				id='contactContentBody'
-				className='flex justify-between w-full h-[75%]'
+				className='w-full h-[300vh] lg:h-full flex flex-col lg:flex-row justify-between items-center overflow-y-scroll overflow-x-hidden lg:overflow-y-hidden'
 			>
-				<form
-					className={`relative w-[40%] h-full flex flex-col justify-between items-center z-[1] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-[#00d8ff] after:bg-opacity-5 rounded-[2rem] py-16 px-12 after:rounded-[3rem] after:blur-sm after:z-[-1] shadow-2xl ${
-						darkMode ? 'text-white' : ''
-					}`}
-					//	todo: update with email logic
-					onSubmit={(e) => {
-						e.preventDefault()
-						console.log('thanks for submitting!')
-					}}
-				>
-					<h4 className='self-start text-lg'>Name</h4>
-					<input
-						type='text'
-						id='nameInput'
-						className={`w-full rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
-							darkMode ? 'border-white' : 'border-black'
-						}`}
-					/>
-					<h4 className='self-start text-lg'>Email</h4>
-					<input
-						type='email'
-						id='emailInput'
-						className={`w-full rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
-							darkMode ? 'border-white' : 'border-black'
-						}`}
-					/>
-					<h4 className='self-start text-lg'>Message</h4>
-
-					<textarea
-						name='messageContent'
-						id='messageInput'
-						className={`w-full resize-none rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
-							darkMode ? 'border-white' : 'border-black'
-						}`}
-						rows={5}
-					></textarea>
-					<motion.button
-						id='submitButton'
-						className={`relative flex mt-4 px-4 py-2 rounded-[2rem] after:absolute after:top-[-2px] after:left-[-2px] after:right-[-2px] after:bottom-[-2px] after:rounded-[2rem] after:bg-contactFormBackdrop after:z-[-1] hover:bg-contactFormBackdrop hover:bg-no-repeat overflow-visible hover:text-white ${
-							darkMode
-								? 'bg-slate-800'
-								: 'shadow-md bg-[rgba(255,255,255,0.75)]'
-						}`}
-						whileHover={{
-							scale: 1.1,
-						}}
-						whileTap={{ scale: 0.9 }}
-					>
-						Submit
-						<div className='ml-4'>
-							<Image src={laugh} width={16} height={16} />
-						</div>
-					</motion.button>
-				</form>
-
 				<div
 					id='experience'
-					className={`${
+					className={`relative w-full mt-96 sm:mt-32 my-32 sm:mb-0 lg:my-0 lg:ml-8 h-full flex flex-col justify-evenly lg:order-2 ${
 						darkMode && 'text-white'
-					} relative w-[60%] h-full flex flex-col justify-evenly`}
+					}`}
+					style={{ maxWidth: 'max(50vw, 750px)' }}
 				>
-					<div className='flex justify-end items-center'>
+					<div className='flex flex-col sm:flex-row justify-between items-center'>
 						<motion.div
 							className={`${
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
-									: 'bg-slate-300 border-2  border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
-							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
-							style={{ padding: 'max(0.5rem, 0.5vw)' }}
+									: 'bg-slate-300 bg-opacity-20 border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
+							} flex justify-center items-center mb-16 sm:mb-0 mx-8 p-2 h-24 sm:h-20 rounded-full`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -164,8 +110,8 @@ export default function Contact({ darkMode }) {
 								className='object-contain object-center'
 							/>
 						</motion.div>
-						<div className='flex flex-col justify-end items-center max-w-[60%]'>
-							<h3 className='text-2xl'>
+						<div className='flex flex-col justify-between items-center w-full'>
+							<h3 className='text-2xl mb-4'>
 								UI/UX and Layout Design
 							</h3>
 							<p className='text-xs'>
@@ -176,13 +122,13 @@ export default function Contact({ darkMode }) {
 							</p>
 						</div>
 					</div>
-					<div className='flex justify-end items-center'>
+					<div className='flex flex-col sm:flex-row justify-between items-center'>
 						<motion.div
 							className={`${
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
-									: 'bg-slate-300 border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
-							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
+									: 'bg-slate-300 bg-opacity-20  border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
+							} flex justify-center items-center my-16 mx-8 p-2 h-24 sm:h-20 rounded-full`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -192,7 +138,6 @@ export default function Contact({ darkMode }) {
 									bounce: 1,
 								},
 							}}
-							style={{ padding: 'max(0.5rem, 0.5vw)' }}
 						>
 							<Image
 								src={route}
@@ -202,8 +147,8 @@ export default function Contact({ darkMode }) {
 								className='object-contain object-center'
 							/>
 						</motion.div>
-						<div className='flex flex-col justify-center items-center max-w-[60%]'>
-							<h3 className='text-2xl'>
+						<div className='flex flex-col justify-center items-center w-full sm:my-24 lg:my-0'>
+							<h3 className='text-2xl mb-4'>
 								Backend APIs and Routing
 							</h3>
 							<p className='text-xs'>
@@ -214,14 +159,13 @@ export default function Contact({ darkMode }) {
 							</p>
 						</div>
 					</div>
-					<div className='flex justify-end items-center'>
+					<div className='flex flex-col sm:flex-row justify-between items-center'>
 						<motion.div
 							className={`${
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
-									: 'bg-slate-300 border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
-							} flex justify-center items-center mx-16 w-24 h-24 rounded-full`}
-							style={{ padding: 'max(0.5rem, 0.5vw)' }}
+									: 'bg-slate-300 border-2 bg-opacity-20 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
+							} flex justify-center items-center my-16 sm:my-0 mx-8 p-4 h-24 sm:h-20 rounded-full`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -240,8 +184,8 @@ export default function Contact({ darkMode }) {
 								className='object-contain object-center'
 							/>
 						</motion.div>
-						<div className='flex flex-col justify-center items-center max-w-[60%]'>
-							<h3 className='text-2xl'>
+						<div className='flex flex-col justify-center items-center'>
+							<h3 className='text-2xl mb-4'>
 								Modern Frameworks and Tech
 							</h3>
 							<p className='text-xs'>
@@ -252,9 +196,12 @@ export default function Contact({ darkMode }) {
 							</p>
 						</div>
 					</div>
+					<h3 className='lg:hidden text-2xl mt-32'>
+						Send me a message!
+					</h3>
 					<motion.button
-						id='scrollUpPrompt'
-						className='absolute w-[5vw] left-[50%] bottom-[-3vh] flex flex-col justify-between items-center'
+						id='scrollUpPromptLg'
+						className='absolute w-[5vw] left-[50%] bottom-[-3vh] hidden lg:flex flex-col justify-between items-center'
 						animate={scrollPromptControls}
 						initial='initial'
 						variants={scrollPromptVariants}
@@ -289,6 +236,94 @@ export default function Contact({ darkMode }) {
 						</motion.p>
 					</motion.button>
 				</div>
+				<form
+					className={`relative lg:max-h-[80%] max-w-xl lg:max-w-[40%] w-full h-full flex flex-col justify-between items-center z-[1] mt-64 xs:mt-32 lg:mt-0 after:absolute after:top-0 after:left-0 after:w-full after:h-full  rounded-[2rem] py-16 px-12 after:rounded-[2rem] after:z-[-1] shadow-lg lg:shadow-2xl ${
+						darkMode
+							? 'text-white after:blur-sm after:bg-contactFormBackdropDarkMode'
+							: 'after:backdrop-blur-lg after:bg-contactFormBackdropLightMode'
+					}`}
+					//	todo: update with email logic
+					onSubmit={(e) => {
+						e.preventDefault()
+						console.log('thanks for submitting!')
+					}}
+				>
+					<h4 className='self-start text-lg pb-2'>Name</h4>
+					<input
+						type='text'
+						id='nameInput'
+						className={`w-full rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
+							darkMode ? 'border-white' : 'border-black'
+						}`}
+					/>
+					<h4 className='self-start text-lg py-2'>Email</h4>
+					<input
+						type='email'
+						id='emailInput'
+						className={`w-full rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
+							darkMode ? 'border-white' : 'border-black'
+						}`}
+					/>
+					<h4 className='self-start text-lg py-2'>Message</h4>
+
+					<textarea
+						name='messageContent'
+						id='messageInput'
+						className={`w-full resize-none rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
+							darkMode ? 'border-white' : 'border-black'
+						}`}
+						rows={5}
+					></textarea>
+					<motion.button
+						id='submitButton'
+						className={`relative flex mt-8 px-4 py-2 rounded-[2rem] after:absolute after:top-[-2px] after:left-[-2px] after:right-[-2px] after:bottom-[-2px] after:rounded-[2rem] after:bg-contactFormSubmitBackdrop after:z-[-1] hover:bg-contactFormSubmitBackdrop hover:bg-no-repeat overflow-visible hover:text-white ${
+							darkMode
+								? 'bg-slate-800'
+								: 'shadow-md bg-[rgba(255,255,255,0.75)]'
+						}`}
+						whileHover={{
+							scale: 1.1,
+						}}
+						whileTap={{ scale: 0.9 }}
+					>
+						Submit
+						<div className='ml-4'>
+							<Image src={laugh} width={16} height={16} />
+						</div>
+					</motion.button>
+				</form>
+				<motion.button
+					id='scrollUpPromptSm'
+					className={`lg:hidden h-[10vh] flex flex-col justify-between items-center mb-8 ${
+						darkMode && 'text-white'
+					}`}
+					whileHover={{ scale: 1.1 }}
+					whileTap={{ scale: 0.9 }}
+					onClick={() =>
+						window.scrollTo({
+							top: 0,
+							left: 0,
+							behavior: 'smooth',
+						})
+					}
+				>
+					<motion.div
+						animate={{ y: [0, 16] }}
+						transition={{ repeat: Infinity, repeatType: 'reverse' }}
+					>
+						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+						<Image
+							src={scrollUp}
+							alt='button to scroll to the top of the page'
+							className={`${
+								darkMode && 'invert'
+							} scale-[.05] opacity-20`}
+						/>
+					</motion.div>
+					<p className='text-xs lg:text-[0.5rem] mt-[-4rem] opacity-50'>
+						Scroll to top
+					</p>
+				</motion.button>
 			</div>
 			<div id='scrollRefDiv' ref={scrollUpRef}></div>
 		</motion.section>

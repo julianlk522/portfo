@@ -20,7 +20,11 @@ module.exports = {
 					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.0984768907563025) 20%, rgba(255,91,35,0.14889705882352944) 45%, rgba(255,0,0,0.1) 70%, rgba(255,91,35,0) 100%)',
 				workStackTextLg:
 					'linear-gradient(135deg, rgba(255,91,35,0) 35%, rgba(255,91,35,0.1) 60%, rgba(255,0,0,0.15) 85%, rgba(255,91,35,0.1) 95%, rgba(255,91,35,0) 100%)',
-				contactFormBackdrop:
+				contactFormBackdropDarkMode:
+					'linear-gradient(330deg, rgba(255,172,198,0) 15%, rgba(0,216,255,0.15) 140%, rgba(255,172,198,0) 50%)',
+				contactFormBackdropLightMode:
+					'linear-gradient(350deg, rgba(255,172,198,0) 40%, rgba(0,216,255,0.2) 100%)',
+				contactFormSubmitBackdrop:
 					'linear-gradient(315deg, rgba(255,172,198,0.5) 0%, rgba(0,216,255,0.5) 35%, rgba(255,172,198,0.5) 55%, rgba(255,172,198,0.5) 75%, rgba(0,216,255,0.25) 100%)',
 			},
 			borderColor: {
