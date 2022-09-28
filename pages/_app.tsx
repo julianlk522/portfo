@@ -107,9 +107,6 @@ function MyApp({ Component, pageProps }) {
 						background: darkMode ? 'rgba(255,255,255,0.1)' : '',
 						color: darkMode ? 'white' : '',
 					},
-					error: {
-						duration: 8000,
-					},
 				}}
 			/>
 			<Navbar

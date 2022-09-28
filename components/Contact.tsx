@@ -76,7 +76,7 @@ export default function Contact({ darkMode }) {
 		}
 
 		toast.error(() => (
-			<span>
+			<span onClick={() => toast.dismiss()}>
 				Something went wrong with your submission... 🤔 Sorry! Please
 				leave a comment{' '}
 				<a
@@ -106,7 +106,12 @@ export default function Contact({ darkMode }) {
 				className={`mb-8 ${darkMode && 'text-white'}`}
 				style={{ fontSize: 'clamp(2rem, 5vw, 6vh)' }}
 			>
-				Let's design your dream web app
+				Let's design your
+				<span className='mx-2 sm:mx-4 bg-tomatoToLightPink text-transparent bg-clip-text'>
+					dream
+				</span>
+				<br className='xs:hidden' />
+				web app
 			</h2>
 			<div
 				id='contactContentBody'
@@ -114,7 +119,7 @@ export default function Contact({ darkMode }) {
 			>
 				<div
 					id='experience'
-					className={`relative w-full mt-96 sm:mt-32 my-32 sm:mb-0 lg:my-0 lg:ml-8 h-full flex flex-col justify-evenly lg:order-2 ${
+					className={`relative w-full mt-96 sm:mt-32 my-32 sm:mb-0 lg:my-0 lg:ml-8 h-full lg:max-h-[80%] flex flex-col justify-evenly items-center lg:order-2 ${
 						darkMode && 'text-white'
 					}`}
 					style={{ maxWidth: 'max(50vw, 750px)' }}
@@ -125,7 +130,7 @@ export default function Contact({ darkMode }) {
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'bg-slate-300 bg-opacity-20 border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
-							} flex justify-center items-center mb-16 sm:mb-0 mx-8 p-2 h-24 sm:h-20 rounded-full`}
+							} flex justify-center items-center mb-16 sm:mb-0 mx-8 p-2 h-24 rounded-full`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -140,7 +145,7 @@ export default function Contact({ darkMode }) {
 								src={visual}
 								width={80}
 								height={80}
-								layout='intrinsic'
+								layout='fixed'
 								className='object-contain object-center'
 							/>
 						</motion.div>
@@ -148,7 +153,7 @@ export default function Contact({ darkMode }) {
 							<h3 className='text-2xl mb-4'>
 								UI/UX and Layout Design
 							</h3>
-							<p className='text-xs'>
+							<p className='text-xs opacity-60'>
 								Bringing WCAG best practices to your project, a
 								meticulous attention for detail, and a boundless
 								thirst for inventive ways to express your
@@ -162,7 +167,7 @@ export default function Contact({ darkMode }) {
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'bg-slate-300 bg-opacity-20  border-2 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
-							} flex justify-center items-center my-16 mx-8 p-2 h-24 sm:h-20 rounded-full`}
+							} flex justify-center items-center my-16 mx-8 p-2 h-24 rounded-full`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -177,19 +182,19 @@ export default function Contact({ darkMode }) {
 								src={route}
 								width={80}
 								height={80}
-								layout='intrinsic'
+								layout='fixed'
 								className='object-contain object-center'
 							/>
 						</motion.div>
 						<div className='flex flex-col justify-center items-center w-full sm:my-24 lg:my-0'>
 							<h3 className='text-2xl mb-4'>
-								Backend APIs and Routing
+								Backend Security and Simplicity
 							</h3>
-							<p className='text-xs'>
+							<p className='text-xs opacity-60'>
 								Defending your app from errors or misuse while
 								also maximizing performance. Designing your APIs
-								with simplicity and ease-of-use in mind, but
-								never at the expense of robustness.
+								for ease-of-use, though never at the expense of
+								robustness.
 							</p>
 						</div>
 					</div>
@@ -199,7 +204,7 @@ export default function Contact({ darkMode }) {
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'bg-slate-300 border-2 bg-opacity-20 border-[rgba(255,255,255,0.5)] drop-shadow-mediumDark'
-							} flex justify-center items-center my-16 sm:my-0 mx-8 p-4 h-24 sm:h-20 rounded-full`}
+							} flex justify-center items-center my-16 sm:my-0 mx-8 px-2 py-4 h-24 rounded-full`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -214,28 +219,28 @@ export default function Contact({ darkMode }) {
 								src={react}
 								width={80}
 								height={80}
-								layout='intrinsic'
+								layout='fixed'
 								className='object-contain object-center'
 							/>
 						</motion.div>
 						<div className='flex flex-col justify-center items-center'>
 							<h3 className='text-2xl mb-4'>
-								Modern Frameworks and Tech
+								State-of-the-Art Frameworks and Packages
 							</h3>
-							<p className='text-xs'>
-								Harnessing expertise in ReactJS, modern (ES6+)
-								JavaScript, TypeScript, NodeJS, Cypress testing
-								library, and UI libraries such as MaterialUI and
-								TailwindCSS.
+							<p className='text-xs opacity-60'>
+								Harnessing expertise in ReactJS, TypeScript/ES6+
+								Javascript, NodeJS, testing in Cypress and React
+								Testing Library, UI libraries such as MaterialUI
+								and DaisyUI and much more.
 							</p>
 						</div>
 					</div>
-					<h3 className='lg:hidden text-2xl mt-32'>
+					<h3 className='lg:hidden text-2xl mt-32 xs:mb-32 sm:mb-0'>
 						Send me a message!
 					</h3>
 					<motion.button
 						id='scrollUpPromptLg'
-						className='absolute w-[5vw] left-[50%] bottom-[-3vh] hidden lg:flex flex-col justify-between items-center'
+						className='w-[5vw] absolute bottom-[-4rem] left-1/2 hidden lg:flex flex-col justify-between items-center'
 						animate={scrollPromptControls}
 						initial='initial'
 						variants={scrollPromptVariants}
@@ -249,30 +254,19 @@ export default function Contact({ darkMode }) {
 							})
 						}
 					>
-						<motion.div
-							id='scrollImageAnimationWrapper'
-							variants={scrollPromptChildVariants}
-						>
-							{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-							<Image
-								src={scrollUp}
-								alt='button to scroll to the top of the page'
-								className={`${
-									darkMode && 'invert'
-								} scale-[.25] opacity-20`}
-							/>
-						</motion.div>
-						<motion.p
-							className='text-[0.5rem] mt-[-0.5rem] opacity-50'
-							variants={scrollPromptChildVariants}
-						>
-							Scroll to top
-						</motion.p>
+						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+						<Image
+							src={scrollUp}
+							alt='button to scroll to the top of the page'
+							className={`${
+								darkMode && 'invert'
+							} scale-[.25] opacity-20`}
+						/>
 					</motion.button>
 				</div>
 				<form
 					ref={formRef}
-					className={`relative lg:max-h-[80%] max-w-xl lg:max-w-[40%] w-full h-full flex flex-col justify-between items-center z-[1] py-16 px-12 mx-8 mt-64 xs:mt-32 lg:mt-0 after:absolute after:top-0 after:left-0 after:w-full after:h-full  rounded-[2rem] after:rounded-[2rem] after:z-[-1] shadow-lg lg:shadow-2xl ${
+					className={`relative max-w-xl lg:max-w-[40%] w-full h-full lg:max-h-[80%] flex flex-col justify-between items-center z-[1] py-16 px-12 mx-8 mt-64 xs:mt-32 lg:mt-0 after:absolute after:top-0 after:left-0 after:w-full after:h-full  rounded-[2rem] after:rounded-[2rem] after:z-[-1] shadow-lg lg:shadow-2xl ${
 						darkMode
 							? 'text-white after:blur-sm after:bg-contactFormBackdropDarkMode'
 							: 'after:backdrop-blur-lg after:bg-contactFormBackdropLightMode'
