@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/globals.css'
 import Navbar from '../components/Navbar'
+import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }) {
 	const [currentScrollY, setCurrentScrollY] = useState(0)
@@ -97,6 +98,20 @@ function MyApp({ Component, pageProps }) {
 
 	return (
 		<>
+			<Toaster
+				position='bottom-center'
+				toastOptions={{
+					duration: 5000,
+					style: {
+						marginBottom: '1rem',
+						background: darkMode ? 'rgba(255,255,255,0.1)' : '',
+						color: darkMode ? 'white' : '',
+					},
+					error: {
+						duration: 8000,
+					},
+				}}
+			/>
 			<Navbar
 				navVisible={navVisible}
 				darkMode={darkMode}

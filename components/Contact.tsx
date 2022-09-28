@@ -8,6 +8,7 @@ import {
 	useAnimationControls,
 } from 'framer-motion'
 import emailjs from '@emailjs/browser'
+import { toast } from 'react-hot-toast'
 import laugh from '../public/laugh.svg'
 import visual from '../public/visual.svg'
 import route from '../public/route.svg'
@@ -68,7 +69,25 @@ export default function Contact({ darkMode }) {
 			'W_q5lGuvXxVo3bvQr'
 		)
 
-		console.log(emailData)
+		if (emailData.status === 200) {
+			return toast.success(
+				"Thank you!  I'll get back to you as soon as I can 🤗"
+			)
+		}
+
+		toast.error(() => (
+			<span>
+				Something went wrong with your submission... 🤔 Sorry! Please
+				leave a comment{' '}
+				<a
+					className='underline cursor-pointer'
+					href='https://github.com/julianlk522/portfo/issues/new'
+				>
+					on Github
+				</a>{' '}
+				to help me find the bug.
+			</span>
+		))
 	}
 
 	return (
