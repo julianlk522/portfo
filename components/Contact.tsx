@@ -7,6 +7,7 @@ import {
 	useInView,
 	useAnimationControls,
 } from 'framer-motion'
+import emailjs from '@emailjs/browser'
 import laugh from '../public/laugh.svg'
 import visual from '../public/visual.svg'
 import route from '../public/route.svg'
@@ -14,6 +15,7 @@ import react from '../public/react.svg'
 import scrollUp from '../public/scrollUp.png'
 
 export default function Contact({ darkMode }) {
+	const formRef = useRef(null)
 	const scrollUpRef = useRef(null)
 	const scrollPromptControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
@@ -55,6 +57,19 @@ export default function Contact({ darkMode }) {
 		if (darkMode)
 			document.getElementById('contactContainer').style.opacity = '1'
 	}, [darkMode])
+
+	const submitForm = async (e: React.FormEvent) => {
+		e.preventDefault()
+
+		const emailData = await emailjs.sendForm(
+			'portfo_contact_service',
+			'default_template',
+			formRef.current,
+			'W_q5lGuvXxVo3bvQr'
+		)
+
+		console.log(emailData)
+	}
 
 	return (
 		<motion.section
@@ -237,20 +252,18 @@ export default function Contact({ darkMode }) {
 					</motion.button>
 				</div>
 				<form
-					className={`relative lg:max-h-[80%] max-w-xl lg:max-w-[40%] w-full h-full flex flex-col justify-between items-center z-[1] mt-64 xs:mt-32 lg:mt-0 after:absolute after:top-0 after:left-0 after:w-full after:h-full  rounded-[2rem] py-16 px-12 after:rounded-[2rem] after:z-[-1] shadow-lg lg:shadow-2xl ${
+					ref={formRef}
+					className={`relative lg:max-h-[80%] max-w-xl lg:max-w-[40%] w-full h-full flex flex-col justify-between items-center z-[1] py-16 px-12 mx-8 mt-64 xs:mt-32 lg:mt-0 after:absolute after:top-0 after:left-0 after:w-full after:h-full  rounded-[2rem] after:rounded-[2rem] after:z-[-1] shadow-lg lg:shadow-2xl ${
 						darkMode
 							? 'text-white after:blur-sm after:bg-contactFormBackdropDarkMode'
 							: 'after:backdrop-blur-lg after:bg-contactFormBackdropLightMode'
 					}`}
-					//	todo: update with email logic
-					onSubmit={(e) => {
-						e.preventDefault()
-						console.log('thanks for submitting!')
-					}}
+					onSubmit={submitForm}
 				>
 					<h4 className='self-start text-lg pb-2'>Name</h4>
 					<input
 						type='text'
+						name='name'
 						id='nameInput'
 						className={`w-full rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
 							darkMode ? 'border-white' : 'border-black'
@@ -259,6 +272,7 @@ export default function Contact({ darkMode }) {
 					<h4 className='self-start text-lg py-2'>Email</h4>
 					<input
 						type='email'
+						name='email'
 						id='emailInput'
 						className={`w-full rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
 							darkMode ? 'border-white' : 'border-black'
@@ -267,7 +281,7 @@ export default function Contact({ darkMode }) {
 					<h4 className='self-start text-lg py-2'>Message</h4>
 
 					<textarea
-						name='messageContent'
+						name='message'
 						id='messageInput'
 						className={`w-full resize-none rounded-xl py-2 px-4 drop-shadow-mediumDark focus:outline-none bg-transparent border-2 border-opacity-10 focus:border-opacity-40 ${
 							darkMode ? 'border-white' : 'border-black'
