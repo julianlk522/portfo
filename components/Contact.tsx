@@ -71,7 +71,7 @@ export default function Contact({ darkMode }) {
 
 		if (emailData.status === 200) {
 			return toast.success(
-				"Thank you!  I'll get back to you as soon as I can 🤗"
+				"Your email has been sent - thank you!  I'll get back to you as soon as I can 😄"
 			)
 		}
 
@@ -188,7 +188,7 @@ export default function Contact({ darkMode }) {
 						</motion.div>
 						<div className='flex flex-col justify-center items-center w-full sm:my-24 lg:my-0'>
 							<h3 className='text-2xl mb-4'>
-								Backend Security and Simplicity
+								Backend Versatility
 							</h3>
 							<p className='text-xs opacity-60'>
 								Defending your app from errors or misuse while

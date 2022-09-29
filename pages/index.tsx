@@ -48,6 +48,21 @@ export default function Home({ darkMode }) {
 
 	const opacityTransform = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
+	const startCirclesAnimation = () => {
+		innerCircleRef.current.style.animation =
+			'innerCircleGlow 1.5s ease-in-out infinite'
+		middleCircleRef.current.style.animation =
+			'middleCircleGlow 1.5s ease-in-out infinite'
+		outerCircleRef.current.style.animation =
+			'outerCircleGlow 1.5s ease-in-out infinite'
+	}
+
+	const endAnimation = () => {
+		innerCircleRef.current.style.animation = ''
+		middleCircleRef.current.style.animation = ''
+		outerCircleRef.current.style.animation = ''
+	}
+
 	return (
 		<>
 			<Head>
@@ -78,6 +93,12 @@ export default function Home({ darkMode }) {
 				variants={containerVariants}
 				whileInView='visible'
 				viewport={{ once: true }}
+				onAnimationComplete={() => {
+					startCirclesAnimation()
+					setTimeout(() => {
+						endAnimation()
+					}, 1500)
+				}}
 			>
 				<div
 					id='bgCloud'
@@ -112,19 +133,8 @@ export default function Home({ darkMode }) {
 						id='welcomeTextCircles'
 						ref={outerCircleRef}
 						className='relative self-center w-24 h-24 rounded-full border-8 opacity-20 border-[#00d8ff]'
-						onHoverStart={() => {
-							innerCircleRef.current.style.animation =
-								'innerCircleGlow 1.5s ease-in-out infinite'
-							middleCircleRef.current.style.animation =
-								'middleCircleGlow 1.5s ease-in-out infinite'
-							outerCircleRef.current.style.animation =
-								'outerCircleGlow 1.5s ease-in-out infinite'
-						}}
-						onHoverEnd={() => {
-							innerCircleRef.current.style.animation = ''
-							middleCircleRef.current.style.animation = ''
-							outerCircleRef.current.style.animation = ''
-						}}
+						onHoverStart={startCirclesAnimation}
+						onHoverEnd={endAnimation}
 					>
 						<div
 							id='middleCircle'
@@ -142,7 +152,7 @@ export default function Home({ darkMode }) {
 
 				<motion.div
 					id='toTheFrontierContainer'
-					className='flex justify-center items-center'
+					className='flex justify-center items-center drop-shadow-mediumDark'
 					style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
 					variants={childVariants}
 				>
@@ -154,7 +164,7 @@ export default function Home({ darkMode }) {
 						to the
 					</span>
 					<h2
-						className='relative bg-tomatoToLightPink text-transparent bg-clip-text after:absolute after:top-[-125%] sm:after:top-[50%] after:left-[-200%] after:border-[6px] after:w-48 after:h-48 sm:after:w-96 sm:after:h-96 after:rounded-full sm:after:border-[12px] after:border-opacity-5 after:border-[#00d8ff] drop-shadow-lg'
+						className='relative bg-tomatoToLightPink text-transparent bg-clip-text after:absolute after:top-[-125%] sm:after:top-[50%] after:left-[-200%] after:border-[6px] after:w-48 after:h-48 sm:after:w-96 sm:after:h-96 after:rounded-full sm:after:border-[12px] after:border-opacity-5 after:border-[#00d8ff]'
 						style={{
 							marginLeft: 'max(4%, 0.75rem)',
 						}}
