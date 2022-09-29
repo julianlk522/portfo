@@ -21,7 +21,7 @@ export default function Contact({ darkMode }) {
 	const scrollPromptControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
 	const isInView = useInView(scrollUpRef, { amount: 'all' })
-	const opacityTransform = useTransform(scrollYProgress, [0.8, 1], [0, 1])
+	const opacityTransform = useTransform(scrollYProgress, [0.86, 1], [0, 1])
 
 	const scrollPromptVariants = {
 		initial: {

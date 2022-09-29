@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import pill from '../public/pill.svg'
 import scrollUp from '../public/scrollUp.png'
 import Image from 'next/image'
@@ -6,23 +6,30 @@ import {
 	motion,
 	useScroll,
 	useTransform,
-	useInView,
 	useAnimationControls,
+	useInView,
 } from 'framer-motion'
 import ProjectsGrid from './ProjectsGrid'
 
 export default function Work({ darkMode }) {
-	const [scrollDownVisible, setScrollDownVisible] = useState(false)
-
-	const { scrollYProgress } = useScroll()
-	const textBodyControls = useAnimationControls()
+	const workContainerRef = useRef(null)
 	const textBodyRef = useRef(null)
-	const textIsInView = useInView(textBodyRef, { amount: 'all' })
+	const textRefInView = useInView(textBodyRef, { amount: 'some' })
+
+	const scrollDownControls = useAnimationControls()
+	const { scrollYProgress } = useScroll()
 	const allOpacityTransform = useTransform(
 		scrollYProgress,
-		[0.25, 0.5, 0.7],
+		[0.53, 0.66, 0.86],
 		[0, 1, 0]
 	)
+
+	useEffect(() => {
+		if (!textRefInView) {
+			scrollDownControls.stop()
+			scrollDownControls.set('initial')
+		}
+	}, [textRefInView])
 
 	const textBodyVariants = {
 		initial: {
@@ -43,33 +50,40 @@ export default function Work({ darkMode }) {
 
 	const textBodyChildVariants = {
 		initial: {
+			y: 0,
 			x: '-100%',
 			opacity: 0,
 		},
 		visible: {
+			y: 0,
 			x: 0,
-			opacity: 1,
+			opacity: 0.5,
+		},
+		bouncing: {
+			y: [null, 16],
+			x: 0,
+			opacity: 0.5,
+			transition: {
+				y: {
+					repeat: Infinity,
+					repeatType: 'reverse',
+					duration: 2,
+					delay: 0.5,
+				},
+			},
 		},
 	}
 
 	useEffect(() => {
-		if (textIsInView) {
-			textBodyControls.start('visible')
-		}
-	}, [textIsInView])
-
-	useEffect(() => {
 		if (darkMode) {
-			document.getElementById('workContainer').style.opacity = '1'
-		} else {
-			document.getElementById('projectsContentBody').style.opacity = '1'
-			document.getElementById('workTitle').style.opacity = '1'
+			workContainerRef.current.style.opacity = '1'
 		}
 	}, [darkMode])
 
 	return (
 		<motion.section
 			id='workContainer'
+			ref={workContainerRef}
 			className={`${
 				darkMode && 'bg-slate-800'
 			} h-full flex flex-col items-center text-center relative overflow-x-hidden md:overflow-y-hidden`}
@@ -101,12 +115,13 @@ export default function Work({ darkMode }) {
 						className={`${
 							darkMode && 'text-white'
 						} relative hidden mx-8 max-w-[25%] lg:flex flex-col justify-center items-center`}
-						animate={textBodyControls}
 						initial='initial'
+						whileInView='visible'
+						viewport={{ amount: 'all' }}
 						variants={textBodyVariants}
 						onAnimationComplete={() => {
-							if (scrollYProgress.get() === 0.5) {
-								setScrollDownVisible(true)
+							if (textRefInView) {
+								scrollDownControls.start('bouncing')
 							}
 						}}
 					>
@@ -130,25 +145,7 @@ export default function Work({ darkMode }) {
 						<motion.button
 							id='scrollDownButton'
 							variants={textBodyChildVariants}
-							animate={
-								scrollDownVisible
-									? {
-											y: [0, 16],
-											opacity: 1,
-									  }
-									: { y: 0, opacity: 0, scale: 1 }
-							}
-							transition={
-								scrollDownVisible
-									? {
-											y: {
-												repeat: Infinity,
-												repeatType: 'reverse',
-												duration: 2,
-											},
-									  }
-									: {}
-							}
+							animate={scrollDownControls}
 							whileHover={{ scale: 1.1 }}
 							whileTap={{ scale: 0.9 }}
 							onClick={() =>
@@ -163,7 +160,7 @@ export default function Work({ darkMode }) {
 								alt='button to scroll to the next section'
 								className={`${
 									darkMode && 'invert'
-								} scale-[.1] opacity-5 rotate-180`}
+								} scale-[.1] opacity-10 rotate-180`}
 							/>
 						</motion.button>
 					</motion.div>

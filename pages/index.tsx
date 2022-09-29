@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Work from '../components/Work'
 import Contact from '../components/Contact'
 import cloud from '../public/Cloud.svg'
+import About from '../components/About'
 
 export default function Home({ darkMode }) {
 	const welcomeContainerRef = useRef(null)
@@ -112,6 +113,7 @@ export default function Home({ darkMode }) {
 						layout='fill'
 						objectFit='contain'
 						alt='illustration'
+						priority
 					/>
 				</div>
 				<motion.div
@@ -214,6 +216,7 @@ export default function Home({ darkMode }) {
 				</div>
 			</motion.section>
 			<div ref={workSectionRef}></div>
+			<About darkMode={darkMode} />
 			<Work darkMode={darkMode} />
 			<Contact darkMode={darkMode} />
 		</>

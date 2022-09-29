@@ -11,8 +11,6 @@ function MyApp({ Component, pageProps }) {
 	const [userScrolling, setUserScrolling] = useState(false)
 	const [darkMode, setDarkMode] = useState(false)
 
-	//	note: useScroll seems not to allow you to set state to the current progress (percent or pixels) using a useEffect dependency nor with an onChange listener per the example here in the FM docs: https://www.framer.com/docs/use-scroll/##page-scroll. So a scroll listener on the window object seemed necessary to set currentScrollY state
-
 	useEffect(() => {
 		window.addEventListener('scroll', () => {
 			setCurrentScrollY(window.scrollY)
@@ -58,18 +56,33 @@ function MyApp({ Component, pageProps }) {
 	useEffect(() => {
 		if (userScrolling) return
 		else {
+			const numSections = 4
 			const documentHeight =
-				document.getElementById('welcomeContainer').clientHeight * 2
+				document.getElementById('welcomeContainer').clientHeight *
+				numSections
 
 			const currentScrollPercent = currentScrollY / documentHeight
 
-			if (currentScrollPercent <= 0.25) {
+			if (
+				currentScrollPercent <
+				1 / numSections - 1 / (2 * numSections)
+			) {
 				window.scrollTo({
 					top: 0,
 					left: 0,
 					behavior: 'smooth',
 				})
-			} else if (currentScrollPercent < 0.75) {
+			} else if (
+				currentScrollPercent <
+				2 / numSections - 1 / (2 * numSections)
+			) {
+				document
+					.getElementById('aboutContainer')
+					.scrollIntoView({ behavior: 'smooth' })
+			} else if (
+				currentScrollPercent <
+				3 / numSections - 1 / (2 * numSections)
+			) {
 				document
 					.getElementById('workContainer')
 					.scrollIntoView({ behavior: 'smooth' })
