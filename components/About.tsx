@@ -24,16 +24,11 @@ export default function About({ darkMode }) {
 	)
 
 	const textVariants = {
-		initial: {
-			opacity: 0,
-			transition: {
-				delayChildren: 5,
-			},
-		},
+		initial: {},
 		visible: {
-			opacity: 1,
 			transition: {
-				staggerChildren: 0.2,
+				delayChildren: 0.1,
+				staggerChildren: 0.1,
 			},
 		},
 	}
@@ -41,36 +36,39 @@ export default function About({ darkMode }) {
 	const textChildVariants = {
 		initial: {
 			x: -50,
+			opacity: 0,
 		},
 		visible: {
 			x: 0,
+			opacity: 1,
 		},
 	}
 
 	const photoSectionVariants = {
 		initial: {
 			opacity: 0,
+			x: 100,
+			transition: {
+				ease: 'easeOut',
+			},
 		},
 		visible: {
 			opacity: 1,
+			x: 0,
 			transition: {
-				opacity: { staggerChildren: 0.2 },
+				duration: 2,
 			},
 		},
 	}
 
 	const photoChildVariants = {
 		initial: {
-			x: 25,
 			y: 0,
 		},
-		visible: {
-			x: 0,
-		},
+		visible: {},
 		bouncing: {
 			y: [null, 16],
 			x: 0,
-			opacity: 0.5,
 			transition: {
 				y: {
 					repeat: Infinity,
@@ -145,7 +143,7 @@ export default function About({ darkMode }) {
 					className='max-w-[80%] text-sm opacity-60'
 					variants={textChildVariants}
 				>
-					I'm fascinated by reverse-engineering carefully-crafted user
+					I'm fascinated by reverse-engineering intricate user
 					experiences and experimenting with new techniques and
 					technologies to see what's possible. I love puzzles, games,
 					challenges, and careful designwork of all shapes and sizes.
@@ -167,7 +165,7 @@ export default function About({ darkMode }) {
 				variants={photoSectionVariants}
 				initial='initial'
 				whileInView='visible'
-				viewport={{ amount: 'all' }}
+				viewport={{ amount: 'all', once: true }}
 				onAnimationComplete={() => {
 					if (hoverRefInView) {
 						scrollDownControls.start('bouncing')
@@ -176,7 +174,7 @@ export default function About({ darkMode }) {
 			>
 				<motion.div
 					id='aboutPhotoMask'
-					className='flex h-72 w-72 items-center justify-center overflow-hidden rounded-full shadow-xl'
+					className='flex h-72 w-72 items-center justify-center overflow-hidden rounded-full shadow-thick'
 					variants={photoChildVariants}
 				>
 					<Image
