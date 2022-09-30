@@ -167,11 +167,12 @@ export default function Work({ darkMode }) {
 					<ProjectsGrid darkMode={darkMode} />
 				</div>
 				<p
+					id='portfoStackDescriptionLg'
 					className={`mt-8 hidden w-full bg-workStackTextSm pr-8 text-xs lg:block lg:bg-workStackTextLg lg:text-end ${
 						darkMode ? 'text-white' : ''
 					}`}
 				>
-					This page was made using Next.JS, Tailwind CSS and Framer
+					This page was made using Next.js, Tailwind CSS and Framer
 					Motion
 				</p>
 			</motion.div>
