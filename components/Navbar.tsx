@@ -3,19 +3,19 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 	const { scrollYProgress } = useScroll()
 
-	const underlineOpacityTransformWelcome = useTransform(
+	const underlineOpacityTransformAbout = useTransform(
 		scrollYProgress,
-		[0, 0.17, 0.2],
-		[0.5, 0.5, 0]
+		[0, 0.33, 0.5],
+		[0, 0.5, 0]
 	)
 	const underlineOpacityTransformWork = useTransform(
 		scrollYProgress,
-		[0.22, 0.25, 0.67, 0.7],
-		[0, 0.5, 0.5, 0]
+		[0.5, 0.66, 0.82],
+		[0, 0.5, 0]
 	)
 	const underlineOpacityTransformContact = useTransform(
 		scrollYProgress,
-		[0.72, 0.75],
+		[0.82, 1],
 		[0, 0.5]
 	)
 
@@ -24,17 +24,17 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 			id='navbar'
 			className={`${
 				darkMode ? 'bg-slate-700 text-white shadow-navbar' : 'bg-white'
-			} h-[5%] fixed top-0 left-0 w-full justify-between items-center z-[2]`}
+			} fixed top-0 left-0 z-[2] h-[5%] w-full items-center justify-between`}
 			style={{
 				display: navVisible ? 'flex' : 'none',
 				padding: 'clamp(1rem, 3vw, 3vh) clamp(2rem, 6vw, 6vh)',
 			}}
 		>
-			<div className='hidden xs:flex items-center h-[7.5vh] w-full'>
+			<div className='hidden h-[7.5vh] w-full items-center xs:flex'>
 				<h3
 					className={`${
 						darkMode ? 'opacity-75' : 'opacity-50'
-					} cursor-pointer uppercase whitespace-nowrap`}
+					} cursor-pointer whitespace-nowrap uppercase`}
 					style={{
 						fontSize: 'clamp(0.75rem, 2vw, 2vh)',
 					}}
@@ -54,7 +54,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 				<>
 					<ul
 						id='navLinks'
-						className='flex justify-between items-center list-none w-full md:w-[50vw]'
+						className='flex w-full list-none items-center justify-between md:w-[50vw]'
 						style={{
 							fontSize: 'clamp(0.5rem, 2vw, 2vh)',
 						}}
@@ -65,13 +65,13 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 								darkMode
 									? 'justify-end bg-slate-800'
 									: 'bg-slate-300'
-							} flex items-center rounded-[2rem] w-12 h-6 px-1 mx-4`}
+							} mx-4 flex h-6 w-12 items-center rounded-[2rem] px-1`}
 							onClick={() => setDarkMode(!darkMode)}
 						>
 							<motion.div
 								layout
 								id='slider'
-								className='bg-slate-100 h-4 w-4 cursor-pointer rounded-full'
+								className='h-4 w-4 cursor-pointer rounded-full bg-slate-100'
 							></motion.div>
 						</li>
 						<li
@@ -86,14 +86,14 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							About
 							<motion.div
-								className='absolute bottom-[-0.5rem] left-[-25%] w-[150%] h-1 rounded-full bg-[#FF5B23]'
+								className='absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full bg-white'
 								style={{
-									opacity: underlineOpacityTransformWelcome,
+									opacity: underlineOpacityTransformAbout,
 								}}
 							></motion.div>
 						</li>
 						<li
-							className='relative cursor-pointer mx-2'
+							className='relative mx-2 cursor-pointer'
 							onClick={() =>
 								document
 									.getElementById('workContainer')
@@ -102,7 +102,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							Work
 							<motion.div
-								className='absolute bottom-[-0.5rem] left-[-25%] w-[150%] h-1 rounded-full bg-[#FF5B23]'
+								className='absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full bg-white'
 								style={{
 									opacity: underlineOpacityTransformWork,
 								}}
@@ -118,7 +118,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							Contact
 							<motion.div
-								className='absolute bottom-[-0.5rem] left-[-25%] w-[150%] h-1 rounded-full bg-[#FF5B23]'
+								className='absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full bg-white'
 								style={{
 									opacity: underlineOpacityTransformContact,
 								}}

@@ -7,7 +7,7 @@ import {
 	useInView,
 	useAnimationControls,
 } from 'framer-motion'
-import myPhoto from '../public/myPhoto.webp'
+import portrait from '../public/portrait.webp'
 import scrollUp from '../public/scrollUp.png'
 
 export default function About({ darkMode }) {
@@ -56,7 +56,7 @@ export default function About({ darkMode }) {
 			opacity: 1,
 			x: 0,
 			transition: {
-				duration: 2,
+				duration: 1,
 			},
 		},
 	}
@@ -107,11 +107,12 @@ export default function About({ darkMode }) {
 		>
 			<motion.div
 				id='aboutTextContent'
-				className='flex h-full max-w-[60%] flex-col items-center justify-evenly'
+				className='relative flex h-full max-w-[60%] flex-col items-center justify-evenly rounded-xl px-4 after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop'
+				style={{ opacity: darkMode ? allOpacityTransform : '' }}
 				variants={textVariants}
 				initial='initial'
 				whileInView='visible'
-				viewport={{ amount: 'all', once: true }}
+				viewport={{ amount: 'all' }}
 			>
 				<motion.h2
 					id='aboutTitle'
@@ -126,7 +127,7 @@ export default function About({ darkMode }) {
 					variants={textChildVariants}
 				>
 					Some
-					<span className='ml-4 bg-aboutHeaderText bg-clip-text text-transparent'>
+					<span className='ml-4 bg-sunrise bg-clip-text text-transparent'>
 						Introduction
 					</span>
 				</motion.h2>
@@ -135,18 +136,26 @@ export default function About({ darkMode }) {
 					className='max-w-[80%] text-sm opacity-60'
 					variants={textChildVariants}
 				>
-					Hi! I'm Julian and my passion is in designing and building
-					exciting new solutions that leverage the powers of the web.
+					👋 Hi! I'm Julian and my passion is in designing and
+					building exciting new solutions that leverage the powers of
+					the web.
 				</motion.h3>
 
 				<motion.h3
 					className='max-w-[80%] text-sm opacity-60'
 					variants={textChildVariants}
 				>
-					I'm fascinated by reverse-engineering intricate user
+					I'm fascinated by 🧬 reverse-engineering intricate user
 					experiences and experimenting with new techniques and
-					technologies to see what's possible. I love puzzles, games,
-					challenges, and careful designwork of all shapes and sizes.
+					technologies to see what's possible.
+				</motion.h3>
+
+				<motion.h3
+					className='max-w-[80%] text-sm opacity-60'
+					variants={textChildVariants}
+				>
+					⚙ I love puzzles, games, challenges, and careful designwork
+					of all shapes and sizes.
 				</motion.h3>
 
 				<motion.h3
@@ -165,7 +174,7 @@ export default function About({ darkMode }) {
 				variants={photoSectionVariants}
 				initial='initial'
 				whileInView='visible'
-				viewport={{ amount: 'all', once: true }}
+				viewport={{ amount: 'all' }}
 				onAnimationComplete={() => {
 					if (hoverRefInView) {
 						scrollDownControls.start('bouncing')
@@ -178,7 +187,7 @@ export default function About({ darkMode }) {
 					variants={photoChildVariants}
 				>
 					<Image
-						src={myPhoto}
+						src={portrait}
 						alt='photo of the author of this page'
 						className='object-contain object-top'
 					/>

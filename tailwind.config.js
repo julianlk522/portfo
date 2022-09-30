@@ -18,8 +18,10 @@ module.exports = {
 				mainBgDark: "url('../public/bgFadedDark.png')",
 				aboutHeaderText:
 					'linear-gradient(45deg, hsl(189deg 100% 50%) 0%, hsl(196deg 100% 59%) 0%, hsl(221deg 100% 77%) 8%, hsl(279deg 99% 78%) 20%, hsl(323deg 100% 70%) 38%, hsl(345deg 100% 65%) 63%, hsl(15deg 100% 57%) 100%)',
+				aboutTextContentBackdrop:
+					'radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 50%)',
 				workStackTextSm:
-					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.0984768907563025) 20%, rgba(255,91,35,0.14889705882352944) 45%, rgba(255,0,0,0.1) 70%, rgba(255,91,35,0) 100%)',
+					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.1) 20%, rgba(255,91,35,0.15) 45%, rgba(255,0,0,0.1) 70%, rgba(255,91,35,0) 100%)',
 				workStackTextLg:
 					'linear-gradient(135deg, rgba(255,91,35,0) 35%, rgba(255,91,35,0.1) 60%, rgba(255,0,0,0.15) 85%, rgba(255,91,35,0.1) 95%, rgba(255,91,35,0) 100%)',
 				contactFormBackdropDarkMode:

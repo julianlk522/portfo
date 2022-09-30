@@ -71,7 +71,6 @@ a {
 	}
 }
 
-/* thanks Next.js! *facepalm* */
 #hueRotateRef > span {
 	overflow: visible;
 }
@@ -84,4 +83,10 @@ a {
 
 .gridMember:hover .projectLinks {
 	z-index: 2;
+}
+
+/* move to Contact.module.css */
+
+#contactTitle span {
+	-webkit-text-fill-color: rgba(255, 255, 255, 0.3);
 }

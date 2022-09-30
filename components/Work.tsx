@@ -86,7 +86,7 @@ export default function Work({ darkMode }) {
 			ref={workContainerRef}
 			className={`${
 				darkMode && 'bg-slate-800'
-			} h-full flex flex-col items-center text-center relative overflow-x-hidden md:overflow-y-hidden`}
+			} relative flex h-full flex-col items-center overflow-x-hidden text-center md:overflow-y-hidden`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
 				opacity: !darkMode && allOpacityTransform,
@@ -100,21 +100,21 @@ export default function Work({ darkMode }) {
 				}}
 			>
 				Scenes from the
-				<span className='ml-4 bg-sunrise text-transparent bg-clip-text'>
+				<span className='ml-4 bg-aboutHeaderText bg-clip-text font-semibold text-transparent'>
 					lab
 				</span>
 			</motion.h2>
 			<motion.div
 				id='projectsContentBody'
-				className='flex flex-col justify-between items-center w-full h-full'
+				className='flex h-full w-full flex-col items-center justify-between'
 			>
-				<div className='w-full h-full flex justify-between'>
+				<div className='flex h-full w-full justify-between'>
 					<motion.div
 						ref={textBodyRef}
 						id='projectsSideTextLg'
 						className={`${
 							darkMode && 'text-white'
-						} relative hidden mx-8 max-w-[25%] lg:flex flex-col justify-center items-center`}
+						} relative mx-8 hidden max-w-[25%] flex-col items-center justify-center lg:flex`}
 						initial='initial'
 						whileInView='visible'
 						viewport={{ amount: 'all' }}
@@ -127,7 +127,7 @@ export default function Work({ darkMode }) {
 					>
 						<motion.figure
 							id='pillWrapper'
-							className='hidden lg:block h-[150%] w-[150%] absolute left-[-25%] top-[-33%] opacity-20'
+							className='absolute left-[-25%] top-[-33%] hidden h-[150%] w-[150%] opacity-20 lg:block'
 						>
 							<Image
 								src={pill}
@@ -143,7 +143,7 @@ export default function Work({ darkMode }) {
 							Hover over a project to learn more
 						</motion.p>
 						<motion.button
-							id='scrollDownButton'
+							id='workScrollDownButton'
 							variants={textBodyChildVariants}
 							animate={scrollDownControls}
 							whileHover={{ scale: 1.1 }}
@@ -160,14 +160,14 @@ export default function Work({ darkMode }) {
 								alt='button to scroll to the next section'
 								className={`${
 									darkMode && 'invert'
-								} scale-[.1] opacity-10 rotate-180`}
+								} rotate-180 scale-[.1] opacity-10`}
 							/>
 						</motion.button>
 					</motion.div>
 					<ProjectsGrid darkMode={darkMode} />
 				</div>
 				<p
-					className={`hidden lg:block w-full lg:text-end text-xs mt-8 pr-8 bg-workStackTextSm lg:bg-workStackTextLg ${
+					className={`mt-8 hidden w-full bg-workStackTextSm pr-8 text-xs lg:block lg:bg-workStackTextLg lg:text-end ${
 						darkMode ? 'text-white' : ''
 					}`}
 				>
