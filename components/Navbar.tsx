@@ -77,16 +77,16 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						<li
 							className='relative cursor-pointer'
 							onClick={() =>
-								window.scrollTo({
-									top: 0,
-									left: 0,
-									behavior: 'smooth',
-								})
+								document
+									.getElementById('aboutContainer')
+									.scrollIntoView({ behavior: 'smooth' })
 							}
 						>
 							About
 							<motion.div
-								className='absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full bg-white'
+								className={`absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full ${
+									darkMode ? 'bg-white' : 'bg-slate-300'
+								}`}
 								style={{
 									opacity: underlineOpacityTransformAbout,
 								}}
@@ -102,7 +102,9 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							Work
 							<motion.div
-								className='absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full bg-white'
+								className={`absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full ${
+									darkMode ? 'bg-white' : 'bg-slate-300'
+								}`}
 								style={{
 									opacity: underlineOpacityTransformWork,
 								}}
@@ -118,7 +120,9 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							Contact
 							<motion.div
-								className='absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full bg-white'
+								className={`absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full ${
+									darkMode ? 'bg-white' : 'bg-slate-300'
+								}`}
 								style={{
 									opacity: underlineOpacityTransformContact,
 								}}
