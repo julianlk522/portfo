@@ -1,0 +1,43 @@
+@keyframes innerCircleGlow {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 0.2;
+	}
+	15% {
+		opacity: 1;
+	}
+}
+
+@keyframes middleCircleGlow {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 0.2;
+	}
+	30% {
+		opacity: 1;
+	}
+}
+
+@keyframes outerCircleGlow {
+	0% {
+		border-color: rgba(0, 0, 0, 0);
+	}
+	10% {
+		opacity: 1;
+	}
+	45% {
+		border-color: rgba(0, 0, 0, 0);
+	}
+	50% {
+		border-color: #00d8ff;
+		opacity: 1;
+	}
+}
+
+#hueRotateRef > span {
+	overflow: visible;
+}
