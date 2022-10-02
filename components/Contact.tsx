@@ -7,24 +7,22 @@ import {
 	useInView,
 	useAnimationControls,
 } from 'framer-motion'
-import emailjs from '@emailjs/browser'
-import { toast } from 'react-hot-toast'
-import laugh from '../public/laugh.svg'
 import visual from '../public/visual.svg'
 import route from '../public/route.svg'
 import react from '../public/react.svg'
 import scrollUp from '../public/scrollUp.png'
+import ContactForm from './ContactForm'
 
 export default function Contact({ darkMode }) {
-	const formRef = useRef(null)
-	const scrollUpRef = useRef(null)
-	const scrollPromptControls = useAnimationControls()
+	const scrollUpSmRef = useRef(null)
+	const scrollPromptSmControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
-	const isInView = useInView(scrollUpRef, { amount: 'all' })
+	const isInView = useInView(scrollUpSmRef)
 	const opacityTransform = useTransform(scrollYProgress, [0.86, 1], [0, 1])
 
 	const scrollPromptVariants = {
 		initial: {
+			y: 0,
 			transition: {
 				delay: 1,
 			},
@@ -35,22 +33,27 @@ export default function Contact({ darkMode }) {
 				staggerChildren: 0.5,
 			},
 		},
-	}
-
-	const scrollPromptChildVariants = {
-		initial: {
-			opacity: 0,
-		},
-		visible: {
-			opacity: 1,
+		bouncing: {
+			y: [null, 16],
+			x: 0,
+			opacity: 0.5,
+			transition: {
+				y: {
+					repeat: Infinity,
+					repeatType: 'reverse',
+					duration: 2,
+					delay: 0.5,
+				},
+			},
 		},
 	}
 
 	useEffect(() => {
 		if (isInView) {
-			scrollPromptControls.start('visible')
+			scrollPromptSmControls.start('bouncing')
 		} else {
-			scrollPromptControls.start('initial')
+			scrollPromptSmControls.stop()
+			scrollPromptSmControls.set('initial')
 		}
 	}, [isInView])
 
@@ -59,43 +62,12 @@ export default function Contact({ darkMode }) {
 			document.getElementById('contactContainer').style.opacity = '1'
 	}, [darkMode])
 
-	const submitForm = async (e: React.FormEvent) => {
-		e.preventDefault()
-
-		const emailData = await emailjs.sendForm(
-			'portfo_contact_service',
-			'default_template',
-			formRef.current,
-			'W_q5lGuvXxVo3bvQr'
-		)
-
-		if (emailData.status === 200) {
-			return toast.success(
-				"Your email has been sent - thank you!  I'll get back to you as soon as I can 😄"
-			)
-		}
-
-		toast.error(() => (
-			<span onClick={() => toast.dismiss()}>
-				Something went wrong with your submission... 🤔 Sorry! Please
-				leave a comment{' '}
-				<a
-					className='cursor-pointer underline'
-					href='https://github.com/julianlk522/portfo/issues/new'
-				>
-					on Github
-				</a>{' '}
-				to help me find the bug.
-			</span>
-		))
-	}
-
 	return (
 		<motion.section
 			id='contactContainer'
 			className={`${
-				darkMode ? 'bg-slate-800' : 'bg-mainBgFaded'
-			} relative flex h-full flex-col justify-between bg-cover py-16 px-32 text-center`}
+				darkMode ? 'bg-slate-800' : 'bg-mainBg'
+			} relative flex h-full flex-col justify-between bg-cover py-16 px-32 text-center lg:overflow-visible`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
 				opacity: !darkMode && opacityTransform,
@@ -130,7 +102,7 @@ export default function Contact({ darkMode }) {
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
-							} mx-8 mb-16 flex h-24 items-center justify-center rounded-full p-2 sm:mb-0`}
+							} mx-8 mb-16 flex h-24 w-full max-w-[6rem] items-center justify-center rounded-full p-2 sm:mb-0`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -163,11 +135,11 @@ export default function Contact({ darkMode }) {
 					</div>
 					<div className='flex flex-col items-center justify-between sm:flex-row'>
 						<motion.div
-							className={`${
+							className={`my-16 mx-8 flex h-24 w-full max-w-[6rem] items-center justify-center rounded-full p-2 ${
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'border-2 border-[rgba(255,255,255,0.5)]  bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
-							} my-16 mx-8 flex h-24 items-center justify-center rounded-full p-2`}
+							}`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -204,7 +176,7 @@ export default function Contact({ darkMode }) {
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
-							} my-16 mx-8 flex h-24 items-center justify-center rounded-full px-2 py-4 sm:my-0`}
+							} my-16 mx-8 flex h-24 w-full max-w-[6rem] items-center justify-center rounded-full px-2 py-4 sm:my-0`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -217,8 +189,8 @@ export default function Contact({ darkMode }) {
 						>
 							<Image
 								src={react}
-								width={80}
-								height={80}
+								width={64}
+								height={64}
 								layout='fixed'
 								className='object-contain object-center'
 							/>
@@ -240,10 +212,7 @@ export default function Contact({ darkMode }) {
 					</h3>
 					<motion.button
 						id='scrollUpPromptLg'
-						className='absolute bottom-[-4rem] left-1/2 hidden w-[5vw] flex-col items-center justify-between lg:flex'
-						animate={scrollPromptControls}
-						initial='initial'
-						variants={scrollPromptVariants}
+						className='absolute bottom-[-4rem] left-1/2 hidden w-[5vw] items-center justify-between lg:flex'
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
 						onClick={() =>
@@ -264,64 +233,12 @@ export default function Contact({ darkMode }) {
 						/>
 					</motion.button>
 				</div>
-				<form
-					ref={formRef}
-					className={`relative z-[1] mx-8 mt-64 flex h-full w-full max-w-xl flex-col items-center justify-between rounded-[2rem] px-12 pt-16 pb-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-[2rem]  xs:mt-32 lg:mt-0 lg:max-h-[80%] lg:max-w-[40%] lg:shadow-2xl ${
-						darkMode
-							? 'text-white after:bg-contactFormBackdropDarkMode after:blur-sm'
-							: 'after:bg-contactFormBackdropLightMode after:backdrop-blur-lg'
-					}`}
-					onSubmit={submitForm}
-				>
-					<h4 className='self-start pb-2 text-lg'>Name</h4>
-					<input
-						type='text'
-						name='name'
-						id='nameInput'
-						className={`w-full rounded-xl border-2 border-opacity-10 bg-transparent py-2 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
-							darkMode ? 'border-white' : 'border-black'
-						}`}
-					/>
-					<h4 className='self-start py-2 text-lg'>Email</h4>
-					<input
-						type='email'
-						name='email'
-						id='emailInput'
-						className={`w-full rounded-xl border-2 border-opacity-10 bg-transparent py-2 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
-							darkMode ? 'border-white' : 'border-black'
-						}`}
-					/>
-					<h4 className='self-start py-2 text-lg'>Message</h4>
 
-					<textarea
-						name='message'
-						id='messageInput'
-						className={`w-full resize-none rounded-xl border-2 border-opacity-10 bg-transparent p-4 py-2 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
-							darkMode ? 'border-white' : 'border-black'
-						}`}
-						rows={5}
-					></textarea>
-					<motion.button
-						id='submitButton'
-						className={`relative mt-8 flex overflow-visible rounded-[2rem] px-4 py-2 after:absolute after:top-[-2px] after:left-[-2px] after:right-[-2px] after:bottom-[-2px] after:z-[-1] after:rounded-[2rem] after:bg-contactFormSubmitBackdrop hover:bg-contactFormSubmitBackdrop hover:bg-no-repeat hover:text-white ${
-							darkMode
-								? 'bg-slate-800'
-								: 'bg-[rgba(255,255,255,0.75)] shadow-md'
-						}`}
-						whileHover={{
-							scale: 1.1,
-						}}
-						whileTap={{ scale: 0.9 }}
-					>
-						Submit
-						<div className='ml-4'>
-							<Image src={laugh} width={16} height={16} />
-						</div>
-					</motion.button>
-				</form>
+				<ContactForm darkMode={darkMode} />
+
 				<motion.button
 					id='scrollUpPromptSm'
-					className={`mb-8 flex h-[10vh] flex-col items-center justify-between lg:hidden ${
+					className={`mb-2 flex h-[5vh] flex-col items-center justify-between lg:hidden ${
 						darkMode && 'text-white'
 					}`}
 					whileHover={{ scale: 1.1 }}
@@ -335,8 +252,9 @@ export default function Contact({ darkMode }) {
 					}
 				>
 					<motion.div
-						animate={{ y: [0, 16] }}
-						transition={{ repeat: Infinity, repeatType: 'reverse' }}
+						animate={scrollPromptSmControls}
+						initial='initial'
+						variants={scrollPromptVariants}
 					>
 						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
 						<Image
@@ -347,12 +265,14 @@ export default function Contact({ darkMode }) {
 							} scale-[.05] opacity-20`}
 						/>
 					</motion.div>
-					<p className='mt-[-4rem] text-xs opacity-50 lg:text-[0.5rem]'>
-						Scroll to top
+					<p
+						ref={scrollUpSmRef}
+						className='mt-[-10%] text-xs opacity-50'
+					>
+						Back to top
 					</p>
 				</motion.button>
 			</div>
-			<div id='scrollRefDiv' ref={scrollUpRef}></div>
 		</motion.section>
 	)
 }
