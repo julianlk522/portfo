@@ -12,17 +12,14 @@ module.exports = {
 					'linear-gradient(166deg, rgba(255,172,198,1) 25%, rgba(255,91,35,1) 100%)',
 				sunrise:
 					'linear-gradient(180deg, rgba(255, 0, 0, 0.9) 0%, rgba(255, 91, 35, 0.3) 100%)',
-				sunset: 'linear-gradient(180deg, rgba(252, 17, 17, 0.4) 42.19%, rgba(151, 71, 255, 0.4) 100%)',
-				mainBg: "url('../public/bg.png')",
-				mainBgFaded: "url('../public/bgFaded.png')",
-				mainBgDark: "url('../public/bgFadedDark.png')",
-				aboutHeaderText:
+				mainBg: "url('../public/mainBg.png')",
+				labText:
 					'linear-gradient(45deg, hsl(189deg 100% 50%) 0%, hsl(196deg 100% 59%) 0%, hsl(221deg 100% 77%) 8%, hsl(279deg 99% 78%) 20%, hsl(323deg 100% 70%) 38%, hsl(345deg 100% 65%) 63%, hsl(15deg 100% 57%) 100%)',
 				aboutTextContentBackdrop:
 					'radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 50%)',
-				workStackTextSm:
+				portfoStackTextSm:
 					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.1) 20%, rgba(255,91,35,0.15) 45%, rgba(255,0,0,0.1) 70%, rgba(255,91,35,0) 100%)',
-				workStackTextLg:
+				portfoStackTextLg:
 					'linear-gradient(135deg, rgba(255,91,35,0) 35%, rgba(255,91,35,0.1) 60%, rgba(255,0,0,0.15) 85%, rgba(255,91,35,0.1) 95%, rgba(255,91,35,0) 100%)',
 				contactFormBackdropDarkMode:
 					'linear-gradient(330deg, rgba(255,172,198,0) 15%, rgba(0,216,255,0.15) 140%, rgba(255,172,198,0) 50%)',
