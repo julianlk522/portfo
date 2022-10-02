@@ -84,7 +84,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							About
 							<motion.div
-								className={`absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full ${
+								className={`absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full ${
 									darkMode ? 'bg-white' : 'bg-slate-300'
 								}`}
 								style={{
@@ -102,7 +102,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							Work
 							<motion.div
-								className={`absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full ${
+								className={`absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full ${
 									darkMode ? 'bg-white' : 'bg-slate-300'
 								}`}
 								style={{
@@ -120,7 +120,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							Contact
 							<motion.div
-								className={`absolute bottom-[-0.5rem] left-[-25%] h-1 w-[150%] rounded-full ${
+								className={`absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full ${
 									darkMode ? 'bg-white' : 'bg-slate-300'
 								}`}
 								style={{
