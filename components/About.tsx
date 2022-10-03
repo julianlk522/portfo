@@ -16,6 +16,7 @@ export default function About({ darkMode }) {
 	const hoverRefInView = useInView(scrollDownRef, { amount: 'some' })
 
 	const scrollDownControls = useAnimationControls()
+	const spiralControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
 	const allOpacityTransform = useTransform(
 		scrollYProgress,
@@ -78,6 +79,17 @@ export default function About({ darkMode }) {
 		},
 	}
 
+	const spiralVariants = {
+		hidden: { strokeWidth: 0 },
+		visible: {
+			strokeWidth: [null, 5, 2, 4],
+			transition: {
+				type: 'spring',
+				duration: 3,
+			},
+		},
+	}
+
 	useEffect(() => {
 		if (darkMode) {
 			aboutContainerRef.current.style.opacity = '1'
@@ -97,15 +109,36 @@ export default function About({ darkMode }) {
 			ref={aboutContainerRef}
 			className={`${
 				darkMode && 'bg-slate-800 text-white'
-			} overflow-x:visible relative flex h-full items-center justify-between overflow-y-hidden text-center xs:overflow-x-hidden`}
+			} relative flex h-full items-center justify-between overflow-hidden text-center`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 				opacity: !darkMode && allOpacityTransform,
 			}}
 		>
+			<motion.svg
+				className='absolute top-[30%] left-[40%] h-full w-full'
+				width='300'
+				height='300'
+				viewBox='0 0 400 400'
+				fill='none'
+				xmlns='http://www.w3.org/2000/svg'
+				initial='hidden'
+			>
+				<motion.path
+					initial='hidden'
+					variants={spiralVariants}
+					animate={spiralControls}
+					viewport={{ once: true }}
+					d='M269.115 283.837C269.622 289.553 258.998 292.684 253.492 283.837C247.54 276.021 251.916 257.873 269.115 252.634C285.314 246.431 310.946 258.338 315.984 283.837C322.403 308.355 303.02 341.431 269.115 346.246C236.263 352.873 195.553 326.036 190.999 283.837C184.097 242.667 218.557 194.564 269.115 190.224C318.692 183.122 374.351 224.975 378.476 283.837C385.818 341.668 336.399 404.791 269.115 408.654C202.824 416.231 132.168 359.352 128.508 283.837C120.711 209.304 185.118 131.244 269.115 127.817C352.052 119.812 437.796 191.62 440.969 283.837C449.242 375.023 369.788 468.111 269.115 471.061C169.454 479.542 68.7531 392.715 66.0154 283.837C57.3159 175.99 151.72 67.8946 269.115 65.4083C385.46 56.4532 501.2 158.307 503.461 283.837C512.646 408.386 403.186 531.419 269.115 533.471C136.096 542.862 5.30842 426.067 3.52302 283.837C-6.09876 142.636 118.34 4.57501 269.115 3'
+					stroke='#00D8FF'
+					stroke-opacity='0.025'
+					stroke-width='0'
+					stroke-linecap='round'
+				/>
+			</motion.svg>
 			<motion.div
 				id='aboutTextContent'
-				className='relative flex h-full flex-col items-start justify-between overflow-visible rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop md:max-w-[50%] lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
+				className='relative flex h-full flex-col items-start justify-between overflow-y-scroll rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop xs:overflow-visible md:max-w-[50%] lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
 				style={{ opacity: darkMode ? allOpacityTransform : '' }}
 				variants={textVariants}
 				initial='initial'
@@ -147,7 +180,7 @@ export default function About({ darkMode }) {
 				</motion.h3>
 
 				<motion.h3
-					className='max-w-[80%]  text-xs opacity-60 sm:max-w-[100%] lg:text-sm'
+					className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] lg:text-sm'
 					style={{ width: 'min(100%, 500px)' }}
 					variants={textChildVariants}
 				>
@@ -166,7 +199,7 @@ export default function About({ darkMode }) {
 				</motion.h3>
 
 				<motion.h3
-					className='max-w-[80%] text-xs opacity-60 sm:max-w-[100%] lg:text-sm'
+					className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] lg:text-sm'
 					style={{ width: 'min(100%, 500px)' }}
 					variants={textChildVariants}
 				>
@@ -178,7 +211,7 @@ export default function About({ darkMode }) {
 
 				<div
 					id='photoAndScrollWrapperSm'
-					className='flex items-center justify-between md:hidden'
+					className='mb-8 flex items-center justify-between md:hidden'
 				>
 					<motion.div
 						id='aboutPhotoSectionSm'
@@ -190,6 +223,7 @@ export default function About({ darkMode }) {
 						onAnimationComplete={() => {
 							if (hoverRefInView) {
 								scrollDownControls.start('bouncing')
+								spiralControls.start('visible')
 							}
 						}}
 					>
@@ -239,6 +273,7 @@ export default function About({ darkMode }) {
 				onAnimationComplete={() => {
 					if (hoverRefInView) {
 						scrollDownControls.start('bouncing')
+						spiralControls.start('visible')
 					}
 				}}
 			>

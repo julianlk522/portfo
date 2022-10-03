@@ -20,7 +20,6 @@ function ProjectsGrid({ darkMode }) {
 				} relative mb-8 grid h-full w-full max-w-3xl grid-cols-3 grid-rows-4 items-center gap-8 md:mb-0 md:h-full md:grid-rows-2 lg:max-w-5xl`}
 			>
 				<ProjectGridMember
-					darkMode={darkMode}
 					tailwindStyles='md:col-span-2'
 					screenshotId={0}
 					title='PetSocial'
@@ -37,10 +36,10 @@ function ProjectsGrid({ darkMode }) {
 						'Google OAuth',
 					]}
 					ghLink='https://github.com/julianlk522/pet-social-media'
+					liveLink='https://pet-social-project.netlify.app'
 				/>
 
 				<ProjectGridMember
-					darkMode={darkMode}
 					tailwindStyles='row-start-2 md:col-span-1 md:col-start-3 md:row-start-1'
 					objectPosition='object-bottom'
 					screenshotId={1}
@@ -59,7 +58,6 @@ function ProjectsGrid({ darkMode }) {
 				/>
 
 				<ProjectGridMember
-					darkMode={darkMode}
 					tailwindStyles='row-start-3 md:col-span-1 md:row-start-2'
 					screenshotId={2}
 					title='Dancing Button of Doom'
@@ -70,7 +68,6 @@ function ProjectsGrid({ darkMode }) {
 				/>
 
 				<ProjectGridMember
-					darkMode={darkMode}
 					tailwindStyles='row-start-4 md:col-span-2 md:row-start-2'
 					objectPosition='object-left-bottom'
 					screenshotId={3}
@@ -90,46 +87,41 @@ function ProjectsGrid({ darkMode }) {
 				/>
 			</div>
 			<motion.p
-				className={`mt-16 w-full bg-workStackTextSm text-xs md:mt-8 lg:hidden lg:bg-workStackTextLg lg:text-end ${
+				id='portfoStackDescriptionSm'
+				className={`mt-16 w-full bg-portfoStackTextSm text-xs md:mt-8 lg:hidden lg:bg-portfoStackTextLg lg:text-end ${
 					darkMode ? 'text-white' : ''
 				}`}
 			>
 				This page uses Next.js, Tailwind CSS and Framer Motion
 			</motion.p>
-			<div
-				className='flex max-w-xs justify-center overflow-hidden md:mt-[-2rem]'
-				id='scrollButtonContainer'
+			<motion.button
+				id='scrollUpPromptSm'
+				className={`mb-2 flex h-[5vh] flex-col items-center justify-between lg:hidden ${
+					darkMode && 'text-white'
+				}`}
+				whileHover={{ scale: 1.1 }}
+				whileTap={{ scale: 0.9 }}
+				onClick={() =>
+					document
+						.getElementById('contactContainer')
+						.scrollIntoView({ behavior: 'smooth' })
+				}
 			>
-				<motion.button
-					id='scrollDownButton'
-					className='mb-[15rem] md:mb-0 lg:hidden'
-					animate={{
-						y: [0, -16],
-						opacity: 1,
-					}}
-					transition={{
-						repeat: Infinity,
-						repeatType: 'reverse',
-						duration: 1,
-					}}
-					whileHover={{ scale: 1.1 }}
-					whileTap={{ scale: 0.9 }}
-					onClick={() =>
-						document
-							.getElementById('contactContainer')
-							.scrollIntoView({ behavior: 'smooth' })
-					}
+				<motion.div
+					animate={{ y: [0, 16] }}
+					transition={{ repeat: Infinity, repeatType: 'reverse' }}
 				>
 					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
 					<Image
 						src={scrollUp}
-						alt='button to scroll to the next section'
-						className={`${
+						alt='button to scroll down to the Contact section'
+						className={`rotate-180 scale-[.05] opacity-20 ${
 							darkMode && 'invert'
-						} rotate-180 scale-[.1] opacity-5`}
+						}`}
 					/>
-				</motion.button>
-			</div>
+				</motion.div>
+				<p className=' mt-[-2rem] pb-32 text-xs opacity-50'>Continue</p>
+			</motion.button>
 		</div>
 	)
 }
