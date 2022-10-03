@@ -94,7 +94,7 @@ export default function Contact({ darkMode }) {
 			>
 				<div
 					id='experience'
-					className={`relative my-32 mt-64 flex h-full w-full flex-col items-center justify-evenly sm:mt-32 sm:mb-0 lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
+					className={`relative mt-16 flex h-[200%] w-full flex-col items-center justify-evenly xs:h-[150%] md:h-full lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
 						darkMode && 'text-white'
 					}`}
 					style={{ maxWidth: 'max(50vw, 750px)' }}
@@ -236,6 +236,14 @@ export default function Contact({ darkMode }) {
 						/>
 					</motion.button>
 				</div>
+
+				<h3
+					className={`my-32 text-2xl lg:hidden ${
+						darkMode ? 'text-white' : ''
+					}`}
+				>
+					I&apos;d love to hear from you!
+				</h3>
 
 				<ContactForm darkMode={darkMode} />
 
