@@ -268,6 +268,7 @@ export default function About({ darkMode }) {
 						</motion.div>
 					</motion.div>
 					<motion.button
+						className='max-w-[50%]'
 						ref={scrollDownRef}
 						id='aboutScrollDownButtonSm'
 						animate={scrollDownControls}
