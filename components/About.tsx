@@ -14,9 +14,11 @@ export default function About({ darkMode }) {
 	const aboutContainerRef = useRef(null)
 	const scrollDownRef = useRef(null)
 	const hoverRefInView = useInView(scrollDownRef, { amount: 'some' })
+	const sectionInView = useInView(aboutContainerRef, { amount: 'all' })
 
 	const scrollDownControls = useAnimationControls()
 	const spiralControls = useAnimationControls()
+	const handControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
 	const allOpacityTransform = useTransform(
 		scrollYProgress,
@@ -82,7 +84,19 @@ export default function About({ darkMode }) {
 	const spiralVariants = {
 		hidden: { strokeWidth: 0 },
 		visible: {
-			strokeWidth: [null, 25, 2, 4],
+			strokeWidth: [null, 20, 2, 4],
+			strokeOpacity: [null, 0.15, 0.025, darkMode ? 0.02 : 0.05],
+			transition: {
+				type: 'spring',
+				duration: 3,
+			},
+		},
+	}
+
+	const handVariants = {
+		initial: { rotate: 15 },
+		waving: {
+			rotate: [null, 0, 30, 0, 15],
 			transition: {
 				type: 'spring',
 				duration: 3,
@@ -126,12 +140,14 @@ export default function About({ darkMode }) {
 			>
 				<motion.path
 					initial='hidden'
-					variants={spiralVariants}
 					animate={spiralControls}
-					viewport={{ once: true }}
+					variants={spiralVariants}
+					onAnimationComplete={() => {
+						handControls.start('waving')
+					}}
 					d='M269.115 283.837C269.622 289.553 258.998 292.684 253.492 283.837C247.54 276.021 251.916 257.873 269.115 252.634C285.314 246.431 310.946 258.338 315.984 283.837C322.403 308.355 303.02 341.431 269.115 346.246C236.263 352.873 195.553 326.036 190.999 283.837C184.097 242.667 218.557 194.564 269.115 190.224C318.692 183.122 374.351 224.975 378.476 283.837C385.818 341.668 336.399 404.791 269.115 408.654C202.824 416.231 132.168 359.352 128.508 283.837C120.711 209.304 185.118 131.244 269.115 127.817C352.052 119.812 437.796 191.62 440.969 283.837C449.242 375.023 369.788 468.111 269.115 471.061C169.454 479.542 68.7531 392.715 66.0154 283.837C57.3159 175.99 151.72 67.8946 269.115 65.4083C385.46 56.4532 501.2 158.307 503.461 283.837C512.646 408.386 403.186 531.419 269.115 533.471C136.096 542.862 5.30842 426.067 3.52302 283.837C-6.09876 142.636 118.34 4.57501 269.115 3'
-					stroke='#00D8FF'
-					strokeOpacity='0.025'
+					stroke='#ffacc6'
+					strokeOpacity={darkMode ? '0.025' : '0.05'}
 					strokeWidth='0'
 					strokeLinecap='round'
 				/>
@@ -144,6 +160,11 @@ export default function About({ darkMode }) {
 				initial='initial'
 				whileInView='visible'
 				viewport={{ amount: 'all' }}
+				onAnimationComplete={() => {
+					if (sectionInView) {
+						spiralControls.start('visible')
+					}
+				}}
 			>
 				<motion.h2
 					id='aboutTitle'
@@ -157,7 +178,15 @@ export default function About({ darkMode }) {
 					}}
 					variants={textChildVariants}
 				>
-					👋 Hello and
+					<motion.span
+						initial='initial'
+						animate={handControls}
+						variants={handVariants}
+						className='inline-block rotate-[15deg]'
+					>
+						👋
+					</motion.span>{' '}
+					Hello and
 					<br />
 					<span
 						className={`bg-clip-text text-transparent ${
@@ -223,7 +252,6 @@ export default function About({ darkMode }) {
 						onAnimationComplete={() => {
 							if (hoverRefInView) {
 								scrollDownControls.start('bouncing')
-								spiralControls.start('visible')
 							}
 						}}
 					>
@@ -246,11 +274,14 @@ export default function About({ darkMode }) {
 						variants={photoChildVariants}
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
-						onClick={() =>
+						onClick={() => {
+							scrollDownControls.set('initial')
+							spiralControls.set('hidden')
+							handControls.set('initial')
 							document
 								.getElementById('workContainer')
 								.scrollIntoView({ behavior: 'smooth' })
-						}
+						}}
 					>
 						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
 						<Image
@@ -273,7 +304,6 @@ export default function About({ darkMode }) {
 				onAnimationComplete={() => {
 					if (hoverRefInView) {
 						scrollDownControls.start('bouncing')
-						spiralControls.start('visible')
 					}
 				}}
 			>
@@ -296,11 +326,14 @@ export default function About({ darkMode }) {
 					variants={photoChildVariants}
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
-					onClick={() =>
+					onClick={() => {
+						scrollDownControls.set('initial')
+						spiralControls.set('hidden')
+						handControls.set('initial')
 						document
 							.getElementById('workContainer')
 							.scrollIntoView({ behavior: 'smooth' })
-					}
+					}}
 				>
 					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
 					<Image

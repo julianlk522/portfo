@@ -79,7 +79,7 @@ export default function Home({ darkMode }) {
 					darkMode
 						? 'bg-slate-800 text-white'
 						: 'bg-mainBg text-stone-500'
-				} relative z-[1] flex h-full flex-col items-center justify-between overflow-y-auto overflow-x-hidden bg-cover`}
+				} relative z-[1] flex h-full flex-col items-center justify-between overflow-hidden bg-cover`}
 				style={{
 					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 					opacity: darkMode ? '1' : opacityTransform,
@@ -104,7 +104,7 @@ export default function Home({ darkMode }) {
 					ref={hueRotateRef}
 					className={`${
 						darkMode ? 'opacity-5' : 'opacity-10'
-					} absolute bottom-0 right-[-10%] h-3/4 w-3/4`}
+					} absolute bottom-0 right-[-15%] h-3/4 w-3/4`}
 				>
 					<Image
 						src={cloud}
