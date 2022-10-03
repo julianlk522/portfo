@@ -47,7 +47,7 @@ export default function Home({ darkMode }) {
 		if (darkMode) welcomeContainerRef.current.style.opacity = '1'
 	}, [darkMode])
 
-	const opacityTransform = useTransform(scrollYProgress, [0, 0.2], [1, 0])
+	const opacityTransform = useTransform(scrollYProgress, [0, 0.17], [1, 0])
 
 	const startCirclesAnimation = () => {
 		innerCircleRef.current.style.animation =
@@ -80,8 +80,8 @@ export default function Home({ darkMode }) {
 				className={`${
 					darkMode
 						? 'bg-slate-800 text-white'
-						: 'bg-mainBgFaded text-stone-500'
-				} bg-cover h-full flex flex-col justify-between items-center relative z-[1] overflow-x-hidden overflow-y-auto`}
+						: 'bg-mainBg text-stone-500'
+				} relative z-[1] flex h-full flex-col items-center justify-between overflow-y-auto overflow-x-hidden bg-cover`}
 				style={{
 					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 					opacity: darkMode ? '1' : opacityTransform,
@@ -118,7 +118,7 @@ export default function Home({ darkMode }) {
 				</div>
 				<motion.div
 					id='welcomeTitleContainer'
-					className='flex justify-center items-center'
+					className='flex items-center justify-center'
 					style={{ marginBottom: 'clamp(1rem, 3vw, 4vh)' }}
 					variants={childVariants}
 				>
@@ -134,39 +134,39 @@ export default function Home({ darkMode }) {
 					<motion.div
 						id='welcomeTextCircles'
 						ref={outerCircleRef}
-						className='relative self-center w-24 h-24 rounded-full border-8 opacity-20 border-[#00d8ff]'
+						className='relative h-24 w-24 self-center rounded-full border-8 border-[#00d8ff] opacity-20'
 						onHoverStart={startCirclesAnimation}
 						onHoverEnd={endAnimation}
 					>
 						<div
 							id='middleCircle'
 							ref={middleCircleRef}
-							className='absolute top-[10%] left-[10%] w-16 h-16 rounded-full border-8 border-[#00d8ff]'
+							className='absolute top-[10%] left-[10%] h-16 w-16 rounded-full border-8 border-[#00d8ff]'
 						></div>
 
 						<div
 							id='innerCircle'
 							ref={innerCircleRef}
-							className='absolute w-8 h-8 left-[30%] top-[30%] rounded-full border-8 border-[#00d8ff]'
+							className='absolute left-[30%] top-[30%] h-8 w-8 rounded-full border-8 border-[#00d8ff]'
 						></div>
 					</motion.div>
 				</motion.div>
 
 				<motion.div
 					id='toTheFrontierContainer'
-					className='flex justify-center items-center drop-shadow-mediumDark'
+					className='flex items-center justify-center drop-shadow-mediumDark'
 					style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
 					variants={childVariants}
 				>
 					<span
 						className={`${
-							darkMode && 'text-white opacity-40'
+							darkMode ? 'text-white opacity-40' : ''
 						} min-w-fit`}
 					>
 						to the
 					</span>
 					<h2
-						className='relative bg-tomatoToLightPink text-transparent bg-clip-text after:absolute after:top-[-125%] sm:after:top-[50%] after:left-[-200%] after:border-[6px] after:w-48 after:h-48 sm:after:w-96 sm:after:h-96 after:rounded-full sm:after:border-[12px] after:border-opacity-5 after:border-[#00d8ff]'
+						className='relative bg-tomatoToLightPink bg-clip-text text-transparent before:absolute before:top-[-125%] before:left-[-180%] before:h-48 before:w-48 before:rounded-full before:border-[6px] before:border-[#00d8ff] before:border-opacity-[2%] after:absolute after:top-[-125%] after:left-[-200%] after:h-48 after:w-48 after:rounded-full after:border-[6px] after:border-[#00d8ff] after:border-opacity-5 sm:before:top-[-100%] sm:before:h-32 sm:before:w-32 sm:before:border-[6px] sm:after:top-[50%] sm:after:h-96 sm:after:w-96 sm:after:border-[12px]'
 						style={{
 							marginLeft: 'max(4%, 0.75rem)',
 						}}
@@ -187,14 +187,14 @@ export default function Home({ darkMode }) {
 
 				<div
 					id='continueButtonContainer'
-					className='w-full max-w-3xl flex justify-center md:justify-end'
+					className='flex w-full max-w-3xl justify-center md:justify-end'
 				>
 					<motion.button
 						id='continueButton'
-						className={`relative px-4 rounded-[2rem] before:absolute before:top-[-2px] before:left-[-2px] before:right-[-2px] before:bottom-[-2px] before:rounded-[2rem] before:bg-tomatoToLightPink before:z-[-1] hover:bg-tomatoToLightPink hover:bg-no-repeat self-end ${
+						className={`relative self-end rounded-[2rem] px-4 before:absolute before:top-[-2px] before:left-[-2px] before:right-[-2px] before:bottom-[-2px] before:z-[-1] before:rounded-[2rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat ${
 							darkMode
-								? 'shadow-2xl bg-slate-800'
-								: 'hover:text-white bg-[rgba(255,255,255,0.9)]'
+								? 'bg-slate-800 shadow-2xl'
+								: 'bg-[rgba(255,255,255,0.9)] hover:text-white'
 						}`}
 						style={{
 							fontSize: 'clamp(1.25rem, 4vw, 4vh)',

@@ -14,7 +14,6 @@ const screenshots = [
 ]
 
 interface GridMemberProps {
-	darkMode: boolean
 	tailwindStyles: string
 	objectPosition?: string
 	screenshotId: number
@@ -27,7 +26,6 @@ interface GridMemberProps {
 }
 
 function ProjectGridMember({
-	darkMode,
 	tailwindStyles,
 	objectPosition,
 	screenshotId,
@@ -56,9 +54,7 @@ function ProjectGridMember({
 
 	return (
 		<div
-			className={`${
-				darkMode ? '' : ''
-			} gridMember relative col-span-3 h-full w-full overflow-hidden rounded-[2rem] shadow-xl ${tailwindStyles}`}
+			className={`relative col-span-3 h-full w-full overflow-hidden rounded-[2rem] shadow-xl ${tailwindStyles}`}
 			style={{
 				background: gridMemberHovered && 'black',
 			}}
@@ -73,7 +69,10 @@ function ProjectGridMember({
 				setStackItemCoef((prev) => prev + 1)
 			}}
 		>
-			<div className='flex h-full w-full flex-col items-center justify-evenly p-4 text-white'>
+			<div
+				id='projectContentContainer'
+				className='flex h-full w-full flex-col items-center justify-evenly p-4 text-white'
+			>
 				<Image
 					src={screenshots[screenshotId]}
 					alt={altImgText}
@@ -99,7 +98,7 @@ function ProjectGridMember({
 				<div className='projectLinks flex w-full justify-evenly text-xs'>
 					<a href={ghLink}>Github</a>
 					{liveLink ? (
-						<a href={liveLink}>Live </a>
+						<a href={liveLink}>Live</a>
 					) : (
 						<p>Live demo coming soon!</p>
 					)}

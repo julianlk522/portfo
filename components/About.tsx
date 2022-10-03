@@ -82,7 +82,7 @@ export default function About({ darkMode }) {
 	const spiralVariants = {
 		hidden: { strokeWidth: 0 },
 		visible: {
-			strokeWidth: [null, 5, 2, 4],
+			strokeWidth: [null, 25, 2, 4],
 			transition: {
 				type: 'spring',
 				duration: 3,
@@ -116,7 +116,7 @@ export default function About({ darkMode }) {
 			}}
 		>
 			<motion.svg
-				className='absolute top-[30%] left-[40%] h-full w-full'
+				className='absolute top-[30%] left-[40%] hidden h-full w-full xs:block'
 				width='300'
 				height='300'
 				viewBox='0 0 400 400'

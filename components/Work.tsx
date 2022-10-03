@@ -100,7 +100,7 @@ export default function Work({ darkMode }) {
 				}}
 			>
 				Scenes from the
-				<span className='ml-4 bg-aboutHeaderText bg-clip-text font-semibold text-transparent'>
+				<span className='ml-4 bg-labText bg-clip-text font-semibold text-transparent'>
 					lab
 				</span>
 			</motion.h2>
@@ -168,7 +168,7 @@ export default function Work({ darkMode }) {
 				</div>
 				<p
 					id='portfoStackDescriptionLg'
-					className={`mt-8 hidden w-full bg-workStackTextSm pr-8 text-xs lg:block lg:bg-workStackTextLg lg:text-end ${
+					className={`mt-8 hidden w-full bg-portfoStackTextSm pr-8 text-xs lg:block lg:bg-portfoStackTextLg lg:text-end ${
 						darkMode ? 'text-white' : ''
 					}`}
 				>
