@@ -8,54 +8,38 @@ function MyApp({ Component, pageProps }) {
 	const [prevScrollY, setPrevScrollY] = useState(0)
 	const [navReactsToScroll, setNavReactsToScroll] = useState(true)
 	const [navVisible, setNavVisible] = useState(true)
-	const [userScrolling, setUserScrolling] = useState(false)
 	const [darkMode, setDarkMode] = useState(false)
 
+	//	set currentScrollY to window.scrollY, show or hide navbar according to increase or decrease in currentScrollY
 	useEffect(() => {
-		window.addEventListener('scroll', () => {
-			setCurrentScrollY(window.scrollY)
-		})
-
-		return () => {
-			window.removeEventListener('scroll', () => {
-				setCurrentScrollY(window.scrollY)
-			})
-		}
-	}, [])
-
-	//	userScrolling false after 0.5 seconds of scrolling, return to true after one 1 second
-	useEffect(() => {
-		setUserScrolling(true)
-
-		const userScrollingTimeout = setTimeout(() => {
-			setUserScrolling(false)
-			setNavReactsToScroll(false)
-			setTimeout(() => {
-				setNavReactsToScroll(true)
-			}, 1000)
-		}, 500)
-
-		return () => clearTimeout(userScrollingTimeout)
-	}, [currentScrollY])
-
-	//	update nav visibility on scroll if not automatic scroll
-	useEffect(() => {
-		if (!navReactsToScroll) {
-			return
-		} else {
+		const updateNavVisibility = () => {
+			if (!navReactsToScroll) {
+				return
+			}
 			if (currentScrollY <= prevScrollY) {
 				setNavVisible(true)
 			} else {
 				setNavVisible(false)
 			}
+			setPrevScrollY(currentScrollY)
 		}
-		setPrevScrollY(currentScrollY)
-	}, [currentScrollY])
 
-	// scroll nearest section into view when user stops scrolling
+		window.addEventListener('scroll', () => {
+			setCurrentScrollY(window.scrollY)
+			updateNavVisibility()
+		})
+
+		return () => {
+			window.removeEventListener('scroll', () => {
+				setCurrentScrollY(window.scrollY)
+				updateNavVisibility()
+			})
+		}
+	}, [])
+
+	//	wait 0.5s after user stops scrolling to autoscroll section into view, re-enable reactive navbar visibility after 1s
 	useEffect(() => {
-		if (userScrolling) return
-		else {
+		const scrollNearestSectionIntoView = () => {
 			const numSections = 4
 			const documentHeight =
 				document.getElementById('welcomeContainer').clientHeight *
@@ -92,7 +76,17 @@ function MyApp({ Component, pageProps }) {
 					.scrollIntoView({ behavior: 'smooth' })
 			}
 		}
-	}, [userScrolling])
+
+		const userScrollingTimeout = setTimeout(() => {
+			scrollNearestSectionIntoView()
+			setNavReactsToScroll(false)
+			setTimeout(() => {
+				setNavReactsToScroll(true)
+			}, 1000)
+		}, 500)
+
+		return () => clearTimeout(userScrollingTimeout)
+	}, [currentScrollY])
 
 	//	check for dark mode preferences, assign to localstorage if none
 	useEffect(() => {
