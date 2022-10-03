@@ -154,7 +154,7 @@ export default function About({ darkMode }) {
 			</motion.svg>
 			<motion.div
 				id='aboutTextContent'
-				className='relative flex h-full flex-col items-start justify-between overflow-y-scroll rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop xs:overflow-visible md:max-w-[50%] lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
+				className='relative my-8 flex h-full flex-col items-start justify-between overflow-y-scroll rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop xs:overflow-visible md:max-w-[50%] lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
 				style={{ opacity: darkMode ? allOpacityTransform : '' }}
 				variants={textVariants}
 				initial='initial'
@@ -168,7 +168,7 @@ export default function About({ darkMode }) {
 			>
 				<motion.h2
 					id='aboutTitle'
-					className={`mb-4 text-center xs:mt-8 ${
+					className={`my-16 text-center xs:my-8 ${
 						darkMode
 							? 'text-white drop-shadow-mediumDark'
 							: 'drop-shadow-xl'

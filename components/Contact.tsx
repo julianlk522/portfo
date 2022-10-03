@@ -94,7 +94,7 @@ export default function Contact({ darkMode }) {
 			>
 				<div
 					id='experience'
-					className={`relative mt-16 flex h-[200%] w-full flex-col items-center justify-evenly xs:h-[150%] md:h-full lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
+					className={`relative mt-16 flex h-[250%] w-full flex-col items-center justify-evenly xs:h-[150%] md:h-full lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
 						darkMode && 'text-white'
 					}`}
 					style={{ maxWidth: 'max(50vw, 750px)' }}
