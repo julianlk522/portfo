@@ -94,7 +94,7 @@ export default function Work({ darkMode }) {
 		>
 			<motion.h2
 				id='workTitle'
-				className={`${darkMode && 'text-white'} mb-8`}
+				className={`${darkMode && 'text-white'} my-4`}
 				style={{
 					fontSize: 'clamp(2rem, 8vw, 8vh)',
 				}}

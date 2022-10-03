@@ -154,7 +154,7 @@ export default function About({ darkMode }) {
 			</motion.svg>
 			<motion.div
 				id='aboutTextContent'
-				className='relative my-8 flex h-full flex-col items-start justify-between overflow-y-scroll rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop xs:overflow-visible md:max-w-[50%] lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
+				className='relative my-16 flex h-full flex-col items-start justify-between overflow-y-scroll rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop xs:overflow-visible md:max-w-[50%] lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
 				style={{ opacity: darkMode ? allOpacityTransform : '' }}
 				variants={textVariants}
 				initial='initial'
@@ -204,8 +204,8 @@ export default function About({ darkMode }) {
 				>
 					I&apos;m Julian and my passion is in designing and building
 					exciting new solutions that leverage the powers of the web.
-					I&apos;ve been self-learning full stack web development now
-					for 11 months.
+					For the last 11 months I&apos;ve immersed myself deeply in
+					full-stack development strategies.
 				</motion.h3>
 
 				<motion.h3
@@ -233,9 +233,9 @@ export default function About({ darkMode }) {
 					variants={textChildVariants}
 				>
 					Aside from coding I like to read nonfiction and try out
-					different strategies to seek personal fitness - lately that
-					has been tennis with my girlfriend, Sneha. I also love to
-					cook and eat spicy food! 😋
+					different ways to achieve personal fitness - lately that has
+					been tennis with my girlfriend, Sneha. I also love to cook
+					and eat spicy food! 😋
 				</motion.h3>
 
 				<div

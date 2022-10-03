@@ -42,7 +42,7 @@ function ContactForm({ darkMode }) {
 	return (
 		<form
 			ref={formRef}
-			className={`relative z-[1] mx-8 flex h-[125%] w-full max-w-xl flex-col items-center justify-between rounded-[2rem] px-12 pt-16 pb-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-[2rem] xs:h-full lg:max-h-[80%] lg:max-w-[40%] lg:shadow-2xl ${
+			className={`relative z-[1] mx-8 flex h-[125%] w-full max-w-xl flex-col items-center justify-between rounded-[2rem] px-12 pt-16 pb-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-[2rem] xs:h-full lg:max-h-[80%] lg:max-w-xl lg:shadow-2xl ${
 				darkMode
 					? 'text-white after:bg-contactFormBackdropDarkMode after:blur-sm'
 					: 'after:bg-contactFormBackdropLightMode after:backdrop-blur-lg'

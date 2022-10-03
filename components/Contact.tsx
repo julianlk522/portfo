@@ -68,7 +68,7 @@ export default function Contact({ darkMode }) {
 			id='contactContainer'
 			className={`${
 				darkMode ? 'bg-slate-800' : 'bg-mainBg'
-			} relative flex h-full flex-col justify-between bg-cover py-16 px-32 text-center lg:overflow-visible`}
+			} oveflow-hidden relative flex h-full flex-col justify-between bg-cover py-16 px-32 text-center lg:overflow-visible`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
 				opacity: !darkMode && opacityTransform,
@@ -76,7 +76,7 @@ export default function Contact({ darkMode }) {
 		>
 			<h2
 				id='contactTitle'
-				className={`mb-8 ${darkMode && 'text-white'}`}
+				className={`my-4 ${darkMode && 'text-white'}`}
 				style={{ fontSize: 'clamp(2rem, 5vw, 6vh)' }}
 			>
 				Let&apos;s design your
@@ -90,11 +90,11 @@ export default function Contact({ darkMode }) {
 			</h2>
 			<div
 				id='contactContentBody'
-				className='flex h-[300%] w-full flex-col items-center justify-between overflow-x-hidden overflow-y-scroll lg:h-full lg:flex-row lg:overflow-y-hidden'
+				className='flex h-[300%] w-full flex-col items-center overflow-x-hidden overflow-y-scroll lg:h-full lg:flex-row lg:overflow-y-hidden'
 			>
 				<div
 					id='experience'
-					className={`relative mt-16 flex h-[250%] w-full flex-col items-center justify-evenly xs:h-[150%] md:h-full lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
+					className={`relative mt-16 flex h-[300%] w-full flex-col items-center justify-evenly xs:h-[200%] md:h-full lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
 						darkMode && 'text-white'
 					}`}
 					style={{ maxWidth: 'max(50vw, 750px)' }}
