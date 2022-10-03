@@ -12,6 +12,7 @@ import route from '../public/route.svg'
 import react from '../public/react.svg'
 import scrollUp from '../public/scrollUp.png'
 import ContactForm from './ContactForm'
+import styles from './Contact.module.css'
 
 export default function Contact({ darkMode }) {
 	const scrollUpSmRef = useRef(null)
@@ -55,7 +56,7 @@ export default function Contact({ darkMode }) {
 			scrollPromptSmControls.stop()
 			scrollPromptSmControls.set('initial')
 		}
-	}, [isInView])
+	}, [isInView, scrollPromptSmControls])
 
 	useEffect(() => {
 		if (darkMode)
@@ -78,8 +79,10 @@ export default function Contact({ darkMode }) {
 				className={`mb-8 ${darkMode && 'text-white'}`}
 				style={{ fontSize: 'clamp(2rem, 5vw, 6vh)' }}
 			>
-				Let's design your
-				<span className='mx-2 bg-tomatoToLightPink bg-clip-text text-transparent underline decoration-4 sm:mx-4'>
+				Let&apos;s design your
+				<span
+					className={`mx-2 bg-tomatoToLightPink bg-clip-text text-transparent underline decoration-4 sm:mx-4 ${styles.titleHighlight}`}
+				>
 					dream
 				</span>
 				<br className='xs:hidden' />
@@ -87,11 +90,11 @@ export default function Contact({ darkMode }) {
 			</h2>
 			<div
 				id='contactContentBody'
-				className='flex h-[300vh] w-full flex-col items-center justify-between overflow-x-hidden overflow-y-scroll lg:h-full lg:flex-row lg:overflow-y-hidden'
+				className='flex h-[300%] w-full flex-col items-center justify-between overflow-x-hidden overflow-y-scroll lg:h-full lg:flex-row lg:overflow-y-hidden'
 			>
 				<div
 					id='experience'
-					className={`relative my-32 mt-96 flex h-full w-full flex-col items-center justify-evenly sm:mt-32 sm:mb-0 lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
+					className={`relative my-32 mt-64 flex h-full w-full flex-col items-center justify-evenly sm:mt-32 sm:mb-0 lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
 						darkMode && 'text-white'
 					}`}
 					style={{ maxWidth: 'max(50vw, 750px)' }}
@@ -114,6 +117,7 @@ export default function Contact({ darkMode }) {
 							}}
 						>
 							<Image
+								alt='visual design skills'
 								src={visual}
 								width={80}
 								height={80}
@@ -151,6 +155,7 @@ export default function Contact({ darkMode }) {
 							}}
 						>
 							<Image
+								alt='backend architectural skills'
 								src={route}
 								width={80}
 								height={80}
@@ -188,6 +193,7 @@ export default function Contact({ darkMode }) {
 							}}
 						>
 							<Image
+								alt='proficiency in modern frameworks like React'
 								src={react}
 								width={64}
 								height={64}
@@ -207,9 +213,6 @@ export default function Contact({ darkMode }) {
 							</p>
 						</div>
 					</div>
-					<h3 className='mt-32 text-2xl xs:mb-32 sm:mb-0 lg:hidden'>
-						Send me a message!
-					</h3>
 					<motion.button
 						id='scrollUpPromptLg'
 						className='absolute bottom-[-4rem] left-1/2 hidden w-[5vw] items-center justify-between lg:flex'

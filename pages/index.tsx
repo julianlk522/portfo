@@ -6,6 +6,7 @@ import Work from '../components/Work'
 import Contact from '../components/Contact'
 import cloud from '../public/Cloud.svg'
 import About from '../components/About'
+import styles from './index.module.css'
 
 export default function Home({ darkMode }) {
 	const welcomeContainerRef = useRef(null)
@@ -50,26 +51,23 @@ export default function Home({ darkMode }) {
 	const opacityTransform = useTransform(scrollYProgress, [0, 0.17], [1, 0])
 
 	const startCirclesAnimation = () => {
-		innerCircleRef.current.style.animation =
-			'innerCircleGlow 1.5s ease-in-out infinite'
-		middleCircleRef.current.style.animation =
-			'middleCircleGlow 1.5s ease-in-out infinite'
-		outerCircleRef.current.style.animation =
-			'outerCircleGlow 1.5s ease-in-out infinite'
+		innerCircleRef.current.classList.add(styles.innerCircleAnimating)
+		middleCircleRef.current.classList.add(styles.middleCircleAnimating)
+		outerCircleRef.current.classList.add(styles.outerCircleAnimating)
 	}
 
 	const endAnimation = () => {
-		innerCircleRef.current.style.animation = ''
-		middleCircleRef.current.style.animation = ''
-		outerCircleRef.current.style.animation = ''
+		innerCircleRef.current.classList.remove(styles.innerCircleAnimating)
+		middleCircleRef.current.classList.remove(styles.middleCircleAnimating)
+		outerCircleRef.current.classList.remove(styles.outerCircleAnimating)
 	}
 
 	return (
 		<>
 			<Head>
-				<title>Julian's Portfolio</title>
+				<title>Julian&apos;s Web Dev Portfolio</title>
 				<meta
-					name='A site where you can find info about me and my work as a web developer'
+					name='A site where you can find info about me and my work as a full-stack developer'
 					content='Created with NextJS'
 				/>
 				<link rel='icon' href='/favicon.ico' />
@@ -134,7 +132,7 @@ export default function Home({ darkMode }) {
 					<motion.div
 						id='welcomeTextCircles'
 						ref={outerCircleRef}
-						className='relative h-24 w-24 self-center rounded-full border-8 border-[#00d8ff] opacity-20'
+						className={`relative h-24 w-24 self-center rounded-full border-8 border-[#00d8ff] opacity-20 ${styles}`}
 						onHoverStart={startCirclesAnimation}
 						onHoverEnd={endAnimation}
 					>

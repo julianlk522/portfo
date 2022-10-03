@@ -29,7 +29,7 @@ export default function Work({ darkMode }) {
 			scrollDownControls.stop()
 			scrollDownControls.set('initial')
 		}
-	}, [textRefInView])
+	}, [textRefInView, scrollDownControls])
 
 	const textBodyVariants = {
 		initial: {

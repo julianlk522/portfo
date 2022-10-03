@@ -101,7 +101,7 @@ export default function About({ darkMode }) {
 			scrollDownControls.stop()
 			scrollDownControls.set('initial')
 		}
-	}, [hoverRefInView])
+	}, [hoverRefInView, scrollDownControls])
 
 	return (
 		<motion.section
@@ -173,10 +173,10 @@ export default function About({ darkMode }) {
 					style={{ width: 'min(100%, 500px)' }}
 					variants={textChildVariants}
 				>
-					I'm Julian and my passion is in designing and building
+					I&apos;m Julian and my passion is in designing and building
 					exciting new solutions that leverage the powers of the web.
-					I've been self-learning full stack web development now for
-					11 months.
+					I&apos;ve been self-learning full stack web development now
+					for 11 months.
 				</motion.h3>
 
 				<motion.h3
@@ -184,9 +184,9 @@ export default function About({ darkMode }) {
 					style={{ width: 'min(100%, 500px)' }}
 					variants={textChildVariants}
 				>
-					I'm fascinated by 🧬 reverse-engineering intricate user
+					I&apos;m fascinated by 🧬 reverse-engineering intricate user
 					experiences and experimenting with new techniques and
-					technologies to see what's possible.
+					technologies to see what&apos;s possible.
 				</motion.h3>
 
 				<motion.h3

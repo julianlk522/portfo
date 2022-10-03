@@ -38,6 +38,14 @@
 	}
 }
 
-#hueRotateRef > span {
-	overflow: visible;
+.innerCircleAnimating {
+	animation: innerCircleGlow 1.5s ease-in-out infinite;
+}
+
+.middleCircleAnimating {
+	animation: middleCircleGlow 1.5s ease-in-out infinite;
+}
+
+.outerCircleAnimating {
+	animation: outerCircleGlow 1.5s ease-in-out infinite;
 }
