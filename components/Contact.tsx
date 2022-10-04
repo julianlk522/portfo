@@ -10,7 +10,7 @@ import {
 import visual from '../public/visual.svg'
 import route from '../public/route.svg'
 import react from '../public/react.svg'
-import scrollUp from '../public/scrollUp.png'
+import scrollUp from '../public/scrollUp.webp'
 import ContactForm from './ContactForm'
 import styles from './Contact.module.css'
 

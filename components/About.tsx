@@ -8,7 +8,7 @@ import {
 	useAnimationControls,
 } from 'framer-motion'
 import portrait from '../public/portrait.webp'
-import scrollUp from '../public/scrollUp.png'
+import scrollUp from '../public/scrollUp.webp'
 
 export default function About({ darkMode }) {
 	const aboutContainerRef = useRef(null)
@@ -205,7 +205,7 @@ export default function About({ darkMode }) {
 					I&apos;m Julian and my passion is in designing and building
 					exciting new solutions that leverage the powers of the web.
 					For the last 11 months I&apos;ve immersed myself deeply in
-					full-stack development strategies.
+					learning full-stack development strategies.
 				</motion.h3>
 
 				<motion.h3

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import scrollUp from '../public/scrollUp.png'
+import scrollUp from '../public/scrollUp.webp'
 import ProjectGridMember from './ProjectGridMember'
 
 function ProjectsGrid({ darkMode }) {

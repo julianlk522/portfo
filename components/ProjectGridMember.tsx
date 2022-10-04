@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { motion, useAnimationControls } from 'framer-motion'
 import Image from 'next/image'
-import socialScreenshot from '../public/socialScreenshot.png'
-import dancingScreenshot from '../public/dancingScreenshot.png'
-import typingScreenshot from '../public/typingScreenshot.png'
-import chatScreenshot from '../public/chatScreenshot.png'
+import socialScreenshot from '../public/socialScreenshot.webp'
+import dancingScreenshot from '../public/dancingScreenshot.webp'
+import typingScreenshot from '../public/typingScreenshot.webp'
+import chatScreenshot from '../public/chatScreenshot.webp'
 
 const screenshots = [
 	socialScreenshot,

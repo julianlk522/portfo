@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import pill from '../public/pill.svg'
-import scrollUp from '../public/scrollUp.png'
+import scrollUp from '../public/scrollUp.webp'
 import Image from 'next/image'
 import {
 	motion,
