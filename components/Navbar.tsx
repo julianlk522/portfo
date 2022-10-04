@@ -54,25 +54,33 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 				<>
 					<ul
 						id='navLinks'
-						className='flex w-full list-none items-center justify-between md:w-[50vw]'
+						className='flex w-full list-none items-center justify-between xl:w-[50%] xl:max-w-xl'
 						style={{
 							fontSize: 'clamp(0.5rem, 2vw, 2vh)',
 						}}
 					>
 						<li
-							id='darkModeSwitch'
-							className={`${
-								darkMode
-									? 'justify-end bg-slate-800'
-									: 'bg-slate-300'
-							} mx-4 flex h-6 w-12 items-center rounded-[2rem] px-1`}
+							id='darkModeSwitchContainer'
+							className='flex items-center justify-evenly'
 							onClick={() => setDarkMode(!darkMode)}
 						>
+							<motion.span className='mt-[-5%] h-3 w-3 text-xs lg:h-6 lg:w-6 lg:text-lg'>
+								{darkMode ? '🌙' : '🔆'}
+							</motion.span>
 							<motion.div
-								layout
-								id='slider'
-								className='h-4 w-4 cursor-pointer rounded-full bg-slate-100'
-							></motion.div>
+								id='darkModeSwitch'
+								className={`ml-4 flex h-4 w-12 items-center rounded-[2rem] px-1 ${
+									darkMode
+										? 'justify-end bg-slate-800'
+										: 'bg-slate-300'
+								}`}
+							>
+								<motion.div
+									layout
+									id='slider'
+									className='h-4 w-4 cursor-pointer rounded-full bg-slate-100 lg:h-6 lg:w-6'
+								></motion.div>
+							</motion.div>
 						</li>
 						<li
 							className='relative cursor-pointer'

@@ -132,20 +132,20 @@ export default function Home({ darkMode }) {
 					<motion.div
 						id='welcomeTextCircles'
 						ref={outerCircleRef}
-						className={`relative h-24 w-24 self-center rounded-full border-8 border-[#00d8ff] opacity-20 ${styles}`}
+						className={`relative h-12 w-12 self-center rounded-full border-4 border-[#00d8ff] opacity-20 sm:h-24 sm:w-24 sm:border-8 ${styles}`}
 						onHoverStart={startCirclesAnimation}
 						onHoverEnd={endAnimation}
 					>
 						<div
 							id='middleCircle'
 							ref={middleCircleRef}
-							className='absolute top-[10%] left-[10%] h-16 w-16 rounded-full border-8 border-[#00d8ff]'
+							className='absolute top-[10%] left-[10%] h-8 w-8 rounded-full border-4 border-[#00d8ff] sm:h-16 sm:w-16 sm:border-8'
 						></div>
 
 						<div
 							id='innerCircle'
 							ref={innerCircleRef}
-							className='absolute left-[30%] top-[30%] h-8 w-8 rounded-full border-8 border-[#00d8ff]'
+							className='absolute left-[30%] top-[30%] h-4 w-4 rounded-full border-4 border-[#00d8ff] sm:h-8 sm:w-8 sm:border-8'
 						></div>
 					</motion.div>
 				</motion.div>
