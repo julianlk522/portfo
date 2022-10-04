@@ -10,7 +10,11 @@ function ProjectsGrid({ darkMode }) {
 			id='gridContentContainer'
 			className='flex h-[200%] w-full flex-col items-center justify-between xs:h-[300%] md:h-full'
 		>
-			<motion.p className='my-4 mb-4 text-xs text-white opacity-40 md:hidden'>
+			<motion.p
+				className={`my-4 mb-4 text-xs opacity-40 md:hidden ${
+					darkMode ? 'text-white' : ''
+				}`}
+			>
 				Scroll down to see more
 			</motion.p>
 			<div

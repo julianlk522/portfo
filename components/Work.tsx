@@ -100,7 +100,7 @@ export default function Work({ darkMode }) {
 				}}
 			>
 				Scenes from the
-				<span className='ml-4 bg-labText bg-clip-text font-semibold text-transparent'>
+				<span className='ml-2 bg-labText bg-clip-text font-semibold text-transparent sm:ml-4'>
 					lab
 				</span>
 			</motion.h2>
