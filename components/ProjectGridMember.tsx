@@ -38,7 +38,7 @@ function ProjectGridMember({
 }: GridMemberProps) {
 	const [gridMemberHovered, setGridMemberHovered] = useState(false)
 
-	const [stackItemCoef, setStackItemCoef] = useState(0)
+	const [stackItemIndex, setStackItemIndex] = useState(0)
 	const stackTextControls = useAnimationControls()
 	const stackTextVariants = {
 		flicker: {
@@ -66,7 +66,7 @@ function ProjectGridMember({
 				setGridMemberHovered(false)
 				stackTextControls.stop()
 				stackTextControls.set('hidden')
-				setStackItemCoef((prev) => prev + 1)
+				setStackItemIndex((prev) => prev + 1)
 			}}
 		>
 			<div
@@ -87,13 +87,13 @@ function ProjectGridMember({
 					animate={stackTextControls}
 					variants={stackTextVariants}
 					onAnimationComplete={() => {
-						setStackItemCoef((prev) => prev + 1)
+						setStackItemIndex((prev) => prev + 1)
 						if (gridMemberHovered) {
 							stackTextControls.start('flicker')
 						}
 					}}
 				>
-					{stackItems[stackItemCoef % stackItems.length]}
+					{stackItems[stackItemIndex % stackItems.length]}
 				</motion.p>
 				<div className='projectLinks flex w-full justify-evenly text-xs'>
 					<a href={ghLink}>Github</a>

@@ -88,6 +88,7 @@ function ProjectsGrid({ darkMode }) {
 						'Google OAuth',
 					]}
 					ghLink='https://github.com/julianlk522/chat-app'
+					liveLink='https://chat-station-project.netlify.app/'
 				/>
 			</div>
 			<motion.p
