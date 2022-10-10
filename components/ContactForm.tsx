@@ -81,7 +81,7 @@ function ContactForm({ darkMode }) {
 			></textarea>
 			<motion.button
 				id='submitButton'
-				className={`relative mt-8 flex overflow-visible rounded-[2rem] px-4 py-2 after:absolute after:top-[-2px] after:left-[-2px] after:right-[-2px] after:bottom-[-2px] after:z-[-1] after:rounded-[2rem] after:bg-contactFormSubmitBackdrop hover:text-white ${
+				className={`relative mt-8 flex overflow-visible rounded-[2rem] px-4 py-2 after:absolute after:top-[-2px] after:left-[-2px] after:right-[-2px] after:bottom-[-2px] after:z-[-1] after:rounded-[2rem] after:bg-contactFormSubmitBackdrop ${
 					darkMode ? 'bg-slate-800' : 'bg-[rgba(255,255,255,0.75)]'
 				}`}
 				// whileHover={{
