@@ -1,0 +1,8 @@
+.workContainer::-webkit-scrollbar {
+	display: none;
+}
+
+.workContainer {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}

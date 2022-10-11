@@ -1,3 +1,12 @@
 .titleHighlight {
 	-webkit-text-fill-color: rgba(255, 255, 255, 0.3);
 }
+
+.contactContentBody::-webkit-scrollbar {
+	display: none;
+}
+
+.contactContentBody {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}

@@ -10,9 +10,11 @@ import {
 	useInView,
 } from 'framer-motion'
 import ProjectsGrid from './ProjectsGrid'
+import styles from './Work.module.css'
 
 export default function Work({ darkMode }) {
 	const workContainerRef = useRef(null)
+	const containerInView = useInView(workContainerRef, { amount: 'all' })
 	const textBodyRef = useRef(null)
 	const textRefInView = useInView(textBodyRef, { amount: 'some' })
 
@@ -80,13 +82,23 @@ export default function Work({ darkMode }) {
 		}
 	}, [darkMode])
 
+	useEffect(() => {
+		const containerScrollTimeout = setTimeout(() => {
+			if (!containerInView) {
+				workContainerRef.current.scrollTop = 0
+			}
+		}, 3000)
+
+		return () => clearTimeout(containerScrollTimeout)
+	}, [containerInView])
+
 	return (
 		<motion.section
 			id='workContainer'
 			ref={workContainerRef}
-			className={`${
-				darkMode && 'bg-slate-800'
-			} relative flex h-full flex-col items-center overflow-x-hidden text-center md:overflow-y-hidden`}
+			className={`relative flex h-full flex-col items-center overflow-x-hidden text-center md:overflow-y-hidden ${
+				styles.workContainer
+			} ${darkMode && 'bg-slate-800'}`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
 				opacity: !darkMode && allOpacityTransform,

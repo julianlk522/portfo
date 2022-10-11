@@ -15,10 +15,13 @@ import ContactForm from './ContactForm'
 import styles from './Contact.module.css'
 
 export default function Contact({ darkMode }) {
+	const containerRef = useRef(null)
+	const containerInView = useInView(containerRef, { amount: 'all' })
+	const contentBodyRef = useRef(null)
 	const scrollUpSmRef = useRef(null)
+	const scrollUpInView = useInView(scrollUpSmRef)
 	const scrollPromptSmControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
-	const isInView = useInView(scrollUpSmRef)
 	const opacityTransform = useTransform(scrollYProgress, [0.86, 1], [0, 1])
 
 	const scrollPromptVariants = {
@@ -50,25 +53,36 @@ export default function Contact({ darkMode }) {
 	}
 
 	useEffect(() => {
-		if (isInView) {
+		if (scrollUpInView) {
 			scrollPromptSmControls.start('bouncing')
 		} else {
 			scrollPromptSmControls.stop()
 			scrollPromptSmControls.set('initial')
 		}
-	}, [isInView, scrollPromptSmControls])
+	}, [scrollUpInView, scrollPromptSmControls])
 
 	useEffect(() => {
 		if (darkMode)
 			document.getElementById('contactContainer').style.opacity = '1'
 	}, [darkMode])
 
+	useEffect(() => {
+		const containerScrollTimeout = setTimeout(() => {
+			if (!containerInView) {
+				contentBodyRef.current.scrollTop = 0
+			}
+		}, 3000)
+
+		return () => clearTimeout(containerScrollTimeout)
+	}, [containerInView])
+
 	return (
 		<motion.section
+			ref={containerRef}
 			id='contactContainer'
-			className={`${
+			className={`relative flex h-full flex-col justify-between overflow-hidden bg-cover py-16 px-32 text-center lg:overflow-visible ${
 				darkMode ? 'bg-slate-800' : 'bg-mainBg'
-			} oveflow-hidden relative flex h-full flex-col justify-between bg-cover py-16 px-32 text-center lg:overflow-visible`}
+			}`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
 				opacity: !darkMode && opacityTransform,
@@ -89,8 +103,9 @@ export default function Contact({ darkMode }) {
 				web app
 			</h2>
 			<div
+				ref={contentBodyRef}
 				id='contactContentBody'
-				className='flex h-[300%] w-full flex-col items-center overflow-x-hidden overflow-y-scroll lg:h-full lg:flex-row lg:overflow-y-hidden'
+				className={`flex h-[300%] w-full flex-col items-center overflow-x-hidden overflow-y-scroll lg:h-full lg:flex-row lg:overflow-y-hidden ${styles.contactContentBody}`}
 			>
 				<div
 					id='experience'

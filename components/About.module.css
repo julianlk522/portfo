@@ -1,0 +1,8 @@
+.aboutTextContent::-webkit-scrollbar {
+	display: none;
+}
+
+.aboutTextContent {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
