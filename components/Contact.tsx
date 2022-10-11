@@ -105,16 +105,23 @@ export default function Contact({ darkMode }) {
 			<div
 				ref={contentBodyRef}
 				id='contactContentBody'
-				className={`flex h-[300%] w-full flex-col items-center overflow-x-hidden overflow-y-scroll lg:h-full lg:flex-row lg:overflow-y-hidden ${styles.contactContentBody}`}
+				className={`flex h-[300%] w-full flex-col items-center overflow-x-hidden overflow-y-scroll sm:mt-16 lg:mt-0 lg:h-full lg:flex-row lg:overflow-y-hidden ${styles.contactContentBody}`}
 			>
 				<div
 					id='experience'
-					className={`relative mt-16 flex h-[300%] w-full flex-col items-center justify-evenly xs:h-[200%] md:h-full lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
+					className={`relative flex h-[300%] w-full flex-col items-center justify-evenly xs:h-[200%] md:h-full lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
 						darkMode && 'text-white'
 					}`}
 					style={{ maxWidth: 'max(50vw, 750px)' }}
 				>
 					<div className='flex flex-col items-center justify-between sm:flex-row'>
+						<p
+							className={`mb-16 text-xs opacity-40 sm:hidden ${
+								darkMode ? 'text-white' : ''
+							}`}
+						>
+							Scroll down to see more
+						</p>
 						<motion.div
 							className={`${
 								darkMode
