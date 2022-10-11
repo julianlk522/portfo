@@ -261,7 +261,7 @@ export default function About({ darkMode }) {
 							variants={photoChildVariants}
 							style={{
 								backgroundImage:
-									'linear-gradient(166deg, rgba(255,172,198,0.75) 25%, rgba(255,91,35,1) 100%)',
+									'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.75) 100%)',
 							}}
 						>
 							<Image
@@ -318,7 +318,7 @@ export default function About({ darkMode }) {
 					className='relative flex h-48 w-48 items-center justify-center overflow-hidden rounded-full shadow-thick lg:h-72 lg:w-72'
 					style={{
 						backgroundImage:
-							'linear-gradient(166deg, rgba(255,172,198,0.75) 25%, rgba(255,91,35,1) 100%)',
+							'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.75) 100%)',
 					}}
 					variants={photoChildVariants}
 				>
