@@ -11,10 +11,12 @@ import portrait from '../public/portrait.webp'
 import scrollUp from '../public/scrollUp.webp'
 
 export default function About({ darkMode }) {
-	const aboutContainerRef = useRef(null)
+	const textContentRef = useRef(null)
+	const containerRef = useRef(null)
+	const containerInView = useInView(containerRef, { amount: 'all' })
 	const scrollDownRef = useRef(null)
-	const hoverRefInView = useInView(scrollDownRef, { amount: 'some' })
-	const sectionInView = useInView(aboutContainerRef, { amount: 'all' })
+
+	const scrollDownRefInView = useInView(scrollDownRef, { amount: 'some' })
 
 	const scrollDownControls = useAnimationControls()
 	const spiralControls = useAnimationControls()
@@ -106,21 +108,31 @@ export default function About({ darkMode }) {
 
 	useEffect(() => {
 		if (darkMode) {
-			aboutContainerRef.current.style.opacity = '1'
+			containerRef.current.style.opacity = '1'
 		}
 	}, [darkMode])
 
 	useEffect(() => {
-		if (!hoverRefInView) {
+		if (!scrollDownRefInView) {
 			scrollDownControls.stop()
 			scrollDownControls.set('initial')
 		}
-	}, [hoverRefInView, scrollDownControls])
+	}, [scrollDownRefInView, scrollDownControls])
+
+	useEffect(() => {
+		const textScrollTimeout = setTimeout(() => {
+			if (!containerInView) {
+				textContentRef.current.scrollTop = 0
+			}
+		}, 3000)
+
+		return () => clearTimeout(textScrollTimeout)
+	}, [containerInView])
 
 	return (
 		<motion.section
 			id='aboutContainer'
-			ref={aboutContainerRef}
+			ref={containerRef}
 			className={`${
 				darkMode && 'bg-slate-800 text-white'
 			} relative flex h-full items-center justify-between overflow-hidden text-center`}
@@ -153,6 +165,7 @@ export default function About({ darkMode }) {
 				/>
 			</motion.svg>
 			<motion.div
+				ref={textContentRef}
 				id='aboutTextContent'
 				className='relative my-16 flex h-full flex-col items-start justify-between overflow-y-scroll rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop xs:overflow-visible md:max-w-[50%] lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
 				style={{ opacity: darkMode ? allOpacityTransform : '' }}
@@ -161,7 +174,7 @@ export default function About({ darkMode }) {
 				whileInView='visible'
 				viewport={{ amount: 'all' }}
 				onAnimationComplete={() => {
-					if (sectionInView) {
+					if (containerInView) {
 						spiralControls.start('visible')
 					}
 				}}
@@ -250,7 +263,7 @@ export default function About({ darkMode }) {
 						whileInView='visible'
 						viewport={{ amount: 'all' }}
 						onAnimationComplete={() => {
-							if (hoverRefInView) {
+							if (scrollDownRefInView) {
 								scrollDownControls.start('bouncing')
 							}
 						}}
@@ -308,7 +321,7 @@ export default function About({ darkMode }) {
 				whileInView='visible'
 				viewport={{ amount: 'all' }}
 				onAnimationComplete={() => {
-					if (hoverRefInView) {
+					if (scrollDownRefInView) {
 						scrollDownControls.start('bouncing')
 					}
 				}}

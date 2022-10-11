@@ -42,8 +42,7 @@ function MyApp({ Component, pageProps }) {
 		const scrollNearestSectionIntoView = () => {
 			const numSections = 4
 			const documentHeight =
-				document.getElementById('welcomeContainer').clientHeight *
-				numSections
+				document.documentElement.clientHeight * numSections
 
 			const currentScrollPercent = currentScrollY / documentHeight
 
