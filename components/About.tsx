@@ -257,13 +257,18 @@ export default function About({ darkMode }) {
 					>
 						<motion.div
 							id='aboutPhotoMask'
-							className='flex h-24 w-24 items-center justify-center overflow-hidden rounded-full shadow-thick md:h-36 md:w-36 lg:h-72 lg:w-72'
+							className='relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full shadow-thick md:h-36 md:w-36 lg:h-72 lg:w-72'
 							variants={photoChildVariants}
+							style={{
+								backgroundImage:
+									'linear-gradient(166deg, rgba(255,172,198,0.75) 25%, rgba(255,91,35,1) 100%)',
+							}}
 						>
 							<Image
 								src={portrait}
+								layout='fill'
+								objectFit='cover'
 								alt='photo of the author of this page'
-								className='object-contain object-top'
 							/>
 						</motion.div>
 					</motion.div>
@@ -310,13 +315,18 @@ export default function About({ darkMode }) {
 			>
 				<motion.div
 					id='aboutPhotoMask'
-					className='flex h-48 w-48 items-center justify-center overflow-hidden rounded-full shadow-thick lg:h-72 lg:w-72'
+					className='relative flex h-48 w-48 items-center justify-center overflow-hidden rounded-full shadow-thick lg:h-72 lg:w-72'
+					style={{
+						backgroundImage:
+							'linear-gradient(166deg, rgba(255,172,198,0.75) 25%, rgba(255,91,35,1) 100%)',
+					}}
 					variants={photoChildVariants}
 				>
 					<Image
 						src={portrait}
+						layout='fill'
+						objectFit='cover'
 						alt='photo of the author of this page'
-						className='object-contain object-top'
 					/>
 				</motion.div>
 				<motion.button
