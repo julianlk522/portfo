@@ -185,7 +185,7 @@ export default function Work({ darkMode }) {
 				</div>
 				<p
 					id='portfoStackDescriptionLg'
-					className={`mt-8 hidden w-full bg-portfoStackTextSm pr-8 text-xs lg:block lg:bg-portfoStackTextLg lg:text-end ${
+					className={`mt-8 hidden w-full max-w-5xl bg-portfoStackTextSm pr-8 text-xs lg:block lg:bg-portfoStackTextLg lg:text-end ${
 						darkMode ? 'text-white' : ''
 					}`}
 				>
