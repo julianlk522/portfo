@@ -16,10 +16,10 @@ export default function About({ darkMode }) {
 	const textContentRef = useRef(null)
 	const containerRef = useRef(null)
 	const containerInView = useInView(containerRef, { amount: 'all' })
+	const mdScreenOrGreater =
+		containerRef.current && containerRef.current.clientWidth >= 768
 	const scrollDownRef = useRef(null)
-
 	const scrollDownRefInView = useInView(scrollDownRef, { amount: 'some' })
-
 	const scrollDownControls = useAnimationControls()
 	const spiralControls = useAnimationControls()
 	const handControls = useAnimationControls()
@@ -62,6 +62,7 @@ export default function About({ darkMode }) {
 			opacity: 1,
 			transition: {
 				duration: 1,
+				delay: 0.25,
 			},
 		},
 	}
@@ -79,7 +80,7 @@ export default function About({ darkMode }) {
 					repeat: Infinity,
 					repeatType: 'reverse',
 					duration: 2,
-					delay: 0.5,
+					delay: mdScreenOrGreater ? 1 : 0,
 				},
 			},
 		},
@@ -125,7 +126,7 @@ export default function About({ darkMode }) {
 			ref={containerRef}
 			className={`${
 				darkMode && 'bg-slate-800 text-white'
-			} relative flex h-full items-center justify-between overflow-hidden text-center`}
+			} relative h-full flex-col items-center justify-between overflow-hidden text-center md:flex-row`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 				opacity: !darkMode && allOpacityTransform,
@@ -138,131 +139,127 @@ export default function About({ darkMode }) {
 			/>
 			<motion.div
 				ref={textContentRef}
-				id='aboutTextContent'
-				className={`relative flex h-full max-h-[800px] flex-col items-start justify-between overflow-y-scroll rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop xs:overflow-visible md:max-w-[50%] lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8 ${styles.aboutTextContent}`}
-				style={{
-					opacity: darkMode ? allOpacityTransform : '',
-				}}
-				variants={textVariants}
-				initial='initial'
-				whileInView='visible'
-				viewport={{ amount: 'all' }}
-				onAnimationComplete={() => {
-					if (containerInView) {
-						spiralControls.start('visible')
-					}
-				}}
+				id='aboutOverflowContainer'
+				className={`flex h-full flex-col justify-between overflow-y-scroll md:flex-row md:overflow-visible ${styles.aboutOverflowContainer}`}
 			>
-				<motion.h2
-					id='aboutTitle'
-					className={`my-16 text-center xs:my-8 ${
-						darkMode
-							? 'text-white drop-shadow-mediumDark'
-							: 'drop-shadow-xl'
-					}`}
+				<motion.div
+					id='aboutTextContent'
+					className='relative mb-16 flex h-auto flex-col items-start justify-between space-y-16 rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop md:max-w-[50%] md:space-y-8 lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
 					style={{
-						fontSize: 'clamp(2rem, 6vw, 7vh)',
+						opacity: darkMode ? allOpacityTransform : '',
 					}}
-					variants={textChildVariants}
+					variants={textVariants}
+					initial='initial'
+					whileInView='visible'
+					viewport={{ amount: 'some' }}
+					onAnimationComplete={() => {
+						if (containerInView) {
+							spiralControls.start('visible')
+						}
+					}}
 				>
-					<motion.span
-						initial='initial'
-						animate={handControls}
-						variants={handVariants}
-						className='inline-block rotate-[15deg]'
-					>
-						👋
-					</motion.span>{' '}
-					Hello and
-					<br />
-					<span
-						className={`bg-clip-text text-transparent ${
-							darkMode ? 'bg-tomatoToLightPink' : 'bg-sunrise'
+					<motion.h2
+						id='aboutTitle'
+						className={`mt-8 text-center ${
+							darkMode
+								? 'text-white drop-shadow-mediumDark'
+								: 'drop-shadow-xl'
 						}`}
+						style={{
+							fontSize: 'clamp(2rem, 6vw, 7vh)',
+						}}
+						variants={textChildVariants}
 					>
-						Welcome!
-					</span>
-				</motion.h2>
-
-				<motion.h3
-					className='max-w-[80%]  text-xs opacity-60 sm:max-w-[100%] lg:text-sm'
-					style={{ width: 'min(100%, 500px)' }}
-					variants={textChildVariants}
-				>
-					I&apos;m Julian and my passion is in designing and building
-					exciting new solutions that leverage the powers of the web.
-					For the last 11 months I&apos;ve immersed myself deeply in
-					learning full-stack development strategies.
-				</motion.h3>
-
-				<motion.h3
-					className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] lg:text-sm'
-					style={{ width: 'min(100%, 500px)' }}
-					variants={textChildVariants}
-				>
-					I&apos;m fascinated by 🧬 reverse-engineering intricate user
-					experiences and experimenting with new techniques and
-					technologies to see what&apos;s possible.
-				</motion.h3>
-
-				<motion.h3
-					className='max-w-[80%] text-xs opacity-60 sm:max-w-[100%] lg:text-sm'
-					style={{ width: 'min(100%, 500px)' }}
-					variants={textChildVariants}
-				>
-					I love puzzles, games, challenges, and careful designwork of
-					all shapes and sizes. ⚙
-				</motion.h3>
-
-				<motion.h3
-					className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] lg:text-sm'
-					style={{ width: 'min(100%, 500px)' }}
-					variants={textChildVariants}
-				>
-					Aside from coding I like to read nonfiction and try out
-					different ways to achieve personal fitness - lately that has
-					been tennis with my girlfriend, Sneha. I also love to cook
-					and eat spicy food! 😋
-				</motion.h3>
-
-				<div
-					id='photoAndScrollWrapperSm'
-					className='mb-8 flex items-center justify-between md:hidden'
+						<motion.span
+							initial='initial'
+							animate={handControls}
+							variants={handVariants}
+							className='inline-block rotate-[15deg]'
+						>
+							👋
+						</motion.span>{' '}
+						Hello and
+						<br />
+						<span
+							className={`bg-clip-text text-transparent ${
+								darkMode ? 'bg-tomatoToLightPink' : 'bg-sunrise'
+							}`}
+						>
+							Welcome!
+						</span>
+					</motion.h2>
+					<motion.h3
+						className='max-w-[80%]  text-xs opacity-60 sm:max-w-[100%] lg:text-sm'
+						style={{ width: 'min(100%, 500px)' }}
+						variants={textChildVariants}
+					>
+						I&apos;m Julian and my passion is in designing and
+						building exciting new solutions that leverage the powers
+						of the web. For the last 11 months I&apos;ve immersed
+						myself deeply in learning full-stack development
+						strategies.
+					</motion.h3>
+					<motion.h3
+						className='max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] lg:text-sm'
+						style={{ width: 'min(100%, 500px)' }}
+						variants={textChildVariants}
+					>
+						I&apos;m fascinated by 🧬 reverse-engineering intricate
+						user experiences and experimenting with new techniques
+						and technologies to see what&apos;s possible.
+					</motion.h3>
+					<motion.h3
+						className='max-w-[80%] text-xs opacity-60 sm:max-w-[100%] lg:text-sm'
+						style={{ width: 'min(100%, 500px)' }}
+						variants={textChildVariants}
+					>
+						I love puzzles, games, challenges, and careful
+						designwork of all shapes and sizes. ⚙
+					</motion.h3>
+					<motion.h3
+						className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] lg:text-sm'
+						style={{ width: 'min(100%, 500px)' }}
+						variants={textChildVariants}
+					>
+						Aside from coding I like to read nonfiction and try out
+						different ways to achieve personal fitness - lately that
+						has been tennis with my girlfriend, Sneha. I also love
+						to cook and eat spicy food! 😋
+					</motion.h3>
+				</motion.div>
+				<motion.div
+					id='aboutPhotoSection'
+					className='flex w-full flex-col items-center justify-evenly pb-16 md:justify-center md:pb-0'
+					variants={photoSectionVariants}
+					initial='initial'
+					whileInView='visible'
+					viewport={{ amount: mdScreenOrGreater ? 'all' : 'some' }}
+					onAnimationComplete={() => {
+						if (scrollDownRefInView) {
+							scrollDownControls.start('bouncing')
+						}
+					}}
 				>
 					<motion.div
-						id='aboutPhotoSectionSm'
-						className='flex w-full flex-col items-center justify-end'
-						variants={photoSectionVariants}
-						initial='initial'
-						whileInView='visible'
-						viewport={{ amount: 'all' }}
-						onAnimationComplete={() => {
-							if (scrollDownRefInView) {
-								scrollDownControls.start('bouncing')
-							}
+						id='aboutPhotoMask'
+						className='relative flex h-48 w-48 items-center justify-center overflow-hidden rounded-full shadow-thick lg:h-72 lg:w-72'
+						style={{
+							backgroundImage:
+								'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.75) 100%)',
 						}}
+						variants={photoChildVariants}
 					>
-						<motion.div
-							id='aboutPhotoMask'
-							className='relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full shadow-thick md:h-36 md:w-36 lg:h-72 lg:w-72'
-							variants={photoChildVariants}
-							style={{
-								backgroundImage:
-									'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.75) 100%)',
-							}}
-						>
-							<Image
-								src={portrait}
-								layout='fill'
-								objectFit='cover'
-								alt='photo of the author of this page'
-							/>
-						</motion.div>
+						<Image
+							src={portrait}
+							layout='fill'
+							objectFit='cover'
+							alt='photo of the author of this page'
+						/>
 					</motion.div>
 					<motion.button
-						className='max-w-[50%]'
 						ref={scrollDownRef}
-						id='aboutScrollDownButtonSm'
+						id='aboutScrollDownButton'
+						className={`${darkMode && 'invert'} my-16 opacity-10`}
 						animate={scrollDownControls}
 						variants={photoChildVariants}
 						whileHover={{ scale: 1.1 }}
@@ -280,68 +277,19 @@ export default function About({ darkMode }) {
 						<Image
 							src={scrollUp}
 							alt='button to scroll to the next section'
-							className={`${
-								darkMode && 'invert'
-							} rotate-180 scale-[.1] opacity-10`}
+							width={38}
+							height={20}
+							className='rotate-180'
 						/>
 					</motion.button>
-				</div>
-			</motion.div>
-			<motion.div
-				id='aboutPhotoSectionMd'
-				className='hidden w-full flex-col items-center justify-center md:flex'
-				variants={photoSectionVariants}
-				initial='initial'
-				whileInView='visible'
-				viewport={{ amount: 'all' }}
-				onAnimationComplete={() => {
-					if (scrollDownRefInView) {
-						scrollDownControls.start('bouncing')
-					}
-				}}
-			>
-				<motion.div
-					id='aboutPhotoMask'
-					className='relative flex h-48 w-48 items-center justify-center overflow-hidden rounded-full shadow-thick lg:h-72 lg:w-72'
-					style={{
-						backgroundImage:
-							'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.75) 100%)',
-					}}
-					variants={photoChildVariants}
-				>
-					<Image
-						src={portrait}
-						layout='fill'
-						objectFit='cover'
-						alt='photo of the author of this page'
-					/>
+					<p
+						className={`mb-16 text-xs opacity-40 md:mb-0 ${
+							darkMode ? 'text-white' : ''
+						}`}
+					>
+						Click the down arrow to continue
+					</p>
 				</motion.div>
-				<motion.button
-					ref={scrollDownRef}
-					id='aboutScrollDownButtonLg'
-					className='mb-[-10rem]'
-					animate={scrollDownControls}
-					variants={photoChildVariants}
-					whileHover={{ scale: 1.1 }}
-					whileTap={{ scale: 0.9 }}
-					onClick={() => {
-						scrollDownControls.set('initial')
-						spiralControls.set('hidden')
-						handControls.set('initial')
-						document
-							.getElementById('workContainer')
-							.scrollIntoView({ behavior: 'smooth' })
-					}}
-				>
-					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-					<Image
-						src={scrollUp}
-						alt='button to scroll to the next section'
-						className={`${
-							darkMode && 'invert'
-						} rotate-180 scale-[.1] opacity-10`}
-					/>
-				</motion.button>
 			</motion.div>
 		</motion.section>
 	)

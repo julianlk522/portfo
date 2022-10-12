@@ -45,7 +45,6 @@ function ProjectsGrid({ darkMode }) {
 
 				<ProjectGridMember
 					tailwindStyles='row-start-2 md:col-span-1 md:col-start-3 md:row-start-1'
-					objectPosition='object-top'
 					screenshotId={1}
 					title='Hyper Typer 2000'
 					altImgText='a React-based typing game to test your speed and accuracy'

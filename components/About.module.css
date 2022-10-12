@@ -1,8 +1,8 @@
-.aboutTextContent::-webkit-scrollbar {
+.aboutOverflowContainer::-webkit-scrollbar {
 	display: none;
 }
 
-.aboutTextContent {
+.aboutOverflowContainer {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }

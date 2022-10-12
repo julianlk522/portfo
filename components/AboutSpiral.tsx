@@ -3,9 +3,10 @@ import { motion } from 'framer-motion'
 
 function AboutSpiral({ darkMode, spiralControls, handControls }) {
 	const spiralVariants = {
-		hidden: { strokeWidth: 0 },
+		hidden: { strokeWidth: 0, pathLength: 0 },
 		visible: {
-			strokeWidth: [null, 20, 2, 4],
+			strokeWidth: [null, 10, 2, 4],
+			pathLength: 1,
 			strokeOpacity: [null, 0.15, 0.025, darkMode ? 0.02 : 0.05],
 			transition: {
 				type: 'spring',

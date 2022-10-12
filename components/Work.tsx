@@ -16,7 +16,7 @@ export default function Work({ darkMode }) {
 	const workContainerRef = useRef(null)
 	const containerInView = useInView(workContainerRef, { amount: 'all' })
 	const textBodyRef = useRef(null)
-	const textRefInView = useInView(textBodyRef, { amount: 'some' })
+	const textRefInView = useInView(textBodyRef, { amount: 'all' })
 
 	const scrollDownControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
@@ -45,7 +45,7 @@ export default function Work({ darkMode }) {
 			opacity: 1,
 			transition: {
 				delayChildren: 0.5,
-				staggerChildren: 0.5,
+				staggerChildren: 0.25,
 			},
 		},
 	}
@@ -59,12 +59,16 @@ export default function Work({ darkMode }) {
 		visible: {
 			y: 0,
 			x: 0,
-			opacity: 0.5,
+			opacity: null,
+			transition: {
+				type: 'spring',
+				duration: 1,
+			},
 		},
 		bouncing: {
 			y: [null, 16],
 			x: 0,
-			opacity: 0.5,
+			opacity: 0.1,
 			transition: {
 				y: {
 					repeat: Infinity,
@@ -126,7 +130,7 @@ export default function Work({ darkMode }) {
 						id='projectsSideTextLg'
 						className={`${
 							darkMode && 'text-white'
-						} relative mx-8 hidden max-w-[25%] flex-col items-center justify-center lg:flex`}
+						} relative mx-8 hidden max-w-[25%] flex-col items-center justify-evenly lg:flex`}
 						initial='initial'
 						whileInView='visible'
 						viewport={{ amount: 'all' }}
@@ -149,13 +153,14 @@ export default function Work({ darkMode }) {
 							/>
 						</motion.figure>
 						<motion.p
-							className='text-md my-8'
+							className='text-md opacity-50'
 							variants={textBodyChildVariants}
 						>
 							Hover over a project to learn more
 						</motion.p>
 						<motion.button
 							id='workScrollDownButton'
+							className={`'opacity-10 ${darkMode && 'invert'}`}
 							variants={textBodyChildVariants}
 							animate={scrollDownControls}
 							whileHover={{ scale: 1.1 }}
@@ -169,10 +174,10 @@ export default function Work({ darkMode }) {
 							{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
 							<Image
 								src={scrollUp}
+								className='rotate-180'
+								width={38}
+								height={20}
 								alt='button to scroll to the next section'
-								className={`${
-									darkMode && 'invert'
-								} rotate-180 scale-[.1] opacity-10`}
 							/>
 						</motion.button>
 					</motion.div>
