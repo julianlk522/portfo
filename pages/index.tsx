@@ -75,11 +75,11 @@ export default function Home({ darkMode }) {
 			<motion.section
 				ref={welcomeContainerRef}
 				id='welcomeContainer'
-				className={`${
+				className={`relative z-[1] flex h-full flex-col items-center justify-between overflow-hidden bg-cover ${
 					darkMode
 						? 'bg-slate-800 text-white'
 						: 'bg-mainBg text-stone-500'
-				} relative z-[1] flex h-full flex-col items-center justify-between overflow-hidden bg-cover`}
+				}`}
 				style={{
 					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 					opacity: darkMode ? '1' : opacityTransform,

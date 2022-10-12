@@ -59,7 +59,7 @@ export default function Work({ darkMode }) {
 		visible: {
 			y: 0,
 			x: 0,
-			opacity: null,
+			opacity: 1,
 			transition: {
 				type: 'spring',
 				duration: 1,
@@ -122,15 +122,18 @@ export default function Work({ darkMode }) {
 			</motion.h2>
 			<motion.div
 				id='projectsContentBody'
-				className='flex h-full w-full flex-col items-center justify-between'
+				className='flex h-full w-full max-w-7xl flex-col items-center justify-between'
 			>
-				<div className='flex h-full w-full justify-between'>
+				<div
+					id='gridAndCaptionContainer'
+					className='flex h-full w-full justify-between'
+				>
 					<motion.div
 						ref={textBodyRef}
 						id='projectsSideTextLg'
 						className={`${
 							darkMode && 'text-white'
-						} relative mx-8 hidden max-w-[25%] flex-col items-center justify-evenly lg:flex`}
+						} relative mr-32 hidden max-w-[25%] flex-col items-center justify-evenly lg:flex`}
 						initial='initial'
 						whileInView='visible'
 						viewport={{ amount: 'all' }}
@@ -143,7 +146,7 @@ export default function Work({ darkMode }) {
 					>
 						<motion.figure
 							id='pillWrapper'
-							className='absolute left-[-25%] top-[-33%] hidden h-[150%] w-[150%] opacity-20 lg:block'
+							className='absolute left-[-25%] top-[-33%] hidden h-[150%] w-[150%] overflow-visible opacity-20 lg:block'
 						>
 							<Image
 								src={pill}

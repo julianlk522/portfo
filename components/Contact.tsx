@@ -80,7 +80,7 @@ export default function Contact({ darkMode }) {
 		<motion.section
 			ref={containerRef}
 			id='contactContainer'
-			className={`relative flex h-full flex-col justify-between overflow-hidden bg-cover py-16 px-32 text-center lg:overflow-visible ${
+			className={`relative flex h-full flex-col items-center justify-between overflow-hidden bg-cover py-16 px-32 text-center lg:overflow-visible ${
 				darkMode ? 'bg-slate-800' : 'bg-mainBg'
 			}`}
 			style={{
@@ -105,7 +105,7 @@ export default function Contact({ darkMode }) {
 			<div
 				ref={contentBodyRef}
 				id='contactContentBody'
-				className={`flex h-[300%] w-full flex-col items-center overflow-x-hidden overflow-y-scroll sm:mt-16 lg:mt-0 lg:h-full lg:flex-row lg:overflow-y-hidden ${styles.contactContentBody}`}
+				className={`flex h-[300%] w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll sm:mt-16 lg:mt-0 lg:h-full lg:flex-row lg:overflow-y-hidden ${styles.contactContentBody}`}
 			>
 				<div
 					id='experience'
