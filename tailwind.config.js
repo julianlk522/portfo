@@ -26,7 +26,7 @@ module.exports = {
 				contactFormBackdropLightMode:
 					'linear-gradient(350deg, rgba(255,172,198,0) 40%, rgba(0,216,255,0.2) 100%)',
 				contactFormSubmitBackdrop:
-					'linear-gradient(315deg, rgba(255,172,198,0.5) 0%, rgba(0,216,255,0.5) 35%, rgba(255,172,198,0.5) 55%, rgba(255,172,198,0.5) 75%, rgba(0,216,255,0.25) 100%)',
+					'linear-gradient(315deg, rgba(255,172,198,0.25) 0%, rgba(0,216,255,0.25) 35%, rgba(255,172,198,0.25) 55%, rgba(255,172,198,0.5) 75%, rgba(0,216,255,0.125) 100%)',
 			},
 			borderColor: {
 				softLightPink: 'rgba(255, 172, 198, 0.5)',

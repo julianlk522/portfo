@@ -1,12 +1,13 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useAnimationControls } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { toast } from 'react-hot-toast'
 import laugh from '../public/laugh.svg'
 
 function ContactForm({ darkMode }) {
 	const formRef = useRef(null)
+	const submitButtonControls = useAnimationControls()
 
 	const submitForm = async (e: React.FormEvent) => {
 		e.preventDefault()
@@ -37,6 +38,34 @@ function ContactForm({ darkMode }) {
 				to help me find the bug.
 			</span>
 		))
+	}
+
+	const submitButtonBackdropVariants = {
+		initial: {
+			x: 125,
+			scaleY: 0.8,
+			scaleX: 0.8,
+			transition: {
+				duration: 0.1,
+				ease: 'easeIn',
+			},
+			transitionEnd: {
+				x: -125,
+			},
+		},
+		hovered: {
+			x: 0,
+			scaleX: 1,
+			scaleY: 1,
+			transition: {
+				scaleX: {
+					delay: 0.25,
+				},
+				scaleY: {
+					delay: 0.25,
+				},
+			},
+		},
 	}
 
 	return (
@@ -81,16 +110,23 @@ function ContactForm({ darkMode }) {
 			></textarea>
 			<motion.button
 				id='submitButton'
-				className={`relative mt-8 flex overflow-visible rounded-[2rem] px-4 py-2 after:absolute after:top-[-2px] after:left-[-2px] after:right-[-2px] after:bottom-[-2px] after:z-[-1] after:rounded-[2rem] after:bg-contactFormSubmitBackdrop ${
-					darkMode ? 'bg-slate-800' : 'bg-[rgba(255,255,255,0.75)]'
+				className={`relative mt-8 flex overflow-hidden rounded-[2rem] border-2 border-opacity-5 px-4 py-2 ${
+					darkMode
+						? 'border-white bg-slate-800'
+						: 'border-black bg-[rgba(255,255,255,0.75)]'
 				}`}
-				// whileHover={{
-				// 	scale: 1.1,
-				// }}
-				whileTap={{ scale: 0.9 }}
+				onHoverStart={() => submitButtonControls.start('hovered')}
+				onHoverEnd={() => submitButtonControls.start('initial')}
 			>
 				Submit
-				<div className='ml-4'>
+				<motion.div
+					id='contactSubmitButtonBackdrop'
+					className='absolute inset-1 rounded-full bg-contactFormSubmitBackdrop'
+					animate={submitButtonControls}
+					variants={submitButtonBackdropVariants}
+					initial='initial'
+				></motion.div>
+				<div className='relative ml-4'>
 					<Image
 						alt='submit message icon'
 						src={laugh}
