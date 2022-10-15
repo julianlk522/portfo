@@ -124,12 +124,12 @@ export default function About({ darkMode }) {
 		<motion.section
 			id='aboutContainer'
 			ref={containerRef}
-			className={`${
+			className={`relative h-full flex-col items-center justify-center overflow-hidden text-center md:flex-row ${
 				darkMode && 'bg-slate-800 text-white'
-			} relative h-full flex-col items-center justify-between overflow-hidden text-center md:flex-row`}
+			}`}
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
-				opacity: !darkMode && allOpacityTransform,
+				opacity: darkMode ? '1' : allOpacityTransform,
 			}}
 		>
 			<AboutSpiral
@@ -140,18 +140,15 @@ export default function About({ darkMode }) {
 			<motion.div
 				ref={textContentRef}
 				id='aboutOverflowContainer'
-				className={`flex h-full flex-col justify-between overflow-y-scroll md:flex-row md:overflow-visible ${styles.aboutOverflowContainer}`}
+				className={`flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-y-visible ${styles.aboutOverflowContainer}`}
 			>
 				<motion.div
 					id='aboutTextContent'
-					className='relative mb-16 flex h-auto flex-col items-start justify-between space-y-16 rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop md:max-w-[50%] md:space-y-8 lg:h-full lg:max-w-[60%] lg:justify-evenly lg:pr-8'
-					style={{
-						opacity: darkMode ? allOpacityTransform : '',
-					}}
+					className='relative mb-16 flex h-auto flex-col items-start justify-between space-y-16 rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop md:mb-0 md:max-w-[50%] md:space-y-8 lg:h-full lg:max-w-lg lg:justify-evenly lg:pr-8'
 					variants={textVariants}
 					initial='initial'
 					whileInView='visible'
-					viewport={{ amount: 'some' }}
+					viewport={{ amount: 'all' }}
 					onAnimationComplete={() => {
 						if (containerInView) {
 							spiralControls.start('visible')
@@ -239,6 +236,7 @@ export default function About({ darkMode }) {
 							scrollDownControls.start('bouncing')
 						}
 					}}
+					onViewportLeave={() => spiralControls.start('hidden')}
 				>
 					<motion.div
 						id='aboutPhotoMask'
@@ -266,7 +264,7 @@ export default function About({ darkMode }) {
 						whileTap={{ scale: 0.9 }}
 						onClick={() => {
 							scrollDownControls.set('initial')
-							spiralControls.set('hidden')
+							spiralControls.start('hidden')
 							handControls.set('initial')
 							document
 								.getElementById('workContainer')
