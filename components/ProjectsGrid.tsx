@@ -30,7 +30,7 @@ function ProjectsGrid({ darkMode }) {
 					description='Media sharing for pet owners and pet lovers'
 					altImgText='a Social Media app for pet owners'
 					stackItems={[
-						'React',
+						'React.js',
 						'TypeScript',
 						'Redux Toolkit',
 						'Node.js',
@@ -50,7 +50,7 @@ function ProjectsGrid({ darkMode }) {
 					altImgText='a React-based typing game to test your speed and accuracy'
 					stackItems={[
 						'D3.js',
-						'React',
+						'React.js',
 						'TypeScript',
 						'Context API',
 						'TailwindCSS',
@@ -79,10 +79,10 @@ function ProjectsGrid({ darkMode }) {
 					description='Quickly and conveniently message your friends'
 					altImgText='a chat app for messaging your friends'
 					stackItems={[
-						'React',
+						'React.js',
 						'TypeScript',
 						'MySQL',
-						'Express',
+						'Express.js',
 						'Context API',
 						'TailwindCSS',
 						'Google OAuth',

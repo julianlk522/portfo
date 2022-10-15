@@ -56,7 +56,7 @@ function ProjectGridMember({
 		<div
 			className={`relative col-span-3 h-full w-full overflow-hidden rounded-[2rem] shadow-xl ${tailwindStyles}`}
 			style={{
-				background: gridMemberHovered && 'black',
+				background: gridMemberHovered ? 'black' : 'transparent',
 			}}
 			onMouseEnter={() => {
 				setGridMemberHovered(true)
@@ -71,14 +71,14 @@ function ProjectGridMember({
 		>
 			<div
 				id='projectContentContainer'
-				className='flex h-full w-full flex-col items-center justify-evenly p-4 text-white'
+				className='relative flex h-full w-full flex-col items-center justify-evenly p-4 text-white'
 			>
 				<Image
 					src={screenshots[screenshotId]}
 					alt={altImgText}
 					layout='fill'
 					className={`object-cover ${objectPosition} ? ${objectPosition} : ''`}
-					style={{ opacity: gridMemberHovered && '10%' }}
+					style={{ opacity: gridMemberHovered ? '10%' : '1' }}
 				/>
 				<p className='projectTitle text-3xl'>{title}</p>
 				{description && <p className='text-md'>{description}</p>}
