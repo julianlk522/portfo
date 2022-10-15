@@ -1,21 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import {
+	motion,
+	useScroll,
+	useTransform,
+	useAnimationControls,
+} from 'framer-motion'
 import Work from '../components/Work'
 import Contact from '../components/Contact'
-import cloud from '../public/Cloud.svg'
 import About from '../components/About'
 import styles from './index.module.css'
+import WelcomeCloud from '../components/WelcomeCloud'
 
 export default function Home({ darkMode }) {
 	const welcomeContainerRef = useRef(null)
-	const workSectionRef = useRef(null)
+	const aboutSectionRef = useRef(null)
 	const hueRotateRef = useRef(null)
 	const innerCircleRef = useRef(null)
 	const middleCircleRef = useRef(null)
 	const outerCircleRef = useRef(null)
-	const [hueCoef, setHueCoef] = useState<number>(0)
+	// const [hueCoef, setHueCoef] = useState<number>(0)
+	const cloudControls = useAnimationControls()
 
 	const { scrollYProgress } = useScroll()
 
@@ -84,36 +89,31 @@ export default function Home({ darkMode }) {
 					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 					opacity: darkMode ? '1' : opacityTransform,
 				}}
-				onMouseMove={(e: React.MouseEvent) => {
-					setHueCoef((prev) => prev + e.movementX / 4)
-					hueRotateRef.current.style.filter = `hue-rotate(${hueCoef}deg)`
-				}}
+				// onMouseMove={(e: React.MouseEvent) => {
+				// 	setHueCoef((prev) => prev + e.movementX / 4)
+				// 	hueRotateRef.current.style.filter = `hue-rotate(${hueCoef}deg)`
+				// }}
 				initial='initial'
 				variants={containerVariants}
 				whileInView='visible'
 				viewport={{ once: true }}
 				onAnimationComplete={() => {
+					cloudControls.start('visible')
 					startCirclesAnimation()
 					setTimeout(() => {
 						endAnimation()
 					}, 1500)
 				}}
 			>
-				<div
+				<motion.div
 					id='bgCloud'
 					ref={hueRotateRef}
 					className={`${
 						darkMode ? 'opacity-5' : 'opacity-10'
-					} absolute bottom-0 right-[-15%] h-3/4 w-3/4`}
+					} absolute top-[45%] right-0 hidden h-1/2 w-1/2 justify-center overflow-visible sm:flex`}
 				>
-					<Image
-						src={cloud}
-						layout='fill'
-						objectFit='contain'
-						alt='illustration'
-						priority
-					/>
-				</div>
+					<WelcomeCloud cloudControls={cloudControls} />
+				</motion.div>
 				<motion.div
 					id='welcomeTitleContainer'
 					className='flex items-center justify-center'
@@ -203,7 +203,7 @@ export default function Home({ darkMode }) {
 						}}
 						whileTap={{ scale: 0.9 }}
 						onClick={() =>
-							workSectionRef.current.scrollIntoView({
+							aboutSectionRef.current.scrollIntoView({
 								behavior: 'smooth',
 							})
 						}
@@ -213,7 +213,8 @@ export default function Home({ darkMode }) {
 					</motion.button>
 				</div>
 			</motion.section>
-			<div ref={workSectionRef}></div>
+			<div ref={aboutSectionRef}></div>
+
 			<About darkMode={darkMode} />
 			<Work darkMode={darkMode} />
 			<Contact darkMode={darkMode} />
