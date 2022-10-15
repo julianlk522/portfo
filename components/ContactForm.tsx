@@ -78,7 +78,9 @@ function ContactForm({ darkMode }) {
 			}`}
 			onSubmit={submitForm}
 		>
-			<h4 className='self-start pb-2 text-lg'>Name</h4>
+			<label htmlFor='nameInput' className='self-start pb-2 text-lg'>
+				Name
+			</label>
 			<input
 				type='text'
 				name='name'
@@ -88,7 +90,9 @@ function ContactForm({ darkMode }) {
 					darkMode ? 'border-white' : 'border-black'
 				}`}
 			/>
-			<h4 className='self-start py-2 text-lg'>Email</h4>
+			<label htmlFor='emailInput' className='self-start py-2 text-lg'>
+				Email
+			</label>
 			<input
 				type='email'
 				name='email'
@@ -98,7 +102,9 @@ function ContactForm({ darkMode }) {
 					darkMode ? 'border-white' : 'border-black'
 				}`}
 			/>
-			<h4 className='self-start py-2 text-lg'>Message</h4>
+			<label htmlFor='messageInput' className='self-start py-2 text-lg'>
+				Message
+			</label>
 			<textarea
 				name='message'
 				id='messageInput'
