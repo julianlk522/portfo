@@ -140,7 +140,7 @@ export default function About({ darkMode }) {
 			<motion.div
 				ref={textContentRef}
 				id='aboutOverflowContainer'
-				className={`flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-y-visible ${styles.aboutOverflowContainer}`}
+				className={`mx-auto flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-y-visible ${styles.aboutOverflowContainer}`}
 			>
 				<motion.div
 					id='aboutTextContent'
