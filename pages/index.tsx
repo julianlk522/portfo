@@ -104,7 +104,7 @@ export default function Home({ darkMode }) {
 				<motion.div variants={childVariants}>
 					<div
 						id='bgCircleEffectPink'
-						className='absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-[#FFACC6] opacity-[15%] blur-3xl dark:opacity-10 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
+						className='absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-[#FFACC6] opacity-10 blur-3xl sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
 					></div>
 					<div
 						id='bgCircleEffectBlue'
@@ -190,7 +190,7 @@ export default function Home({ darkMode }) {
 				>
 					<motion.button
 						id='continueButton'
-						className='relative self-end rounded-[2rem] bg-[rgba(255,255,255,0.9)] px-4 before:absolute before:inset-[-4px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:bg-slate-800 dark:shadow-2xl dark:hover:text-white'
+						className='relative self-end rounded-[2rem] bg-[rgba(255,255,255,0.9)] px-4 before:absolute before:inset-[-2px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:bg-slate-800 dark:shadow-2xl dark:hover:text-white'
 						style={{
 							fontSize: 'clamp(1.25rem, 4vw, 4vh)',
 							width: 'min(100%, 250px)',
