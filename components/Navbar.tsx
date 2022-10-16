@@ -62,7 +62,20 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						<li
 							id='darkModeSwitchContainer'
 							className='flex items-center justify-evenly'
-							onClick={() => setDarkMode(!darkMode)}
+							onClick={() => {
+								setDarkMode(!darkMode)
+								if (!darkMode) {
+									localStorage.setItem('theme', 'dark')
+									document.documentElement.classList.add(
+										'dark'
+									)
+								} else {
+									localStorage.setItem('theme', 'light')
+									document.documentElement.classList.remove(
+										'dark'
+									)
+								}
+							}}
 						>
 							<motion.span className='mt-[-5%] h-3 w-3 text-xs lg:h-6 lg:w-6 lg:text-lg'>
 								{darkMode ? '🌙' : '🔆'}

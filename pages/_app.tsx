@@ -87,18 +87,19 @@ function MyApp({ Component, pageProps }) {
 		return () => clearTimeout(userScrollingTimeout)
 	}, [currentScrollY])
 
-	//	check for dark mode preferences, assign to localstorage if none
+	//	check for system darkMode preferences
 	useEffect(() => {
-		if (localStorage.theme) {
-			if (localStorage.theme === 'dark') {
+		if (!localStorage.theme) {
+			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				localStorage.setItem('theme', 'dark')
 				setDarkMode(true)
-			} else setDarkMode(false)
-		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.classList.add('dark')
+			} else {
+				setDarkMode(false)
+			}
+		} else if (localStorage.theme === 'dark') {
 			setDarkMode(true)
-			localStorage.setItem('theme', 'dark')
-		} else {
-			setDarkMode(false)
-			localStorage.setItem('theme', 'light')
+			document.documentElement.classList.add('dark')
 		}
 	}, [])
 
