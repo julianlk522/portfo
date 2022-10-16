@@ -144,11 +144,11 @@ export default function About({ darkMode }) {
 			>
 				<motion.div
 					id='aboutTextContent'
-					className='relative mb-16 flex h-auto flex-col items-start justify-between space-y-16 rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop md:mb-0 md:max-w-[50%] md:space-y-8 lg:h-full lg:max-w-lg lg:justify-evenly lg:pr-8'
+					className='relative mb-16 flex h-auto flex-col items-start justify-between space-y-8 rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop md:mb-0 md:max-w-[50%] md:space-y-4 lg:h-full lg:max-w-lg lg:justify-evenly lg:pr-8'
 					variants={textVariants}
 					initial='initial'
 					whileInView='visible'
-					viewport={{ amount: 'all' }}
+					viewport={{ amount: 'some', margin: '0px 100px' }}
 					onAnimationComplete={() => {
 						if (containerInView) {
 							spiralControls.start('visible')
@@ -157,7 +157,7 @@ export default function About({ darkMode }) {
 				>
 					<motion.h2
 						id='aboutTitle'
-						className={`mt-8 text-center ${
+						className={`text-center lg:mt-8 ${
 							darkMode
 								? 'text-white drop-shadow-mediumDark'
 								: 'drop-shadow-xl'

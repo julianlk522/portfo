@@ -72,8 +72,9 @@ export default function Home({ darkMode }) {
 			<Head>
 				<title>Julian&apos;s Web Dev Portfolio</title>
 				<meta
-					name='A site where you can find info about me and my work as a full-stack developer'
-					content='Created with NextJS'
+					name='description'
+					content='A site where you can find info about me and my work as a full-stack developer'
+					key='desc'
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
@@ -163,8 +164,9 @@ export default function Home({ darkMode }) {
 					>
 						to the
 					</span>
+					{/* to-do: make separate element */}
 					<h2
-						className='relative bg-tomatoToLightPink bg-clip-text text-transparent before:absolute before:top-[-125%] before:left-[-180%] before:h-48 before:w-48 before:rounded-full before:border-[6px] before:border-[#00d8ff] before:border-opacity-[2%] after:absolute after:top-[-125%] after:left-[-200%] after:h-48 after:w-48 after:rounded-full after:border-[6px] after:border-[#00d8ff] after:border-opacity-5 sm:before:top-[-100%] sm:before:h-32 sm:before:w-32 sm:before:border-[6px] sm:after:top-[50%] sm:after:h-96 sm:after:w-96 sm:after:border-[12px]'
+						className='relative bg-tomatoToLightPink bg-clip-text text-transparent before:absolute before:top-[-125%] before:left-[-180%] before:h-48 before:w-48 before:rounded-full before:border-[6px] before:border-[#00d8ff] before:border-opacity-[2%] after:absolute after:top-[-125%] after:left-[-200%] after:h-48 after:w-48 after:rounded-full after:border-[6px] after:border-[#00d8ff] after:border-opacity-[3%] sm:before:top-[-100%] sm:before:h-32 sm:before:w-32 sm:before:border-[6px] sm:after:top-[-45%] sm:after:h-96 sm:after:w-96 sm:after:border-[12px]'
 						style={{
 							marginLeft: 'max(4%, 0.75rem)',
 						}}

@@ -71,14 +71,17 @@ function ContactForm({ darkMode }) {
 	return (
 		<form
 			ref={formRef}
-			className={`relative z-[1] mx-8 flex h-[125%] w-full max-w-xl flex-col items-center justify-between rounded-[2rem] px-12 pt-16 pb-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-[2rem] xs:h-full lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:shadow-2xl ${
+			className={`relative z-[1] mx-8 flex h-[125%] w-full max-w-xl flex-col items-center justify-between rounded-[2rem] py-4 px-12 pt-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-[2rem] sm:h-[200%] md:pt-12 md:pb-8 lg:h-full lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:pt-8 lg:shadow-xl xl:w-[60%] xl:pb-8 xl:pt-16 ${
 				darkMode
 					? 'text-white after:bg-contactFormBackdropDarkMode after:blur-sm'
 					: 'after:bg-contactFormBackdropLightMode after:backdrop-blur-lg'
 			}`}
 			onSubmit={submitForm}
 		>
-			<label htmlFor='nameInput' className='self-start pb-2 text-lg'>
+			<label
+				htmlFor='nameInput'
+				className='self-start py-4 text-xs lg:pb-1 xl:text-base'
+			>
 				Name
 			</label>
 			<input
@@ -86,11 +89,14 @@ function ContactForm({ darkMode }) {
 				name='name'
 				id='nameInput'
 				required
-				className={`w-full rounded-xl border-2 border-opacity-10 bg-transparent py-2 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
+				className={`w-full rounded-xl border-2 border-opacity-10 bg-transparent py-1 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
 					darkMode ? 'border-white' : 'border-black'
 				}`}
 			/>
-			<label htmlFor='emailInput' className='self-start py-2 text-lg'>
+			<label
+				htmlFor='emailInput'
+				className='self-start py-4 text-xs lg:py-1 xl:text-base'
+			>
 				Email
 			</label>
 			<input
@@ -98,25 +104,28 @@ function ContactForm({ darkMode }) {
 				name='email'
 				id='emailInput'
 				required
-				className={`w-full rounded-xl border-2 border-opacity-10 bg-transparent py-2 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
+				className={`w-full rounded-xl border-2 border-opacity-10 bg-transparent py-1 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
 					darkMode ? 'border-white' : 'border-black'
 				}`}
 			/>
-			<label htmlFor='messageInput' className='self-start py-2 text-lg'>
+			<label
+				htmlFor='messageInput'
+				className='self-start py-4 text-xs lg:py-2 xl:text-base'
+			>
 				Message
 			</label>
 			<textarea
 				name='message'
 				id='messageInput'
 				required
-				className={`w-full resize-none rounded-xl border-2 border-opacity-10 bg-transparent p-4 py-2 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
+				className={`w-full resize-none rounded-xl border-2 border-opacity-10 bg-transparent px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
 					darkMode ? 'border-white' : 'border-black'
 				}`}
 				rows={5}
 			></textarea>
 			<motion.button
 				id='submitButton'
-				className={`relative mt-8 flex overflow-hidden rounded-[2rem] border-2 border-opacity-5 px-4 py-2 ${
+				className={`relative mt-4 flex min-h-[2rem] overflow-hidden rounded-[2rem] border-2 border-opacity-5 px-4 py-2 text-xs lg:mt-2 lg:pb-2 ${
 					darkMode
 						? 'border-white bg-slate-800'
 						: 'border-black bg-[rgba(255,255,255,0.75)]'

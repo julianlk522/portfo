@@ -80,11 +80,11 @@ export default function Contact({ darkMode }) {
 		<motion.section
 			ref={containerRef}
 			id='contactContainer'
-			className={`relative flex h-full flex-col items-center justify-between overflow-hidden bg-cover py-16 px-32 text-center lg:overflow-visible ${
+			className={`relative flex h-full flex-col items-center justify-between overflow-hidden bg-cover px-32 text-center lg:overflow-visible xl:py-16 ${
 				darkMode ? 'bg-slate-800' : 'bg-mainBg'
 			}`}
 			style={{
-				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
+				padding: 'clamp(2rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 				opacity: !darkMode && opacityTransform,
 			}}
 		>
@@ -105,29 +105,29 @@ export default function Contact({ darkMode }) {
 			<div
 				ref={contentBodyRef}
 				id='contactContentBody'
-				className={`flex h-[300%] w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll sm:mt-16 lg:mt-0 lg:h-full lg:flex-row lg:overflow-y-hidden ${styles.contactContentBody}`}
+				className={`flex h-[300%] w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll md:mt-8 lg:mt-0 lg:h-full lg:flex-row lg:overflow-y-hidden ${styles.contactContentBody}`}
 			>
+				<p
+					className={`my-16 text-xs opacity-40 md:mt-0 lg:hidden ${
+						darkMode ? 'text-white' : ''
+					}`}
+				>
+					Scroll down to see more
+				</p>
 				<div
 					id='experience'
-					className={`relative flex h-[300%] w-full flex-col items-center justify-evenly xs:h-[200%] md:h-full lg:order-2 lg:my-0 lg:ml-8 lg:max-h-[80%] ${
+					className={`relative flex h-[300%] w-full flex-col items-center justify-evenly xs:h-[200%] lg:order-2 lg:my-0 lg:ml-8 lg:h-full lg:max-h-[80%] lg:space-y-4 ${
 						darkMode && 'text-white'
 					}`}
-					style={{ maxWidth: 'max(50vw, 750px)' }}
+					style={{ maxWidth: 'max(50vw, 600px)' }}
 				>
 					<div className='flex flex-col items-center justify-between sm:flex-row'>
-						<p
-							className={`mb-16 text-xs opacity-40 sm:hidden ${
-								darkMode ? 'text-white' : ''
-							}`}
-						>
-							Scroll down to see more
-						</p>
 						<motion.div
 							className={`${
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
-							} mx-8 mb-16 flex h-24 w-full max-w-[6rem] items-center justify-center rounded-full p-2 sm:mb-0`}
+							} mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full p-2 sm:mb-0`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -161,7 +161,7 @@ export default function Contact({ darkMode }) {
 					</div>
 					<div className='flex flex-col items-center justify-between sm:flex-row'>
 						<motion.div
-							className={`my-16 mx-8 flex h-24 w-full max-w-[6rem] items-center justify-center rounded-full p-2 ${
+							className={`mx-8 my-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full p-2 lg:my-0 ${
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'border-2 border-[rgba(255,255,255,0.5)]  bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
@@ -203,7 +203,7 @@ export default function Contact({ darkMode }) {
 								darkMode
 									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
 									: 'border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
-							} my-16 mx-8 flex h-24 w-full max-w-[6rem] items-center justify-center rounded-full px-2 py-4 sm:my-0`}
+							} my-16 mx-8 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full px-2 py-4 sm:my-0`}
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -217,8 +217,8 @@ export default function Contact({ darkMode }) {
 							<Image
 								alt='proficiency in modern frameworks like React'
 								src={react}
-								width={64}
-								height={64}
+								width={80}
+								height={80}
 								layout='fixed'
 								className='object-contain object-center'
 							/>
