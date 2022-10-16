@@ -42,12 +42,18 @@ export default function About({ darkMode }) {
 
 	const textChildVariants = {
 		initial: {
-			x: -50,
+			y: 5,
+			x: -25,
 			opacity: 0,
 		},
 		visible: {
+			y: 0,
 			x: 0,
 			opacity: 1,
+			transition: {
+				type: 'spring',
+				bounce: 0.5,
+			},
 		},
 	}
 
@@ -124,9 +130,7 @@ export default function About({ darkMode }) {
 		<motion.section
 			id='aboutContainer'
 			ref={containerRef}
-			className={`relative h-full flex-col items-center justify-center overflow-hidden text-center md:flex-row ${
-				darkMode && 'bg-slate-800 text-white'
-			}`}
+			className='relative h-full flex-col items-center justify-center overflow-hidden text-center dark:bg-slate-800 dark:bg-none dark:text-white md:flex-row'
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 				opacity: darkMode ? '1' : allOpacityTransform,
@@ -144,24 +148,27 @@ export default function About({ darkMode }) {
 			>
 				<motion.div
 					id='aboutTextContent'
-					className='relative mb-16 flex h-auto flex-col items-start justify-between space-y-8 rounded-xl text-left after:absolute after:z-[-1] after:h-full after:w-full after:bg-aboutTextContentBackdrop md:mb-0 md:max-w-[50%] md:space-y-4 lg:h-full lg:max-w-lg lg:justify-evenly lg:pr-8'
+					className='relative my-auto mb-16 flex h-full flex-col items-start justify-between space-y-8 overflow-x-visible rounded-xl text-left sm:max-h-[800px] md:mb-auto md:max-w-[50%] md:space-y-4 lg:h-full lg:max-w-lg lg:justify-evenly lg:pr-8'
 					variants={textVariants}
 					initial='initial'
 					whileInView='visible'
-					viewport={{ amount: 'all', margin: '0px 100px' }}
+					viewport={{
+						amount: mdScreenOrGreater ? 'all' : 'some',
+						margin: '0px 100px',
+					}}
 					onAnimationComplete={() => {
 						if (containerInView) {
 							spiralControls.start('visible')
 						}
 					}}
 				>
+					<div
+						id='aboutTextContentBackdrop'
+						className='absolute right-0 top-1/4 h-[100vw] w-[100vw] bg-aboutTextContentBackdrop opacity-10 dark:opacity-[7%] md:right-[-67%] lg:top-[-10%] lg:right-[-10%] lg:h-[150%] lg:w-[150%]'
+					></div>
 					<motion.h2
 						id='aboutTitle'
-						className={`text-center lg:mt-8 ${
-							darkMode
-								? 'text-white drop-shadow-mediumDark'
-								: 'drop-shadow-xl'
-						}`}
+						className='text-center drop-shadow-xl dark:text-white dark:drop-shadow-mediumDark lg:mt-8'
 						style={{
 							fontSize: 'clamp(2rem, 6vw, 7vh)',
 						}}
@@ -177,16 +184,12 @@ export default function About({ darkMode }) {
 						</motion.span>{' '}
 						Hello and
 						<br />
-						<span
-							className={`bg-clip-text text-transparent ${
-								darkMode ? 'bg-tomatoToLightPink' : 'bg-sunrise'
-							}`}
-						>
+						<span className='bg-sunrise bg-clip-text text-transparent dark:bg-tomatoToLightPink'>
 							Welcome!
 						</span>
 					</motion.h2>
 					<motion.h3
-						className='max-w-[80%]  text-xs opacity-60 sm:max-w-[100%] lg:text-sm'
+						className='max-w-[80%]  text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
 						style={{ width: 'min(100%, 500px)' }}
 						variants={textChildVariants}
 					>
@@ -197,7 +200,7 @@ export default function About({ darkMode }) {
 						strategies.
 					</motion.h3>
 					<motion.h3
-						className='max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] lg:text-sm'
+						className='max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] xl:text-sm'
 						style={{ width: 'min(100%, 500px)' }}
 						variants={textChildVariants}
 					>
@@ -206,7 +209,7 @@ export default function About({ darkMode }) {
 						and technologies to see what&apos;s possible.
 					</motion.h3>
 					<motion.h3
-						className='max-w-[80%] text-xs opacity-60 sm:max-w-[100%] lg:text-sm'
+						className='max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
 						style={{ width: 'min(100%, 500px)' }}
 						variants={textChildVariants}
 					>
@@ -214,7 +217,7 @@ export default function About({ darkMode }) {
 						designwork of all shapes and sizes. ⚙
 					</motion.h3>
 					<motion.h3
-						className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] lg:text-sm'
+						className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] xl:text-sm'
 						style={{ width: 'min(100%, 500px)' }}
 						variants={textChildVariants}
 					>
@@ -240,7 +243,7 @@ export default function About({ darkMode }) {
 				>
 					<motion.div
 						id='aboutPhotoMask'
-						className='relative flex h-48 w-48 items-center justify-center overflow-hidden rounded-full shadow-thick lg:h-72 lg:w-72'
+						className='relative flex h-48 max-h-[33vh] w-48 max-w-[33vh] items-center justify-center overflow-hidden rounded-full shadow-thick lg:h-72 lg:w-72'
 						style={{
 							backgroundImage:
 								'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.75) 100%)',
@@ -257,7 +260,7 @@ export default function About({ darkMode }) {
 					<motion.button
 						ref={scrollDownRef}
 						id='aboutScrollDownButton'
-						className={`${darkMode && 'invert'} my-16 opacity-10`}
+						className='my-16 opacity-10 dark:invert'
 						animate={scrollDownControls}
 						variants={photoChildVariants}
 						whileHover={{ scale: 1.1 }}
@@ -280,11 +283,7 @@ export default function About({ darkMode }) {
 							className='rotate-180'
 						/>
 					</motion.button>
-					<p
-						className={`mb-16 text-xs opacity-40 md:mb-0 ${
-							darkMode ? 'text-white' : ''
-						}`}
-					>
+					<p className='mb-16 text-xs opacity-40 dark:text-white md:mb-0'>
 						Click the down arrow to continue
 					</p>
 				</motion.div>
