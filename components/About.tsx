@@ -148,7 +148,7 @@ export default function About({ darkMode }) {
 					variants={textVariants}
 					initial='initial'
 					whileInView='visible'
-					viewport={{ amount: 'some', margin: '0px 100px' }}
+					viewport={{ amount: 'all', margin: '0px 100px' }}
 					onAnimationComplete={() => {
 						if (containerInView) {
 							spiralControls.start('visible')

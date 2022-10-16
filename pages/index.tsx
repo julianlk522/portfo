@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import Head from 'next/head'
 import {
 	motion,
@@ -49,10 +49,6 @@ export default function Home({ darkMode }) {
 		},
 	}
 
-	useEffect(() => {
-		if (darkMode) welcomeContainerRef.current.style.opacity = '1'
-	}, [darkMode])
-
 	const opacityTransform = useTransform(scrollYProgress, [0, 0.17], [1, 0])
 
 	const startCirclesAnimation = () => {
@@ -68,7 +64,10 @@ export default function Home({ darkMode }) {
 	}
 
 	return (
-		<>
+		<div
+			id='appBgContainer'
+			className='z-[1] h-full dark:bg-slate-800 dark:bg-none'
+		>
 			<Head>
 				<title>Julian&apos;s Web Dev Portfolio</title>
 				<meta
@@ -81,14 +80,10 @@ export default function Home({ darkMode }) {
 			<motion.section
 				ref={welcomeContainerRef}
 				id='welcomeContainer'
-				className={`relative z-[1] flex h-full flex-col items-center justify-between overflow-hidden bg-cover ${
-					darkMode
-						? 'bg-slate-800 text-white'
-						: 'bg-mainBg text-stone-500'
-				}`}
+				className='relative z-[1] flex h-full flex-col items-center justify-between overflow-hidden bg-mainBg bg-cover text-stone-500 dark:bg-slate-800 dark:bg-none dark:text-white'
 				style={{
 					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
-					opacity: darkMode ? '1' : opacityTransform,
+					opacity: opacityTransform,
 				}}
 				// onMouseMove={(e: React.MouseEvent) => {
 				// 	setHueCoef((prev) => prev + e.movementX / 4)
@@ -106,15 +101,23 @@ export default function Home({ darkMode }) {
 					}, 1500)
 				}}
 			>
-				<motion.div
+				<motion.div variants={childVariants}>
+					<div
+						id='bgCircleEffectPink'
+						className='absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-[#FFACC6] opacity-[15%] blur-3xl dark:opacity-10 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
+					></div>
+					<div
+						id='bgCircleEffectBlue'
+						className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] shadow-thick blur-3xl dark:opacity-[7%] sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
+					></div>
+				</motion.div>
+				{/* <motion.div
 					id='bgCloud'
 					ref={hueRotateRef}
-					className={`${
-						darkMode ? 'opacity-5' : 'opacity-10'
-					} absolute top-[45%] right-0 hidden h-1/2 w-1/2 justify-center overflow-visible sm:flex`}
+					className='absolute top-[45%] right-0 hidden h-1/3 w-1/3 justify-center overflow-visible opacity-10 lg:flex'
 				>
 					<WelcomeCloud cloudControls={cloudControls} />
-				</motion.div>
+				</motion.div> */}
 				<motion.div
 					id='welcomeTitleContainer'
 					className='flex items-center justify-center'
@@ -122,7 +125,7 @@ export default function Home({ darkMode }) {
 					variants={childVariants}
 				>
 					<motion.h1
-						className={`${darkMode && 'text-white'}`}
+						className='dark:text-white'
 						style={{
 							fontSize: 'clamp(2rem, 10vw, 10vh)',
 							marginRight: 'max(4vw, 2rem)',
@@ -157,16 +160,12 @@ export default function Home({ darkMode }) {
 					style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
 					variants={childVariants}
 				>
-					<span
-						className={`${
-							darkMode ? 'text-white opacity-40' : ''
-						} min-w-fit`}
-					>
+					<h3 className='min-w-fit opacity-40 dark:text-white'>
 						to the
-					</span>
-					{/* to-do: make separate element */}
+					</h3>
+					<br />
 					<h2
-						className='relative bg-tomatoToLightPink bg-clip-text text-transparent before:absolute before:top-[-125%] before:left-[-180%] before:h-48 before:w-48 before:rounded-full before:border-[6px] before:border-[#00d8ff] before:border-opacity-[2%] after:absolute after:top-[-125%] after:left-[-200%] after:h-48 after:w-48 after:rounded-full after:border-[6px] after:border-[#00d8ff] after:border-opacity-[3%] sm:before:top-[-100%] sm:before:h-32 sm:before:w-32 sm:before:border-[6px] sm:after:top-[-45%] sm:after:h-96 sm:after:w-96 sm:after:border-[12px]'
+						className='bg-tomatoToLightPink bg-clip-text text-transparent'
 						style={{
 							marginLeft: 'max(4%, 0.75rem)',
 						}}
@@ -175,7 +174,7 @@ export default function Home({ darkMode }) {
 					</h2>
 				</motion.div>
 				<motion.h3
-					className={`text-center ${darkMode ? 'text-white' : ''}`}
+					className='text-center dark:text-white'
 					style={{
 						fontSize: 'clamp(1.25rem, 4vw, 4vh)',
 						margin: 'clamp(1rem, 3vw, 4vh) 0',
@@ -187,22 +186,16 @@ export default function Home({ darkMode }) {
 
 				<div
 					id='continueButtonContainer'
-					className='flex w-full max-w-3xl justify-center md:justify-end'
+					className='flex w-[80%] max-w-3xl justify-center md:justify-end'
 				>
 					<motion.button
 						id='continueButton'
-						className={`relative self-end rounded-[2rem] px-4 before:absolute before:top-[-2px] before:left-[-2px] before:right-[-2px] before:bottom-[-2px] before:z-[-1] before:rounded-[2rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat ${
-							darkMode
-								? 'bg-slate-800 shadow-2xl'
-								: 'bg-[rgba(255,255,255,0.9)] hover:text-white'
-						}`}
+						className='relative self-end rounded-[2rem] bg-[rgba(255,255,255,0.9)] px-4 before:absolute before:inset-[-4px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:bg-slate-800 dark:shadow-2xl dark:hover:text-white'
 						style={{
 							fontSize: 'clamp(1.25rem, 4vw, 4vh)',
 							width: 'min(100%, 250px)',
 						}}
-						whileHover={{
-							scale: 1.1,
-						}}
+						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
 						onClick={() =>
 							aboutSectionRef.current.scrollIntoView({
@@ -220,6 +213,6 @@ export default function Home({ darkMode }) {
 			<About darkMode={darkMode} />
 			<Work darkMode={darkMode} />
 			<Contact darkMode={darkMode} />
-		</>
+		</div>
 	)
 }

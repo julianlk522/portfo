@@ -89,6 +89,7 @@ function ContactForm({ darkMode }) {
 				name='name'
 				id='nameInput'
 				required
+				autoComplete='name'
 				className={`w-full rounded-xl border-2 border-opacity-10 bg-transparent py-1 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
 					darkMode ? 'border-white' : 'border-black'
 				}`}
@@ -104,6 +105,7 @@ function ContactForm({ darkMode }) {
 				name='email'
 				id='emailInput'
 				required
+				autoComplete='email'
 				className={`w-full rounded-xl border-2 border-opacity-10 bg-transparent py-1 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
 					darkMode ? 'border-white' : 'border-black'
 				}`}
@@ -118,7 +120,8 @@ function ContactForm({ darkMode }) {
 				name='message'
 				id='messageInput'
 				required
-				className={`w-full resize-none rounded-xl border-2 border-opacity-10 bg-transparent px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
+				autoComplete='off'
+				className={`w-full resize-none rounded-xl border-2 border-opacity-10 bg-transparent px-4 py-2 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none ${
 					darkMode ? 'border-white' : 'border-black'
 				}`}
 				rows={5}
