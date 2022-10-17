@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import pill from '../public/pill.svg'
 import scrollUp from '../public/scrollUp.webp'
 import Image from 'next/image'
 import {
@@ -15,8 +14,7 @@ import styles from './Work.module.css'
 export default function Work({ darkMode }) {
 	const workContainerRef = useRef(null)
 	const containerInView = useInView(workContainerRef, { amount: 'all' })
-	const textBodyRef = useRef(null)
-	const textRefInView = useInView(textBodyRef, { amount: 'all' })
+	const gridAndSideTextContainerRef = useRef(null)
 
 	const scrollDownControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
@@ -27,11 +25,11 @@ export default function Work({ darkMode }) {
 	)
 
 	useEffect(() => {
-		if (!textRefInView) {
+		if (!containerInView) {
 			scrollDownControls.stop()
 			scrollDownControls.set('initial')
 		}
-	}, [textRefInView, scrollDownControls])
+	}, [containerInView, scrollDownControls])
 
 	const textBodyVariants = {
 		initial: {
@@ -53,13 +51,13 @@ export default function Work({ darkMode }) {
 	const textBodyChildVariants = {
 		initial: {
 			y: 0,
-			x: '-100%',
+			x: -25,
 			opacity: 0,
 		},
 		visible: {
 			y: 0,
 			x: 0,
-			opacity: 1,
+			opacity: 0.5,
 			transition: {
 				type: 'spring',
 				duration: 1,
@@ -89,7 +87,7 @@ export default function Work({ darkMode }) {
 	useEffect(() => {
 		const containerScrollTimeout = setTimeout(() => {
 			if (!containerInView) {
-				workContainerRef.current.scrollTop = 0
+				gridAndSideTextContainerRef.current.scrollTop = 0
 			}
 		}, 3000)
 
@@ -100,17 +98,15 @@ export default function Work({ darkMode }) {
 		<motion.section
 			id='workContainer'
 			ref={workContainerRef}
-			className={`relative flex h-full flex-col items-center overflow-x-hidden text-center md:overflow-y-hidden ${
-				styles.workContainer
-			} ${darkMode && 'bg-slate-800'}`}
+			className={`relative flex h-full flex-col items-center justify-center overflow-hidden text-center md:justify-between md:overflow-y-hidden ${styles.workContainer} dark:bg-slate-800`}
 			style={{
-				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 8vh)',
-				opacity: !darkMode && allOpacityTransform,
+				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
+				opacity: darkMode ? '1' : allOpacityTransform,
 			}}
 		>
 			<motion.h2
 				id='workTitle'
-				className={`${darkMode && 'text-white'} my-4`}
+				className='mt-auto h-auto dark:text-white'
 				style={{
 					fontSize: 'clamp(2rem, 8vw, 8vh)',
 				}}
@@ -121,81 +117,61 @@ export default function Work({ darkMode }) {
 				</span>
 			</motion.h2>
 			<motion.div
-				id='projectsContentBody'
-				className='flex h-full w-full max-w-7xl flex-col items-center justify-between'
+				ref={gridAndSideTextContainerRef}
+				id='gridAndSideTextContainer'
+				className='flex h-full w-full max-w-5xl items-center justify-around overflow-y-scroll md:max-h-[80%] lg:max-h-[80%] lg:justify-between lg:overflow-y-visible xl:max-w-7xl xl:justify-around'
 			>
-				<div
-					id='gridAndCaptionContainer'
-					className='flex h-full w-full justify-between'
+				<motion.div
+					id='projectsSideTextLg'
+					className='mr-8 hidden h-full max-w-[25%] flex-col items-center justify-evenly bg-pillBackdrop bg-contain bg-center bg-no-repeat dark:text-white lg:flex'
+					initial='initial'
+					whileInView='visible'
+					viewport={{ amount: 'all' }}
+					variants={textBodyVariants}
+					onAnimationComplete={() => {
+						if (containerInView) {
+							scrollDownControls.start('bouncing')
+						}
+					}}
 				>
-					<motion.div
-						ref={textBodyRef}
-						id='projectsSideTextLg'
-						className={`${
-							darkMode && 'text-white'
-						} relative mr-32 hidden max-w-[25%] flex-col items-center justify-evenly lg:flex`}
-						initial='initial'
-						whileInView='visible'
-						viewport={{ amount: 'all' }}
-						variants={textBodyVariants}
-						onAnimationComplete={() => {
-							if (textRefInView) {
-								scrollDownControls.start('bouncing')
-							}
-						}}
+					<motion.p
+						className='text-md'
+						variants={textBodyChildVariants}
 					>
-						<motion.figure
-							id='pillWrapper'
-							className='absolute left-[-25%] top-[-33%] hidden h-[150%] w-[150%] overflow-visible opacity-20 lg:block'
-						>
-							<Image
-								src={pill}
-								alt='laboratory scenery'
-								layout='fill'
-								className='object-contain'
-							/>
-						</motion.figure>
-						<motion.p
-							className='text-md opacity-50'
-							variants={textBodyChildVariants}
-						>
-							Hover over a project to learn more
-						</motion.p>
-						<motion.button
-							id='workScrollDownButton'
-							className={`'opacity-10 ${darkMode && 'invert'}`}
-							variants={textBodyChildVariants}
-							animate={scrollDownControls}
-							whileHover={{ scale: 1.1 }}
-							whileTap={{ scale: 0.9 }}
-							onClick={() =>
-								document
-									.getElementById('contactContainer')
-									.scrollIntoView({ behavior: 'smooth' })
-							}
-						>
-							{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-							<Image
-								src={scrollUp}
-								className='rotate-180'
-								width={38}
-								height={20}
-								alt='button to scroll to the next section'
-							/>
-						</motion.button>
-					</motion.div>
-					<ProjectsGrid darkMode={darkMode} />
-				</div>
-				<p
-					id='portfoStackDescriptionLg'
-					className={`mt-8 hidden w-full max-w-5xl bg-portfoStackTextSm pr-8 text-xs lg:block lg:bg-portfoStackTextLg lg:text-end ${
-						darkMode ? 'text-white' : ''
-					}`}
-				>
-					This page was made using Next.js, Tailwind CSS and Framer
-					Motion
-				</p>
+						Hover over a project to learn more
+					</motion.p>
+					<motion.button
+						id='workScrollDownPromptLg'
+						className='opacity-10 dark:invert'
+						variants={textBodyChildVariants}
+						animate={scrollDownControls}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+						onClick={() =>
+							document
+								.getElementById('contactContainer')
+								.scrollIntoView({ behavior: 'smooth' })
+						}
+					>
+						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+						<Image
+							src={scrollUp}
+							className='rotate-180'
+							width={38}
+							height={20}
+							alt='button to scroll to the next section'
+						/>
+					</motion.button>
+				</motion.div>
+
+				<ProjectsGrid />
 			</motion.div>
+			<motion.p
+				id='portfoStackDescriptionLg'
+				className='mt-4 hidden w-full max-w-5xl bg-portfoStackTextSm pr-8 text-xs dark:text-white lg:block lg:bg-portfoStackTextLg lg:text-end'
+			>
+				This page was made using Next.js, Tailwind CSS and Framer Motion
+			</motion.p>
 		</motion.section>
 	)
 }

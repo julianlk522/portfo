@@ -21,6 +21,7 @@ module.exports = {
 					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.1) 20%, rgba(255,91,35,0.15) 45%, rgba(255,0,0,0.1) 70%, rgba(255,91,35,0) 100%)',
 				portfoStackTextLg:
 					'linear-gradient(135deg, rgba(255,91,35,0) 35%, rgba(255,91,35,0.1) 60%, rgba(255,0,0,0.15) 85%, rgba(255,91,35,0.1) 95%, rgba(255,91,35,0) 100%)',
+				pillBackdrop: "url('../public/pill.svg')",
 				contactFormBackdropDarkMode:
 					'linear-gradient(330deg, rgba(255,172,198,0) 15%, rgba(0,216,255,0.15) 140%, rgba(255,172,198,0) 50%)',
 				contactFormBackdropLightMode:
