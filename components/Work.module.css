@@ -1,8 +1,8 @@
-.workContainer::-webkit-scrollbar {
+.gridAndSideTextContainer::-webkit-scrollbar {
 	display: none;
 }
 
-.workContainer {
+.gridAndSideTextContainer {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }

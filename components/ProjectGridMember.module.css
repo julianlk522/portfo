@@ -1,0 +1,7 @@
+.projectTitle {
+	font-family: 'Lobster', cursive;
+}
+
+.projectContentContainer:hover .projectLinks {
+	z-index: 2;
+}

@@ -23,11 +23,3 @@ html::-webkit-scrollbar {
 * {
 	box-sizing: border-box;
 }
-
-.projectTitle {
-	font-family: 'Lobster', cursive;
-}
-
-#projectContentContainer:hover .projectLinks {
-	z-index: 2;
-}

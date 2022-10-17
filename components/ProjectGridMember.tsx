@@ -5,6 +5,7 @@ import socialScreenshot from '../public/socialScreenshot.webp'
 import dancingScreenshot from '../public/dancingScreenshot.webp'
 import typingScreenshot from '../public/typingScreenshot.webp'
 import chatScreenshot from '../public/chatScreenshot.webp'
+import styles from './ProjectGridMember.module.css'
 
 const screenshots = [
 	socialScreenshot,
@@ -70,8 +71,7 @@ function ProjectGridMember({
 			}}
 		>
 			<div
-				id='projectContentContainer'
-				className='relative flex h-full w-full flex-col items-center justify-evenly p-4 text-white'
+				className={`relative flex h-full w-full flex-col items-center justify-evenly p-4 text-white ${styles.projectContentContainer}`}
 			>
 				<Image
 					src={screenshots[screenshotId]}
@@ -80,7 +80,7 @@ function ProjectGridMember({
 					className={`object-cover ${objectPosition} ? ${objectPosition} : ''`}
 					style={{ opacity: gridMemberHovered ? '10%' : '1' }}
 				/>
-				<p className='projectTitle text-3xl'>{title}</p>
+				<p className={`text-3xl ${styles.projectTitle}`}>{title}</p>
 				{description && <p className='text-md'>{description}</p>}
 				<motion.p
 					className='my-4 text-[#00d8ff]'
@@ -95,7 +95,9 @@ function ProjectGridMember({
 				>
 					{stackItems[stackItemIndex % stackItems.length]}
 				</motion.p>
-				<div className='projectLinks flex w-full justify-evenly text-xs'>
+				<div
+					className={`flex w-full justify-evenly text-xs ${styles.projectLinks}`}
+				>
 					<a href={ghLink}>Github</a>
 					{liveLink ? (
 						<a href={liveLink}>Live</a>

@@ -98,7 +98,7 @@ export default function Work({ darkMode }) {
 		<motion.section
 			id='workContainer'
 			ref={workContainerRef}
-			className={`relative flex h-full flex-col items-center justify-center overflow-hidden text-center md:justify-between md:overflow-y-hidden ${styles.workContainer} dark:bg-slate-800`}
+			className='flex h-full flex-col items-center justify-center overflow-hidden text-center dark:bg-slate-800 md:justify-between  md:overflow-y-hidden'
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 				opacity: darkMode ? '1' : allOpacityTransform,
@@ -119,7 +119,7 @@ export default function Work({ darkMode }) {
 			<motion.div
 				ref={gridAndSideTextContainerRef}
 				id='gridAndSideTextContainer'
-				className='flex h-full w-full max-w-5xl items-center justify-around overflow-y-scroll md:max-h-[80%] lg:max-h-[80%] lg:justify-between lg:overflow-y-visible xl:max-w-7xl xl:justify-around'
+				className={`flex h-full w-full max-w-5xl items-center justify-around overflow-y-scroll md:max-h-[80%] lg:max-h-[80%] lg:justify-between lg:overflow-y-visible xl:max-w-7xl xl:justify-around ${styles.gridAndSideTextContainer}`}
 			>
 				<motion.div
 					id='projectsSideTextLg'
