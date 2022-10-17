@@ -80,17 +80,15 @@ export default function Contact({ darkMode }) {
 		<motion.section
 			ref={containerRef}
 			id='contactContainer'
-			className={`relative flex h-full flex-col items-center justify-between overflow-hidden bg-cover px-32 text-center lg:overflow-visible xl:py-16 ${
-				darkMode ? 'bg-slate-800' : 'bg-mainBg'
-			}`}
+			className='relative flex h-full flex-col items-center justify-between overflow-hidden bg-mainBg bg-cover px-32 text-center dark:bg-slate-800 dark:bg-none lg:overflow-visible xl:py-16'
 			style={{
-				padding: 'clamp(2rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
-				opacity: !darkMode && opacityTransform,
+				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
+				opacity: darkMode ? '1' : opacityTransform,
 			}}
 		>
 			<h2
 				id='contactTitle'
-				className={`my-4 ${darkMode && 'text-white'}`}
+				className='my-4 dark:text-white'
 				style={{ fontSize: 'clamp(2rem, 5vw, 6vh)' }}
 			>
 				Let&apos;s design your
@@ -107,27 +105,17 @@ export default function Contact({ darkMode }) {
 				id='contactContentBody'
 				className={`flex h-[300%] w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll md:mt-8 lg:mt-0 lg:h-full lg:flex-row lg:overflow-y-hidden ${styles.contactContentBody}`}
 			>
-				<p
-					className={`my-16 text-xs opacity-40 md:mt-0 lg:hidden ${
-						darkMode ? 'text-white' : ''
-					}`}
-				>
+				<p className='my-16 text-xs opacity-40 dark:text-white md:mt-0 lg:hidden'>
 					Scroll down to see more
 				</p>
 				<div
 					id='experience'
-					className={`relative flex h-[300%] w-full flex-col items-center justify-evenly xs:h-[200%] lg:order-2 lg:my-0 lg:ml-8 lg:h-full lg:max-h-[80%] lg:space-y-4 ${
-						darkMode && 'text-white'
-					}`}
+					className='relative flex h-[300%] w-full flex-col items-center justify-evenly dark:text-white xs:h-[200%] lg:order-2 lg:my-0 lg:ml-8 lg:h-full lg:max-h-[80%] lg:space-y-4'
 					style={{ maxWidth: 'max(50vw, 600px)' }}
 				>
 					<div className='flex flex-col items-center justify-between sm:flex-row'>
 						<motion.div
-							className={`${
-								darkMode
-									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
-									: 'border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
-							} mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full p-2 sm:mb-0`}
+							className='mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-4 dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -148,10 +136,10 @@ export default function Contact({ darkMode }) {
 							/>
 						</motion.div>
 						<div className='flex w-full flex-col items-center justify-between'>
-							<h3 className='mb-4 text-2xl'>
+							<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
 								UI/UX and Layout Design
 							</h3>
-							<p className='text-xs opacity-60'>
+							<p className='text-xs opacity-60 lg:text-[0.5rem] 2xl:text-xs'>
 								Bringing WCAG best practices to your project, a
 								meticulous attention for detail, and a boundless
 								thirst for inventive ways to express your
@@ -161,11 +149,7 @@ export default function Contact({ darkMode }) {
 					</div>
 					<div className='flex flex-col items-center justify-between sm:flex-row'>
 						<motion.div
-							className={`mx-8 my-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full p-2 lg:my-0 ${
-								darkMode
-									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
-									: 'border-2 border-[rgba(255,255,255,0.5)]  bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
-							}`}
+							className='mx-8 my-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-4 dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -186,10 +170,10 @@ export default function Contact({ darkMode }) {
 							/>
 						</motion.div>
 						<div className='flex w-full flex-col items-center justify-center sm:my-24 lg:my-0'>
-							<h3 className='mb-4 text-2xl'>
+							<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
 								Backend Versatility
 							</h3>
-							<p className='text-xs opacity-60'>
+							<p className='text-xs opacity-60 lg:text-[0.5rem] 2xl:text-xs'>
 								Defending your app from errors or misuse while
 								also maximizing performance. Designing your APIs
 								for ease-of-use, though never at the expense of
@@ -199,11 +183,7 @@ export default function Contact({ darkMode }) {
 					</div>
 					<div className='flex flex-col items-center justify-between sm:flex-row'>
 						<motion.div
-							className={`${
-								darkMode
-									? 'border-4 border-[rgba(255,255,255,0.1)] shadow-thick'
-									: 'border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 drop-shadow-mediumDark'
-							} my-16 mx-8 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full px-2 py-4 sm:my-0`}
+							className='mx-8 my-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-4 dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 							whileHover={{
 								y: [null, -8, 8],
 								transition: {
@@ -224,10 +204,10 @@ export default function Contact({ darkMode }) {
 							/>
 						</motion.div>
 						<div className='flex flex-col items-center justify-center'>
-							<h3 className='mb-4 text-2xl'>
+							<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
 								State-of-the-Art Frameworks and Packages
 							</h3>
-							<p className='text-xs opacity-60'>
+							<p className='text-xs opacity-60 lg:text-[0.5rem] 2xl:text-xs'>
 								Harnessing expertise in ReactJS, TypeScript/ES6+
 								Javascript, NodeJS, testing in Cypress and React
 								Testing Library, UI libraries such as MaterialUI
@@ -252,28 +232,20 @@ export default function Contact({ darkMode }) {
 						<Image
 							src={scrollUp}
 							alt='button to scroll to the top of the page'
-							className={`${
-								darkMode && 'invert'
-							} scale-[.25] opacity-20`}
+							className='scale-[.25] opacity-20 dark:invert'
 						/>
 					</motion.button>
 				</div>
 
-				<h3
-					className={`my-32 text-2xl lg:hidden ${
-						darkMode ? 'text-white' : ''
-					}`}
-				>
+				<h3 className='my-32 text-2xl dark:text-white lg:hidden'>
 					I&apos;d love to hear from you!
 				</h3>
 
-				<ContactForm darkMode={darkMode} />
+				<ContactForm />
 
 				<motion.button
 					id='scrollUpPromptSm'
-					className={`mb-2 flex h-[5vh] flex-col items-center justify-between lg:hidden ${
-						darkMode && 'text-white'
-					}`}
+					className='relative my-16 flex h-[5vh] flex-col items-center justify-between dark:text-white lg:hidden'
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
 					onClick={() =>
@@ -291,16 +263,16 @@ export default function Contact({ darkMode }) {
 					>
 						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
 						<Image
+							height={20}
+							width={38}
 							src={scrollUp}
 							alt='button to scroll to the top of the page'
-							className={`${
-								darkMode && 'invert'
-							} scale-[.05] opacity-20`}
+							className='opacity-20 dark:invert'
 						/>
 					</motion.div>
 					<p
 						ref={scrollUpSmRef}
-						className='mt-[-10%] text-xs opacity-50'
+						className='mt-16 pb-16 text-xs opacity-50'
 					>
 						Back to top
 					</p>

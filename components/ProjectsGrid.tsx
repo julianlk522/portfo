@@ -25,7 +25,7 @@ function ProjectsGrid() {
 	return (
 		<div
 			id='gridContentContainer'
-			className='flex h-[300%] w-full flex-col items-center justify-between self-start overflow-y-hidden overflow-x-visible md:h-full lg:max-w-4xl lg:overflow-visible'
+			className='m-auto flex h-[300%] w-full flex-col items-center justify-between self-start overflow-x-visible sm:overflow-y-scroll md:h-full lg:max-w-4xl lg:overflow-visible'
 		>
 			<p className='my-16 text-xs opacity-40 dark:text-white md:hidden'>
 				Scroll down to see more
