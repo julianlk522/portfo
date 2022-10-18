@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { motion, useAnimationControls } from 'framer-motion'
 import Image from 'next/image'
-import socialScreenshot from '../../public/socialScreenshot.webp'
-import dancingScreenshot from '../../public/dancingScreenshot.webp'
-import typingScreenshot from '../../public/typingScreenshot.webp'
-import chatScreenshot from '../../public/chatScreenshot.webp'
+import socialScreenshot from '../../../public/socialScreenshot.webp'
+import dancingScreenshot from '../../../public/dancingScreenshot.webp'
+import typingScreenshot from '../../../public/typingScreenshot.webp'
+import chatScreenshot from '../../../public/chatScreenshot.webp'
 import styles from './ProjectGridMember.module.css'
 
 const screenshots = [
@@ -14,7 +14,7 @@ const screenshots = [
 	chatScreenshot,
 ]
 
-interface GridMemberProps {
+export interface GridMemberProps {
 	tailwindStyles: string
 	objectPosition?: string
 	screenshotId: number

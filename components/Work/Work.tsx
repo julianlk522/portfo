@@ -8,7 +8,7 @@ import {
 	useAnimationControls,
 	useInView,
 } from 'framer-motion'
-import ProjectsGrid from './ProjectsGrid'
+import ProjectsGrid from './ProjectsGrid/ProjectsGrid'
 import styles from './Work.module.css'
 
 export default function Work({ darkMode }) {

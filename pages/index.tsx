@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import Head from 'next/head'
 import {
 	motion,
@@ -10,21 +10,18 @@ import Work from '../components/Work/Work'
 import Contact from '../components/Contact/Contact'
 import About from '../components/About/About'
 import styles from './index.module.css'
-import WelcomeCloud from '../components/Welcome/WelcomeCloud'
 
 export default function Home({ darkMode }) {
 	const welcomeContainerRef = useRef(null)
 	const aboutSectionRef = useRef(null)
-	const hueRotateRef = useRef(null)
 	const innerCircleRef = useRef(null)
 	const middleCircleRef = useRef(null)
 	const outerCircleRef = useRef(null)
-	// const [hueCoef, setHueCoef] = useState<number>(0)
 	const cloudControls = useAnimationControls()
 
 	const { scrollYProgress } = useScroll()
 
-	const containerVariants = {
+	const welcomeContainerVariants = {
 		initial: {
 			y: -50,
 			transition: {
@@ -85,12 +82,8 @@ export default function Home({ darkMode }) {
 					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 					opacity: opacityTransform,
 				}}
-				// onMouseMove={(e: React.MouseEvent) => {
-				// 	setHueCoef((prev) => prev + e.movementX / 4)
-				// 	hueRotateRef.current.style.filter = `hue-rotate(${hueCoef}deg)`
-				// }}
 				initial='initial'
-				variants={containerVariants}
+				variants={welcomeContainerVariants}
 				whileInView='visible'
 				viewport={{ once: true }}
 				onAnimationComplete={() => {
@@ -111,13 +104,6 @@ export default function Home({ darkMode }) {
 						className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] shadow-thick blur-3xl sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
 					></div>
 				</motion.div>
-				{/* <motion.div
-					id='bgCloud'
-					ref={hueRotateRef}
-					className='absolute top-[45%] right-0 hidden h-1/3 w-1/3 justify-center overflow-visible opacity-10 lg:flex'
-				>
-					<WelcomeCloud cloudControls={cloudControls} />
-				</motion.div> */}
 				<motion.div
 					id='welcomeTitleContainer'
 					className='flex items-center justify-center'
@@ -160,9 +146,9 @@ export default function Home({ darkMode }) {
 					style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
 					variants={childVariants}
 				>
-					<h3 className='min-w-fit opacity-40 dark:text-white'>
+					<h2 className='min-w-fit opacity-40 dark:text-white'>
 						to the
-					</h3>
+					</h2>
 					<br />
 					<h2
 						className='bg-tomatoToLightPink bg-clip-text text-transparent'
@@ -173,7 +159,7 @@ export default function Home({ darkMode }) {
 						frontier
 					</h2>
 				</motion.div>
-				<motion.h3
+				<motion.h2
 					className='text-center dark:text-white'
 					style={{
 						fontSize: 'clamp(1.25rem, 4vw, 4vh)',
@@ -182,7 +168,7 @@ export default function Home({ darkMode }) {
 					variants={childVariants}
 				>
 					of web development.
-				</motion.h3>
+				</motion.h2>
 
 				<div
 					id='continueButtonContainer'
