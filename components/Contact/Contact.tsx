@@ -146,7 +146,7 @@ export default function Contact({ darkMode }) {
 						initial='initial'
 						whileInView='visible'
 						viewport={{
-							amount: 'all',
+							amount: mdScreenOrGreater ? 'all' : 'some',
 							once: true,
 						}}
 					>
