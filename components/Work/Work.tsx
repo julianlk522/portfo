@@ -16,7 +16,18 @@ export default function Work({ darkMode }) {
 	const containerInView = useInView(workContainerRef, { amount: 'all' })
 	const gridAndSideTextContainerRef = useRef(null)
 
+	useEffect(() => {
+		const containerScrollTimeout = setTimeout(() => {
+			if (!containerInView) {
+				gridAndSideTextContainerRef.current.scrollTop = 0
+			}
+		}, 3000)
+
+		return () => clearTimeout(containerScrollTimeout)
+	}, [containerInView])
+
 	const scrollDownControls = useAnimationControls()
+	const bgEffectControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
 	const allOpacityTransform = useTransform(
 		scrollYProgress,
@@ -25,24 +36,43 @@ export default function Work({ darkMode }) {
 	)
 
 	useEffect(() => {
-		if (!containerInView) {
-			scrollDownControls.stop()
-			scrollDownControls.set('initial')
+		if (darkMode) {
+			workContainerRef.current.style.opacity = '1'
 		}
-	}, [containerInView, scrollDownControls])
+	}, [darkMode])
+
+	const bgEffectVariants = {
+		minimized: {
+			scale: 0,
+		},
+		expanded: (i: number) => ({
+			scale: 1,
+			transition: {
+				delay: i * 0.1,
+				duration: 1.5,
+				type: 'spring',
+			},
+		}),
+	}
+
+	useEffect(() => {
+		if (containerInView) {
+			bgEffectControls.start('expanded')
+		} else {
+			bgEffectControls.set('minimized')
+		}
+	}, [containerInView, bgEffectControls])
 
 	const textBodyVariants = {
 		initial: {
 			opacity: 0,
 			transition: {
 				delay: 1,
-				duration: 2,
 			},
 		},
 		visible: {
 			opacity: 1,
 			transition: {
-				delayChildren: 0.5,
 				staggerChildren: 0.25,
 			},
 		},
@@ -79,107 +109,108 @@ export default function Work({ darkMode }) {
 	}
 
 	useEffect(() => {
-		if (darkMode) {
-			workContainerRef.current.style.opacity = '1'
+		if (!containerInView) {
+			scrollDownControls.stop()
+			scrollDownControls.set('initial')
 		}
-	}, [darkMode])
-
-	useEffect(() => {
-		const containerScrollTimeout = setTimeout(() => {
-			if (!containerInView) {
-				gridAndSideTextContainerRef.current.scrollTop = 0
-			}
-		}, 3000)
-
-		return () => clearTimeout(containerScrollTimeout)
-	}, [containerInView])
+	}, [containerInView, scrollDownControls])
 
 	return (
-		<motion.section
-			id='workContainer'
-			ref={workContainerRef}
-			className='relative flex h-full flex-col items-center justify-center overflow-hidden text-center dark:bg-slate-800 md:justify-between  md:overflow-y-hidden'
-			style={{
-				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
-				opacity: darkMode ? '1' : allOpacityTransform,
-			}}
-		>
-			<div
-				id='bgCircleEffectOrange'
-				className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-[#FF5B23] opacity-[7%] blur-3xl dark:opacity-10 sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
-			></div>
-			<div
-				id='bgCircleEffectPink'
-				className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#FFACC6] opacity-[15%] shadow-thick blur-3xl dark:opacity-5 sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
-			></div>
-			<motion.h2
-				id='workTitle'
-				className='mt-auto mb-8 h-auto dark:text-white lg:mb-auto'
+		<div id='bgWrapper' className='z-[-1] h-full bg-none dark:bg-slate-800'>
+			<motion.section
+				id='workContainer'
+				ref={workContainerRef}
+				className='relative flex h-full flex-col items-center justify-center overflow-hidden text-center dark:bg-slate-800 md:justify-between  md:overflow-y-hidden'
 				style={{
-					fontSize: 'clamp(2rem, 8vw, 8vh)',
+					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
+					opacity: allOpacityTransform,
 				}}
 			>
-				Scenes from the
-				<span className='ml-2 bg-labText bg-clip-text font-semibold text-transparent sm:ml-4'>
-					lab
-				</span>
-			</motion.h2>
-			<motion.div
-				ref={gridAndSideTextContainerRef}
-				id='gridAndSideTextContainer'
-				className={`flex h-full w-full max-w-5xl items-center justify-around overflow-y-scroll md:max-h-[80%] lg:max-h-[80%] lg:justify-between lg:overflow-y-visible xl:max-w-7xl xl:justify-around ${styles.gridAndSideTextContainer}`}
-			>
 				<motion.div
-					id='projectsSideTextLg'
-					className='mr-8 hidden h-full max-w-[25%] flex-col items-center justify-evenly bg-contain bg-center bg-no-repeat dark:text-white lg:flex'
-					initial='initial'
-					whileInView='visible'
-					viewport={{ amount: 'all' }}
-					variants={textBodyVariants}
-					onAnimationComplete={() => {
-						if (containerInView) {
-							scrollDownControls.start('bouncing')
-						}
+					id='bgCircleEffectPink'
+					custom={1}
+					className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-[#FF5B23] opacity-[7%] blur-3xl sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
+					variants={bgEffectVariants}
+					initial='minimized'
+					animate={bgEffectControls}
+				></motion.div>
+				<motion.div
+					id='bgCircleEffectBlue'
+					custom={2}
+					variants={bgEffectVariants}
+					initial='minimized'
+					animate={bgEffectControls}
+					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] shadow-thick blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
+				></motion.div>
+				<motion.h2
+					id='workTitle'
+					className='mt-auto mb-8 h-auto dark:text-white lg:mb-auto'
+					style={{
+						fontSize: 'clamp(2rem, 8vw, 8vh)',
 					}}
 				>
-					<motion.p
-						className='text-md'
-						variants={textBodyChildVariants}
+					Scenes from the
+					<span className='ml-2 bg-labText bg-clip-text font-semibold text-transparent sm:ml-4'>
+						lab
+					</span>
+				</motion.h2>
+				<motion.div
+					ref={gridAndSideTextContainerRef}
+					id='gridAndSideTextContainer'
+					className={`flex h-full w-full max-w-5xl items-center justify-around overflow-y-scroll md:max-h-[80%] lg:max-h-[80%] lg:justify-between lg:overflow-y-visible xl:max-w-7xl xl:justify-around ${styles.gridAndSideTextContainer}`}
+				>
+					<motion.div
+						id='projectsSideTextLg'
+						className='mr-8 hidden h-full max-w-[25%] flex-col items-center justify-evenly bg-contain bg-center bg-no-repeat dark:text-white lg:flex'
+						initial='initial'
+						whileInView='visible'
+						viewport={{ amount: 'all' }}
+						variants={textBodyVariants}
+						onAnimationComplete={() => {
+							if (containerInView) {
+								scrollDownControls.start('bouncing')
+							}
+						}}
 					>
-						Hover over a project to learn more!
-					</motion.p>
-					<motion.button
-						id='workScrollDownPromptLg'
-						className='opacity-10 dark:invert'
-						variants={textBodyChildVariants}
-						animate={scrollDownControls}
-						whileHover={{ scale: 1.1 }}
-						whileTap={{ scale: 0.9 }}
-						onClick={() =>
-							document
-								.getElementById('contactContainer')
-								.scrollIntoView({ behavior: 'smooth' })
-						}
-					>
-						{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-						<Image
-							src={scrollUp}
-							className='rotate-180'
-							width={38}
-							height={20}
-							alt='button to scroll to the next section'
-						/>
-					</motion.button>
+						<motion.p
+							className='text-md'
+							variants={textBodyChildVariants}
+						>
+							Hover over a project to learn more!
+						</motion.p>
+						<motion.button
+							id='workScrollDownPromptLg'
+							className='opacity-10 dark:invert'
+							variants={textBodyChildVariants}
+							animate={scrollDownControls}
+							whileHover={{ scale: 1.1 }}
+							whileTap={{ scale: 0.9 }}
+							onClick={() =>
+								document
+									.getElementById('contactContainer')
+									.scrollIntoView({ behavior: 'smooth' })
+							}
+						>
+							{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+							<Image
+								src={scrollUp}
+								className='rotate-180'
+								width={38}
+								height={20}
+								alt='button to scroll to the next section'
+							/>
+						</motion.button>
+					</motion.div>
+					<ProjectsGrid />
 				</motion.div>
-
-				<ProjectsGrid />
-			</motion.div>
-			<motion.p
-				id='portfoStackDescriptionLg'
-				className='mt-4 hidden w-full max-w-5xl bg-portfoStackTextSm pr-8 text-xs dark:text-white lg:block lg:bg-portfoStackTextLg lg:text-end'
-			>
-				This page was made using Next.js, Tailwind CSS and Framer Motion
-			</motion.p>
-		</motion.section>
+				<motion.p
+					id='portfoStackDescriptionLg'
+					className='mt-4 hidden w-full max-w-5xl bg-portfoStackTextSm pr-8 text-xs dark:text-white lg:block lg:bg-portfoStackTextLg'
+				>
+					This page was made using Next.js, Tailwind CSS and Framer
+					Motion
+				</motion.p>
+			</motion.section>
+		</div>
 	)
 }
