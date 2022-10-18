@@ -127,7 +127,7 @@ export default function Work({ darkMode }) {
 				}}
 			>
 				<motion.div
-					id='bgCircleEffectPink'
+					id='bgCircleEffectOrange'
 					custom={1}
 					className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-[#FF5B23] opacity-[7%] blur-3xl sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
 					variants={bgEffectVariants}

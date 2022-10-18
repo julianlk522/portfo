@@ -22,9 +22,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 	return (
 		<motion.nav
 			id='navbar'
-			className={`${
-				darkMode ? 'bg-slate-700 text-white shadow-navbar' : 'bg-white'
-			} fixed top-0 left-0 z-[2] h-[5%] w-full items-center justify-between`}
+			className='fixed top-0 left-0 z-[2] h-[5%] w-full items-center justify-between bg-white dark:bg-slate-700 dark:text-white dark:shadow-navbar'
 			style={{
 				display: navVisible ? 'flex' : 'none',
 				padding: 'clamp(1rem, 3vw, 3vh) clamp(2rem, 6vw, 6vh)',
@@ -32,9 +30,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 		>
 			<div className='hidden h-[7.5vh] w-full items-center xs:flex'>
 				<h3
-					className={`${
-						darkMode ? 'opacity-75' : 'opacity-50'
-					} cursor-pointer whitespace-nowrap uppercase`}
+					className='cursor-pointer whitespace-nowrap uppercase opacity-50 dark:opacity-75'
 					style={{
 						fontSize: 'clamp(0.75rem, 2vw, 2vh)',
 					}}
@@ -63,7 +59,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 							id='darkModeSwitchContainer'
 							className='flex items-center justify-evenly'
 							onClick={() => {
-								setDarkMode(!darkMode)
+								setDarkMode((prev: boolean) => !prev)
 								if (!darkMode) {
 									localStorage.setItem('theme', 'dark')
 									document.documentElement.classList.add(
@@ -82,11 +78,12 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 							</motion.span>
 							<motion.div
 								id='darkModeSwitch'
-								className={`ml-4 flex h-4 w-12 items-center rounded-[2rem] px-1 ${
+								className='ml-4 flex h-4 w-12 items-center rounded-[2rem] bg-slate-300 px-1 dark:bg-slate-800'
+								style={
 									darkMode
-										? 'justify-end bg-slate-800'
-										: 'bg-slate-300'
-								}`}
+										? { justifyContent: 'flex-end' }
+										: {}
+								}
 							>
 								<motion.div
 									layout
@@ -105,9 +102,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							About
 							<motion.div
-								className={`absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full ${
-									darkMode ? 'bg-white' : 'bg-slate-300'
-								}`}
+								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
 								style={{
 									opacity: underlineOpacityTransformAbout,
 								}}
@@ -123,9 +118,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							Work
 							<motion.div
-								className={`absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full ${
-									darkMode ? 'bg-white' : 'bg-slate-300'
-								}`}
+								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
 								style={{
 									opacity: underlineOpacityTransformWork,
 								}}
@@ -141,9 +134,7 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 						>
 							Contact
 							<motion.div
-								className={`absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full ${
-									darkMode ? 'bg-white' : 'bg-slate-300'
-								}`}
+								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
 								style={{
 									opacity: underlineOpacityTransformContact,
 								}}
