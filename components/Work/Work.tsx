@@ -28,6 +28,8 @@ export default function Work({ darkMode }) {
 
 	const scrollDownControls = useAnimationControls()
 	const bgEffectControls = useAnimationControls()
+	const gridMemberControls = useAnimationControls()
+	const stackDescriptionControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
 	const allOpacityTransform = useTransform(
 		scrollYProgress,
@@ -49,7 +51,6 @@ export default function Work({ darkMode }) {
 			scale: 1,
 			transition: {
 				delay: i * 0.1,
-				duration: 1.5,
 				type: 'spring',
 			},
 		}),
@@ -59,9 +60,18 @@ export default function Work({ darkMode }) {
 		if (containerInView) {
 			bgEffectControls.start('expanded')
 		} else {
+			scrollDownControls.stop()
+			scrollDownControls.set('initial')
 			bgEffectControls.set('minimized')
+			stackDescriptionControls.set('initial')
 		}
-	}, [containerInView, bgEffectControls])
+	}, [
+		containerInView,
+		bgEffectControls,
+		scrollDownControls,
+		gridMemberControls,
+		stackDescriptionControls,
+	])
 
 	const textBodyVariants = {
 		initial: {
@@ -73,7 +83,7 @@ export default function Work({ darkMode }) {
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: 0.25,
+				staggerChildren: 0.15,
 			},
 		},
 	}
@@ -108,13 +118,6 @@ export default function Work({ darkMode }) {
 		},
 	}
 
-	useEffect(() => {
-		if (!containerInView) {
-			scrollDownControls.stop()
-			scrollDownControls.set('initial')
-		}
-	}, [containerInView, scrollDownControls])
-
 	return (
 		<div id='bgWrapper' className='z-[-1] h-full bg-none dark:bg-slate-800'>
 			<motion.section
@@ -141,6 +144,12 @@ export default function Work({ darkMode }) {
 					initial='minimized'
 					animate={bgEffectControls}
 					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] shadow-thick blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
+					onAnimationComplete={() => {
+						if (containerInView) {
+							gridMemberControls.start('visible')
+							stackDescriptionControls.start('visible')
+						}
+					}}
 				></motion.div>
 				<motion.h2
 					id='workTitle'
@@ -201,11 +210,15 @@ export default function Work({ darkMode }) {
 							/>
 						</motion.button>
 					</motion.div>
-					<ProjectsGrid />
+					<ProjectsGrid gridMemberControls={gridMemberControls} />
 				</motion.div>
 				<motion.p
 					id='portfoStackDescriptionLg'
 					className='mt-4 hidden w-full max-w-5xl bg-portfoStackTextSm pr-8 text-xs dark:text-white lg:block lg:bg-portfoStackTextLg'
+					initial='initial'
+					whileInView='visible'
+					viewport={{ amount: 'all', margin: '-64px' }}
+					variants={textBodyVariants}
 				>
 					This page was made using Next.js, Tailwind CSS and Framer
 					Motion

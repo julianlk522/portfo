@@ -1,4 +1,14 @@
-import { GridMemberProps } from './ProjectGridMember'
+export interface GridMemberProps {
+	tailwindStyles: string
+	objectPosition?: string
+	screenshotId: number
+	title: string
+	description?: string
+	altImgText: string
+	stackItems: string[]
+	ghLink: string
+	liveLink?: string
+}
 
 const projectsData: GridMemberProps[] = [
 	{

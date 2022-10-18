@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { motion, useAnimationControls } from 'framer-motion'
+import { AnimationControls, motion, useAnimationControls } from 'framer-motion'
 import Image from 'next/image'
 import socialScreenshot from '../../../public/socialScreenshot.webp'
 import dancingScreenshot from '../../../public/dancingScreenshot.webp'
 import typingScreenshot from '../../../public/typingScreenshot.webp'
 import chatScreenshot from '../../../public/chatScreenshot.webp'
 import styles from './ProjectGridMember.module.css'
+import { GridMemberProps } from './ProjectData'
 
 const screenshots = [
 	socialScreenshot,
@@ -14,7 +15,7 @@ const screenshots = [
 	chatScreenshot,
 ]
 
-export interface GridMemberProps {
+interface GridMemberPropsWithControls extends GridMemberProps {
 	tailwindStyles: string
 	objectPosition?: string
 	screenshotId: number
@@ -24,6 +25,8 @@ export interface GridMemberProps {
 	stackItems: string[]
 	ghLink: string
 	liveLink?: string
+	custom: number
+	gridMemberControls: AnimationControls
 }
 
 function ProjectGridMember({
@@ -36,25 +39,43 @@ function ProjectGridMember({
 	stackItems,
 	ghLink,
 	liveLink,
-}: GridMemberProps) {
+	custom,
+	gridMemberControls,
+}: GridMemberPropsWithControls) {
 	const [gridMemberHovered, setGridMemberHovered] = useState(false)
 
 	const [stackItemIndex, setStackItemIndex] = useState(0)
 	const stackTextControls = useAnimationControls()
 	const stackTextVariants = {
+		hidden: {
+			opacity: 0,
+		},
 		flicker: {
 			opacity: [0, 1, 0],
 			transition: {
 				duration: 1,
 			},
 		},
-		hidden: {
+	}
+
+	const gridMemberVariants = {
+		initial: {
 			opacity: 0,
+			boxShadow: '0px 4px 30px 8px rgba(0, 0, 0, 1)',
 		},
+		visible: (custom: number) => ({
+			opacity: 1,
+			boxShadow: '',
+			transition: {
+				delay: custom * 0.05,
+				type: 'tween',
+			},
+		}),
 	}
 
 	return (
-		<div
+		<motion.div
+			custom={custom}
 			className={`relative col-span-3 h-full w-full overflow-hidden rounded-[2rem] shadow-lg xl:shadow-xl ${tailwindStyles}`}
 			style={{
 				background: gridMemberHovered ? 'black' : 'transparent',
@@ -69,6 +90,9 @@ function ProjectGridMember({
 				stackTextControls.set('hidden')
 				setStackItemIndex((prev) => prev + 1)
 			}}
+			variants={gridMemberVariants}
+			initial='initial'
+			animate={gridMemberControls}
 		>
 			<div
 				className={`relative flex h-full w-full flex-col items-center justify-evenly p-4 text-white ${styles.projectContentContainer}`}
@@ -106,7 +130,7 @@ function ProjectGridMember({
 					)}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

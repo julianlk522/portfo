@@ -22,7 +22,7 @@ const scrollDownVariants = {
 	},
 }
 
-function ProjectsGrid() {
+function ProjectsGrid({ gridMemberControls }) {
 	return (
 		<div
 			id='gridContentContainer'
@@ -35,7 +35,7 @@ function ProjectsGrid() {
 				id='projectsGrid'
 				className='relative mx-auto mb-8 grid h-full w-full max-w-[90%] grid-cols-3 grid-rows-4 items-center gap-8 self-end md:mb-0 md:h-full md:grid-rows-2 xl:max-w-none'
 			>
-				{projectsData.map((gridMember) => {
+				{projectsData.map((gridMember, i) => {
 					const {
 						tailwindStyles,
 						screenshotId,
@@ -48,6 +48,7 @@ function ProjectsGrid() {
 					} = gridMember
 					return (
 						<ProjectGridMember
+							custom={i + 1}
 							tailwindStyles={tailwindStyles}
 							screenshotId={screenshotId}
 							title={title}
@@ -56,6 +57,7 @@ function ProjectsGrid() {
 							stackItems={stackItems}
 							ghLink={ghLink}
 							liveLink={liveLink}
+							gridMemberControls={gridMemberControls}
 						/>
 					)
 				})}
