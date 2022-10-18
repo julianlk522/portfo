@@ -43,7 +43,7 @@ function ProjectGridMember({
 	const stackTextControls = useAnimationControls()
 	const stackTextVariants = {
 		flicker: {
-			opacity: [null, 1, 0],
+			opacity: [0, 1, 0],
 			transition: {
 				duration: 1,
 			},

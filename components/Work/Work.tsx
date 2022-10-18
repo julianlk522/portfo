@@ -110,7 +110,7 @@ export default function Work({ darkMode }) {
 			></div>
 			<div
 				id='bgCircleEffectPink'
-				className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#FFACC6] opacity-[15%] shadow-thick blur-3xl dark:opacity-5 sm:left-1/2 sm:bottom-[-5%] sm:block sm:h-[60vw] sm:w-[60vw]'
+				className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#FFACC6] opacity-[15%] shadow-thick blur-3xl dark:opacity-5 sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
 			></div>
 			<motion.h2
 				id='workTitle'
