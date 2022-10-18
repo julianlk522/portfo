@@ -42,7 +42,7 @@ function ContactForm() {
 			scaleX: 0.8,
 			transition: {
 				duration: 0.1,
-				ease: 'easeIn',
+				ease: 'easeInOut',
 			},
 			transitionEnd: {
 				x: -125,
@@ -159,14 +159,16 @@ function ContactForm() {
 			</div>
 			<motion.button
 				id='submitButton'
-				className='relative my-4 flex min-h-[2rem] overflow-hidden rounded-[2rem] border-2 border-black border-opacity-5 bg-transparent px-4 py-2 text-xs focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40 lg:mt-2 lg:pb-2'
+				className='relative my-4 flex min-h-[2rem] overflow-hidden rounded-[2rem] bg-slate-100 px-4 py-2 text-xs shadow focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:mt-2 lg:pb-2'
 				onHoverStart={() => submitButtonControls.start('hovered')}
 				onHoverEnd={() => submitButtonControls.start('initial')}
+				whileHover={{ scale: 1.25 }}
+				whileTap={{ scale: 0.9 }}
 			>
 				Submit
 				<motion.div
 					id='contactSubmitButtonBackdrop'
-					className='absolute inset-1 z-[-1] rounded-full bg-contactFormSubmitBackdrop'
+					className='absolute inset-[2px] z-[-1] rounded-full bg-contactFormSubmitBackdrop opacity-50'
 					animate={submitButtonControls}
 					variants={submitButtonBackdropVariants}
 					initial='initial'
