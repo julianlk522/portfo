@@ -61,11 +61,9 @@ function ProjectGridMember({
 	const gridMemberVariants = {
 		initial: {
 			opacity: 0,
-			boxShadow: '0px 4px 30px 8px rgba(0, 0, 0, 1)',
 		},
 		visible: (custom: number) => ({
 			opacity: 1,
-			boxShadow: '',
 			transition: {
 				delay: custom * 0.05,
 				type: 'tween',

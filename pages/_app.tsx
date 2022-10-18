@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
 
 	useEffect(() => {
 		return scrollYProgress.onChange((currentYProgress) => {
+			if (!navReactsToScroll) return
 			// prevent immediate Navbar invisibility on page load due to micro layout shift
 			if (scrollYProgress.getPrevious() <= 0.01)
 				return setNavVisible(true)
@@ -24,7 +25,7 @@ function MyApp({ Component, pageProps }) {
 			}
 			setCurrentScrollPercent(currentYProgress)
 		})
-	}, [])
+	}, [scrollYProgress, navReactsToScroll])
 
 	//	wait 0.5s after user stops scrolling to disable responsive Navbar visibility
 	useEffect(() => {
@@ -76,7 +77,7 @@ function MyApp({ Component, pageProps }) {
 		}, 1000)
 
 		return () => clearTimeout(resumeNavbarResponsivenessTimeout)
-	}, [navReactsToScroll])
+	}, [navReactsToScroll, currentScrollPercent])
 
 	useEffect(() => {
 		if (scrollDirection === 'up' && navReactsToScroll) {
