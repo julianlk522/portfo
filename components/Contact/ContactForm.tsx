@@ -98,7 +98,7 @@ function ContactForm() {
 		<motion.form
 			id='contactForm'
 			ref={formRef}
-			className='relative z-[1] mx-8 flex h-full w-full max-w-xl flex-col items-center justify-evenly rounded-[2rem] px-12 pt-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-[2rem] after:bg-contactFormBackdropLightMode after:backdrop-blur-lg dark:text-white dark:after:bg-contactFormBackdropDarkMode dark:after:blur-sm lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:pt-4 lg:shadow-xl xl:w-[60%] '
+			className='relative z-[1] mx-8 flex h-full w-full max-w-xl flex-col items-center justify-evenly rounded-3xl px-12 pt-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-3xl after:bg-contactFormBackdropLightMode after:backdrop-blur-lg dark:text-white dark:after:bg-contactFormBackdropDarkMode dark:after:blur-sm lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:pt-4 lg:shadow-xl xl:w-[60%] '
 			variants={contactFormVariants}
 			initial='initial'
 			whileInView='visible'
@@ -122,7 +122,7 @@ function ContactForm() {
 					id='nameInput'
 					required
 					autoComplete='name'
-					className='w-full rounded-xl border-2 border-black border-opacity-10 bg-transparent py-1 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
+					className='w-full rounded-xl border-2 border-black border-opacity-10 bg-transparent py-1 px-4 focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
 				/>
 			</div>
 			<div id='emailInputContainer' className='flex w-full flex-col'>
@@ -138,7 +138,7 @@ function ContactForm() {
 					id='emailInput'
 					required
 					autoComplete='email'
-					className='w-full rounded-xl border-2 border-black border-opacity-10 bg-transparent py-1 px-4 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
+					className='w-full rounded-xl border-2 border-black border-opacity-10 bg-transparent py-1 px-4 focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
 				/>
 			</div>
 			<div id='messageInputContainer' className='flex w-full flex-col'>
@@ -153,7 +153,7 @@ function ContactForm() {
 					id='messageInput'
 					required
 					autoComplete='off'
-					className='h-full max-h-10 min-h-[2rem] w-full resize-none overflow-hidden rounded-xl border-2 border-black border-opacity-10 bg-transparent px-4 py-1 drop-shadow-mediumDark focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
+					className='h-full max-h-10 min-h-[2rem] w-full resize-none overflow-hidden rounded-xl border-2 border-black border-opacity-10 bg-transparent px-4 py-1 focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
 					rows={5}
 				></textarea>
 			</div>

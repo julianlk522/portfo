@@ -179,7 +179,7 @@ export default function Contact({ darkMode }) {
 								<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
 									UI/UX and Layout Design
 								</h3>
-								<p className='text-xs opacity-60 lg:text-[0.5rem] 2xl:text-xs'>
+								<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
 									Bringing WCAG best practices to your
 									project, a meticulous attention for detail,
 									and a boundless thirst for inventive ways to
@@ -216,7 +216,7 @@ export default function Contact({ darkMode }) {
 								<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
 									Backend Versatility
 								</h3>
-								<p className='text-xs opacity-60 lg:text-[0.5rem] 2xl:text-xs'>
+								<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
 									Defending your app from errors or misuse
 									while also maximizing performance. Designing
 									your APIs for ease-of-use, though never at
@@ -253,7 +253,7 @@ export default function Contact({ darkMode }) {
 								<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
 									State-of-the-Art Frameworks and Packages
 								</h3>
-								<p className='text-xs opacity-60 lg:text-[0.5rem] 2xl:text-xs'>
+								<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
 									Harnessing expertise in ReactJS,
 									TypeScript/ES6+ Javascript, NodeJS, testing
 									in Cypress and React Testing Library, UI

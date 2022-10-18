@@ -18,7 +18,7 @@ module.exports = {
 				aboutTextContentBackdrop:
 					'radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0, 216, 255, 1) 0%, rgba(0,0,0,0) 50%)',
 				portfoStackTextSm:
-					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.1) 20%, rgba(255,91,35,0.15) 45%, rgba(255,0,0,0.1) 70%, rgba(255,91,35,0) 100%)',
+					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.025) 20%, rgba(255,91,35,0.1) 45%, rgba(255,0,0,0.025) 70%, rgba(255,91,35,0) 100%)',
 				portfoStackTextLg:
 					'linear-gradient(135deg, rgba(255,91,35,0) 35%, rgba(255,91,35,0.1) 60%, rgba(255,0,0,0.15) 85%, rgba(255,91,35,0.1) 95%, rgba(255,91,35,0) 100%)',
 				pillBackdrop: "url('../public/pill.svg')",

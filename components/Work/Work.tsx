@@ -98,12 +98,20 @@ export default function Work({ darkMode }) {
 		<motion.section
 			id='workContainer'
 			ref={workContainerRef}
-			className='flex h-full flex-col items-center justify-center overflow-hidden text-center dark:bg-slate-800 md:justify-between  md:overflow-y-hidden'
+			className='relative flex h-full flex-col items-center justify-center overflow-hidden text-center dark:bg-slate-800 md:justify-between  md:overflow-y-hidden'
 			style={{
 				padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 				opacity: darkMode ? '1' : allOpacityTransform,
 			}}
 		>
+			<div
+				id='bgCircleEffectOrange'
+				className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-[#FF5B23] opacity-[7%] blur-3xl dark:opacity-10 sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
+			></div>
+			<div
+				id='bgCircleEffectPink'
+				className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#FFACC6] opacity-[15%] shadow-thick blur-3xl dark:opacity-5 sm:left-1/2 sm:bottom-[-5%] sm:block sm:h-[60vw] sm:w-[60vw]'
+			></div>
 			<motion.h2
 				id='workTitle'
 				className='mt-auto mb-8 h-auto dark:text-white lg:mb-auto'
@@ -123,7 +131,7 @@ export default function Work({ darkMode }) {
 			>
 				<motion.div
 					id='projectsSideTextLg'
-					className='mr-8 hidden h-full max-w-[25%] flex-col items-center justify-evenly bg-pillBackdrop bg-contain bg-center bg-no-repeat dark:text-white lg:flex'
+					className='mr-8 hidden h-full max-w-[25%] flex-col items-center justify-evenly bg-contain bg-center bg-no-repeat dark:text-white lg:flex'
 					initial='initial'
 					whileInView='visible'
 					viewport={{ amount: 'all' }}
@@ -138,7 +146,7 @@ export default function Work({ darkMode }) {
 						className='text-md'
 						variants={textBodyChildVariants}
 					>
-						Hover over a project to learn more
+						Hover over a project to learn more!
 					</motion.p>
 					<motion.button
 						id='workScrollDownPromptLg'
