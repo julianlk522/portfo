@@ -1,13 +1,67 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
-import { motion, useAnimationControls } from 'framer-motion'
+import {
+	motion,
+	useAnimationControls,
+	useMotionValue,
+	useMotionTemplate,
+	useTransform,
+} from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { toast } from 'react-hot-toast'
-import laugh from '../public/laugh.svg'
+import laugh from '../../public/laugh.svg'
 
 function ContactForm() {
 	const formRef = useRef(null)
+	const mdScreenOrLesser =
+		formRef.current && formRef.current.clientWidth < 1024
 	const submitButtonControls = useAnimationControls()
+	// const conicGradientRotation = useMotionValue(100)
+	// const gradientAnimationTemplate = useMotionTemplate`radial-gradient(ellipse at 50% 50%, rgba(0, 216, 255, 0) ${conicGradientRotation}%, rgba(0, 216, 255, 0.2) 100%);`
+
+	const contactFormVariants = {
+		initial: {
+			opacity: 0,
+			y: 100,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				type: 'tween',
+				delay: mdScreenOrLesser ? 0 : 2,
+				duration: mdScreenOrLesser ? 1 : 2,
+			},
+		},
+	}
+
+	const submitButtonBackdropVariants = {
+		initial: {
+			x: 125,
+			scaleY: 0.8,
+			scaleX: 0.8,
+			transition: {
+				duration: 0.1,
+				ease: 'easeIn',
+			},
+			transitionEnd: {
+				x: -125,
+			},
+		},
+		hovered: {
+			x: 0,
+			scaleX: 1,
+			scaleY: 1,
+			transition: {
+				scaleX: {
+					delay: 0.25,
+				},
+				scaleY: {
+					delay: 0.25,
+				},
+			},
+		},
+	}
 
 	const submitForm = async (e: React.FormEvent) => {
 		e.preventDefault()
@@ -40,38 +94,19 @@ function ContactForm() {
 		))
 	}
 
-	const submitButtonBackdropVariants = {
-		initial: {
-			x: 125,
-			scaleY: 0.8,
-			scaleX: 0.8,
-			transition: {
-				duration: 0.1,
-				ease: 'easeIn',
-			},
-			transitionEnd: {
-				x: -125,
-			},
-		},
-		hovered: {
-			x: 0,
-			scaleX: 1,
-			scaleY: 1,
-			transition: {
-				scaleX: {
-					delay: 0.25,
-				},
-				scaleY: {
-					delay: 0.25,
-				},
-			},
-		},
-	}
-
 	return (
-		<form
+		<motion.form
+			id='contactForm'
 			ref={formRef}
 			className='relative z-[1] mx-8 flex h-full w-full max-w-xl flex-col items-center justify-evenly rounded-[2rem] px-12 pt-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-[2rem] after:bg-contactFormBackdropLightMode after:backdrop-blur-lg dark:text-white dark:after:bg-contactFormBackdropDarkMode dark:after:blur-sm lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:pt-4 lg:shadow-xl xl:w-[60%] '
+			variants={contactFormVariants}
+			initial='initial'
+			whileInView='visible'
+			viewport={{
+				amount: mdScreenOrLesser ? 'some' : 'all',
+				margin: '50px 0px',
+				once: true,
+			}}
 			onSubmit={submitForm}
 		>
 			<div id='nameInputContainer' className='flex w-full flex-col'>
@@ -124,14 +159,14 @@ function ContactForm() {
 			</div>
 			<motion.button
 				id='submitButton'
-				className='relative my-4 flex min-h-[2rem] overflow-hidden rounded-[2rem] border-2 border-black border-opacity-5 bg-[rgba(255,255,255,0.75)] px-4 py-2 text-xs focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:bg-slate-800 dark:focus:border-opacity-40 lg:mt-2 lg:pb-2'
+				className='relative my-4 flex min-h-[2rem] overflow-hidden rounded-[2rem] border-2 border-black border-opacity-5 bg-transparent px-4 py-2 text-xs focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40 lg:mt-2 lg:pb-2'
 				onHoverStart={() => submitButtonControls.start('hovered')}
 				onHoverEnd={() => submitButtonControls.start('initial')}
 			>
 				Submit
 				<motion.div
 					id='contactSubmitButtonBackdrop'
-					className='absolute inset-1 rounded-full bg-contactFormSubmitBackdrop'
+					className='absolute inset-1 z-[-1] rounded-full bg-contactFormSubmitBackdrop'
 					animate={submitButtonControls}
 					variants={submitButtonBackdropVariants}
 					initial='initial'
@@ -145,7 +180,7 @@ function ContactForm() {
 					/>
 				</div>
 			</motion.button>
-		</form>
+		</motion.form>
 	)
 }
 

@@ -6,11 +6,11 @@ import {
 	useTransform,
 	useAnimationControls,
 } from 'framer-motion'
-import Work from '../components/Work'
-import Contact from '../components/Contact'
-import About from '../components/About'
+import Work from '../components/Work/Work'
+import Contact from '../components/Contact/Contact'
+import About from '../components/About/About'
 import styles from './index.module.css'
-import WelcomeCloud from '../components/WelcomeCloud'
+import WelcomeCloud from '../components/Welcome/WelcomeCloud'
 
 export default function Home({ darkMode }) {
 	const welcomeContainerRef = useRef(null)
@@ -49,7 +49,7 @@ export default function Home({ darkMode }) {
 		},
 	}
 
-	const opacityTransform = useTransform(scrollYProgress, [0, 0.17], [1, 0])
+	const opacityTransform = useTransform(scrollYProgress, [0, 0.14], [1, 0])
 
 	const startCirclesAnimation = () => {
 		innerCircleRef.current.classList.add(styles.innerCircleAnimating)

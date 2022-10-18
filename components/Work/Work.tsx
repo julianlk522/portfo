@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import scrollUp from '../public/scrollUp.webp'
+import scrollUp from '../../public/scrollUp.webp'
 import Image from 'next/image'
 import {
 	motion,

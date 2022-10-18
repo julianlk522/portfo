@@ -7,8 +7,8 @@ import {
 	useInView,
 	useAnimationControls,
 } from 'framer-motion'
-import portrait from '../public/portrait.webp'
-import scrollUp from '../public/scrollUp.webp'
+import portrait from '../../public/portrait.webp'
+import scrollUp from '../../public/scrollUp.webp'
 import AboutSpiral from './AboutSpiral'
 import styles from './About.module.css'
 
