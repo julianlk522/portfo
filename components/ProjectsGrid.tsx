@@ -32,7 +32,7 @@ function ProjectsGrid() {
 			</p>
 			<div
 				id='projectsGrid'
-				className='relative mx-auto mb-8 grid h-full w-full max-w-[90%] grid-cols-3 grid-rows-4 items-center gap-8 self-end md:mb-0 md:h-full md:grid-rows-2 xl:max-w-3xl'
+				className='relative mx-auto mb-8 grid h-full w-full max-w-[90%] grid-cols-3 grid-rows-4 items-center gap-8 self-end md:mb-0 md:h-full md:grid-rows-2 xl:max-w-none'
 			>
 				<ProjectGridMember
 					tailwindStyles='md:col-span-2'

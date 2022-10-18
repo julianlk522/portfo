@@ -1,91 +1,90 @@
 import { useState, useEffect } from 'react'
+import { useScroll } from 'framer-motion'
 import '../styles/globals.css'
 import Navbar from '../components/Navbar'
 import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }) {
-	const [currentScrollY, setCurrentScrollY] = useState(0)
-	const [prevScrollY, setPrevScrollY] = useState(0)
+	const { scrollYProgress } = useScroll()
+	const [currentScrollPercent, setCurrentScrollPercent] = useState(0)
+	const [scrollDirection, setScrollDirection] = useState(null)
 	const [navReactsToScroll, setNavReactsToScroll] = useState(true)
 	const [navVisible, setNavVisible] = useState(true)
 	const [darkMode, setDarkMode] = useState(false)
 
-	//	set currentScrollY to window.scrollY, show or hide navbar according to increase or decrease in currentScrollY
 	useEffect(() => {
-		const updateNavVisibility = () => {
-			if (!navReactsToScroll) {
-				return
+		return scrollYProgress.onChange((currentYProgress) => {
+			// prevent immediate Navbar invisibility on page load due to micro layout shift
+			if (scrollYProgress.getPrevious() <= 0.01)
+				return setNavVisible(true)
+			if (scrollYProgress.getPrevious() < currentYProgress) {
+				setScrollDirection('down')
+			} else if (scrollYProgress.getPrevious() >= currentYProgress) {
+				setScrollDirection('up')
 			}
-			if (currentScrollY <= prevScrollY) {
-				setNavVisible(true)
-			} else {
-				setNavVisible(false)
-			}
-			setPrevScrollY(currentScrollY)
-		}
-
-		window.addEventListener('scroll', () => {
-			setCurrentScrollY(window.scrollY)
-			updateNavVisibility()
+			setCurrentScrollPercent(currentYProgress)
 		})
-
-		return () => {
-			window.removeEventListener('scroll', () => {
-				setCurrentScrollY(window.scrollY)
-				updateNavVisibility()
-			})
-		}
 	}, [])
 
-	//	wait 0.5s after user stops scrolling to autoscroll section into view, re-enable reactive navbar visibility after 1s
+	//	wait 0.5s after user stops scrolling to disable responsive Navbar visibility
 	useEffect(() => {
+		const userScrollingTimeout = setTimeout(() => {
+			setNavReactsToScroll(false)
+		}, 500)
+
+		return () => clearTimeout(userScrollingTimeout)
+	}, [currentScrollPercent])
+
+	// autoscroll section into view after userScrollingTimeout, re-enable responsive Navbar after 1s
+	useEffect(() => {
+		if (navReactsToScroll) return
 		const scrollNearestSectionIntoView = () => {
 			const numSections = 4
-			const documentHeight =
-				document.documentElement.clientHeight * numSections
 
-			const currentScrollPercent = currentScrollY / documentHeight
-
-			if (
-				currentScrollPercent <
-				1 / numSections - 1 / (2 * numSections)
-			) {
-				window.scrollTo({
+			if (currentScrollPercent < 1 / (2 * (numSections - 1))) {
+				return window.scrollTo({
 					top: 0,
 					left: 0,
 					behavior: 'smooth',
 				})
 			} else if (
-				currentScrollPercent <
-				2 / numSections - 1 / (2 * numSections)
+				currentScrollPercent >= 1 / (2 * (numSections - 1)) &&
+				currentScrollPercent < 3 / (2 * (numSections - 1))
 			) {
-				document
+				return document
 					.getElementById('aboutContainer')
 					.scrollIntoView({ behavior: 'smooth' })
 			} else if (
-				currentScrollPercent <
-				3 / numSections - 1 / (2 * numSections)
+				currentScrollPercent >= 3 / (2 * (numSections - 1)) &&
+				currentScrollPercent < 5 / (2 * (numSections - 1))
 			) {
-				document
+				return document
 					.getElementById('workContainer')
 					.scrollIntoView({ behavior: 'smooth' })
 			} else {
-				document
+				return document
 					.getElementById('contactContainer')
 					.scrollIntoView({ behavior: 'smooth' })
 			}
 		}
 
-		const userScrollingTimeout = setTimeout(() => {
-			scrollNearestSectionIntoView()
-			setNavReactsToScroll(false)
-			setTimeout(() => {
-				setNavReactsToScroll(true)
-			}, 1000)
-		}, 500)
+		scrollNearestSectionIntoView()
 
-		return () => clearTimeout(userScrollingTimeout)
-	}, [currentScrollY])
+		const resumeNavbarResponsivenessTimeout = setTimeout(() => {
+			setScrollDirection(null)
+			setNavReactsToScroll(true)
+		}, 1000)
+
+		return () => clearTimeout(resumeNavbarResponsivenessTimeout)
+	}, [navReactsToScroll])
+
+	useEffect(() => {
+		if (scrollDirection === 'up' && navReactsToScroll) {
+			setNavVisible(true)
+		} else if (scrollDirection === 'down' && navReactsToScroll) {
+			setNavVisible(false)
+		}
+	}, [scrollDirection, navReactsToScroll])
 
 	//	check for system darkMode preferences
 	useEffect(() => {
