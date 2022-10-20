@@ -1,27 +1,21 @@
 import React, { useRef } from 'react'
 import Head from 'next/head'
-import {
-	motion,
-	useScroll,
-	useTransform,
-	useAnimationControls,
-} from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import Work from '../components/Work/Work'
 import Contact from '../components/Contact/Contact'
 import About from '../components/About/About'
 import styles from './index.module.css'
 
 export default function Home({ darkMode }) {
-	const welcomeContainerRef = useRef(null)
 	const aboutSectionRef = useRef(null)
 	const innerCircleRef = useRef(null)
 	const middleCircleRef = useRef(null)
 	const outerCircleRef = useRef(null)
-	const cloudControls = useAnimationControls()
 
 	const { scrollYProgress } = useScroll()
+	const opacityTransform = useTransform(scrollYProgress, [0, 0.14], [1, 0])
 
-	const welcomeContainerVariants = {
+	const welcomeSectionVariants = {
 		initial: {
 			y: -50,
 			transition: {
@@ -46,8 +40,6 @@ export default function Home({ darkMode }) {
 		},
 	}
 
-	const opacityTransform = useTransform(scrollYProgress, [0, 0.14], [1, 0])
-
 	const startCirclesAnimation = () => {
 		innerCircleRef.current.classList.add(styles.innerCircleAnimating)
 		middleCircleRef.current.classList.add(styles.middleCircleAnimating)
@@ -61,9 +53,19 @@ export default function Home({ darkMode }) {
 	}
 
 	return (
-		<div
-			id='appBgContainer'
-			className='z-[1] h-full dark:bg-slate-800 dark:bg-none'
+		<motion.section
+			id='welcomeContainer'
+			className='z-0 h-full w-full'
+			initial='initial'
+			variants={welcomeSectionVariants}
+			whileInView='visible'
+			viewport={{ once: true }}
+			onAnimationComplete={() => {
+				startCirclesAnimation()
+				setTimeout(() => {
+					endAnimation()
+				}, 1500)
+			}}
 		>
 			<Head>
 				<title>Julian&apos;s Web Dev Portfolio</title>
@@ -74,27 +76,40 @@ export default function Home({ darkMode }) {
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<motion.section
-				ref={welcomeContainerRef}
-				id='welcomeContainer'
-				className='relative z-[1] flex h-full flex-col items-center justify-between overflow-hidden bg-mainBg bg-cover text-stone-500 dark:bg-slate-800 dark:bg-none dark:text-white'
+			<AnimatePresence>
+				{darkMode && (
+					<motion.div
+						id='staticDarkModeBg'
+						className='absolute inset-0 z-[-1] h-full w-full'
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						style={{
+							backgroundColor: 'rgb(30 41 59)',
+						}}
+					></motion.div>
+				)}
+			</AnimatePresence>
+			<motion.div
+				id='welcomeOpacityTransformContainer'
+				className='relative flex h-full flex-col items-center justify-between overflow-hidden text-stone-500 dark:text-white'
 				style={{
 					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 					opacity: opacityTransform,
 				}}
-				initial='initial'
-				variants={welcomeContainerVariants}
-				whileInView='visible'
-				viewport={{ once: true }}
-				onAnimationComplete={() => {
-					cloudControls.start('visible')
-					startCirclesAnimation()
-					setTimeout(() => {
-						endAnimation()
-					}, 1500)
-				}}
 			>
-				<motion.div variants={childVariants}>
+				<AnimatePresence>
+					{!darkMode && (
+						<motion.div
+							id='lightModeBg'
+							className='absolute inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+						></motion.div>
+					)}
+				</AnimatePresence>
+				<motion.div id='circleEffects' variants={childVariants}>
 					<div
 						id='bgCircleEffectPink'
 						className='absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-[#FFACC6]  opacity-[12%] blur-3xl dark:opacity-10 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
@@ -171,15 +186,18 @@ export default function Home({ darkMode }) {
 				</motion.h2>
 
 				<div
-					id='continueButtonContainer'
+					id='continueButtonFlexContainer'
 					className='flex w-[80%] max-w-3xl justify-center md:justify-end'
 				>
 					<motion.button
 						id='continueButton'
-						className='relative self-end rounded-[2rem] bg-[rgba(255,255,255,0.9)] px-4 before:absolute before:inset-[-2px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:bg-slate-800 dark:shadow-2xl dark:hover:text-white'
+						className='relative self-end rounded-[2rem] px-4 before:absolute before:inset-[-2px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:shadow-2xl'
 						style={{
 							fontSize: 'clamp(1.25rem, 4vw, 4vh)',
 							width: 'min(100%, 250px)',
+							backgroundColor: darkMode
+								? 'rgb(30 41 59)'
+								: 'rgba(255,255,255,0.9)',
 						}}
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
@@ -193,12 +211,12 @@ export default function Home({ darkMode }) {
 						Continue
 					</motion.button>
 				</div>
-			</motion.section>
+			</motion.div>
 			<div ref={aboutSectionRef}></div>
 
 			<About darkMode={darkMode} />
 			<Work darkMode={darkMode} />
 			<Contact darkMode={darkMode} />
-		</div>
+		</motion.section>
 	)
 }
