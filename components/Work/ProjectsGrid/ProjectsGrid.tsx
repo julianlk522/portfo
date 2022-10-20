@@ -49,7 +49,7 @@ function ProjectsGrid({ gridMemberControls }) {
 					return (
 						<ProjectGridMember
 							key={i}
-							custom={i + 1}
+							i={i}
 							tailwindStyles={tailwindStyles}
 							screenshotId={screenshotId}
 							title={title}

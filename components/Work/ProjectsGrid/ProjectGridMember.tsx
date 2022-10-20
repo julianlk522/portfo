@@ -25,7 +25,7 @@ interface GridMemberPropsWithControls extends GridMemberProps {
 	stackItems: string[]
 	ghLink: string
 	liveLink?: string
-	custom: number
+	i: number
 	gridMemberControls: AnimationControls
 }
 
@@ -39,7 +39,7 @@ function ProjectGridMember({
 	stackItems,
 	ghLink,
 	liveLink,
-	custom,
+	i,
 	gridMemberControls,
 }: GridMemberPropsWithControls) {
 	const [gridMemberHovered, setGridMemberHovered] = useState(false)
@@ -62,10 +62,11 @@ function ProjectGridMember({
 		initial: {
 			opacity: 0,
 		},
-		visible: (custom: number) => ({
+		visible: (i: number) => ({
 			opacity: 1,
 			transition: {
-				delay: custom * 0.05,
+				delay: 0.1 * i,
+				duration: 0.5,
 				type: 'tween',
 			},
 		}),
@@ -73,7 +74,7 @@ function ProjectGridMember({
 
 	return (
 		<motion.div
-			custom={custom}
+			custom={i}
 			className={`relative col-span-3 h-full w-full overflow-hidden rounded-[2rem] shadow-lg xl:shadow-xl ${tailwindStyles}`}
 			style={{
 				background: gridMemberHovered ? 'black' : 'transparent',

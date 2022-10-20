@@ -7,6 +7,7 @@ import {
 	useTransform,
 	useAnimationControls,
 	useInView,
+	AnimatePresence,
 } from 'framer-motion'
 import ProjectsGrid from './ProjectsGrid/ProjectsGrid'
 import styles from './Work.module.css'
@@ -26,22 +27,17 @@ export default function Work({ darkMode }) {
 		return () => clearTimeout(containerScrollTimeout)
 	}, [containerInView])
 
+	const textBodyControls = useAnimationControls()
+	const stackTextControls = useAnimationControls()
 	const scrollDownControls = useAnimationControls()
 	const bgEffectControls = useAnimationControls()
 	const gridMemberControls = useAnimationControls()
-	const stackDescriptionControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
 	const allOpacityTransform = useTransform(
 		scrollYProgress,
 		[0.53, 0.66, 0.86],
 		[0, 1, 0]
 	)
-
-	useEffect(() => {
-		if (darkMode) {
-			workContainerRef.current.style.opacity = '1'
-		}
-	}, [darkMode])
 
 	const bgEffectVariants = {
 		minimized: {
@@ -56,35 +52,12 @@ export default function Work({ darkMode }) {
 		}),
 	}
 
-	useEffect(() => {
-		if (containerInView) {
-			bgEffectControls.start('expanded')
-		} else {
-			scrollDownControls.stop()
-			scrollDownControls.set('initial')
-			bgEffectControls.set('minimized')
-			stackDescriptionControls.set('initial')
-		}
-	}, [
-		containerInView,
-		bgEffectControls,
-		scrollDownControls,
-		gridMemberControls,
-		stackDescriptionControls,
-	])
-
 	const textBodyVariants = {
 		initial: {
 			opacity: 0,
-			transition: {
-				delay: 1,
-			},
 		},
 		visible: {
 			opacity: 1,
-			transition: {
-				staggerChildren: 0.15,
-			},
 		},
 	}
 
@@ -97,10 +70,11 @@ export default function Work({ darkMode }) {
 		visible: {
 			y: 0,
 			x: 0,
-			opacity: 0.5,
+			opacity: 1,
 			transition: {
-				type: 'spring',
-				duration: 1,
+				type: 'tween',
+				duration: 0.5,
+				delay: 0.25,
 			},
 		},
 		bouncing: {
@@ -112,18 +86,46 @@ export default function Work({ darkMode }) {
 					repeat: Infinity,
 					repeatType: 'reverse',
 					duration: 2,
-					delay: 0.5,
 				},
 			},
 		},
 	}
 
+	useEffect(() => {
+		if (containerInView) {
+			bgEffectControls.start('expanded')
+		} else {
+			scrollDownControls.stop()
+			scrollDownControls.set('initial')
+			textBodyControls.set('initial')
+			stackTextControls.set('initial')
+			bgEffectControls.start('minimized')
+		}
+	}, [containerInView, bgEffectControls, scrollDownControls])
+
 	return (
-		<div id='bgWrapper' className='z-[-1] h-full bg-none dark:bg-slate-800'>
-			<motion.section
-				id='workContainer'
-				ref={workContainerRef}
-				className='relative flex h-full flex-col items-center justify-center overflow-hidden text-center dark:bg-slate-800 md:justify-between  md:overflow-y-hidden'
+		<section
+			ref={workContainerRef}
+			id='workContainer'
+			className='relative h-full w-full'
+		>
+			<AnimatePresence>
+				{darkMode && (
+					<motion.div
+						id='staticDarkModeBg'
+						className='absolute inset-0 z-[-1] h-full w-full'
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						style={{
+							backgroundColor: 'rgb(30 41 59)',
+						}}
+					></motion.div>
+				)}
+			</AnimatePresence>
+			<motion.div
+				id='workContent'
+				className='relative flex h-full flex-col items-center justify-center overflow-hidden text-center md:justify-between  md:overflow-y-hidden'
 				style={{
 					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 					opacity: allOpacityTransform,
@@ -147,11 +149,11 @@ export default function Work({ darkMode }) {
 					onAnimationComplete={() => {
 						if (containerInView) {
 							gridMemberControls.start('visible')
-							stackDescriptionControls.start('visible')
+							stackTextControls.start('visible')
 						}
 					}}
 				></motion.div>
-				<motion.h2
+				<h2
 					id='workTitle'
 					className='mt-auto mb-8 h-auto dark:text-white lg:mb-auto'
 					style={{
@@ -162,8 +164,8 @@ export default function Work({ darkMode }) {
 					<span className='ml-2 bg-labText bg-clip-text font-semibold text-transparent sm:ml-4'>
 						lab
 					</span>
-				</motion.h2>
-				<motion.div
+				</h2>
+				<div
 					ref={gridAndSideTextContainerRef}
 					id='gridAndSideTextContainer'
 					className={`flex h-full w-full max-w-5xl items-center justify-around overflow-y-scroll md:max-h-[80%] lg:max-h-[80%] lg:justify-between lg:overflow-y-visible xl:max-w-7xl xl:justify-around ${styles.gridAndSideTextContainer}`}
@@ -171,10 +173,9 @@ export default function Work({ darkMode }) {
 					<motion.div
 						id='projectsSideTextLg'
 						className='mr-8 hidden h-full max-w-[25%] flex-col items-center justify-evenly bg-contain bg-center bg-no-repeat dark:text-white lg:flex'
-						initial='initial'
-						whileInView='visible'
-						viewport={{ amount: 'all' }}
 						variants={textBodyVariants}
+						initial='initial'
+						animate={textBodyControls}
 						onAnimationComplete={() => {
 							if (containerInView) {
 								scrollDownControls.start('bouncing')
@@ -211,19 +212,23 @@ export default function Work({ darkMode }) {
 						</motion.button>
 					</motion.div>
 					<ProjectsGrid gridMemberControls={gridMemberControls} />
-				</motion.div>
+				</div>
 				<motion.p
 					id='portfoStackDescriptionLg'
 					className='mt-4 hidden w-full max-w-5xl bg-portfoStackTextSm pr-8 text-xs dark:text-white lg:block lg:bg-portfoStackTextLg'
+					variants={textBodyChildVariants}
 					initial='initial'
-					whileInView='visible'
-					viewport={{ amount: 'all', margin: '-64px' }}
-					variants={textBodyVariants}
+					animate={stackTextControls}
+					onAnimationComplete={() => {
+						if (containerInView) {
+							textBodyControls.start('visible')
+						}
+					}}
 				>
 					This page was made using Next.js, Tailwind CSS and Framer
 					Motion
 				</motion.p>
-			</motion.section>
-		</div>
+			</motion.div>
+		</section>
 	)
 }

@@ -125,7 +125,7 @@ export default function Home({ darkMode }) {
 					style={{ marginBottom: 'clamp(1rem, 3vw, 4vh)' }}
 					variants={childVariants}
 				>
-					<motion.h1
+					<h1
 						className='dark:text-white'
 						style={{
 							fontSize: 'clamp(2rem, 10vw, 10vh)',
@@ -133,7 +133,7 @@ export default function Home({ darkMode }) {
 						}}
 					>
 						Welcome
-					</motion.h1>
+					</h1>
 					<motion.div
 						id='welcomeTextCircles'
 						ref={outerCircleRef}

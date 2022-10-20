@@ -120,7 +120,7 @@ export default function About({ darkMode }) {
 	}, [containerInView])
 
 	return (
-		<motion.section
+		<section
 			ref={containerRef}
 			id='aboutContainer'
 			className='relative h-full w-full'
@@ -302,6 +302,6 @@ export default function About({ darkMode }) {
 					</motion.div>
 				</div>
 			</div>
-		</motion.section>
+		</section>
 	)
 }
