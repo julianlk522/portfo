@@ -55,7 +55,7 @@ export default function Home({ darkMode }) {
 	return (
 		<motion.section
 			id='welcomeContainer'
-			className='z-0 h-full w-full'
+			className='relative z-0 h-full w-full'
 			initial='initial'
 			variants={welcomeSectionVariants}
 			whileInView='visible'

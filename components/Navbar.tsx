@@ -34,16 +34,15 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 			opacity: 1,
 			backgroundColor: 'rgba(51 65 85 0.75)',
 			boxShadow: '0px 0px 10px rgba(153, 153, 153, 0.5)',
-			transition: {
-				boxShadow: {
-					delay: 0.1,
-				},
-			},
 		},
 		lightMode: {
 			opacity: 1,
-			backgroundColor: 'rgb(0 0 0 0)',
+			backgroundColor: 'rgba(51 65 85 0)',
 			boxShadow: '0px 0px 0px rgba(153, 153, 153, 0)',
+		},
+		transition: {
+			duration: 2,
+			type: 'tween',
 		},
 	}
 
