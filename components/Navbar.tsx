@@ -1,7 +1,14 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useEffect } from 'react'
+import {
+	motion,
+	useScroll,
+	useTransform,
+	useAnimationControls,
+} from 'framer-motion'
 
 export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 	const { scrollYProgress } = useScroll()
+	const navControls = useAnimationControls()
 
 	const underlineOpacityTransformAbout = useTransform(
 		scrollYProgress,
@@ -19,10 +26,42 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 		[0, 0.5]
 	)
 
+	const navVariants = {
+		inivisible: {
+			opacity: 0,
+		},
+		darkMode: {
+			opacity: 1,
+			backgroundColor: 'rgba(51 65 85 0.75)',
+			boxShadow: '0px 0px 10px rgba(153, 153, 153, 0.5)',
+			transition: {
+				boxShadow: {
+					delay: 0.1,
+				},
+			},
+		},
+		lightMode: {
+			opacity: 1,
+			backgroundColor: 'rgb(0 0 0 0)',
+			boxShadow: '0px 0px 0px rgba(153, 153, 153, 0)',
+		},
+	}
+
+	useEffect(() => {
+		if (darkMode) {
+			navControls.start('darkMode')
+		} else {
+			navControls.start('lightMode')
+		}
+	}, [darkMode])
+
 	return (
 		<motion.nav
 			id='navbar'
-			className='fixed top-0 left-0 z-[2] h-[5%] w-full items-center justify-between bg-white dark:bg-slate-700 dark:text-white dark:shadow-navbar'
+			className='fixed top-0 left-0 z-[2] h-[5%] w-full items-center justify-between dark:text-white'
+			variants={navVariants}
+			initial={'invisible'}
+			animate={navControls}
 			style={{
 				display: navVisible ? 'flex' : 'none',
 				padding: 'clamp(1rem, 3vw, 3vh) clamp(2rem, 6vw, 6vh)',

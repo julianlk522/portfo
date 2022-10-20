@@ -116,7 +116,7 @@ export default function Home({ darkMode }) {
 					></div>
 					<div
 						id='bgCircleEffectBlue'
-						className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] shadow-thick blur-3xl sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
+						className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] blur-3xl sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
 					></div>
 				</motion.div>
 				<motion.div

@@ -143,7 +143,7 @@ export default function Work({ darkMode }) {
 					variants={bgEffectVariants}
 					initial='minimized'
 					animate={bgEffectControls}
-					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] shadow-thick blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
+					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
 					onAnimationComplete={() => {
 						if (containerInView) {
 							gridMemberControls.start('visible')
