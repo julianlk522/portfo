@@ -6,6 +6,7 @@ import {
 	useTransform,
 	useInView,
 	useAnimationControls,
+	AnimatePresence,
 } from 'framer-motion'
 import visual from '../../public/visual.svg'
 import route from '../../public/route.svg'
@@ -91,11 +92,6 @@ export default function Contact({ darkMode }) {
 	}, [scrollUpInView, scrollPromptSmControls])
 
 	useEffect(() => {
-		if (darkMode)
-			document.getElementById('contactContainer').style.opacity = '1'
-	}, [darkMode])
-
-	useEffect(() => {
 		const containerScrollTimeout = setTimeout(() => {
 			if (!containerInView) {
 				contentBodyRef.current.scrollTop = 0
@@ -106,17 +102,45 @@ export default function Contact({ darkMode }) {
 	}, [containerInView])
 
 	return (
-		<div id='bgWrapper' className='z-[-1] h-full bg-none dark:bg-slate-800'>
+		<motion.section
+			ref={containerRef}
+			id='contactContainer'
+			className='relative h-full w-full'
+		>
+			<AnimatePresence>
+				{darkMode && (
+					<motion.div
+						id='staticDarkModeBg'
+						className='absolute inset-0 z-[-1] h-full w-full'
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						style={{
+							backgroundColor: 'rgb(30 41 59)',
+						}}
+					></motion.div>
+				)}
+			</AnimatePresence>
 			<motion.section
-				ref={containerRef}
-				id='contactContainer'
-				className='relative flex h-full flex-col items-center justify-between overflow-hidden bg-mainBg bg-cover px-32 text-center dark:bg-slate-800 dark:bg-none lg:overflow-visible xl:py-16'
+				id='contactOpacityTransformContainer'
+				className='relative flex h-full flex-col items-center justify-between overflow-hidden px-32 text-center lg:overflow-visible xl:py-16'
 				style={{
 					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 					opacity: opacityTransform,
 				}}
 			>
-				<motion.h2
+				<AnimatePresence>
+					{!darkMode && (
+						<motion.div
+							id='lightModeBg'
+							className='absolute inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+						></motion.div>
+					)}
+				</AnimatePresence>
+				<h2
 					id='contactTitle'
 					className='my-8 mb-auto dark:text-white'
 					style={{ fontSize: 'clamp(2rem, 8vw, 6vh)' }}
@@ -129,7 +153,7 @@ export default function Contact({ darkMode }) {
 					</span>
 					<br className='xs:hidden' />
 					web app
-				</motion.h2>
+				</h2>
 				<div
 					ref={contentBodyRef}
 					id='contactContentBody'
@@ -323,6 +347,6 @@ export default function Contact({ darkMode }) {
 					</motion.button>
 				</div>
 			</motion.section>
-		</div>
+		</motion.section>
 	)
 }
