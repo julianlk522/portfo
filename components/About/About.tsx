@@ -146,11 +146,11 @@ export default function About({ darkMode }) {
 					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 				}}
 			>
-				<AboutSpiral
-					darkMode={darkMode}
-					spiralControls={spiralControls}
-					handControls={handControls}
-				/>
+				{/* <AboutSpiral
+						darkMode={darkMode}
+						spiralControls={spiralControls}
+						handControls={handControls}
+					/> */}
 				<div
 					ref={textContentRef}
 					id='aboutOverflowContainer'
