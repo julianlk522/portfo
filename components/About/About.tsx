@@ -141,16 +141,16 @@ export default function About({ darkMode }) {
 			</AnimatePresence>
 			<div
 				id='aboutContent'
-				className='h-full flex-col items-center justify-center overflow-hidden text-center dark:text-white md:flex-row'
+				className='relative h-full flex-col items-center justify-center overflow-hidden text-center dark:text-white md:flex-row'
 				style={{
 					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 				}}
 			>
-				{/* <AboutSpiral
-						darkMode={darkMode}
-						spiralControls={spiralControls}
-						handControls={handControls}
-					/> */}
+				<AboutSpiral
+					darkMode={darkMode}
+					spiralControls={spiralControls}
+					handControls={handControls}
+				/>
 				<div
 					ref={textContentRef}
 					id='aboutOverflowContainer'
@@ -174,7 +174,7 @@ export default function About({ darkMode }) {
 					>
 						<div
 							id='aboutTextContentBackdrop'
-							className='absolute right-0 top-1/4 h-[100vw] w-[100vw] bg-aboutTextContentBackdrop opacity-10 dark:opacity-[7%] md:right-[-67%] lg:top-[-10%] lg:right-[-10%] lg:h-[150%] lg:w-[150%]'
+							className='absolute right-0 top-1/4 h-[100vw] w-[100vw] bg-aboutTextContentBackdrop opacity-10 dark:opacity-[7%] md:right-[-67%] md:top-[-10%] lg:right-[-10%] lg:h-[150%] lg:w-[150%]'
 						></div>
 						<motion.h2
 							id='aboutTitle'
