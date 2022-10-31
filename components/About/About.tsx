@@ -13,12 +13,15 @@ import styles from './About.module.css'
 
 export default function About({ darkMode }) {
 	const textContentRef = useRef(null)
+	const scrollDownRef = useRef(null)
 	const containerRef = useRef(null)
 	const containerInView = useInView(containerRef, { amount: 'all' })
+
+	const xsScreenOrGreater =
+		containerRef.current && containerRef.current.clientWidth >= 400
 	const mdScreenOrGreater =
 		containerRef.current && containerRef.current.clientWidth >= 768
-	const scrollDownRef = useRef(null)
-	const scrollDownRefInView = useInView(scrollDownRef, { amount: 'some' })
+
 	const scrollDownControls = useAnimationControls()
 	const spiralControls = useAnimationControls()
 	const handControls = useAnimationControls()
@@ -52,27 +55,50 @@ export default function About({ darkMode }) {
 
 	const photoSectionVariants = {
 		initial: {
-			opacity: 0,
 			transition: {
 				ease: 'easeOut',
 			},
 		},
 		visible: {
-			opacity: 1,
 			transition: {
-				duration: 1,
-				delay: 0.25,
+				delayChildren: 0.5,
+				staggerChildren: 0.5,
 			},
 		},
 	}
 
-	const photoChildVariants = {
+	const photoVariants = {
 		initial: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				duration: 1,
+			},
+		},
+	}
+
+	const scrollDownTextVariants = {
+		initial: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 0.4,
+		},
+	}
+
+	const scrollDownVariants = {
+		initial: {
+			opacity: 0,
 			y: 0,
 		},
-		visible: {},
+		visible: {
+			opacity: 0.1,
+		},
 		bouncing: {
-			y: [null, 16],
+			opacity: 0.1,
+			y: [0, 16],
 			x: 0,
 			transition: {
 				y: {
@@ -80,6 +106,7 @@ export default function About({ darkMode }) {
 					repeatType: 'reverse',
 					duration: 2,
 					delay: mdScreenOrGreater ? 1 : 0,
+					ease: 'easeInOut',
 				},
 			},
 		},
@@ -101,13 +128,6 @@ export default function About({ darkMode }) {
 			containerRef.current.style.opacity = '1'
 		}
 	}, [darkMode])
-
-	useEffect(() => {
-		if (!scrollDownRefInView) {
-			scrollDownControls.stop()
-			scrollDownControls.set('initial')
-		}
-	}, [scrollDownRefInView, scrollDownControls])
 
 	useEffect(() => {
 		const textScrollTimeout = setTimeout(() => {
@@ -245,23 +265,22 @@ export default function About({ darkMode }) {
 						initial='initial'
 						whileInView='visible'
 						viewport={{
-							amount: mdScreenOrGreater ? 'all' : 'some',
+							amount: xsScreenOrGreater ? 'all' : 'some',
 						}}
-						onAnimationComplete={() => {
-							if (scrollDownRefInView) {
-								scrollDownControls.start('bouncing')
-							}
+						onViewportLeave={() => {
+							spiralControls.set('hidden')
+							scrollDownControls.stop()
+							scrollDownControls.set('initial')
 						}}
-						onViewportLeave={() => spiralControls.start('hidden')}
 					>
 						<motion.div
 							id='aboutPhotoMask'
 							className='relative flex h-48 max-h-[33vh] w-48 max-w-[33vh] items-center justify-center overflow-hidden rounded-full shadow-thick lg:h-72 lg:w-72'
+							variants={photoVariants}
 							style={{
 								backgroundImage:
 									'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.75) 100%)',
 							}}
-							variants={photoChildVariants}
 						>
 							<Image
 								src={portrait}
@@ -273,12 +292,13 @@ export default function About({ darkMode }) {
 						<motion.button
 							ref={scrollDownRef}
 							id='aboutScrollDownButton'
-							className='my-16 opacity-10 dark:invert'
+							className='my-16 opacity-0 dark:invert'
 							animate={scrollDownControls}
-							variants={photoChildVariants}
+							variants={scrollDownVariants}
 							whileHover={{ scale: 1.1 }}
 							whileTap={{ scale: 0.9 }}
 							onClick={() => {
+								scrollDownControls.stop()
 								scrollDownControls.set('initial')
 								spiralControls.start('hidden')
 								handControls.set('initial')
@@ -291,14 +311,22 @@ export default function About({ darkMode }) {
 							<Image
 								src={scrollUp}
 								alt='button to scroll to the next section'
-								width={38}
-								height={20}
+								width={19}
+								height={10}
 								className='rotate-180'
 							/>
 						</motion.button>
-						<p className='mb-16 text-xs opacity-40 dark:text-white md:mb-0'>
+						<motion.p
+							className='mb-16 text-[10px] opacity-40 dark:text-white md:mb-0'
+							variants={scrollDownTextVariants}
+							onAnimationComplete={() => {
+								if (containerInView) {
+									scrollDownControls.start('bouncing')
+								}
+							}}
+						>
 							Click the down arrow to continue
-						</p>
+						</motion.p>
 					</motion.div>
 				</div>
 			</div>
