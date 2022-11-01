@@ -295,8 +295,8 @@ export default function About({ darkMode }) {
 							className='my-16 opacity-0 dark:invert'
 							animate={scrollDownControls}
 							variants={scrollDownVariants}
-							whileHover={{ scale: 1.1 }}
-							whileTap={{ scale: 0.9 }}
+							whileHover={{ scale: 1.25 }}
+							whileTap={{ scale: 1.1 }}
 							onClick={() => {
 								scrollDownControls.stop()
 								scrollDownControls.set('initial')

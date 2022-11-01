@@ -72,8 +72,8 @@ function ProjectsGrid({ gridMemberControls }) {
 			<motion.button
 				id='scrollDownPromptSm'
 				className='my-16 flex flex-col items-center justify-between dark:text-white lg:hidden'
-				whileHover={{ scale: 1.1 }}
-				whileTap={{ scale: 0.9 }}
+				whileHover={{ scale: 1.25 }}
+				whileTap={{ scale: 1.1 }}
 				onClick={() =>
 					document
 						.getElementById('contactContainer')
@@ -94,8 +94,8 @@ function ProjectsGrid({ gridMemberControls }) {
 						className='rotate-180 opacity-20 dark:invert'
 					/>
 				</motion.div>
-				<p className='mt-16 text-xs opacity-40'>Continue</p>
 			</motion.button>
+			<p className='mb-8 text-xs opacity-40 dark:text-white'>Continue</p>
 		</div>
 	)
 }

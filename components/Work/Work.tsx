@@ -200,8 +200,8 @@ export default function Work({ darkMode }) {
 							className='opacity-10 dark:invert'
 							variants={textBodyChildVariants}
 							animate={scrollDownControls}
-							whileHover={{ scale: 1.1 }}
-							whileTap={{ scale: 0.9 }}
+							whileHover={{ scale: 1.25 }}
+							whileTap={{ scale: 1.1 }}
 							onClick={() =>
 								document
 									.getElementById('contactContainer')
