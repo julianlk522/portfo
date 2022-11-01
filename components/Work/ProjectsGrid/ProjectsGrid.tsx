@@ -94,7 +94,7 @@ function ProjectsGrid({ gridMemberControls }) {
 						className='rotate-180 opacity-20 dark:invert'
 					/>
 				</motion.div>
-				<p className='mt-16 text-xs opacity-50'>Continue</p>
+				<p className='mt-16 text-xs opacity-40'>Continue</p>
 			</motion.button>
 		</div>
 	)

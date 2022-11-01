@@ -94,10 +94,10 @@ export default function About({ darkMode }) {
 			y: 0,
 		},
 		visible: {
-			opacity: 0.1,
+			opacity: 0.2,
 		},
 		bouncing: {
-			opacity: 0.1,
+			opacity: 0.2,
 			y: [0, 16],
 			x: 0,
 			transition: {
@@ -265,7 +265,7 @@ export default function About({ darkMode }) {
 						initial='initial'
 						whileInView='visible'
 						viewport={{
-							amount: xsScreenOrGreater ? 'all' : 'some',
+							amount: mdScreenOrGreater ? 'all' : 'some',
 						}}
 						onViewportLeave={() => {
 							spiralControls.set('hidden')
@@ -279,7 +279,7 @@ export default function About({ darkMode }) {
 							variants={photoVariants}
 							style={{
 								backgroundImage:
-									'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.75) 100%)',
+									'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.5) 100%)',
 							}}
 						>
 							<Image
@@ -311,8 +311,8 @@ export default function About({ darkMode }) {
 							<Image
 								src={scrollUp}
 								alt='button to scroll to the next section'
-								width={19}
-								height={10}
+								width={38}
+								height={20}
 								className='rotate-180'
 							/>
 						</motion.button>
