@@ -13,9 +13,34 @@ import ProjectsGrid from './ProjectsGrid/ProjectsGrid'
 import styles from './Work.module.css'
 
 export default function Work({ darkMode }) {
+	const projectsAnimatedOnce = useRef(false)
 	const workContainerRef = useRef(null)
 	const containerInView = useInView(workContainerRef, { amount: 'all' })
 	const gridAndSideTextContainerRef = useRef(null)
+
+	const textBodyControls = useAnimationControls()
+	const portfoStackDescriptionControls = useAnimationControls()
+	const scrollDownControls = useAnimationControls()
+	const bgEffectControls = useAnimationControls()
+	const gridMemberControls = useAnimationControls()
+	const { scrollYProgress } = useScroll()
+	const allOpacityTransform = useTransform(
+		scrollYProgress,
+		[0.53, 0.66, 0.86],
+		[0, 1, 0]
+	)
+
+	useEffect(() => {
+		if (containerInView) {
+			bgEffectControls.start('expanded')
+		} else {
+			scrollDownControls.stop()
+			scrollDownControls.set('initial')
+			textBodyControls.set('initial')
+			portfoStackDescriptionControls.set('initial')
+			bgEffectControls.start('minimized')
+		}
+	}, [containerInView, bgEffectControls, scrollDownControls])
 
 	useEffect(() => {
 		const containerScrollTimeout = setTimeout(() => {
@@ -26,18 +51,6 @@ export default function Work({ darkMode }) {
 
 		return () => clearTimeout(containerScrollTimeout)
 	}, [containerInView])
-
-	const textBodyControls = useAnimationControls()
-	const stackTextControls = useAnimationControls()
-	const scrollDownControls = useAnimationControls()
-	const bgEffectControls = useAnimationControls()
-	const gridMemberControls = useAnimationControls()
-	const { scrollYProgress } = useScroll()
-	const allOpacityTransform = useTransform(
-		scrollYProgress,
-		[0.53, 0.66, 0.86],
-		[0, 1, 0]
-	)
 
 	const bgEffectVariants = {
 		minimized: {
@@ -53,11 +66,11 @@ export default function Work({ darkMode }) {
 	}
 
 	const textBodyVariants = {
-		initial: {
-			opacity: 0,
-		},
+		initial: {},
 		visible: {
-			opacity: 1,
+			transition: {
+				staggerChildren: 0.25,
+			},
 		},
 	}
 
@@ -71,16 +84,11 @@ export default function Work({ darkMode }) {
 			y: 0,
 			x: 0,
 			opacity: 1,
-			transition: {
-				type: 'tween',
-				duration: 0.5,
-				delay: 0.25,
-			},
 		},
 		bouncing: {
 			y: [null, 16],
 			x: 0,
-			opacity: 0.1,
+			opacity: 0.2,
 			transition: {
 				y: {
 					repeat: Infinity,
@@ -91,17 +99,16 @@ export default function Work({ darkMode }) {
 		},
 	}
 
-	useEffect(() => {
-		if (containerInView) {
-			bgEffectControls.start('expanded')
-		} else {
-			scrollDownControls.stop()
-			scrollDownControls.set('initial')
-			textBodyControls.set('initial')
-			stackTextControls.set('initial')
-			bgEffectControls.start('minimized')
-		}
-	}, [containerInView, bgEffectControls, scrollDownControls])
+	const portfoStackDescriptionVariants = {
+		initial: {
+			x: -25,
+			opacity: 0,
+		},
+		visible: {
+			x: 0,
+			opacity: 1,
+		},
+	}
 
 	return (
 		<section
@@ -149,13 +156,13 @@ export default function Work({ darkMode }) {
 					onAnimationComplete={() => {
 						if (containerInView) {
 							gridMemberControls.start('visible')
-							stackTextControls.start('visible')
+							portfoStackDescriptionControls.start('visible')
 						}
 					}}
 				></motion.div>
 				<h2
 					id='workTitle'
-					className='mt-auto mb-8 h-auto dark:text-white lg:mb-auto'
+					className='my-auto dark:text-white'
 					style={{
 						fontSize: 'clamp(2rem, 8vw, 8vh)',
 					}}
@@ -216,12 +223,16 @@ export default function Work({ darkMode }) {
 				<motion.p
 					id='portfoStackDescriptionLg'
 					className='mt-4 hidden w-full max-w-5xl bg-portfoStackTextSm pr-8 text-xs dark:text-white lg:block lg:bg-portfoStackTextLg'
-					variants={textBodyChildVariants}
+					variants={portfoStackDescriptionVariants}
 					initial='initial'
-					animate={stackTextControls}
+					animate={portfoStackDescriptionControls}
+					transition={{
+						delay: projectsAnimatedOnce.current ? 0.25 : 1,
+					}}
 					onAnimationComplete={() => {
 						if (containerInView) {
 							textBodyControls.start('visible')
+							projectsAnimatedOnce.current = true
 						}
 					}}
 				>
