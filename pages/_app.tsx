@@ -18,9 +18,9 @@ function MyApp({ Component, pageProps }) {
 			// prevent immediate Navbar invisibility on page load due to micro layout shift
 			if (scrollYProgress.getPrevious() <= 0.01)
 				return setNavVisible(true)
-			if (scrollYProgress.getPrevious() < currentYProgress) {
+			if (scrollYProgress.getPrevious() <= currentYProgress) {
 				setScrollDirection('down')
-			} else if (scrollYProgress.getPrevious() >= currentYProgress) {
+			} else if (scrollYProgress.getPrevious() > currentYProgress) {
 				setScrollDirection('up')
 			}
 			setCurrentScrollPercent(currentYProgress)

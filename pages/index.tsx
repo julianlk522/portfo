@@ -54,7 +54,7 @@ export default function Home({ darkMode }) {
 
 	return (
 		<motion.section
-			id='welcomeContainer'
+			id='appContainer'
 			className='relative z-0 h-full w-full'
 			initial='initial'
 			variants={welcomeSectionVariants}
