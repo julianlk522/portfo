@@ -98,7 +98,7 @@ function ContactForm() {
 		<motion.form
 			id='contactForm'
 			ref={formRef}
-			className='relative z-[1] mx-8 flex h-full w-full max-w-xl flex-col items-center justify-evenly rounded-3xl px-12 pt-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-3xl after:bg-contactFormBackdropLightMode after:backdrop-blur-lg dark:text-white dark:after:bg-contactFormBackdropDarkMode dark:after:blur-sm lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:pt-4 lg:shadow-xl xl:w-[60%] '
+			className='relative z-[1] mx-8 flex h-full w-full max-w-xl flex-col items-center justify-evenly rounded-3xl px-12 py-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-3xl after:bg-contactFormBackdropLightMode after:backdrop-blur-lg dark:text-white dark:after:bg-contactFormBackdropDarkMode dark:after:blur-sm lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:pt-4 lg:pb-0 lg:shadow-xl xl:w-[60%] '
 			variants={contactFormVariants}
 			initial='initial'
 			whileInView='visible'
@@ -163,7 +163,7 @@ function ContactForm() {
 				onHoverStart={() => submitButtonControls.start('hovered')}
 				onHoverEnd={() => submitButtonControls.start('initial')}
 				whileHover={{ scale: 1.25 }}
-				whileTap={{ scale: 0.9 }}
+				whileTap={{ scale: 1.1 }}
 			>
 				Submit
 				<motion.div

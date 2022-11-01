@@ -142,7 +142,7 @@ export default function Contact({ darkMode }) {
 				</AnimatePresence>
 				<h2
 					id='contactTitle'
-					className='my-8 mb-auto dark:text-white'
+					className='mb-auto dark:text-white lg:mt-auto'
 					style={{ fontSize: 'clamp(2rem, 8vw, 6vh)' }}
 				>
 					Let&apos;s design your
@@ -164,7 +164,7 @@ export default function Contact({ darkMode }) {
 					</p>
 					<motion.div
 						id='experience'
-						className='relative flex h-[300%] w-full flex-col items-center justify-evenly dark:text-white xs:h-[200%] lg:order-2 lg:my-0 lg:ml-8 lg:h-full lg:max-h-[80%] lg:space-y-4'
+						className='relative flex h-[300%] w-full flex-col items-center justify-evenly space-y-16 dark:text-white xs:h-[200%] lg:order-2 lg:ml-8 lg:h-full lg:max-h-[80%] lg:space-y-4'
 						style={{ maxWidth: 'max(50vw, 600px)' }}
 						variants={experienceVariants}
 						initial='initial'
@@ -179,7 +179,7 @@ export default function Contact({ darkMode }) {
 							variants={experienceChildVariants}
 						>
 							<motion.div
-								className='mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+								className='mx-8 mb-8 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 								whileHover={{
 									y: [null, -8, 8],
 									transition: {
@@ -193,14 +193,14 @@ export default function Contact({ darkMode }) {
 								<Image
 									alt='visual design skills'
 									src={visual}
-									width={80}
-									height={80}
+									width={64}
+									height={64}
 									layout='fixed'
 									className='object-contain object-center'
 								/>
 							</motion.div>
 							<div className='flex w-full flex-col items-center justify-between'>
-								<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
+								<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
 									UI/UX and Layout Design
 								</h3>
 								<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
@@ -216,7 +216,7 @@ export default function Contact({ darkMode }) {
 							variants={experienceChildVariants}
 						>
 							<motion.div
-								className='mx-8 my-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+								className='mx-8 mb-8 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 								whileHover={{
 									y: [null, -8, 8],
 									transition: {
@@ -230,14 +230,14 @@ export default function Contact({ darkMode }) {
 								<Image
 									alt='backend architectural skills'
 									src={route}
-									width={80}
-									height={80}
+									width={64}
+									height={64}
 									layout='fixed'
 									className='object-contain object-center'
 								/>
 							</motion.div>
-							<div className='flex w-full flex-col items-center justify-center sm:my-24 lg:my-0'>
-								<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
+							<div className='flex w-full flex-col items-center justify-center'>
+								<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
 									Backend Versatility
 								</h3>
 								<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
@@ -253,7 +253,7 @@ export default function Contact({ darkMode }) {
 							variants={experienceChildVariants}
 						>
 							<motion.div
-								className='mx-8 my-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+								className='mx-8 mb-8 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 								whileHover={{
 									y: [null, -8, 8],
 									transition: {
@@ -265,16 +265,16 @@ export default function Contact({ darkMode }) {
 								}}
 							>
 								<Image
-									alt='proficiency in modern frameworks like React'
+									alt='proficiency in modern frameworks like React.js'
 									src={react}
-									width={80}
-									height={80}
+									width={64}
+									height={64}
 									layout='fixed'
 									className='object-contain object-center'
 								/>
 							</motion.div>
 							<div className='flex flex-col items-center justify-center'>
-								<h3 className='mb-2 text-xl xl:mb-4 xl:text-2xl'>
+								<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
 									State-of-the-Art Frameworks and Packages
 								</h3>
 								<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
@@ -288,9 +288,10 @@ export default function Contact({ darkMode }) {
 						</motion.div>
 						<motion.button
 							id='scrollUpPromptLg'
-							className='absolute bottom-[-4rem] left-1/2 hidden w-[5vw] items-center justify-between lg:flex'
-							whileHover={{ scale: 1.1 }}
-							whileTap={{ scale: 0.9 }}
+							className='ml-16 hidden items-center justify-between pt-4 lg:flex'
+							whileHover={{ scale: 1.25 }}
+							whileTap={{ scale: 1.1 }}
+							variants={experienceChildVariants}
 							onClick={() =>
 								window.scrollTo({
 									top: 0,
@@ -303,7 +304,9 @@ export default function Contact({ darkMode }) {
 							<Image
 								src={scrollUp}
 								alt='button to scroll to the top of the page'
-								className='scale-[.25] opacity-20 dark:invert'
+								width={19}
+								height={10}
+								className='opacity-20 dark:invert'
 							/>
 						</motion.button>
 					</motion.div>
@@ -313,9 +316,9 @@ export default function Contact({ darkMode }) {
 					<ContactForm />
 					<motion.button
 						id='scrollUpPromptSm'
-						className='relative my-16 flex h-[5vh] flex-col items-center justify-between dark:text-white lg:hidden'
-						whileHover={{ scale: 1.1 }}
-						whileTap={{ scale: 0.9 }}
+						className='relative my-16 flex flex-col items-center justify-between dark:text-white lg:hidden'
+						whileHover={{ scale: 1.25 }}
+						whileTap={{ scale: 1.1 }}
 						onClick={() =>
 							window.scrollTo({
 								top: 0,
@@ -340,7 +343,7 @@ export default function Contact({ darkMode }) {
 						</motion.div>
 						<p
 							ref={scrollUpSmRef}
-							className='mt-16 pb-16 text-xs opacity-50'
+							className='mt-16 pb-16 text-xs opacity-40'
 						>
 							Back to top
 						</p>
