@@ -95,7 +95,9 @@ function ProjectsGrid({ gridMemberControls }) {
 					/>
 				</motion.div>
 			</motion.button>
-			<p className='mb-8 text-xs opacity-40 dark:text-white'>Continue</p>
+			<p className='mb-8 text-xs opacity-40 dark:text-white lg:hidden'>
+				Continue
+			</p>
 		</div>
 	)
 }
