@@ -1,12 +1,6 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
-import {
-	motion,
-	useAnimationControls,
-	useMotionValue,
-	useMotionTemplate,
-	useTransform,
-} from 'framer-motion'
+import { motion, useAnimationControls } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { toast } from 'react-hot-toast'
 import laugh from '../../public/laugh.svg'
@@ -16,8 +10,6 @@ function ContactForm() {
 	const mdScreenOrLesser =
 		formRef.current && formRef.current.clientWidth < 1024
 	const submitButtonControls = useAnimationControls()
-	// const conicGradientRotation = useMotionValue(100)
-	// const gradientAnimationTemplate = useMotionTemplate`radial-gradient(ellipse at 50% 50%, rgba(0, 216, 255, 0) ${conicGradientRotation}%, rgba(0, 216, 255, 0.2) 100%);`
 
 	const contactFormVariants = {
 		initial: {
