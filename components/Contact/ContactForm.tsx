@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 import Image from 'next/image'
 import { motion, useAnimationControls } from 'framer-motion'
 import emailjs from '@emailjs/browser'
@@ -7,21 +8,24 @@ import laugh from '../../public/laugh.svg'
 
 function ContactForm() {
 	const formRef = useRef(null)
-	const mdScreenOrLesser =
-		formRef.current && formRef.current.clientWidth < 1024
+	const { width } = useWindowDimensions()
+	const mdScreenOrLesser = width && width < 1024
+
 	const submitButtonControls = useAnimationControls()
 
 	const contactFormVariants = {
 		initial: {
 			opacity: 0,
-			y: 100,
+			y: mdScreenOrLesser ? 0 : 100,
+			x: mdScreenOrLesser ? 100 : 0,
 		},
 		visible: {
 			opacity: 1,
 			y: 0,
+			x: 0,
 			transition: {
 				type: 'tween',
-				delay: mdScreenOrLesser ? 0 : 2,
+				delay: mdScreenOrLesser ? 0 : 1,
 				duration: mdScreenOrLesser ? 1 : 2,
 			},
 		},
@@ -90,13 +94,12 @@ function ContactForm() {
 		<motion.form
 			id='contactForm'
 			ref={formRef}
-			className='relative z-[1] mx-8 flex h-full w-full max-w-xl flex-col items-center justify-evenly rounded-3xl px-12 py-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-3xl after:bg-contactFormBackdropLightMode after:backdrop-blur-lg dark:text-white dark:after:bg-contactFormBackdropDarkMode dark:after:blur-sm lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:pt-4 lg:pb-0 lg:shadow-xl xl:w-[60%] '
+			className='relative z-[1] mx-8 flex h-full max-w-xl flex-col items-center justify-evenly rounded-3xl px-12 py-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-3xl after:bg-contactFormBackdropLightMode after:backdrop-blur-lg dark:text-white dark:after:bg-contactFormBackdropDarkMode dark:after:blur-sm sm:w-[60%] lg:max-h-[60%] lg:w-1/2 lg:max-w-xl lg:pt-4 lg:pb-0 lg:shadow-xl xl:w-[60%]'
 			variants={contactFormVariants}
 			initial='initial'
 			whileInView='visible'
 			viewport={{
-				amount: mdScreenOrLesser ? 'some' : 'all',
-				margin: '50px 0px',
+				amount: 'some',
 				once: true,
 			}}
 			onSubmit={submitForm}

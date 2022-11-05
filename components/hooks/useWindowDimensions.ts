@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-export default function useWindowDimensions(
-	placeholderRef: React.MutableRefObject<any>
-) {
+export default function useWindowDimensions() {
 	const [windowDimensions, setWindowDimensions] = useState(
 		getWindowDimensions()
 	)
-
 	function getWindowDimensions() {
-		if (placeholderRef.current) {
-			const { clientWidth, clientHeight } = placeholderRef.current
-			return { clientWidth, clientHeight }
+		if (typeof window !== 'undefined') {
+			const { innerWidth: width, innerHeight: height } = window
+			return {
+				width,
+				height,
+			}
 		}
-		return
+		return { width: 0, height: 0 }
 	}
 
 	useEffect(() => {

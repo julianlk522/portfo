@@ -134,7 +134,7 @@ export default function Contact({ darkMode }) {
 
 					<Experience />
 
-					<h3 className='my-32 text-2xl dark:text-white lg:hidden'>
+					<h3 className='mt-32 mb-16 text-2xl dark:text-white lg:hidden'>
 						I&apos;d love to hear from you!
 					</h3>
 

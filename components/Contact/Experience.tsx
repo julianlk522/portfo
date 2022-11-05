@@ -9,7 +9,7 @@ import scrollUp from '../../public/scrollUp.webp'
 
 function Experience() {
 	const sectionRef = useRef(null)
-	const windowDimensions = useWindowDimensions(sectionRef)
+	const { width } = useWindowDimensions()
 
 	const experienceVariants = {
 		initial: {},
@@ -42,16 +42,13 @@ function Experience() {
 		<motion.div
 			ref={sectionRef}
 			id='experience'
-			className='relative flex h-[300%] w-full flex-col items-center justify-evenly space-y-16 dark:text-white xs:h-[200%] lg:order-2 lg:ml-8 lg:h-full lg:max-h-[80%] lg:space-y-4'
+			className='relative flex h-[300%] w-full flex-col items-center justify-evenly space-y-16 dark:text-white xs:h-[200%] lg:mx-4 lg:h-full lg:max-h-[80%] lg:space-y-4'
 			style={{ maxWidth: 'max(50vw, 600px)' }}
 			variants={experienceVariants}
 			initial='initial'
 			whileInView='visible'
 			viewport={{
-				amount:
-					windowDimensions && windowDimensions.clientWidth >= 768
-						? 'all'
-						: 'some',
+				amount: width && width >= 1024 ? 'all' : 'some',
 				once: true,
 			}}
 		>
