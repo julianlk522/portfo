@@ -40,7 +40,13 @@ export default function Work({ darkMode }) {
 			portfoStackDescriptionControls.set('initial')
 			bgEffectControls.start('minimized')
 		}
-	}, [containerInView, bgEffectControls, scrollDownControls])
+	}, [
+		containerInView,
+		bgEffectControls,
+		textBodyControls,
+		scrollDownControls,
+		portfoStackDescriptionControls,
+	])
 
 	useEffect(() => {
 		const containerScrollTimeout = setTimeout(() => {
@@ -134,8 +140,9 @@ export default function Work({ darkMode }) {
 				id='workContent'
 				className='relative flex h-full flex-col items-center justify-center overflow-hidden text-center md:justify-between  md:overflow-y-hidden'
 				style={{
-					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
 					opacity: allOpacityTransform,
+					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
+					// padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
 				}}
 			>
 				<motion.div
