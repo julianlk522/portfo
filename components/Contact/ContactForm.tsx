@@ -35,26 +35,25 @@ function ContactForm() {
 	const submitButtonBackdropVariants = {
 		initial: {
 			x: 125,
-			scaleY: 0.8,
-			scaleX: 0.8,
+			scale: 0.8,
 			transition: {
-				duration: 0.1,
-				ease: 'easeInOut',
+				x: {
+					delay: 0.1,
+					duration: 0.1,
+				},
 			},
 			transitionEnd: {
 				x: -125,
+				scale: 0,
 			},
 		},
 		hovered: {
 			x: 0,
-			scaleX: 1,
-			scaleY: 1,
+			scale: 1,
 			transition: {
-				scaleX: {
-					delay: 0.25,
-				},
-				scaleY: {
-					delay: 0.25,
+				scale: {
+					delay: 0.1,
+					duration: 0.2,
 				},
 			},
 		},
@@ -139,12 +138,12 @@ function ContactForm() {
 					autoComplete='off'
 					placeholder="I'm looking for a developer to help build our exciting new project. When can we meet to dicuss this?"
 					className='w-full resize-none border-b-2 border-b-slate-300 border-opacity-80 bg-transparent pb-1 focus:border-opacity-100 focus:outline-none dark:border-white dark:border-opacity-40 dark:focus:border-opacity-80'
-					rows={5}
+					rows={4}
 				></textarea>
 			</div>
 			<motion.button
 				id='submitButton'
-				className='relative flex min-h-[2rem] overflow-hidden rounded-[2rem] bg-slate-100 px-4 py-2 text-xs shadow focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:pb-2'
+				className='relative flex min-h-[2rem] overflow-hidden rounded-md border-[1px] border-slate-700 border-opacity-5 bg-slate-100 px-4 py-2 text-xs shadow-lg focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:pb-2'
 				onHoverStart={() => submitButtonControls.start('hovered')}
 				onHoverEnd={() => submitButtonControls.start('initial')}
 				whileHover={{ scale: 1.25 }}
@@ -153,7 +152,7 @@ function ContactForm() {
 				Submit
 				<motion.div
 					id='contactSubmitButtonBackdrop'
-					className='absolute inset-[2px] z-[-1] rounded-full bg-slate-100 opacity-10'
+					className='absolute inset-[1px] z-[-1] rounded-sm bg-slate-100 bg-labText opacity-20'
 					animate={submitButtonControls}
 					variants={submitButtonBackdropVariants}
 					initial='initial'

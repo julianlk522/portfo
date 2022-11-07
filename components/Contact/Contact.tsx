@@ -78,7 +78,7 @@ export default function Contact({ darkMode }) {
 		>
 			<div
 				id='layeredWavesContainer'
-				className='absolute bottom-[-20%] z-[2] h-[35%] w-full bg-layeredWaves opacity-40 dark:opacity-10 sm:bottom-[-25%] lg:skew-y-[350deg]'
+				className='absolute bottom-[-20%] z-[2] h-[35%] w-full bg-layeredWaves bg-cover opacity-40 dark:opacity-10 sm:bottom-[-25%] lg:right-[-5%] lg:skew-y-[350deg] lg:skew-x-[350deg]'
 			></div>
 			<AnimatePresence>
 				{darkMode && (

@@ -162,15 +162,10 @@ export default function Home({ darkMode }) {
 					variants={childVariants}
 				>
 					<h2 className='min-w-fit opacity-40 dark:text-white'>
-						to the
+						to the&nbsp;
 					</h2>
 					<br />
-					<h2
-						className='bg-tomatoToLightPink bg-clip-text text-transparent'
-						style={{
-							marginLeft: 'max(4%, 0.75rem)',
-						}}
-					>
+					<h2 className='bg-tomatoToLightPink bg-clip-text text-transparent'>
 						frontier
 					</h2>
 				</motion.div>

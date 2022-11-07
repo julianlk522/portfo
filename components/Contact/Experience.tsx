@@ -165,7 +165,7 @@ function Experience() {
 			</motion.div>
 			<motion.button
 				id='scrollUpPromptLg'
-				className='ml-16 hidden items-center justify-between pt-4 lg:flex'
+				className='relative ml-32 hidden w-full max-w-[12rem] items-center justify-between self-start rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:flex'
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
 				variants={experienceChildVariants}
@@ -177,14 +177,36 @@ function Experience() {
 					})
 				}
 			>
-				{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-				<Image
-					src={scrollUp}
-					alt='button to scroll to the top of the page'
-					width={19}
-					height={10}
-					className='opacity-20 dark:invert'
-				/>
+				<div id='arrowsContainer' className='relative ml-4 h-full w-8'>
+					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+					<div
+						id='primaryArrowContainer'
+						className='absolute top-[-50%] h-full w-full'
+					>
+						<Image
+							src={scrollUp}
+							alt='scroll to the top'
+							width={19}
+							height={10}
+							className='opacity-20 dark:invert'
+						/>
+					</div>
+					<div
+						id='secondaryArrowContainer'
+						className='absolute top-0 h-full w-full'
+					>
+						<Image
+							src={scrollUp}
+							alt='secondary image for scroll button'
+							width={19}
+							height={10}
+							className='opacity-10 dark:invert'
+						/>
+					</div>
+				</div>
+				<p className='ml-4 w-full text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+					Navigate to top
+				</p>
 			</motion.button>
 		</motion.div>
 	)
