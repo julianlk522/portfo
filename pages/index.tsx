@@ -92,7 +92,7 @@ export default function Home({ darkMode }) {
 			</AnimatePresence>
 			<motion.div
 				id='welcomeOpacityTransformContainer'
-				className='relative flex h-full flex-col items-center justify-between overflow-hidden text-stone-500 dark:text-white'
+				className='relative flex h-full flex-col items-center justify-evenly overflow-hidden text-stone-500 dark:text-white'
 				style={{
 					padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 					opacity: opacityTransform,

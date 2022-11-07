@@ -74,8 +74,12 @@ export default function Contact({ darkMode }) {
 		<motion.section
 			ref={containerRef}
 			id='contactContainer'
-			className='relative h-full w-full'
+			className='relative h-full w-full overflow-hidden'
 		>
+			<div
+				id='layeredWavesContainer'
+				className='absolute bottom-[-20%] z-[2] h-[35%] w-full bg-layeredWaves opacity-40 dark:opacity-10 sm:bottom-[-25%] lg:skew-y-[350deg]'
+			></div>
 			<AnimatePresence>
 				{darkMode && (
 					<motion.div
@@ -92,9 +96,10 @@ export default function Contact({ darkMode }) {
 			</AnimatePresence>
 			<motion.section
 				id='contactOpacityTransformContainer'
-				className='relative flex h-full flex-col items-center justify-between overflow-hidden px-32 text-center lg:overflow-visible xl:py-16'
+				className='relative flex h-full flex-col items-center justify-between overflow-hidden text-center lg:overflow-hidden xl:py-16'
 				style={{
-					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
+					padding:
+						'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh) clamp(6rem, 4vw, 4vh)',
 					opacity: opacityTransform,
 				}}
 			>
@@ -169,7 +174,7 @@ export default function Contact({ darkMode }) {
 						</motion.div>
 						<p
 							ref={scrollUpSmRef}
-							className='mt-16 pb-16 text-xs opacity-40'
+							className='mt-16 text-xs opacity-40'
 						>
 							Back to top
 						</p>
