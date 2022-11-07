@@ -3,7 +3,7 @@ import useWindowDimensions from '../hooks/useWindowDimensions'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import visual from '../../public/visual.svg'
-import route from '../../public/route.svg'
+import backend from '../../public/backend.svg'
 import react from '../../public/react.svg'
 import scrollUp from '../../public/scrollUp.webp'
 
@@ -82,9 +82,10 @@ function Experience() {
 						UI/UX and Layout Design
 					</h3>
 					<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
-						Bringing WCAG best practices to your project, a
-						meticulous attention for detail, and a boundless thirst
-						for inventive ways to express your content.
+						Bringing WCAG best practices to your project, superior
+						search-engine optimization (SEO), a metiuclous attention
+						to detail, and a burning desire to express your content
+						in <i className='underline'>style</i>.
 					</p>
 				</div>
 			</motion.div>
@@ -106,11 +107,11 @@ function Experience() {
 				>
 					<Image
 						alt='backend architectural skills'
-						src={route}
+						src={backend}
 						width={64}
 						height={64}
 						layout='fixed'
-						className='object-contain object-center'
+						className='scale-90 object-contain object-center'
 					/>
 				</motion.div>
 				<div className='flex w-full flex-col items-center justify-center'>
@@ -118,9 +119,10 @@ function Experience() {
 						Backend Versatility
 					</h3>
 					<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
-						Defending your app from errors or misuse while also
-						maximizing performance. Designing your APIs for
-						ease-of-use, though never at the expense of robustness.
+						Thorough error handling and version control techniques,
+						comfortability working with relational and
+						non-relational database regimes, and experience building
+						high-powered RESTful APIs from scratch.
 					</p>
 				</div>
 			</motion.div>
@@ -151,13 +153,13 @@ function Experience() {
 				</motion.div>
 				<div className='flex flex-col items-center justify-center'>
 					<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
-						State-of-the-Art Frameworks and Packages
+						Modern Frameworks and Packages
 					</h3>
 					<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
 						Harnessing expertise in ReactJS, TypeScript/ES6+
-						Javascript, NodeJS, testing in Cypress and React Testing
-						Library, UI libraries such as MaterialUI and DaisyUI and
-						much more.
+						Javascript, NodeJS, Docker, Cypress and React Testing
+						Library, UI libraries such as MaterialUI and TailwindCSS
+						and much more.
 					</p>
 				</div>
 			</motion.div>
