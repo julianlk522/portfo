@@ -13,7 +13,7 @@ export default function Home({ darkMode }) {
 	const outerCircleRef = useRef(null)
 
 	const { scrollYProgress } = useScroll()
-	const opacityTransform = useTransform(scrollYProgress, [0, 0.14], [1, 0])
+	const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [1, 0])
 
 	const welcomeSectionVariants = {
 		initial: {

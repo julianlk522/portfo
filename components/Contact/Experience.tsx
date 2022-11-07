@@ -2,9 +2,9 @@ import React, { useRef } from 'react'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import visual from '../../public/visual.svg'
+import uiux from '../../public/uiux.svg'
 import backend from '../../public/backend.svg'
-import react from '../../public/react.svg'
+import modernFrameworks from '../../public/modernFrameworks.svg'
 import scrollUp from '../../public/scrollUp.webp'
 
 function Experience() {
@@ -42,7 +42,7 @@ function Experience() {
 		<motion.div
 			ref={sectionRef}
 			id='experience'
-			className='relative flex h-[300%] w-full flex-col items-center justify-evenly space-y-16 dark:text-white xs:h-[200%] lg:mx-4 lg:h-full lg:max-h-[80%] lg:space-y-4'
+			className='relative flex h-[300%] w-full flex-col items-center justify-evenly space-y-16 dark:text-white xs:h-[200%] lg:mr-8 lg:h-full lg:space-y-4'
 			style={{ maxWidth: 'max(50vw, 600px)' }}
 			variants={experienceVariants}
 			initial='initial'
@@ -57,7 +57,7 @@ function Experience() {
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mx-8 mb-8 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+					className='mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {
@@ -69,15 +69,15 @@ function Experience() {
 					}}
 				>
 					<Image
-						alt='visual design skills'
-						src={visual}
+						alt='Visual design skills'
+						src={uiux}
 						width={64}
 						height={64}
 						layout='fixed'
 						className='object-contain object-center'
 					/>
 				</motion.div>
-				<div className='flex w-full flex-col items-center justify-between'>
+				<div className='flex w-full flex-col items-start justify-between'>
 					<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
 						UI/UX and Layout Design
 					</h3>
@@ -85,7 +85,7 @@ function Experience() {
 						Bringing WCAG best practices to your project, superior
 						search-engine optimization (SEO), a metiuclous attention
 						to detail, and a burning desire to express your content
-						in <i className='underline'>style</i>.
+						in <i>style</i>.
 					</p>
 				</div>
 			</motion.div>
@@ -94,7 +94,7 @@ function Experience() {
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mx-8 mb-8 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+					className='mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {
@@ -111,10 +111,10 @@ function Experience() {
 						width={64}
 						height={64}
 						layout='fixed'
-						className='scale-90 object-contain object-center'
+						className='scale-75 object-contain object-center'
 					/>
 				</motion.div>
-				<div className='flex w-full flex-col items-center justify-center'>
+				<div className='flex w-full flex-col items-start justify-center'>
 					<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
 						Backend Versatility
 					</h3>
@@ -131,7 +131,7 @@ function Experience() {
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mx-8 mb-8 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+					className='mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {
@@ -144,14 +144,14 @@ function Experience() {
 				>
 					<Image
 						alt='proficiency in modern frameworks like React.js'
-						src={react}
+						src={modernFrameworks}
 						width={64}
 						height={64}
 						layout='fixed'
 						className='object-contain object-center'
 					/>
 				</motion.div>
-				<div className='flex flex-col items-center justify-center'>
+				<div className='flex flex-col items-start justify-center'>
 					<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
 						Modern Frameworks and Packages
 					</h3>

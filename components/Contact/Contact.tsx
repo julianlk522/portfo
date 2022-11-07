@@ -21,7 +21,7 @@ export default function Contact({ darkMode }) {
 	const scrollUpInView = useInView(scrollUpSmRef)
 	const scrollPromptSmControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
-	const opacityTransform = useTransform(scrollYProgress, [0.86, 1], [0, 1])
+	const opacityTransform = useTransform(scrollYProgress, [0.9, 1], [0, 1])
 
 	const scrollPromptVariants = {
 		initial: {
@@ -94,7 +94,7 @@ export default function Contact({ darkMode }) {
 				id='contactOpacityTransformContainer'
 				className='relative flex h-full flex-col items-center justify-between overflow-hidden px-32 text-center lg:overflow-visible xl:py-16'
 				style={{
-					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
+					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
 					opacity: opacityTransform,
 				}}
 			>
@@ -126,7 +126,7 @@ export default function Contact({ darkMode }) {
 				<div
 					ref={contentBodyRef}
 					id='contactContentBody'
-					className={`flex h-[400%] w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll md:mt-16 lg:mt-0 lg:h-full lg:flex-row lg:overflow-y-visible ${styles.contactContentBody}`}
+					className={`flex h-[400%] w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start md:mt-16 lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:overflow-y-visible ${styles.contactContentBody}`}
 				>
 					<p className='my-16 text-xs opacity-40 dark:text-white md:mt-0 lg:hidden'>
 						Scroll down to see more

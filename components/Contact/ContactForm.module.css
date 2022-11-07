@@ -1,0 +1,4 @@
+.contactInput input::placeholder,
+.contactInput textarea::placeholder {
+	opacity: 0.4;
+}

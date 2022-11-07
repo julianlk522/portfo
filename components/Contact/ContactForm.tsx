@@ -5,6 +5,7 @@ import { motion, useAnimationControls } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { toast } from 'react-hot-toast'
 import laugh from '../../public/laugh.svg'
+import styles from './ContactForm.module.css'
 
 function ContactForm() {
 	const formRef = useRef(null)
@@ -94,7 +95,7 @@ function ContactForm() {
 		<motion.form
 			id='contactForm'
 			ref={formRef}
-			className='relative z-[1] mx-8 flex h-full max-w-xl flex-col items-center justify-evenly rounded-3xl px-12 py-8 shadow-lg after:absolute after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:rounded-3xl after:bg-contactFormBackdropLightMode after:backdrop-blur-lg dark:text-white dark:after:bg-contactFormBackdropDarkMode dark:after:blur-sm sm:w-[60%] lg:max-h-[60%] lg:w-1/2 lg:max-w-xl lg:pt-4 lg:pb-0 lg:shadow-xl xl:w-[60%]'
+			className={`relative z-[1] flex h-full w-full max-w-xl flex-col items-center justify-start rounded-3xl py-8 px-8 after:absolute after:top-0 after:left-0 dark:text-white lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:py-0 xl:w-[60%] ${styles.contactInput}`}
 			variants={contactFormVariants}
 			initial='initial'
 			whileInView='visible'
@@ -104,10 +105,10 @@ function ContactForm() {
 			}}
 			onSubmit={submitForm}
 		>
-			<div id='nameInputContainer' className='flex w-full flex-col'>
+			<div id='nameInputContainer' className='mb-8 flex w-full flex-col'>
 				<label
 					htmlFor='nameInput'
-					className='self-start py-1 text-xs md:py-4 lg:pb-1 xl:text-base'
+					className='pb-2 text-xs opacity-80 md:py-4 lg:pt-0 lg:pb-2 xl:text-base'
 				>
 					Name
 				</label>
@@ -116,30 +117,18 @@ function ContactForm() {
 					name='name'
 					id='nameInput'
 					required
-					autoComplete='name'
-					className='w-full rounded-xl border-2 border-black border-opacity-10 bg-transparent py-1 px-4 focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
+					autoComplete='off'
+					placeholder='Jane Doe'
+					className='w-full border-b-2 border-b-slate-300 border-opacity-80 bg-transparent pb-1 focus:border-opacity-100 focus:outline-none dark:border-white dark:border-opacity-40 dark:focus:border-opacity-80'
 				/>
 			</div>
-			<div id='emailInputContainer' className='flex w-full flex-col'>
-				<label
-					htmlFor='emailInput'
-					className='self-start py-1 text-xs md:py-4 lg:py-1 xl:text-base'
-				>
-					Email
-				</label>
-				<input
-					type='email'
-					name='email'
-					id='emailInput'
-					required
-					autoComplete='email'
-					className='w-full rounded-xl border-2 border-black border-opacity-10 bg-transparent py-1 px-4 focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
-				/>
-			</div>
-			<div id='messageInputContainer' className='flex w-full flex-col'>
+			<div
+				id='messageInputContainer'
+				className='mb-8 flex w-full flex-col'
+			>
 				<label
 					htmlFor='messageInput'
-					className='self-start py-1 text-xs md:py-4 lg:py-2 xl:text-base'
+					className='pb-2 text-xs opacity-80 md:py-4 lg:pt-0 lg:pb-2 xl:text-base'
 				>
 					Message
 				</label>
@@ -148,13 +137,14 @@ function ContactForm() {
 					id='messageInput'
 					required
 					autoComplete='off'
-					className='h-full max-h-10 min-h-[2rem] w-full resize-none overflow-hidden rounded-xl border-2 border-black border-opacity-10 bg-transparent px-4 py-1 focus:border-opacity-40 focus:outline-none dark:border-white dark:border-opacity-10 dark:focus:border-opacity-40'
+					placeholder="I'm looking for developers to help build our exciting new project. When can we meet to dicuss this?"
+					className='w-full resize-none border-b-2 border-b-slate-300 border-opacity-80 bg-transparent pb-1 focus:border-opacity-100 focus:outline-none dark:border-white dark:border-opacity-40 dark:focus:border-opacity-80'
 					rows={5}
 				></textarea>
 			</div>
 			<motion.button
 				id='submitButton'
-				className='relative my-4 flex min-h-[2rem] overflow-hidden rounded-[2rem] bg-slate-100 px-4 py-2 text-xs shadow focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:mt-2 lg:pb-2'
+				className='relative flex min-h-[2rem] overflow-hidden rounded-[2rem] bg-slate-100 px-4 py-2 text-xs shadow focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:pb-2'
 				onHoverStart={() => submitButtonControls.start('hovered')}
 				onHoverEnd={() => submitButtonControls.start('initial')}
 				whileHover={{ scale: 1.25 }}
@@ -163,7 +153,7 @@ function ContactForm() {
 				Submit
 				<motion.div
 					id='contactSubmitButtonBackdrop'
-					className='absolute inset-[2px] z-[-1] rounded-full bg-contactFormSubmitBackdrop opacity-50'
+					className='absolute inset-[2px] z-[-1] rounded-full bg-slate-100 opacity-10'
 					animate={submitButtonControls}
 					variants={submitButtonBackdropVariants}
 					initial='initial'
