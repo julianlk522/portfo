@@ -39,7 +39,7 @@ function ContactForm() {
 			transition: {
 				x: {
 					delay: 0.1,
-					duration: 0.1,
+					duration: 0.2,
 				},
 			},
 			transitionEnd: {

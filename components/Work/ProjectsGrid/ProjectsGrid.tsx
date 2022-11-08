@@ -5,23 +5,6 @@ import scrollUp from '../../../public/scrollUp.webp'
 import ProjectGridMember from './ProjectGridMember'
 import projectsData from './ProjectData'
 
-const scrollDownVariants = {
-	initial: {
-		y: 0,
-	},
-	bouncing: {
-		y: [null, 16],
-		x: 0,
-		transition: {
-			y: {
-				repeat: Infinity,
-				repeatType: 'reverse',
-				duration: 2,
-			},
-		},
-	},
-}
-
 function ProjectsGrid({ gridMemberControls }) {
 	return (
 		<div
@@ -70,34 +53,35 @@ function ProjectsGrid({ gridMemberControls }) {
 				This page uses Next.js, Tailwind CSS and Framer Motion
 			</motion.p>
 			<motion.button
-				id='scrollDownPromptSm'
-				className='my-16 flex flex-col items-center justify-between dark:text-white lg:hidden'
+				id='workScrollDownButtonSm'
+				className='relative my-16 flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden'
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
-				onClick={() =>
+				onClick={() => {
 					document
 						.getElementById('contactContainer')
 						.scrollIntoView({ behavior: 'smooth' })
-				}
+				}}
 			>
-				<motion.div
-					variants={scrollDownVariants}
-					whileInView='bouncing'
-					viewport={{ amount: 'all' }}
-				>
+				<div id='arrowContainer' className='relative h-full w-8'>
 					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-					<Image
-						src={scrollUp}
-						width={38}
-						height={20}
-						alt='button to scroll down to the Contact section'
-						className='rotate-180 opacity-20 dark:invert'
-					/>
-				</motion.div>
+					<div
+						id='primaryArrowContainer'
+						className='absolute top-[-25%] h-full w-full'
+					>
+						<Image
+							src={scrollUp}
+							alt='scroll to the top'
+							width={19}
+							height={10}
+							className='rotate-180 opacity-20 dark:invert'
+						/>
+					</div>
+				</div>
+				<p className='ml-4 w-min text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+					Continue
+				</p>
 			</motion.button>
-			<p className='mb-8 text-xs opacity-40 dark:text-white lg:hidden'>
-				Continue
-			</p>
 		</div>
 	)
 }

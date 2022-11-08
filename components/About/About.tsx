@@ -6,9 +6,9 @@ import {
 	useAnimationControls,
 	AnimatePresence,
 } from 'framer-motion'
-import AboutSpiral from './AboutSpiral'
 import styles from './About.module.css'
 import PhotoSection from './PhotoSection'
+import AboutSpiral from './AboutSpiral'
 
 export default function About({ darkMode }) {
 	const textContentRef = useRef(null)
@@ -95,11 +95,12 @@ export default function About({ darkMode }) {
 					></motion.div>
 				)}
 			</AnimatePresence>
+
 			<div
 				id='aboutContent'
 				className='relative h-full flex-col items-center justify-center overflow-hidden text-center dark:text-white md:flex-row'
 				style={{
-					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 10vw, 20vh)',
+					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
 				}}
 			>
 				<AboutSpiral
@@ -107,6 +108,7 @@ export default function About({ darkMode }) {
 					spiralControls={spiralControls}
 					handControls={handControls}
 				/>
+
 				<div
 					ref={textContentRef}
 					id='aboutOverflowContainer'
@@ -114,7 +116,7 @@ export default function About({ darkMode }) {
 				>
 					<motion.div
 						id='aboutTextContent'
-						className='relative my-auto mb-16 flex h-full flex-col items-start justify-between space-y-8 overflow-x-visible rounded-xl text-left sm:max-h-[800px] md:mb-auto md:max-w-[50%] md:space-y-4 lg:h-full lg:max-w-lg lg:justify-evenly lg:pr-8'
+						className='relative my-auto flex h-full flex-col items-start justify-between space-y-8 overflow-x-visible rounded-xl text-left sm:max-h-[800px] md:mb-auto md:max-w-[50%] md:space-y-4 lg:h-full lg:max-w-lg lg:justify-evenly'
 						variants={textVariants}
 						initial='initial'
 						whileInView='visible'

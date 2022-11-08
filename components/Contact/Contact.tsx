@@ -36,19 +36,6 @@ export default function Contact({ darkMode }) {
 				staggerChildren: 0.5,
 			},
 		},
-		bouncing: {
-			y: [null, 16],
-			x: 0,
-			opacity: 0.5,
-			transition: {
-				y: {
-					repeat: Infinity,
-					repeatType: 'reverse',
-					duration: 2,
-					delay: 0.5,
-				},
-			},
-		},
 	}
 
 	useEffect(() => {
@@ -146,10 +133,11 @@ export default function Contact({ darkMode }) {
 					<ContactForm />
 
 					<motion.button
-						id='scrollUpPromptSm'
-						className='relative my-16 flex flex-col items-center justify-between dark:text-white lg:hidden'
+						id='scrollUpPromptLg'
+						className='relative my-16 flex w-full max-w-[12rem] items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden '
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
+						variants={scrollPromptVariants}
 						onClick={() =>
 							window.scrollTo({
 								top: 0,
@@ -158,25 +146,38 @@ export default function Contact({ darkMode }) {
 							})
 						}
 					>
-						<motion.div
-							animate={scrollPromptSmControls}
-							initial='initial'
-							variants={scrollPromptVariants}
+						<div
+							id='arrowsContainer'
+							className='relative ml-4 h-full w-8'
 						>
 							{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-							<Image
-								height={20}
-								width={38}
-								src={scrollUp}
-								alt='button to scroll to the top of the page'
-								className='opacity-20 dark:invert'
-							/>
-						</motion.div>
-						<p
-							ref={scrollUpSmRef}
-							className='mt-16 text-xs opacity-40'
-						>
-							Back to top
+							<div
+								id='primaryArrowContainer'
+								className='absolute top-[-50%] h-full w-full'
+							>
+								<Image
+									src={scrollUp}
+									alt='scroll to the top'
+									width={19}
+									height={10}
+									className='opacity-20 dark:invert'
+								/>
+							</div>
+							<div
+								id='secondaryArrowContainer'
+								className='absolute top-0 h-full w-full'
+							>
+								<Image
+									src={scrollUp}
+									alt='secondary image for scroll button'
+									width={19}
+									height={10}
+									className='opacity-10 dark:invert'
+								/>
+							</div>
+						</div>
+						<p className='ml-4 w-full text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+							Navigate to top
 						</p>
 					</motion.button>
 				</div>

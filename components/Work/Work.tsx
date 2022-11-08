@@ -20,7 +20,6 @@ export default function Work({ darkMode }) {
 
 	const textBodyControls = useAnimationControls()
 	const portfoStackDescriptionControls = useAnimationControls()
-	const scrollDownControls = useAnimationControls()
 	const bgEffectControls = useAnimationControls()
 	const gridMemberControls = useAnimationControls()
 	const { scrollYProgress } = useScroll()
@@ -34,8 +33,6 @@ export default function Work({ darkMode }) {
 		if (containerInView) {
 			bgEffectControls.start('expanded')
 		} else {
-			scrollDownControls.stop()
-			scrollDownControls.set('initial')
 			textBodyControls.set('initial')
 			portfoStackDescriptionControls.set('initial')
 			bgEffectControls.start('minimized')
@@ -44,7 +41,6 @@ export default function Work({ darkMode }) {
 		containerInView,
 		bgEffectControls,
 		textBodyControls,
-		scrollDownControls,
 		portfoStackDescriptionControls,
 	])
 
@@ -90,18 +86,6 @@ export default function Work({ darkMode }) {
 			y: 0,
 			x: 0,
 			opacity: 1,
-		},
-		bouncing: {
-			y: [null, 16],
-			x: 0,
-			opacity: 0.2,
-			transition: {
-				y: {
-					repeat: Infinity,
-					repeatType: 'reverse',
-					duration: 2,
-				},
-			},
 		},
 	}
 
@@ -190,11 +174,6 @@ export default function Work({ darkMode }) {
 						variants={textBodyVariants}
 						initial='initial'
 						animate={textBodyControls}
-						onAnimationComplete={() => {
-							if (containerInView) {
-								scrollDownControls.start('bouncing')
-							}
-						}}
 					>
 						<motion.p
 							className='text-md'
@@ -202,11 +181,11 @@ export default function Work({ darkMode }) {
 						>
 							Hover over a project to learn more!
 						</motion.p>
+
 						<motion.button
 							id='workScrollDownPromptLg'
-							className='opacity-10 dark:invert'
+							className='relative hidden w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:flex'
 							variants={textBodyChildVariants}
-							animate={scrollDownControls}
 							whileHover={{ scale: 1.25 }}
 							whileTap={{ scale: 1.1 }}
 							onClick={() =>
@@ -215,14 +194,27 @@ export default function Work({ darkMode }) {
 									.scrollIntoView({ behavior: 'smooth' })
 							}
 						>
-							{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
-							<Image
-								src={scrollUp}
-								className='rotate-180'
-								width={38}
-								height={20}
-								alt='button to scroll to the next section'
-							/>
+							<div
+								id='arrowContainer'
+								className='relative h-full w-8'
+							>
+								{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+								<div
+									id='primaryArrowContainer'
+									className='absolute top-[-25%] h-full w-full'
+								>
+									<Image
+										src={scrollUp}
+										alt='scroll to the top'
+										width={19}
+										height={10}
+										className='rotate-180 opacity-20 dark:invert'
+									/>
+								</div>
+							</div>
+							<p className='ml-4 w-min text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+								Continue
+							</p>
 						</motion.button>
 					</motion.div>
 					<ProjectsGrid gridMemberControls={gridMemberControls} />
