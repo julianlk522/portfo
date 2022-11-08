@@ -152,7 +152,7 @@ function ContactForm() {
 				Submit
 				<motion.div
 					id='contactSubmitButtonBackdrop'
-					className='absolute inset-[1px] z-[-1] rounded-sm bg-slate-100 bg-labText opacity-20'
+					className='absolute inset-[1px] z-[-1] rounded-md bg-slate-100 bg-labText opacity-20'
 					animate={submitButtonControls}
 					variants={submitButtonBackdropVariants}
 					initial='initial'
