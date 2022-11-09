@@ -83,7 +83,7 @@ function Experience() {
 					</h3>
 					<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
 						Bringing WCAG best practices to your project, superior
-						search-engine optimization (SEO), a metiuclous attention
+						search-engine optimization (SEO), a meticulous attention
 						to detail, and a burning desire to express your content
 						in <i>style</i>.
 					</p>
