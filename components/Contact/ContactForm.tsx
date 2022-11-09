@@ -136,7 +136,7 @@ function ContactForm() {
 					id='messageInput'
 					required
 					autoComplete='off'
-					placeholder="I'm looking for a developer to help build our exciting new project. When can we meet to dicuss this?"
+					placeholder="I'm looking for a developer to help build our exciting new project. When can we meet to discuss this?"
 					className='w-full resize-none border-b-2 border-b-slate-300 border-opacity-80 bg-transparent pb-1 focus:border-opacity-100 focus:outline-none dark:border-white dark:border-opacity-40 dark:focus:border-opacity-80'
 					rows={4}
 				></textarea>
