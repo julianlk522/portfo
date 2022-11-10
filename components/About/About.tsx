@@ -161,39 +161,39 @@ export default function About({ darkMode }) {
 							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
-							I&apos;m Julian and my passion is in designing and
-							building exciting new solutions that leverage the
-							powers of the web. For the last 11 months I&apos;ve
-							immersed myself deeply in learning full-stack
-							development strategies.
+							My name is Julian and I love to build high-quality
+							applications that leverage the powers of the web.
+							For the past year I&apos;ve immersed myself deeply
+							in learning full-stack development strategies.
 						</motion.h3>
 						<motion.h3
 							className='max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] xl:text-sm'
 							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
-							I&apos;m fascinated by 🧬 reverse-engineering
-							intricate user experiences and experimenting with
-							new techniques and technologies to see what&apos;s
-							possible.
+							Though my professional life began in the world of
+							finance, I&apos;ve found that I&apos;m fascinated
+							most by 🧬 reverse-engineering thrilling user
+							experiences and experimenting with new techniques
+							and technologies to see what can be achieved online.
 						</motion.h3>
 						<motion.h3
 							className='max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
 							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
-							I love puzzles, games, challenges, and careful
-							designwork of all shapes and sizes. ⚙
+							I&apos;m motivated by puzzles, games, challenges,
+							and careful designwork of all shapes and sizes. ⚙
 						</motion.h3>
 						<motion.h3
 							className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] xl:text-sm'
 							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
-							Aside from coding I like to read nonfiction and try
-							out different ways to achieve personal fitness -
-							lately that has been tennis with my girlfriend,
-							Sneha. I also love to cook and eat spicy food! 😋
+							Aside from writing code I like to read nonfiction,
+							practice outdoor sports, experiment with cooking
+							different types of foods, and spend time with my
+							girlfriend, Sneha.
 						</motion.h3>
 					</motion.div>
 					<PhotoSection
