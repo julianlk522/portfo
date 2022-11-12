@@ -1,7 +1,14 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import DarkModeSwitch from './DarkModeSwitch'
+import NavDropdownButton from './NavDropdownButton'
 
-export default function Navbar({ navVisible, darkMode, setDarkMode }) {
+export default function Navbar({
+	navVisible,
+	darkMode,
+	setDarkMode,
+	showModal,
+	setShowModal,
+}) {
 	const { scrollYProgress } = useScroll()
 
 	const aboutUnderlineOpacityTransform = useTransform(
@@ -38,16 +45,13 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 			{navVisible && (
 				<motion.nav
 					id='navbar'
-					className='fixed top-0 left-0 z-[2] flex h-[5%] w-full items-center justify-between dark:text-white'
+					className='fixed top-0 left-0 z-[2] flex h-16 w-full items-center justify-end px-8 dark:text-white md:h-32 md:justify-evenly md:px-16'
 					variants={navVariants}
 					initial={{ opacity: 0 }}
 					animate={darkMode ? 'darkMode' : 'lightMode'}
 					exit={{ opacity: 0 }}
-					style={{
-						padding: 'clamp(1rem, 3vw, 3vh) clamp(2rem, 6vw, 6vh)',
-					}}
 				>
-					<div className='text-bold items-center lg:w-full'>
+					<div className='text-bold mr-auto items-center md:w-full'>
 						<h3
 							className='cursor-pointer whitespace-nowrap uppercase opacity-50 dark:opacity-75'
 							style={{
@@ -61,25 +65,41 @@ export default function Navbar({ navVisible, darkMode, setDarkMode }) {
 								})
 							}}
 						>
-							<span className='lg:hidden'>J</span>
-							<span className='hidden lg:block'>
+							<span className='md:hidden'>J</span>
+							<span className='hidden md:block'>
 								Julian Lindsay-Kaufman
 							</span>
 						</h3>
 					</div>
 
-					<DarkModeSwitch
-						darkMode={darkMode}
-						setDarkMode={setDarkMode}
-					/>
+					{!showModal && (
+						<div id='darkModeSwitchSmWrapper' className='md:hidden'>
+							<DarkModeSwitch
+								darkMode={darkMode}
+								setDarkMode={setDarkMode}
+							/>
+						</div>
+					)}
+
+					<div
+						id='dropdownButtonWrapper'
+						className='relative flex h-full w-4 items-center justify-center md:hidden'
+						onClick={() => setShowModal((prev) => !prev)}
+					>
+						<NavDropdownButton />
+					</div>
 
 					<ul
-						id='navLinks'
-						className='hidden w-full list-none items-center justify-between lg:flex xl:w-[50%] xl:max-w-xl'
+						id='mdScreenNavLinks'
+						className='hidden w-full list-none items-center justify-between md:flex md:max-w-sm'
 						style={{
 							fontSize: 'clamp(0.5rem, 2vw, 2vh)',
 						}}
 					>
+						<DarkModeSwitch
+							darkMode={darkMode}
+							setDarkMode={setDarkMode}
+						/>
 						<li
 							className='relative cursor-pointer'
 							onClick={() =>

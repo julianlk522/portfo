@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
 	const [navReactsToScroll, setNavReactsToScroll] = useState(true)
 	const [navVisible, setNavVisible] = useState(true)
 	const [darkMode, setDarkMode] = useState(false)
+	const [showModal, setShowModal] = useState(false)
 
 	useEffect(() => {
 		return scrollYProgress.onChange((currentYProgress) => {
@@ -120,8 +121,15 @@ function MyApp({ Component, pageProps }) {
 				navVisible={navVisible}
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
+				showModal={showModal}
+				setShowModal={setShowModal}
 			/>
-			<Component {...pageProps} darkMode={darkMode} />
+			<Component
+				{...pageProps}
+				darkMode={darkMode}
+				showModal={showModal}
+				setShowModal={setShowModal}
+			/>
 		</>
 	)
 }
