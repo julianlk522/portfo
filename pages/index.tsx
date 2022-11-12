@@ -67,7 +67,7 @@ export default function Index({
 					{darkMode && (
 						<motion.div
 							id='staticDarkModeBg'
-							className='absolute inset-0 z-[-1] h-full w-full'
+							className='absolute inset-0 z-[-1] h-[400vh] w-full'
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}

@@ -54,7 +54,7 @@ function ProjectsGrid({ gridMemberControls }) {
 			</motion.p>
 			<motion.button
 				id='workScrollDownButtonSm'
-				className='relative my-16 flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden'
+				className='relative my-16 flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg dark:text-white lg:hidden'
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
 				onClick={() => {

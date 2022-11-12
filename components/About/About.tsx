@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import useWindowDimensions from '../hooks/useWindowDimensions'
 import {
 	motion,
 	useInView,
@@ -15,9 +14,6 @@ export default function About({ darkMode }) {
 	const containerRef = useRef(null)
 	const containerInView = useInView(containerRef, { amount: 'all' })
 
-	const { width } = useWindowDimensions()
-	const mdScreenOrGreater = width && width >= 768
-
 	const spiralControls = useAnimationControls()
 	const handControls = useAnimationControls()
 
@@ -25,7 +21,7 @@ export default function About({ darkMode }) {
 		initial: {},
 		visible: {
 			transition: {
-				delayChildren: 0.1,
+				delayChildren: 0.25,
 				staggerChildren: 0.1,
 			},
 		},
@@ -34,7 +30,7 @@ export default function About({ darkMode }) {
 	const textChildVariants = {
 		initial: {
 			y: 5,
-			x: -25,
+			x: -10,
 			opacity: 0,
 		},
 		visible: {
@@ -43,7 +39,7 @@ export default function About({ darkMode }) {
 			opacity: 1,
 			transition: {
 				type: 'spring',
-				bounce: 0.5,
+				bounce: 0.25,
 			},
 		},
 	}
@@ -60,12 +56,6 @@ export default function About({ darkMode }) {
 	}
 
 	useEffect(() => {
-		if (darkMode) {
-			containerRef.current.style.opacity = '1'
-		}
-	}, [darkMode])
-
-	useEffect(() => {
 		const textScrollTimeout = setTimeout(() => {
 			if (!containerInView) {
 				textContentRef.current.scrollTop = 0
@@ -79,7 +69,7 @@ export default function About({ darkMode }) {
 		<section
 			ref={containerRef}
 			id='aboutContainer'
-			className='relative h-full w-full'
+			className='relative h-screen w-screen'
 		>
 			<AnimatePresence>
 				{darkMode && (
@@ -121,7 +111,7 @@ export default function About({ darkMode }) {
 						initial='initial'
 						whileInView='visible'
 						viewport={{
-							amount: mdScreenOrGreater ? 'all' : 'some',
+							once: true,
 							margin: '0px 100px',
 						}}
 						onAnimationComplete={() => {
@@ -130,10 +120,6 @@ export default function About({ darkMode }) {
 							}
 						}}
 					>
-						<div
-							id='aboutTextContentBackdrop'
-							className='absolute right-0 top-1/4 h-[100vw] w-[100vw] bg-aboutTextContentBackdrop opacity-10 dark:opacity-[7%] md:right-[-67%] md:top-[-10%] lg:right-[-10%] lg:h-[150%] lg:w-[150%]'
-						></div>
 						<motion.h2
 							id='aboutTitle'
 							className='text-center drop-shadow-xl dark:text-white dark:drop-shadow-mediumDark lg:mt-8'

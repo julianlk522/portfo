@@ -15,8 +15,8 @@ function Experience() {
 		initial: {},
 		visible: {
 			transition: {
-				delayChildren: 0.5,
-				staggerChildren: 0.2,
+				delayChildren: 0.25,
+				staggerChildren: 0.1,
 			},
 		},
 	}
@@ -24,7 +24,7 @@ function Experience() {
 	const experienceChildVariants = {
 		initial: {
 			y: 5,
-			x: 25,
+			x: -10,
 			opacity: 0,
 		},
 		visible: {
@@ -33,7 +33,7 @@ function Experience() {
 			opacity: 1,
 			transition: {
 				type: 'spring',
-				bounce: 0.5,
+				bounce: 0.25,
 			},
 		},
 	}
@@ -177,8 +177,7 @@ function Experience() {
 					})
 				}
 			>
-				<div id='arrowsContainer' className='relative ml-4 h-full w-8'>
-					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+				<div className='relative ml-4 h-full w-8'>
 					<div
 						id='primaryArrowContainer'
 						className='absolute top-[-50%] h-full w-full'
@@ -204,7 +203,7 @@ function Experience() {
 						/>
 					</div>
 				</div>
-				<p className='ml-4 w-full text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+				<p className='ml-4 w-full text-xs opacity-60 dark:text-white lg:text-[0.6rem] 2xl:text-xs'>
 					Navigate to top
 				</p>
 			</motion.button>

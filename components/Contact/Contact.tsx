@@ -2,8 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import {
 	motion,
-	useScroll,
-	useTransform,
 	useInView,
 	useAnimationControls,
 	AnimatePresence,
@@ -20,8 +18,6 @@ export default function Contact({ darkMode }) {
 	const scrollUpSmRef = useRef(null)
 	const scrollUpInView = useInView(scrollUpSmRef)
 	const scrollPromptSmControls = useAnimationControls()
-	const { scrollYProgress } = useScroll()
-	const opacityTransform = useTransform(scrollYProgress, [0.9, 1], [0, 1])
 
 	const scrollPromptVariants = {
 		initial: {
@@ -61,7 +57,7 @@ export default function Contact({ darkMode }) {
 		<motion.section
 			ref={containerRef}
 			id='contactContainer'
-			className='relative h-full w-full overflow-hidden'
+			className='relative h-screen w-screen overflow-hidden'
 		>
 			<div
 				id='layeredWavesContainer'
@@ -87,7 +83,6 @@ export default function Contact({ darkMode }) {
 				style={{
 					padding:
 						'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh) clamp(6rem, 4vw, 4vh)',
-					opacity: opacityTransform,
 				}}
 			>
 				<AnimatePresence>
@@ -118,7 +113,7 @@ export default function Contact({ darkMode }) {
 				<div
 					ref={contentBodyRef}
 					id='contactContentBody'
-					className={`flex h-[400%] w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start md:mt-16 lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:overflow-y-visible ${styles.contactContentBody}`}
+					className={`flex w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start md:mt-16 lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:overflow-y-visible ${styles.contactContentBody}`}
 				>
 					<p className='my-16 text-xs opacity-40 dark:text-white md:mt-0 lg:hidden'>
 						Scroll down to see more
@@ -133,7 +128,7 @@ export default function Contact({ darkMode }) {
 					<ContactForm />
 
 					<motion.button
-						id='scrollUpPromptLg'
+						id='scrollUpPrompt'
 						className='relative my-16 flex w-full max-w-[12rem] items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden '
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
@@ -146,11 +141,7 @@ export default function Contact({ darkMode }) {
 							})
 						}
 					>
-						<div
-							id='arrowsContainer'
-							className='relative ml-4 h-full w-8'
-						>
-							{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+						<div className='relative ml-4 h-full w-8'>
 							<div
 								id='primaryArrowContainer'
 								className='absolute top-[-50%] h-full w-full'
@@ -176,7 +167,7 @@ export default function Contact({ darkMode }) {
 								/>
 							</div>
 						</div>
-						<p className='ml-4 w-full text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+						<p className='ml-4 w-full text-xs opacity-60 dark:text-white lg:text-[0.6rem] 2xl:text-xs'>
 							Navigate to top
 						</p>
 					</motion.button>

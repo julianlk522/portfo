@@ -17,8 +17,8 @@ function ContactForm() {
 	const contactFormVariants = {
 		initial: {
 			opacity: 0,
-			y: mdScreenOrLesser ? 0 : 100,
-			x: mdScreenOrLesser ? 100 : 0,
+			y: mdScreenOrLesser ? 0 : 10,
+			x: mdScreenOrLesser ? -10 : 0,
 		},
 		visible: {
 			opacity: 1,
@@ -26,7 +26,7 @@ function ContactForm() {
 			x: 0,
 			transition: {
 				type: 'tween',
-				delay: mdScreenOrLesser ? 0 : 1,
+				delay: mdScreenOrLesser ? 0 : 0.5,
 				duration: mdScreenOrLesser ? 1 : 2,
 			},
 		},

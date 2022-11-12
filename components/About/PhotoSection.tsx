@@ -65,6 +65,7 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 			whileInView='visible'
 			viewport={{
 				amount: mdScreenOrGreater ? 'all' : 'some',
+				once: true,
 			}}
 			onViewportLeave={() => {
 				spiralControls.set('hidden')
@@ -102,8 +103,7 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 						.scrollIntoView({ behavior: 'smooth' })
 				}}
 			>
-				<div id='arrowContainer' className='relative h-full w-8'>
-					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+				<div className='relative h-full w-8'>
 					<div
 						id='primaryArrowContainer'
 						className='absolute top-[-25%] h-full w-full'
