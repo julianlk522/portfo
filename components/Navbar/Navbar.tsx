@@ -45,7 +45,7 @@ export default function Navbar({
 			{navVisible && (
 				<motion.nav
 					id='navbar'
-					className='fixed top-0 left-0 z-[2] flex h-16 w-full items-center justify-end px-8 dark:text-white md:h-32 md:justify-evenly md:px-16'
+					className='fixed top-0 left-0 z-[1] flex h-16 w-full items-center justify-end px-8 dark:text-white md:justify-evenly md:px-16'
 					variants={navVariants}
 					initial={{ opacity: 0 }}
 					animate={darkMode ? 'darkMode' : 'lightMode'}
@@ -80,14 +80,6 @@ export default function Navbar({
 							/>
 						</div>
 					)}
-
-					<div
-						id='dropdownButtonWrapper'
-						className='relative flex h-full w-4 items-center justify-center md:hidden'
-						onClick={() => setShowModal((prev) => !prev)}
-					>
-						<NavDropdownButton />
-					</div>
 
 					<ul
 						id='mdScreenNavLinks'
