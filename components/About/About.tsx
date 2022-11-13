@@ -44,17 +44,6 @@ export default function About({ darkMode }) {
 		},
 	}
 
-	const handVariants = {
-		initial: { rotate: 15 },
-		waving: {
-			rotate: [null, 0, 30, 0, 15],
-			transition: {
-				type: 'spring',
-				duration: 3,
-			},
-		},
-	}
-
 	useEffect(() => {
 		const textScrollTimeout = setTimeout(() => {
 			if (!containerInView) {
@@ -88,25 +77,21 @@ export default function About({ darkMode }) {
 
 			<div
 				id='aboutContent'
-				className='relative h-full flex-col items-center justify-center overflow-hidden text-center dark:text-white md:flex-row'
-				style={{
-					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
-				}}
+				className='relative h-full flex-col items-center justify-center overflow-hidden px-8 pt-24 dark:text-white sm:px-16 md:flex-row md:pt-0'
 			>
 				<AboutSpiral
 					darkMode={darkMode}
 					spiralControls={spiralControls}
 					handControls={handControls}
 				/>
-
 				<div
 					ref={textContentRef}
 					id='aboutOverflowContainer'
-					className={`mx-auto flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-y-visible ${styles.aboutOverflowContainer}`}
+					className={`ml-auto flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-y-visible ${styles.aboutOverflowContainer}`}
 				>
 					<motion.div
 						id='aboutTextContent'
-						className='relative my-auto flex h-auto flex-col items-start justify-between space-y-16 overflow-x-visible rounded-xl text-left sm:max-h-[800px] md:mb-auto md:max-w-[50%] md:space-y-4 lg:h-full lg:max-w-lg lg:justify-evenly'
+						className='relative flex h-auto flex-col items-start justify-center overflow-x-visible rounded-xl text-left md:max-w-[60%] lg:h-full lg:max-w-lg'
 						variants={textVariants}
 						initial='initial'
 						whileInView='visible'
@@ -122,64 +107,50 @@ export default function About({ darkMode }) {
 					>
 						<motion.h2
 							id='aboutTitle'
-							className='text-center drop-shadow-xl dark:text-white dark:drop-shadow-mediumDark lg:mt-8'
+							className='bg-sunrise bg-clip-text text-transparent drop-shadow-xl dark:bg-tomatoToLightPink dark:drop-shadow-mediumDark'
 							style={{
-								fontSize: 'clamp(2rem, 6vw, 7vh)',
+								fontSize: 'clamp(2rem, 8vw, 8vh)',
 							}}
 							variants={textChildVariants}
 						>
-							<motion.span
-								initial='initial'
-								animate={handControls}
-								className='inline-block rotate-[15deg]'
-								variants={handVariants}
-							>
-								👋
-							</motion.span>{' '}
-							Hello and
-							<br />
-							<span className='bg-sunrise bg-clip-text text-transparent dark:bg-tomatoToLightPink'>
-								Welcome!
-							</span>
+							About Me
 						</motion.h2>
 						<motion.h3
-							className='max-w-[80%]  text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='mt-8 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
 							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
-							My name is Julian and I love to build high-quality
-							applications that leverage the powers of the web.
-							For the past year I&apos;ve immersed myself deeply
-							in learning full-stack development strategies.
+							Hey! 👋 My name is Julian and I&apos;m a self-taught
+							full stack developer who loves to push the limits of
+							what technology and ingenuity allow.
 						</motion.h3>
 						<motion.h3
-							className='max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] xl:text-sm'
-							style={{ width: 'min(100%, 500px)' }}
-							variants={textChildVariants}
-						>
-							Though my professional life began in the world of
-							finance, I&apos;ve found that I&apos;m fascinated
-							most by 🧬 reverse-engineering thrilling user
-							experiences and experimenting with new techniques
-							and technologies to see what can be achieved online.
-						</motion.h3>
-						<motion.h3
-							className='max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
 							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
 							I&apos;m motivated by puzzles, games, challenges,
-							and careful designwork of all shapes and sizes. ⚙
+							and careful designwork of all shapes and sizes. 🧩
 						</motion.h3>
 						<motion.h3
-							className='my-16 max-w-[80%] text-xs opacity-60 xs:my-0 sm:max-w-[100%] xl:text-sm'
+							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							style={{ width: 'min(100%, 500px)' }}
+							variants={textChildVariants}
+						>
+							Though I graduated from University of Miami with a
+							degree in Finance, I&apos;ve come to adore web
+							development for providing endless opportunity to
+							build new ideas from scratch and reverse-engineer 🛠️
+							mind-blowing orchestrations into bare concepts.
+						</motion.h3>
+						<motion.h3
+							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
 							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
 							Aside from writing code I like to read nonfiction,
-							practice outdoor sports, experiment with cooking
-							different types of foods, and spend time with my
-							girlfriend, Sneha.
+							experiment with cooking different types of foods,
+							and spend time with my girlfriend Sneha!
 						</motion.h3>
 					</motion.div>
 					<PhotoSection

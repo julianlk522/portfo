@@ -43,9 +43,8 @@ function Welcome({ darkMode }) {
 	return (
 		<motion.section
 			id='welcomeContainer'
-			className='relative flex h-screen flex-col items-center justify-evenly overflow-hidden text-stone-500 dark:text-white'
+			className='relative flex h-screen flex-col items-center justify-center overflow-hidden text-stone-500 dark:text-white'
 			style={{
-				padding: 'clamp(8rem, 8vw, 8vh) clamp(2rem, 8vw, 8vh)',
 				opacity: opacityTransform,
 			}}
 			variants={welcomeSectionVariants}
@@ -62,7 +61,7 @@ function Welcome({ darkMode }) {
 				{!darkMode && (
 					<motion.div
 						id='lightModeBg'
-						className='absolute inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
+						className='fixed inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
@@ -82,14 +81,12 @@ function Welcome({ darkMode }) {
 			<motion.div
 				id='welcomeTitleContainer'
 				className='flex items-center justify-center'
-				style={{ marginBottom: 'clamp(1rem, 3vw, 4vh)' }}
 				variants={childVariants}
 			>
 				<h1
-					className='dark:text-white'
+					className='mr-8 dark:text-white'
 					style={{
 						fontSize: 'clamp(2rem, 10vw, 10vh)',
-						marginRight: 'max(4vw, 2rem)',
 					}}
 				>
 					Welcome
@@ -115,7 +112,7 @@ function Welcome({ darkMode }) {
 			</motion.div>
 			<motion.div
 				id='toTheFrontierContainer'
-				className='flex items-center justify-center drop-shadow-mediumDark'
+				className='my-8 flex items-center justify-center drop-shadow-mediumDark'
 				style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
 				variants={childVariants}
 			>
@@ -131,7 +128,6 @@ function Welcome({ darkMode }) {
 				className='text-center dark:text-white'
 				style={{
 					fontSize: 'clamp(1.25rem, 4vw, 4vh)',
-					margin: 'clamp(1rem, 3vw, 4vh) 0',
 				}}
 				variants={childVariants}
 			>
@@ -139,11 +135,11 @@ function Welcome({ darkMode }) {
 			</motion.h2>
 			<div
 				id='continueButtonFlexContainer'
-				className='flex w-[80%] max-w-3xl justify-center md:justify-end'
+				className='mt-32 flex w-[80%] max-w-3xl justify-center md:mt-16 md:justify-end'
 			>
 				<motion.button
 					id='continueButton'
-					className='relative rounded-[2rem] bg-[rgba(255,255,255,0.9)] px-4 before:absolute before:inset-[-2px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:bg-slate-800 dark:shadow-2xl'
+					className='relative rounded-[3rem] bg-[rgba(255,255,255,0.9)] px-4 before:absolute before:inset-[-2px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:bg-slate-800 dark:shadow-2xl'
 					style={{
 						fontSize: 'clamp(1.25rem, 4vw, 4vh)',
 						width: 'min(100%, 250px)',
