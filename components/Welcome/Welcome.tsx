@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import styles from './Welcome.module.css'
 
 function Welcome({ darkMode }) {
-	const aboutSectionRef = useRef(null)
 	const innerCircleRef = useRef(null)
 	const middleCircleRef = useRef(null)
 	const outerCircleRef = useRef(null)
@@ -12,14 +11,8 @@ function Welcome({ darkMode }) {
 	const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [1, 0])
 
 	const welcomeSectionVariants = {
-		initial: {
-			y: -50,
-			transition: {
-				delay: 0.5,
-			},
-		},
+		initial: {},
 		visible: {
-			y: 0,
 			transition: {
 				delayChildren: 0.25,
 				staggerChildren: 0.5,
@@ -56,8 +49,8 @@ function Welcome({ darkMode }) {
 				opacity: opacityTransform,
 			}}
 			variants={welcomeSectionVariants}
-			whileInView='visible'
-			viewport={{ once: true }}
+			initial='initial'
+			animate='visible'
 			onAnimationComplete={() => {
 				startCirclesAnimation()
 				setTimeout(() => {
@@ -150,13 +143,10 @@ function Welcome({ darkMode }) {
 			>
 				<motion.button
 					id='continueButton'
-					className='relative self-end rounded-[2rem] px-4 before:absolute before:inset-[-2px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:shadow-2xl'
+					className='relative rounded-[2rem] bg-[rgba(255,255,255,0.9)] px-4 before:absolute before:inset-[-2px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:bg-slate-800 dark:shadow-2xl'
 					style={{
 						fontSize: 'clamp(1.25rem, 4vw, 4vh)',
 						width: 'min(100%, 250px)',
-						backgroundColor: darkMode
-							? 'rgb(30 41 59)'
-							: 'rgba(255,255,255,0.9)',
 					}}
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
