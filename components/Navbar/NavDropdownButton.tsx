@@ -39,12 +39,12 @@ const NavDropdownButton = ({ showModal }) => {
 			<motion.rect
 				animate={
 					showModal
-						? { rotate: '45deg', y: -150 }
+						? { rotate: '45deg', y: '25%' }
 						: { rotate: 0, y: 0 }
 				}
 				transition={{ duration: 0.25 }}
 				x='126'
-				y='255'
+				y='7'
 				width='391'
 				height='60'
 				rx='30'
@@ -79,12 +79,12 @@ const NavDropdownButton = ({ showModal }) => {
 			<motion.rect
 				animate={
 					showModal
-						? { rotate: '-45deg', y: 100 }
+						? { rotate: '-45deg', y: '-50%' }
 						: { rotate: 0, y: 0 }
 				}
 				transition={{ duration: 0.25 }}
 				x='126'
-				y='7'
+				y='255'
 				width='391'
 				height='60'
 				rx='30'

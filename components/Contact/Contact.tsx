@@ -66,7 +66,7 @@ export default function Contact({ darkMode }) {
 		<motion.section
 			ref={containerRef}
 			id='contactContainer'
-			className='relative h-screen w-screen overflow-hidden'
+			className='relative h-screen w-screen overflow-hidden py-24 text-center lg:pb-0'
 			style={{ opacity: opacityTransform }}
 		>
 			<div
@@ -89,11 +89,7 @@ export default function Contact({ darkMode }) {
 			</AnimatePresence>
 			<motion.section
 				id='contactOpacityTransformContainer'
-				className='relative flex h-full flex-col items-center justify-between overflow-hidden text-center lg:overflow-hidden xl:py-16'
-				style={{
-					padding:
-						'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh) clamp(6rem, 4vw, 4vh)',
-				}}
+				className='relative flex h-full flex-col items-center justify-between overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
 			>
 				<AnimatePresence>
 					{!darkMode && showLightModeBg && (
@@ -108,8 +104,8 @@ export default function Contact({ darkMode }) {
 				</AnimatePresence>
 				<h2
 					id='contactTitle'
-					className='mb-auto dark:text-white lg:mt-auto'
-					style={{ fontSize: 'clamp(2rem, 8vw, 6vh)' }}
+					className='my-auto dark:text-white'
+					style={{ fontSize: 'clamp(2rem, 6vw, 6vh)' }}
 				>
 					Let&apos;s design your
 					<span
@@ -118,12 +114,12 @@ export default function Contact({ darkMode }) {
 						dream
 					</span>
 					<br className='xs:hidden' />
-					web app
+					web app!
 				</h2>
 				<div
 					ref={contentBodyRef}
 					id='contactContentBody'
-					className={`flex w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start md:mt-16 lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:overflow-y-visible ${styles.contactContentBody}`}
+					className={`mt-8 flex w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:items-start lg:overflow-y-visible ${styles.contactContentBody}`}
 				>
 					<p className='my-16 text-xs opacity-60 dark:text-white md:mt-0 lg:hidden'>
 						Scroll down to see more
@@ -139,7 +135,7 @@ export default function Contact({ darkMode }) {
 
 					<motion.button
 						id='scrollUpPrompt'
-						className='relative my-16 flex w-full max-w-[12rem] items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden '
+						className='relative mt-16 mb-32 flex w-full max-w-[12rem] items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden '
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
 						variants={scrollPromptVariants}

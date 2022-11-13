@@ -110,10 +110,7 @@ export default function Work({ darkMode }) {
 			</AnimatePresence>
 			<motion.div
 				id='workContent'
-				className='relative flex h-full flex-col items-center justify-center overflow-hidden text-center md:justify-between  md:overflow-y-hidden'
-				style={{
-					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
-				}}
+				className='relative flex h-full flex-col items-center justify-center overflow-hidden px-16 py-24 text-center  md:justify-between md:overflow-y-hidden'
 			>
 				<motion.div
 					id='bgCircleEffectOrange'
@@ -156,7 +153,7 @@ export default function Work({ darkMode }) {
 				>
 					<motion.div
 						id='projectsSideTextLg'
-						className='mr-8 hidden h-full max-w-[25%] flex-col items-center justify-evenly bg-contain bg-center bg-no-repeat dark:text-white lg:flex'
+						className='hidden h-full max-w-[25%] flex-col items-center justify-evenly dark:text-white lg:flex'
 						variants={textBodyVariants}
 						initial='initial'
 						animate={textBodyControls}
@@ -194,7 +191,7 @@ export default function Work({ darkMode }) {
 									/>
 								</div>
 							</div>
-							<p className='ml-4 w-min text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+							<p className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'>
 								Continue
 							</p>
 						</motion.button>

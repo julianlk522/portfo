@@ -42,7 +42,7 @@ function Experience() {
 		<motion.div
 			ref={sectionRef}
 			id='experience'
-			className='relative flex h-[300%] w-full flex-col items-center justify-evenly space-y-16 dark:text-white xs:h-[200%] lg:mr-8 lg:h-full lg:space-y-4'
+			className='relative flex h-auto w-full flex-col items-center justify-evenly space-y-16 dark:text-white md:h-full md:justify-start'
 			style={{ maxWidth: 'max(50vw, 600px)' }}
 			variants={experienceVariants}
 			initial='initial'
@@ -203,7 +203,7 @@ function Experience() {
 						/>
 					</div>
 				</div>
-				<p className='ml-4 w-full text-xs opacity-60 dark:text-white lg:text-[0.6rem] 2xl:text-xs'>
+				<p className='ml-4 w-full text-xs dark:text-white lg:text-[0.6rem] 2xl:text-xs'>
 					Navigate to top
 				</p>
 			</motion.button>
