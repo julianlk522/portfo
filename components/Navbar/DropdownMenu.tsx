@@ -63,7 +63,11 @@ function DropdownMenu({ setShowModal }) {
 				className='flex h-[40%] flex-col items-center justify-center gap-8'
 			>
 				<li>
-					<a href='https://github.com/julianlk522' target='_blank'>
+					<a
+						href='https://github.com/julianlk522'
+						target='_blank'
+						rel='noreferrer'
+					>
 						Github
 					</a>
 				</li>
@@ -71,6 +75,7 @@ function DropdownMenu({ setShowModal }) {
 					<a
 						href='https://docs.google.com/document/d/e/2PACX-1vQfJyEmppuH3zko7vjioYFQe3ZBsEva8x0kWg8kL-ASaeDoCh5sysfEJus9H61_3Smvub8fXZiN-beA/pub'
 						target='_blank'
+						rel='noreferrer'
 					>
 						Resume
 					</a>
