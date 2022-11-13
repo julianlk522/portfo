@@ -1,13 +1,12 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import DarkModeSwitch from './DarkModeSwitch'
-import NavDropdownButton from './NavDropdownButton'
+import NavHomeButton from './NavHomeButton'
 
 export default function Navbar({
 	navVisible,
 	darkMode,
 	setDarkMode,
 	showModal,
-	setShowModal,
 }) {
 	const { scrollYProgress } = useScroll()
 
@@ -65,7 +64,18 @@ export default function Navbar({
 								})
 							}}
 						>
-							<span className='md:hidden'>J</span>
+							<div
+								className='h-4 w-4 md:hidden'
+								onClick={() =>
+									window.scrollTo({
+										top: 0,
+										left: 0,
+										behavior: 'smooth',
+									})
+								}
+							>
+								<NavHomeButton />
+							</div>
 							<span className='hidden md:block'>
 								Julian Lindsay-Kaufman
 							</span>

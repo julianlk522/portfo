@@ -46,7 +46,14 @@ function DropdownMenu({ setShowModal }) {
 						Work
 					</a>
 				</li>
-				<li>Contact</li>
+				<li>
+					<a
+						href='#contactContainer'
+						onClick={() => setShowModal(false)}
+					>
+						Contact
+					</a>
+				</li>
 			</ul>
 			<hr className='h-1 w-1/2' />
 			<ul
