@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import Navbar from '../components/Navbar/Navbar'
 import Work from '../components/Work/Work'
@@ -40,19 +40,7 @@ export default function Index({
 				className={`fixed top-6 right-6 z-[2] flex h-4 w-4 items-center justify-center dark:text-white md:hidden ${
 					showModal ? 'text-white' : ''
 				}`}
-				onClick={() => {
-					if (showModal) {
-						document
-							.querySelector('html')
-							.classList.remove('overflow-hidden')
-						setShowModal(false)
-					} else {
-						document
-							.querySelector('html')
-							.classList.add('overflow-hidden')
-						setShowModal(true)
-					}
-				}}
+				onClick={() => setShowModal((prev) => !prev)}
 			>
 				<NavDropdownButton />
 			</div>
