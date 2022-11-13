@@ -5,6 +5,8 @@ import {
 	useInView,
 	useAnimationControls,
 	AnimatePresence,
+	useScroll,
+	useTransform,
 } from 'framer-motion'
 import scrollUp from '../../public/scrollUp.webp'
 import ContactForm from './ContactForm'
@@ -12,6 +14,13 @@ import styles from './Contact.module.css'
 import Experience from './Experience'
 
 export default function Contact({ darkMode }) {
+	const { scrollYProgress } = useScroll()
+	const opacityTransform = useTransform(scrollYProgress, [0.9, 1], [0, 1])
+	const showLightModeBg = useTransform(
+		scrollYProgress,
+		(progress) => progress >= 0.9
+	).get()
+
 	const containerRef = useRef(null)
 	const containerInView = useInView(containerRef, { amount: 'all' })
 	const contentBodyRef = useRef(null)
@@ -58,6 +67,7 @@ export default function Contact({ darkMode }) {
 			ref={containerRef}
 			id='contactContainer'
 			className='relative h-screen w-screen overflow-hidden'
+			style={{ opacity: opacityTransform }}
 		>
 			<div
 				id='layeredWavesContainer'
@@ -86,10 +96,10 @@ export default function Contact({ darkMode }) {
 				}}
 			>
 				<AnimatePresence>
-					{!darkMode && (
+					{!darkMode && showLightModeBg && (
 						<motion.div
-							id='lightModeBg'
-							className='absolute inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
+							id='contactLightModeBg'
+							className='fixed inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
@@ -115,7 +125,7 @@ export default function Contact({ darkMode }) {
 					id='contactContentBody'
 					className={`flex w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start md:mt-16 lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:overflow-y-visible ${styles.contactContentBody}`}
 				>
-					<p className='my-16 text-xs opacity-40 dark:text-white md:mt-0 lg:hidden'>
+					<p className='my-16 text-xs opacity-60 dark:text-white md:mt-0 lg:hidden'>
 						Scroll down to see more
 					</p>
 
@@ -167,7 +177,7 @@ export default function Contact({ darkMode }) {
 								/>
 							</div>
 						</div>
-						<p className='ml-4 w-full text-xs opacity-60 dark:text-white lg:text-[0.6rem] 2xl:text-xs'>
+						<p className='ml-4 w-full text-xs dark:text-white lg:text-[0.6rem] 2xl:text-xs'>
 							Navigate to top
 						</p>
 					</motion.button>

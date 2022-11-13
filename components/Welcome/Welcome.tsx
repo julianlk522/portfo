@@ -9,6 +9,10 @@ function Welcome({ darkMode }) {
 
 	const { scrollYProgress } = useScroll()
 	const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [1, 0])
+	const showLightModeBg = useTransform(
+		scrollYProgress,
+		(progress) => progress <= 0.1
+	).get()
 
 	const welcomeSectionVariants = {
 		initial: {},
@@ -58,9 +62,9 @@ function Welcome({ darkMode }) {
 			}}
 		>
 			<AnimatePresence>
-				{!darkMode && (
+				{!darkMode && showLightModeBg && (
 					<motion.div
-						id='lightModeBg'
+						id='welcomeLightModeBg'
 						className='fixed inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
