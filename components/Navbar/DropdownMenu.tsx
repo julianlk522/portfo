@@ -55,7 +55,9 @@ function DropdownMenu({ setShowModal }) {
 					</a>
 				</li>
 			</ul>
-			<hr className='h-1 w-1/2' />
+
+			<hr className='h-1 w-1/2 opacity-20' />
+
 			<ul
 				id='dropdownRemoteLinks'
 				className='flex h-[40%] flex-col items-center justify-center gap-8'

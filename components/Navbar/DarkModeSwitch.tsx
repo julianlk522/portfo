@@ -5,7 +5,7 @@ function DarkModeSwitch({ darkMode, setDarkMode }) {
 	return (
 		<li
 			id='darkModeSwitchContainer'
-			className='mr-8 flex items-center justify-evenly lg:mr-0'
+			className='mr-16 flex items-center justify-evenly lg:mr-0'
 			onClick={() => {
 				setDarkMode((prev: boolean) => !prev)
 				if (!darkMode) {
@@ -22,7 +22,7 @@ function DarkModeSwitch({ darkMode, setDarkMode }) {
 			</span>
 			<div
 				id='darkModeSwitch'
-				className='ml-4 flex h-4 w-12 items-center rounded-[2rem] bg-slate-300 px-1 dark:bg-slate-800'
+				className='ml-2 flex h-4 w-12 items-center rounded-[2rem] bg-slate-300 px-1 dark:bg-slate-800'
 				style={darkMode ? { justifyContent: 'flex-end' } : {}}
 			>
 				<motion.div

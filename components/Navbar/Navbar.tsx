@@ -65,7 +65,7 @@ export default function Navbar({
 							}}
 						>
 							<div
-								className='h-4 w-4 md:hidden'
+								className='h-6 w-6 dark:text-white md:hidden'
 								onClick={() =>
 									window.scrollTo({
 										top: 0,
