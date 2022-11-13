@@ -33,12 +33,13 @@ export default function Index({
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
 				showModal={showModal}
-				setShowModal={setShowModal}
 			/>
 
 			<div
 				id='dropdownButtonWrapper'
-				className='fixed top-6 right-6 z-[2] flex h-4 w-4 items-center justify-center dark:text-white md:hidden'
+				className={`fixed top-6 right-6 z-[2] flex h-4 w-4 items-center justify-center dark:text-white md:hidden ${
+					showModal ? 'text-white' : ''
+				}`}
 				onClick={() => {
 					if (showModal) {
 						document
@@ -56,7 +57,9 @@ export default function Index({
 				<NavDropdownButton />
 			</div>
 
-			{showModal && <DropdownMenu setShowModal={setShowModal} />}
+			<AnimatePresence>
+				{showModal && <DropdownMenu setShowModal={setShowModal} />}
+			</AnimatePresence>
 			<div
 				id='appContainer'
 				onClick={() => {
