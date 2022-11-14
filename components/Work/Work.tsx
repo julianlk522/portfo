@@ -3,8 +3,6 @@ import scrollUp from '../../public/scrollUp.webp'
 import Image from 'next/image'
 import {
 	motion,
-	useScroll,
-	useTransform,
 	useAnimationControls,
 	useInView,
 	AnimatePresence,
@@ -15,44 +13,34 @@ import styles from './Work.module.css'
 export default function Work({ darkMode }) {
 	const projectsAnimatedOnce = useRef(false)
 	const workContainerRef = useRef(null)
-	const containerInView = useInView(workContainerRef, { amount: 'all' })
+	const containerParticallyInView = useInView(workContainerRef, {
+		amount: 'some',
+	})
+	const containerFullyInView = useInView(workContainerRef, { amount: 'all' })
 	const gridAndSideTextContainerRef = useRef(null)
 
 	const textBodyControls = useAnimationControls()
 	const portfoStackDescriptionControls = useAnimationControls()
 	const bgEffectControls = useAnimationControls()
 	const gridMemberControls = useAnimationControls()
-	const { scrollYProgress } = useScroll()
-	const allOpacityTransform = useTransform(
-		scrollYProgress,
-		[0.53, 0.66, 0.86],
-		[0, 1, 0]
-	)
 
 	useEffect(() => {
-		if (containerInView) {
+		if (containerFullyInView) {
 			bgEffectControls.start('expanded')
 		} else {
-			textBodyControls.set('initial')
-			portfoStackDescriptionControls.set('initial')
 			bgEffectControls.start('minimized')
 		}
-	}, [
-		containerInView,
-		bgEffectControls,
-		textBodyControls,
-		portfoStackDescriptionControls,
-	])
+	}, [containerFullyInView, bgEffectControls])
 
 	useEffect(() => {
 		const containerScrollTimeout = setTimeout(() => {
-			if (!containerInView) {
+			if (!containerFullyInView) {
 				gridAndSideTextContainerRef.current.scrollTop = 0
 			}
 		}, 3000)
 
 		return () => clearTimeout(containerScrollTimeout)
-	}, [containerInView])
+	}, [containerFullyInView])
 
 	const bgEffectVariants = {
 		minimized: {
@@ -79,7 +67,7 @@ export default function Work({ darkMode }) {
 	const textBodyChildVariants = {
 		initial: {
 			y: 0,
-			x: -25,
+			x: -10,
 			opacity: 0,
 		},
 		visible: {
@@ -91,7 +79,7 @@ export default function Work({ darkMode }) {
 
 	const portfoStackDescriptionVariants = {
 		initial: {
-			x: -25,
+			x: -10,
 			opacity: 0,
 		},
 		visible: {
@@ -104,7 +92,7 @@ export default function Work({ darkMode }) {
 		<section
 			ref={workContainerRef}
 			id='workContainer'
-			className='relative h-full w-full'
+			className='relative h-screen w-screen'
 		>
 			<AnimatePresence>
 				{darkMode && (
@@ -122,12 +110,7 @@ export default function Work({ darkMode }) {
 			</AnimatePresence>
 			<motion.div
 				id='workContent'
-				className='relative flex h-full flex-col items-center justify-center overflow-hidden text-center md:justify-between  md:overflow-y-hidden'
-				style={{
-					opacity: allOpacityTransform,
-					padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
-					// padding: 'clamp(4rem, 4vw, 4vh) clamp(2rem, 8vw, 20vh)',
-				}}
+				className='relative flex h-full flex-col items-center justify-center overflow-hidden px-16 py-24 text-center  md:justify-between md:overflow-y-hidden'
 			>
 				<motion.div
 					id='bgCircleEffectOrange'
@@ -145,7 +128,7 @@ export default function Work({ darkMode }) {
 					animate={bgEffectControls}
 					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
 					onAnimationComplete={() => {
-						if (containerInView) {
+						if (containerParticallyInView) {
 							gridMemberControls.start('visible')
 							portfoStackDescriptionControls.start('visible')
 						}
@@ -153,7 +136,7 @@ export default function Work({ darkMode }) {
 				></motion.div>
 				<h2
 					id='workTitle'
-					className='my-auto dark:text-white'
+					className='my-auto dark:text-white md:mb-8'
 					style={{
 						fontSize: 'clamp(2rem, 8vw, 8vh)',
 					}}
@@ -170,7 +153,7 @@ export default function Work({ darkMode }) {
 				>
 					<motion.div
 						id='projectsSideTextLg'
-						className='mr-8 hidden h-full max-w-[25%] flex-col items-center justify-evenly bg-contain bg-center bg-no-repeat dark:text-white lg:flex'
+						className='hidden h-full max-w-[25%] flex-col items-center justify-evenly dark:text-white lg:flex'
 						variants={textBodyVariants}
 						initial='initial'
 						animate={textBodyControls}
@@ -184,7 +167,7 @@ export default function Work({ darkMode }) {
 
 						<motion.button
 							id='workScrollDownPromptLg'
-							className='relative hidden w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:flex'
+							className='relative hidden w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg dark:text-white lg:flex'
 							variants={textBodyChildVariants}
 							whileHover={{ scale: 1.25 }}
 							whileTap={{ scale: 1.1 }}
@@ -194,11 +177,7 @@ export default function Work({ darkMode }) {
 									.scrollIntoView({ behavior: 'smooth' })
 							}
 						>
-							<div
-								id='arrowContainer'
-								className='relative h-full w-8'
-							>
-								{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+							<div className='relative h-4 w-8'>
 								<div
 									id='primaryArrowContainer'
 									className='absolute top-[-25%] h-full w-full'
@@ -212,7 +191,7 @@ export default function Work({ darkMode }) {
 									/>
 								</div>
 							</div>
-							<p className='ml-4 w-min text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+							<p className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'>
 								Continue
 							</p>
 						</motion.button>
@@ -226,10 +205,10 @@ export default function Work({ darkMode }) {
 					initial='initial'
 					animate={portfoStackDescriptionControls}
 					transition={{
-						delay: projectsAnimatedOnce.current ? 0.25 : 1,
+						delay: projectsAnimatedOnce.current ? 0.1 : 0.5,
 					}}
 					onAnimationComplete={() => {
-						if (containerInView) {
+						if (containerParticallyInView) {
 							textBodyControls.start('visible')
 							projectsAnimatedOnce.current = true
 						}

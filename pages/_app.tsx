@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useScroll } from 'framer-motion'
 import '../styles/globals.css'
-import Navbar from '../components/Navbar'
 import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }) {
@@ -11,6 +10,7 @@ function MyApp({ Component, pageProps }) {
 	const [navReactsToScroll, setNavReactsToScroll] = useState(true)
 	const [navVisible, setNavVisible] = useState(true)
 	const [darkMode, setDarkMode] = useState(false)
+	const [showModal, setShowModal] = useState(false)
 
 	useEffect(() => {
 		return scrollYProgress.onChange((currentYProgress) => {
@@ -103,6 +103,17 @@ function MyApp({ Component, pageProps }) {
 		}
 	}, [])
 
+	//	prevent scroll if modal shown, reactivate scrolling when modal closes
+	useEffect(() => {
+		if (showModal) {
+			document.querySelector('html').classList.add('overflow-hidden')
+			setShowModal(true)
+		} else {
+			document.querySelector('html').classList.remove('overflow-hidden')
+			setShowModal(false)
+		}
+	}, [showModal])
+
 	return (
 		<>
 			<Toaster
@@ -110,18 +121,20 @@ function MyApp({ Component, pageProps }) {
 				toastOptions={{
 					duration: 5000,
 					style: {
-						marginBottom: '1rem',
+						marginBottom: '2rem',
 						background: darkMode ? 'rgba(255,255,255,0.1)' : '',
 						color: darkMode ? 'white' : '',
 					},
 				}}
 			/>
-			<Navbar
+			<Component
+				{...pageProps}
 				navVisible={navVisible}
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
+				showModal={showModal}
+				setShowModal={setShowModal}
 			/>
-			<Component {...pageProps} darkMode={darkMode} />
 		</>
 	)
 }

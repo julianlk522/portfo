@@ -9,9 +9,9 @@ function ProjectsGrid({ gridMemberControls }) {
 	return (
 		<div
 			id='gridContentContainer'
-			className='m-auto flex h-[300%] w-full flex-col items-center justify-between self-start overflow-x-visible sm:overflow-y-scroll md:h-full lg:max-w-4xl lg:overflow-visible'
+			className='m-auto flex h-auto w-full flex-col items-center justify-between self-start overflow-x-visible sm:overflow-y-scroll md:h-full lg:max-w-4xl lg:overflow-visible'
 		>
-			<p className='my-16 text-xs opacity-40 dark:text-white md:hidden'>
+			<p className='my-16 text-xs opacity-60 dark:text-white md:hidden'>
 				Scroll down to see more
 			</p>
 			<div
@@ -54,7 +54,7 @@ function ProjectsGrid({ gridMemberControls }) {
 			</motion.p>
 			<motion.button
 				id='workScrollDownButtonSm'
-				className='relative my-16 flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden'
+				className='relative my-16 flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg dark:text-white lg:hidden'
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
 				onClick={() => {
@@ -63,8 +63,7 @@ function ProjectsGrid({ gridMemberControls }) {
 						.scrollIntoView({ behavior: 'smooth' })
 				}}
 			>
-				<div id='arrowContainer' className='relative h-full w-8'>
-					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+				<div className='relative h-4 w-8'>
 					<div
 						id='primaryArrowContainer'
 						className='absolute top-[-25%] h-full w-full'
@@ -78,7 +77,7 @@ function ProjectsGrid({ gridMemberControls }) {
 						/>
 					</div>
 				</div>
-				<p className='ml-4 w-min text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
+				<p className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'>
 					Continue
 				</p>
 			</motion.button>

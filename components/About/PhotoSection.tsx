@@ -42,7 +42,7 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 			opacity: 0,
 		},
 		visible: {
-			opacity: 0.4,
+			opacity: 1,
 		},
 	}
 
@@ -59,12 +59,13 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 	return (
 		<motion.div
 			id='photoSection'
-			className='flex w-full flex-col items-center justify-evenly pb-16 md:justify-evenly md:pb-0'
+			className='flex w-full flex-col items-center justify-center pb-16 md:pb-0'
 			variants={photoSectionVariants}
 			initial='initial'
 			whileInView='visible'
 			viewport={{
 				amount: mdScreenOrGreater ? 'all' : 'some',
+				once: true,
 			}}
 			onViewportLeave={() => {
 				spiralControls.set('hidden')
@@ -90,7 +91,7 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 			<motion.button
 				ref={scrollDownRef}
 				id='photoSectionScrollDownButton'
-				className='relative flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg'
+				className='relative flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg md:mt-32'
 				variants={scrollDownVariants}
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
@@ -102,8 +103,7 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 						.scrollIntoView({ behavior: 'smooth' })
 				}}
 			>
-				<div id='arrowContainer' className='relative h-full w-8'>
-					{/* Found at https://uxwing.com/line-angle-up-icon/ and used with permission */}
+				<div className='relative h-4 w-8'>
 					<div
 						id='primaryArrowContainer'
 						className='absolute top-[-25%] h-full w-full'
@@ -118,7 +118,7 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 					</div>
 				</div>
 				<motion.p
-					className='ml-4 w-min text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'
+					className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'
 					variants={scrollDownTextVariants}
 					onAnimationComplete={() => {
 						if (containerInView) {

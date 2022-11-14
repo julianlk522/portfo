@@ -17,8 +17,8 @@ function ContactForm() {
 	const contactFormVariants = {
 		initial: {
 			opacity: 0,
-			y: mdScreenOrLesser ? 0 : 100,
-			x: mdScreenOrLesser ? 100 : 0,
+			y: mdScreenOrLesser ? 0 : 10,
+			x: mdScreenOrLesser ? -10 : 0,
 		},
 		visible: {
 			opacity: 1,
@@ -26,7 +26,7 @@ function ContactForm() {
 			x: 0,
 			transition: {
 				type: 'tween',
-				delay: mdScreenOrLesser ? 0 : 1,
+				delay: mdScreenOrLesser ? 0 : 0.5,
 				duration: mdScreenOrLesser ? 1 : 2,
 			},
 		},
@@ -94,7 +94,7 @@ function ContactForm() {
 		<motion.form
 			id='contactForm'
 			ref={formRef}
-			className={`relative z-[1] flex h-full w-full max-w-xl flex-col items-center justify-start rounded-3xl py-8 px-8 after:absolute after:top-0 after:left-0 dark:text-white lg:max-h-[80%] lg:w-1/2 lg:max-w-xl lg:py-0 xl:w-[60%] ${styles.contactInput}`}
+			className={`relative z-[1] flex h-auto w-full max-w-xl flex-col items-center justify-start rounded-3xl py-8 after:absolute after:top-0 after:left-0 dark:text-white md:py-0 lg:ml-16 lg:max-h-[80%] lg:w-1/2 lg:max-w-xl xl:w-[60%] ${styles.contactInput}`}
 			variants={contactFormVariants}
 			initial='initial'
 			whileInView='visible'
@@ -123,7 +123,7 @@ function ContactForm() {
 			</div>
 			<div
 				id='messageInputContainer'
-				className='mb-8 flex w-full flex-col'
+				className='mb-16 flex w-full flex-col'
 			>
 				<label
 					htmlFor='messageInput'
