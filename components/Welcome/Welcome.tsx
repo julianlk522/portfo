@@ -47,7 +47,7 @@ function Welcome({ darkMode }) {
 	return (
 		<motion.section
 			id='welcomeContainer'
-			className='relative mx-auto flex h-screen max-w-7xl flex-col justify-center overflow-hidden px-16 text-stone-500 dark:text-white'
+			className='relative mx-auto flex h-screen max-w-7xl flex-col justify-center overflow-hidden px-16 text-stone-500 dark:text-white lg:overflow-visible'
 			style={{
 				opacity: opacityTransform,
 			}}
@@ -146,7 +146,6 @@ function Welcome({ darkMode }) {
 					className='relative rounded-[3rem] bg-[rgba(255,255,255,0.9)] px-4 before:absolute before:inset-[-2px] before:z-[-1] before:rounded-[3rem] before:bg-tomatoToLightPink hover:bg-tomatoToLightPink hover:bg-no-repeat hover:text-white dark:bg-slate-800 dark:shadow-2xl'
 					style={{
 						fontSize: 'clamp(1.25rem, 4vw, 4vh)',
-						width: 'min(100%, 250px)',
 					}}
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
