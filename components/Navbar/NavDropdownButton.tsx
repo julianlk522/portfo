@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import styles from './NavDropdownButton.module.css'
 
 const NavDropdownButton = ({ showModal }) => {
 	const circleVariants = {
@@ -37,11 +38,16 @@ const NavDropdownButton = ({ showModal }) => {
 				r='37.5'
 			/>
 			<motion.rect
-				id='topRect'
+				className={styles.animatedRect}
 				animate={
 					showModal
-						? { rotate: '45deg', y: '75%' }
-						: { rotate: 0, y: 0 }
+						? {
+								rotate: '45deg',
+								x: '20%',
+								y: '-25%',
+								origin: 'center',
+						  }
+						: { rotate: 0, x: 0, y: 0 }
 				}
 				transition={{ duration: 0.25 }}
 				x='126'
@@ -57,7 +63,6 @@ const NavDropdownButton = ({ showModal }) => {
 				r='37.5'
 			/>
 			<motion.rect
-				id='middleRect'
 				animate={showModal ? { opacity: 0 } : { opacity: 1 }}
 				transition={
 					showModal
@@ -79,8 +84,17 @@ const NavDropdownButton = ({ showModal }) => {
 				r='37.5'
 			/>
 			<motion.rect
-				id='bottomRect'
-				animate={showModal ? { rotate: '-45deg' } : { rotate: 0 }}
+				className={styles.animatedRect}
+				animate={
+					showModal
+						? {
+								rotate: '-45deg',
+								x: '-25%',
+								y: '60%',
+								origin: 'center',
+						  }
+						: { rotate: 0, x: 0, y: 0 }
+				}
 				transition={{ duration: 0.25 }}
 				x='126'
 				y='255'

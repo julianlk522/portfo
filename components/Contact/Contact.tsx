@@ -89,7 +89,7 @@ export default function Contact({ darkMode }) {
 			</AnimatePresence>
 			<motion.section
 				id='contactOpacityTransformContainer'
-				className='relative flex h-full flex-col items-center justify-between overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
+				className='relative my-auto flex h-full flex-col items-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
 			>
 				<AnimatePresence>
 					{!darkMode && showLightModeBg && (
@@ -104,30 +104,25 @@ export default function Contact({ darkMode }) {
 				</AnimatePresence>
 				<h2
 					id='contactTitle'
-					className='my-auto dark:text-white'
+					className='mb-8 w-full text-left dark:text-white sm:w-4/5 lg:ml-16 lg:w-full'
 					style={{ fontSize: 'clamp(2rem, 6vw, 6vh)' }}
 				>
-					Let&apos;s design your
+					Let&apos;s design your&nbsp;
 					<span
-						className={`mx-2 bg-tomatoToLightPink bg-clip-text text-transparent underline decoration-4 sm:mx-4 ${styles.titleHighlight}`}
+						className={`bg-sunrise bg-clip-text text-transparent underline decoration-4 dark:bg-tomatoToLightPink ${styles.titleHighlight}`}
 					>
-						dream
+						dream&nbsp;
 					</span>
-					<br className='xs:hidden' />
 					web app!
 				</h2>
 				<div
 					ref={contentBodyRef}
 					id='contactContentBody'
-					className={`mt-8 flex w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:items-start lg:overflow-y-visible ${styles.contactContentBody}`}
+					className={`mt-8 flex h-auto w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:items-start lg:overflow-y-visible ${styles.contactContentBody}`}
 				>
-					<p className='my-16 text-xs opacity-60 dark:text-white md:mt-0 lg:hidden'>
-						Scroll down to see more
-					</p>
-
 					<Experience />
 
-					<h3 className='mt-32 mb-16 text-2xl dark:text-white lg:hidden'>
+					<h3 className='mt-32 mb-16 text-center text-2xl dark:text-white lg:hidden'>
 						I&apos;d love to hear from you!
 					</h3>
 
@@ -147,7 +142,7 @@ export default function Contact({ darkMode }) {
 							})
 						}
 					>
-						<div className='relative ml-4 h-full w-8'>
+						<div className='relative ml-4 h-4 w-8'>
 							<div
 								id='primaryArrowContainer'
 								className='absolute top-[-50%] h-full w-full'

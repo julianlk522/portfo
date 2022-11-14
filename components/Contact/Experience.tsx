@@ -42,7 +42,7 @@ function Experience() {
 		<motion.div
 			ref={sectionRef}
 			id='experience'
-			className='relative flex h-auto w-full flex-col items-center justify-evenly space-y-16 dark:text-white md:h-full md:justify-start'
+			className='relative flex h-auto w-full flex-col items-center justify-evenly space-y-16 dark:text-white md:justify-start'
 			style={{ maxWidth: 'max(50vw, 600px)' }}
 			variants={experienceVariants}
 			initial='initial'
@@ -166,6 +166,7 @@ function Experience() {
 			<motion.button
 				id='scrollUpPromptLg'
 				className='relative ml-32 hidden w-full max-w-[12rem] items-center justify-between self-start rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:tall:flex'
+				style={{ marginBottom: '4rem' }}
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
 				variants={experienceChildVariants}
@@ -177,7 +178,7 @@ function Experience() {
 					})
 				}
 			>
-				<div className='relative ml-4 h-full w-8'>
+				<div className='relative ml-4 h-4 w-8'>
 					<div
 						id='primaryArrowContainer'
 						className='absolute top-[-50%] h-full w-full'

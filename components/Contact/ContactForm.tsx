@@ -94,7 +94,7 @@ function ContactForm() {
 		<motion.form
 			id='contactForm'
 			ref={formRef}
-			className={`relative z-[1] flex h-auto w-full max-w-xl flex-col items-center justify-start rounded-3xl py-8 px-8 after:absolute after:top-0 after:left-0 dark:text-white md:px-0 md:py-0 lg:ml-16 lg:max-h-[80%] lg:w-1/2 lg:max-w-xl xl:w-[60%] ${styles.contactInput}`}
+			className={`relative z-[1] flex h-auto w-full max-w-xl flex-col items-center justify-start rounded-3xl py-8 after:absolute after:top-0 after:left-0 dark:text-white md:py-0 lg:ml-16 lg:max-h-[80%] lg:w-1/2 lg:max-w-xl xl:w-[60%] ${styles.contactInput}`}
 			variants={contactFormVariants}
 			initial='initial'
 			whileInView='visible'

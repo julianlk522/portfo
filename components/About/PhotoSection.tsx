@@ -103,7 +103,7 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 						.scrollIntoView({ behavior: 'smooth' })
 				}}
 			>
-				<div className='relative h-full w-8'>
+				<div className='relative h-4 w-8'>
 					<div
 						id='primaryArrowContainer'
 						className='absolute top-[-25%] h-full w-full'

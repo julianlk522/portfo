@@ -136,7 +136,7 @@ export default function Work({ darkMode }) {
 				></motion.div>
 				<h2
 					id='workTitle'
-					className='my-auto dark:text-white'
+					className='my-auto dark:text-white md:mb-8'
 					style={{
 						fontSize: 'clamp(2rem, 8vw, 8vh)',
 					}}
@@ -177,7 +177,7 @@ export default function Work({ darkMode }) {
 									.scrollIntoView({ behavior: 'smooth' })
 							}
 						>
-							<div className='relative h-full w-8'>
+							<div className='relative h-4 w-8'>
 								<div
 									id='primaryArrowContainer'
 									className='absolute top-[-25%] h-full w-full'

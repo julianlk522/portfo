@@ -116,7 +116,7 @@ function Welcome({ darkMode }) {
 			</motion.div>
 			<motion.div
 				id='toTheFrontierContainer'
-				className='my-8 flex items-center justify-center drop-shadow-mediumDark'
+				className='my-8 flex items-center justify-center drop-shadow-sm'
 				style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
 				variants={childVariants}
 			>
