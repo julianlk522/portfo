@@ -37,9 +37,10 @@ const NavDropdownButton = ({ showModal }) => {
 				r='37.5'
 			/>
 			<motion.rect
+				id='topRect'
 				animate={
 					showModal
-						? { rotate: '45deg', y: '25%' }
+						? { rotate: '45deg', y: '75%' }
 						: { rotate: 0, y: 0 }
 				}
 				transition={{ duration: 0.25 }}
@@ -56,6 +57,7 @@ const NavDropdownButton = ({ showModal }) => {
 				r='37.5'
 			/>
 			<motion.rect
+				id='middleRect'
 				animate={showModal ? { opacity: 0 } : { opacity: 1 }}
 				transition={
 					showModal
@@ -77,11 +79,8 @@ const NavDropdownButton = ({ showModal }) => {
 				r='37.5'
 			/>
 			<motion.rect
-				animate={
-					showModal
-						? { rotate: '-45deg', y: '-50%' }
-						: { rotate: 0, y: 0 }
-				}
+				id='bottomRect'
+				animate={showModal ? { rotate: '-45deg' } : { rotate: 0 }}
 				transition={{ duration: 0.25 }}
 				x='126'
 				y='255'
