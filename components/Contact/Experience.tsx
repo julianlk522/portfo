@@ -166,7 +166,7 @@ function Experience() {
 			<motion.button
 				id='scrollUpPromptLg'
 				className='relative ml-32 hidden w-full max-w-[12rem] items-center justify-between self-start rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:tall:flex'
-				style={{ marginBottom: '4rem' }}
+				style={{ marginBottom: '2rem' }}
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
 				variants={experienceChildVariants}

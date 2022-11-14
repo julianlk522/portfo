@@ -89,7 +89,7 @@ export default function Contact({ darkMode }) {
 			</AnimatePresence>
 			<motion.section
 				id='contactOpacityTransformContainer'
-				className='relative my-auto flex h-full flex-col items-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
+				className='relative my-auto flex h-full flex-col items-center justify-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
 			>
 				<AnimatePresence>
 					{!darkMode && showLightModeBg && (
@@ -118,7 +118,7 @@ export default function Contact({ darkMode }) {
 				<div
 					ref={contentBodyRef}
 					id='contactContentBody'
-					className={`mt-8 flex h-auto w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:h-full lg:max-h-[80%] lg:flex-row lg:items-start lg:overflow-y-visible ${styles.contactContentBody}`}
+					className={`mt-8 flex h-auto w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:max-h-[80%] lg:flex-row lg:items-start lg:overflow-y-visible ${styles.contactContentBody}`}
 				>
 					<Experience />
 
@@ -127,6 +127,8 @@ export default function Contact({ darkMode }) {
 					</h3>
 
 					<ContactForm />
+
+					<hr className='mt-8 h-1 w-1/2 opacity-60 lg:hidden' />
 
 					<motion.button
 						id='scrollUpPrompt'
