@@ -57,7 +57,7 @@ function Experience() {
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+					className='mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mr-8 sm:mb-0'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {
@@ -94,7 +94,7 @@ function Experience() {
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+					className='mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mr-8 sm:mb-0'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {
@@ -131,7 +131,7 @@ function Experience() {
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mx-8 mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mb-0'
+					className='mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mr-8 sm:mb-0'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {

@@ -89,7 +89,7 @@ export default function Contact({ darkMode }) {
 			</AnimatePresence>
 			<motion.section
 				id='contactOpacityTransformContainer'
-				className='relative my-auto flex h-full flex-col items-center justify-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
+				className='relative m-auto flex h-full max-w-7xl flex-col items-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
 			>
 				<AnimatePresence>
 					{!darkMode && showLightModeBg && (
@@ -104,8 +104,8 @@ export default function Contact({ darkMode }) {
 				</AnimatePresence>
 				<h2
 					id='contactTitle'
-					className='mb-8 w-full max-w-7xl text-left dark:text-white sm:w-4/5 lg:ml-16 lg:w-full'
-					style={{ fontSize: 'clamp(2rem, 6vw, 6vh)' }}
+					className='mb-8 w-full max-w-7xl text-left dark:text-white'
+					style={{ fontSize: 'clamp(1rem, 6vw, 6vh)' }}
 				>
 					Let&apos;s design your&nbsp;
 					<span
@@ -113,12 +113,12 @@ export default function Contact({ darkMode }) {
 					>
 						dream&nbsp;
 					</span>
-					web app!
+					<br className='lg:hidden' /> web app!
 				</h2>
 				<div
 					ref={contentBodyRef}
 					id='contactContentBody'
-					className={`mt-8 flex h-auto w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:max-h-[80%] lg:flex-row lg:items-start lg:overflow-y-visible ${styles.contactContentBody}`}
+					className={`mt-8 flex h-auto w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:max-h-[80%] lg:flex-row lg:overflow-visible ${styles.contactContentBody}`}
 				>
 					<Experience />
 
@@ -128,7 +128,7 @@ export default function Contact({ darkMode }) {
 
 					<ContactForm />
 
-					<hr className='mt-8 h-1 w-1/2 opacity-60 lg:hidden' />
+					<hr className='mt-8 h-1 w-1/2 opacity-60 dark:opacity-20 lg:hidden' />
 
 					<motion.button
 						id='scrollUpPrompt'

@@ -47,7 +47,7 @@ function Welcome({ darkMode }) {
 	return (
 		<motion.section
 			id='welcomeContainer'
-			className='relative flex h-screen flex-col items-center justify-center overflow-hidden text-stone-500 dark:text-white'
+			className='relative mx-auto flex h-screen max-w-7xl flex-col justify-center overflow-hidden px-16 text-stone-500 dark:text-white'
 			style={{
 				opacity: opacityTransform,
 			}}
@@ -84,7 +84,7 @@ function Welcome({ darkMode }) {
 			</motion.div>
 			<motion.div
 				id='welcomeTitleContainer'
-				className='flex items-center justify-center'
+				className='flex items-center'
 				variants={childVariants}
 			>
 				<h1
@@ -116,7 +116,7 @@ function Welcome({ darkMode }) {
 			</motion.div>
 			<motion.div
 				id='toTheFrontierContainer'
-				className='my-8 flex items-center justify-center drop-shadow-sm'
+				className='my-8 flex items-center drop-shadow-sm'
 				style={{ fontSize: 'clamp(2rem, 10vw, 10vh)' }}
 				variants={childVariants}
 			>
@@ -129,7 +129,7 @@ function Welcome({ darkMode }) {
 				</h2>
 			</motion.div>
 			<motion.h2
-				className='text-center dark:text-white'
+				className='dark:text-white'
 				style={{
 					fontSize: 'clamp(1.25rem, 4vw, 4vh)',
 				}}
@@ -139,7 +139,7 @@ function Welcome({ darkMode }) {
 			</motion.h2>
 			<div
 				id='continueButtonFlexContainer'
-				className='mt-32 flex w-[80%] max-w-3xl justify-center md:mt-16 md:justify-end'
+				className='mt-32 ml-2 max-w-3xl md:mt-16'
 			>
 				<motion.button
 					id='continueButton'

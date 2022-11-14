@@ -87,7 +87,7 @@ export default function About({ darkMode }) {
 				<div
 					ref={textContentRef}
 					id='aboutOverflowContainer'
-					className={`ml-auto flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-y-visible ${styles.aboutOverflowContainer}`}
+					className={`mx-auto flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-y-visible ${styles.aboutOverflowContainer}`}
 				>
 					<motion.div
 						id='aboutTextContent'
@@ -109,7 +109,7 @@ export default function About({ darkMode }) {
 							id='aboutTitle'
 							className='bg-sunrise bg-clip-text text-transparent drop-shadow-xl dark:bg-tomatoToLightPink dark:drop-shadow-mediumDark'
 							style={{
-								fontSize: 'clamp(2rem, 8vw, 8vh)',
+								fontSize: 'clamp(1rem, 6vw, 6vh)',
 							}}
 							variants={textChildVariants}
 						>
