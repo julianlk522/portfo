@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const SvgPhoto = () => {
+const SvgPhoto = ({ darkMode }) => {
 	const svgVariants = {
 		hidden: {},
 		shown: {
@@ -23,7 +23,7 @@ const SvgPhoto = () => {
 
 	return (
 		<motion.svg
-			className='h-full w-full'
+			className='h-full max-h-[40vw] w-full overflow-visible'
 			xmlns='http://www.w3.org/2000/svg'
 			shapeRendering='geometricPrecision'
 			textRendering='geometricPrecision'
@@ -33,11 +33,26 @@ const SvgPhoto = () => {
 			width='300'
 			height='245'
 			viewBox='0 0 300 245'
-			fill='currentcolor'
+			stroke='currentcolor'
 			variants={svgVariants}
 			initial='hidden'
-			animate='shown'
+			whileInView='shown'
+			viewport={{ amount: 'some' }}
 		>
+			<motion.rect
+				className='blur-2xl'
+				width='110%'
+				//  1.1 * (300 / 245) = 1.3469
+				height='134.69%'
+				rx='100%'
+				ry='100%'
+				y='0'
+				x='-5%'
+				fill='white'
+				fillOpacity={darkMode ? '0.2' : '0'}
+				variants={pathVariants}
+				transition={{ duration: 5 }}
+			/>
 			<g transform='translate(0.000000,245.000000) scale(0.100000,-0.100000)'>
 				<motion.path
 					variants={pathVariants}
