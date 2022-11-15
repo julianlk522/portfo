@@ -7,6 +7,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			spacing: {
+				aboutSpiralTopLg: 'calc(50% - 18rem)',
+			},
 			backgroundImage: {
 				tomatoToLightPink:
 					'linear-gradient(166deg, rgba(255,172,198,1) 25%, rgba(255,91,35,1) 100%)',

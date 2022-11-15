@@ -66,7 +66,7 @@ export default function Contact({ darkMode }) {
 		<motion.section
 			ref={containerRef}
 			id='contactContainer'
-			className='relative h-screen w-screen overflow-hidden py-24 text-center text-stone-600 dark:text-white lg:pb-0'
+			className='relative h-screen w-screen overflow-hidden py-24 text-center text-stone-600 dark:text-white lg:py-0 lg:pb-0'
 			style={{ opacity: opacityTransform }}
 		>
 			<div
@@ -104,7 +104,7 @@ export default function Contact({ darkMode }) {
 				</AnimatePresence>
 				<h2
 					id='contactTitle'
-					className='mb-8 w-full max-w-7xl text-left font-semibold dark:text-white'
+					className='mb-8 w-full max-w-7xl font-semibold dark:text-white lg:text-left'
 					style={{ fontSize: 'clamp(1rem, 6vw, 6vh)' }}
 				>
 					Let&apos;s design your&nbsp;
