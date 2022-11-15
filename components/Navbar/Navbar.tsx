@@ -77,7 +77,7 @@ export default function Navbar({
 							>
 								<NavHomeButton />
 							</div>
-							<span className='hidden px-2 text-lg md:block'>
+							<span className='hidden px-2 text-lg underline underline-offset-2 md:block'>
 								JLK
 							</span>
 						</h3>

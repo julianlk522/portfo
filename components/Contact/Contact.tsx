@@ -104,7 +104,7 @@ export default function Contact({ darkMode }) {
 				</AnimatePresence>
 				<h2
 					id='contactTitle'
-					className='mb-8 w-full max-w-7xl text-left dark:text-white'
+					className='mb-8 w-full max-w-7xl text-left font-semibold dark:text-white'
 					style={{ fontSize: 'clamp(1rem, 6vw, 6vh)' }}
 				>
 					Let&apos;s design your&nbsp;

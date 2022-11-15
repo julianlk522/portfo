@@ -82,7 +82,7 @@ function Experience({ darkMode }) {
 					</svg>
 				</motion.div>
 				<div className='flex w-full flex-col items-start justify-between'>
-					<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
+					<h3 className='mb-2 text-lg font-bold xl:mb-4 xl:text-2xl'>
 						UI/UX and Layout Design
 					</h3>
 					<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
@@ -127,7 +127,7 @@ function Experience({ darkMode }) {
 					</svg>
 				</motion.div>
 				<div className='flex w-full flex-col items-start justify-center'>
-					<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
+					<h3 className='mb-2 text-lg font-bold xl:mb-4 xl:text-2xl'>
 						Backend Versatility
 					</h3>
 					<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>
@@ -173,7 +173,7 @@ function Experience({ darkMode }) {
 					</svg>
 				</motion.div>
 				<div className='flex flex-col items-start justify-center'>
-					<h3 className='mb-2 text-lg xl:mb-4 xl:text-2xl'>
+					<h3 className='mb-2 text-lg font-bold xl:mb-4 xl:text-2xl'>
 						Modern Frameworks and Packages
 					</h3>
 					<p className='text-xs opacity-60 lg:text-[0.6rem] 2xl:text-xs'>

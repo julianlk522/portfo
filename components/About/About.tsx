@@ -7,7 +7,6 @@ import {
 } from 'framer-motion'
 import styles from './About.module.css'
 import PhotoSection from './PhotoSection'
-import AboutSpiral from './AboutSpiral'
 
 export default function About({ darkMode }) {
 	const textContentRef = useRef(null)
@@ -79,11 +78,6 @@ export default function About({ darkMode }) {
 				id='aboutContent'
 				className='relative h-full flex-col items-center justify-center overflow-hidden px-8 pt-24 dark:text-white sm:px-16 md:flex-row md:pt-0'
 			>
-				<AboutSpiral
-					darkMode={darkMode}
-					spiralControls={spiralControls}
-					handControls={handControls}
-				/>
 				<div
 					ref={textContentRef}
 					id='aboutOverflowContainer'
@@ -139,13 +133,13 @@ export default function About({ darkMode }) {
 							variants={textChildVariants}
 						>
 							Though I graduated from University of Miami with a
-							degree in Finance, I&apos;ve come to <i>adore</i>
-							&nbsp; web development for offering me endless
-							opportunity to&nbsp;
+							degree in Finance, I&apos;ve come to adore web
+							development for offering me endless opportunity
+							to&nbsp;
 							<strong>build out new ideas from scratch</strong>
 							&nbsp;and try to&nbsp;
 							<strong>reverse-engineer</strong> 🛠️ complex
-							orchestrations into bare concepts.
+							orchestrations into simple concepts.
 						</motion.h3>
 						<motion.h3
 							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'

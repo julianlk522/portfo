@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import portrait from '../../public/portrait.webp'
 import scrollUp from '../../public/scrollUp.webp'
+import AboutSpiral from './AboutSpiral'
 
 function PhotoSection({
 	spiralControls,
@@ -61,7 +62,7 @@ function PhotoSection({
 	return (
 		<motion.div
 			id='photoSection'
-			className='flex w-full flex-col items-center justify-center pb-16 md:pb-0'
+			className='relative flex w-full flex-col items-center justify-center pb-16 md:pb-0'
 			variants={photoSectionVariants}
 			initial='initial'
 			whileInView='visible'
@@ -73,6 +74,11 @@ function PhotoSection({
 				spiralControls.set('hidden')
 			}}
 		>
+			<AboutSpiral
+				darkMode={darkMode}
+				spiralControls={spiralControls}
+				handControls={handControls}
+			/>
 			<motion.div
 				id='aboutPhotoMask'
 				className='relative my-24 flex h-48 max-h-[33vh] w-48 max-w-[33vh] items-center justify-center overflow-hidden rounded-full shadow-thick md:my-0 lg:h-72 lg:w-72'

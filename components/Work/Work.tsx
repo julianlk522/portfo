@@ -136,7 +136,7 @@ export default function Work({ darkMode }) {
 				></motion.div>
 				<h2
 					id='workTitle'
-					className='my-auto w-full text-left font-semibold dark:text-white md:mb-8'
+					className='my-auto w-full font-semibold dark:text-white md:mb-8'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
 					}}
@@ -153,13 +153,13 @@ export default function Work({ darkMode }) {
 				>
 					<motion.div
 						id='projectsSideTextLg'
-						className='hidden h-full max-w-[25%] flex-col items-center justify-evenly dark:text-white lg:flex'
+						className='hidden h-full max-w-[25%] flex-col items-center justify-evenly pr-16 dark:text-white lg:flex'
 						variants={textBodyVariants}
 						initial='initial'
 						animate={textBodyControls}
 					>
 						<motion.p
-							className='text-md'
+							className='text-md font-bold'
 							variants={textBodyChildVariants}
 						>
 							Hover over a project to learn more!

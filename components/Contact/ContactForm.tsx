@@ -142,7 +142,7 @@ function ContactForm() {
 			</div>
 			<motion.button
 				id='submitButton'
-				className='relative flex min-h-[2rem] overflow-hidden rounded-md border-[1px] border-slate-700 border-opacity-5 bg-slate-100 px-4 py-2 text-xs shadow-lg focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:pb-2'
+				className='relative flex min-h-[2rem] overflow-hidden rounded-md border-[1px] border-slate-700 border-opacity-5 bg-slate-100 px-4 py-2 text-xs shadow-lg hover:font-bold hover:text-white focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:pb-2'
 				onHoverStart={() => submitButtonControls.start('hovered')}
 				onHoverEnd={() => submitButtonControls.start('initial')}
 				whileHover={{ scale: 1.25 }}
