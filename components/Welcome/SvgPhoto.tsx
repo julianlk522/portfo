@@ -42,13 +42,13 @@ const SvgPhoto = ({ darkMode }) => {
 		} else {
 			bgControls.set('hidden')
 		}
-	}, [inView])
+	}, [inView, bgControls])
 
 	useEffect(() => {
 		if (darkMode) {
 			bgControls.start('shown')
 		}
-	}, [darkMode])
+	}, [darkMode, bgControls])
 
 	return (
 		<motion.svg
