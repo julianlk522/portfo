@@ -89,7 +89,7 @@ export default function Contact({ darkMode }) {
 			</AnimatePresence>
 			<motion.section
 				id='contactOpacityTransformContainer'
-				className='relative m-auto flex h-full max-w-7xl flex-col items-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
+				className='relative m-auto flex h-full max-w-7xl flex-col items-center justify-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
 			>
 				<AnimatePresence>
 					{!darkMode && showLightModeBg && (
@@ -120,7 +120,7 @@ export default function Contact({ darkMode }) {
 					id='contactContentBody'
 					className={`mt-8 flex h-auto w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:max-h-[80%] lg:flex-row lg:overflow-visible ${styles.contactContentBody}`}
 				>
-					<Experience />
+					<Experience darkMode={darkMode} />
 
 					<h3 className='mt-32 mb-16 text-center text-2xl dark:text-white lg:hidden'>
 						I&apos;d love to hear from you!

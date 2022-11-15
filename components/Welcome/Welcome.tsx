@@ -15,7 +15,7 @@ function Welcome({ darkMode }) {
 	return (
 		<motion.section
 			id='welcomeContainer'
-			className='relative mx-auto flex h-screen max-w-7xl items-center justify-evenly overflow-hidden px-16 text-stone-500 dark:text-white lg:overflow-visible'
+			className='relative mx-auto flex h-screen max-w-7xl items-center justify-evenly overflow-hidden px-16 text-stone-600 dark:text-white lg:overflow-visible'
 			style={{
 				opacity: opacityTransform,
 			}}
