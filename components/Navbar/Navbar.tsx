@@ -50,9 +50,9 @@ export default function Navbar({
 					animate={darkMode ? 'darkMode' : 'lightMode'}
 					exit={{ opacity: 0 }}
 				>
-					<div className='text-bold mr-auto items-center md:w-full'>
+					<div className='text-bold mr-auto items-center'>
 						<h3
-							className='cursor-pointer whitespace-nowrap uppercase opacity-50 dark:opacity-75'
+							className='cursor-pointer whitespace-nowrap uppercase'
 							style={{
 								fontSize: 'clamp(0.75rem, 2vw, 2vh)',
 							}}
@@ -65,6 +65,7 @@ export default function Navbar({
 							}}
 						>
 							<div
+								id='homeButtonContainer'
 								className='h-6 w-6 dark:text-white md:hidden'
 								onClick={() =>
 									window.scrollTo({
@@ -76,8 +77,8 @@ export default function Navbar({
 							>
 								<NavHomeButton />
 							</div>
-							<span className='hidden md:block'>
-								Julian Lindsay-Kaufman
+							<span className='hidden px-2 text-lg md:block'>
+								JLK
 							</span>
 						</h3>
 					</div>

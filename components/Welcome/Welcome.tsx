@@ -15,7 +15,7 @@ function Welcome({ darkMode }) {
 	return (
 		<motion.section
 			id='welcomeContainer'
-			className='relative mx-auto flex h-screen max-w-7xl items-center justify-between overflow-hidden px-16 text-stone-500 dark:text-white lg:overflow-visible'
+			className='relative mx-auto flex h-screen max-w-7xl items-center justify-evenly overflow-hidden px-16 text-stone-500 dark:text-white lg:overflow-visible'
 			style={{
 				opacity: opacityTransform,
 			}}
@@ -56,30 +56,38 @@ function Welcome({ darkMode }) {
 				<h2
 					className='min-w-fit opacity-60 dark:text-white'
 					style={{
-						fontSize: '2vmax',
+						fontSize: 'clamp(1rem, 2vw, 2vh)',
 					}}
 				>
 					a well-rounded repertoire of
 				</h2>
 				<h2
 					style={{
-						fontSize: '3vmax',
-					}}
-				>
-					<span className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'>
-						full-stack&nbsp;
-					</span>
-					<span className='opacity-60'>design&nbsp;</span>
-				</h2>
-				<h2
-					style={{
-						fontSize: '3vmax',
+						fontSize: 'clamp(1rem, 6vw, 6vh)',
 					}}
 				>
 					<span
 						className='opacity-60'
 						style={{
-							fontSize: '2vmax',
+							fontSize: 'clamp(1rem, 4vw, 4vh)',
+						}}
+					>
+						full-stack&nbsp;
+					</span>
+					<span className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'>
+						design&nbsp;
+					</span>
+				</h2>
+				<h2
+					className='mb-8'
+					style={{
+						fontSize: 'clamp(1rem, 6vw, 6vh)',
+					}}
+				>
+					<span
+						className='opacity-60'
+						style={{
+							fontSize: 'clamp(1rem, 4vw, 4vh)',
 						}}
 					>
 						and&nbsp;
@@ -90,7 +98,7 @@ function Welcome({ darkMode }) {
 				</h2>
 				<div
 					id='continueButtonFlexContainer'
-					className='mt-auto ml-2 max-w-3xl'
+					className='mt-8 max-w-3xl'
 				>
 					<motion.button
 						id='welcomeContinueButton'
@@ -126,7 +134,7 @@ function Welcome({ darkMode }) {
 
 			<div
 				id='svgPhotoContainer'
-				className='relative hidden h-1/2 w-full max-w-[40vw] items-center justify-center overflow-visible dark:text-black md:flex'
+				className='relative hidden h-1/2 w-full min-w-0 max-w-md items-center justify-center overflow-visible dark:text-black sm:flex'
 			>
 				<SvgPhoto darkMode={darkMode} />
 			</div>

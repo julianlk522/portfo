@@ -1,12 +1,15 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
+import { motion, useAnimationControls } from 'framer-motion'
 
 const SvgPhoto = ({ darkMode }) => {
+	const [inView, setInView] = useState(false)
+	const bgControls = useAnimationControls()
+
 	const svgVariants = {
 		hidden: {},
 		shown: {
 			transition: {
-				staggerChildren: 0.05,
+				staggerChildren: 0.02,
 				delayChildren: 0.25,
 			},
 		},
@@ -21,9 +24,35 @@ const SvgPhoto = ({ darkMode }) => {
 		},
 	}
 
+	const bgVariants = {
+		hidden: {
+			opacity: 0,
+		},
+		shown: {
+			opacity: 1,
+			transition: {
+				duration: 3,
+			},
+		},
+	}
+
+	useEffect(() => {
+		if (inView) {
+			bgControls.start('shown')
+		} else {
+			bgControls.set('hidden')
+		}
+	}, [inView])
+
+	useEffect(() => {
+		if (darkMode) {
+			bgControls.start('shown')
+		}
+	}, [darkMode])
+
 	return (
 		<motion.svg
-			className='h-full max-h-[40vw] w-full overflow-visible'
+			className='h-full max-h-[40vw] w-auto min-w-0 overflow-visible'
 			xmlns='http://www.w3.org/2000/svg'
 			shapeRendering='geometricPrecision'
 			textRendering='geometricPrecision'
@@ -37,22 +66,26 @@ const SvgPhoto = ({ darkMode }) => {
 			variants={svgVariants}
 			initial='hidden'
 			whileInView='shown'
-			viewport={{ amount: 'some' }}
+			onViewportEnter={() => setInView(true)}
+			onViewportLeave={() => setInView(false)}
 		>
-			<motion.rect
-				className='blur-2xl'
-				width='110%'
-				//  1.1 * (300 / 245) = 1.3469
-				height='134.69%'
-				rx='100%'
-				ry='100%'
-				y='0'
-				x='-5%'
-				fill='white'
-				fillOpacity={darkMode ? '0.2' : '0'}
-				variants={pathVariants}
-				transition={{ duration: 5 }}
-			/>
+			{darkMode && (
+				<motion.rect
+					className='blur-2xl'
+					width='110%'
+					//  1.1 * (300 / 245) = 1.3469
+					height='134.69%'
+					rx='100%'
+					ry='100%'
+					y='0'
+					x='-5%'
+					fill='white'
+					fillOpacity='0.1'
+					variants={bgVariants}
+					initial='hidden'
+					animate={bgControls}
+				/>
+			)}
 			<g transform='translate(0.000000,245.000000) scale(0.100000,-0.100000)'>
 				<motion.path
 					variants={pathVariants}
