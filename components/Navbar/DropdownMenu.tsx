@@ -10,6 +10,23 @@ function DropdownMenu({ setShowModal }) {
 		visible: {
 			opacity: 1,
 			x: 0,
+			transition: {
+				staggerChildren: 0.05,
+				delayChildren: 0.1,
+				duration: 0.25,
+				type: 'tween',
+			},
+		},
+	}
+
+	const linkVariants = {
+		hidden: {
+			opacity: 0,
+			y: -10,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
 		},
 	}
 
@@ -21,39 +38,35 @@ function DropdownMenu({ setShowModal }) {
 			initial='hidden'
 			animate='visible'
 			exit='hidden'
-			transition={{
-				duration: 0.25,
-				type: 'tween',
-			}}
 		>
 			<ul
 				id='dropdownLocalLinks'
 				className='flex h-[60%] flex-col items-center justify-center gap-8'
 			>
-				<li>
+				<motion.li variants={linkVariants}>
 					<a
 						href='#aboutContainer'
 						onClick={() => setShowModal(false)}
 					>
 						About
 					</a>
-				</li>
-				<li>
+				</motion.li>
+				<motion.li variants={linkVariants}>
 					<a
 						href='#workContainer'
 						onClick={() => setShowModal(false)}
 					>
 						Work
 					</a>
-				</li>
-				<li>
+				</motion.li>
+				<motion.li variants={linkVariants}>
 					<a
 						href='#contactContainer'
 						onClick={() => setShowModal(false)}
 					>
 						Contact
 					</a>
-				</li>
+				</motion.li>
 			</ul>
 
 			<hr className='h-1 w-1/2 opacity-20' />
@@ -62,7 +75,7 @@ function DropdownMenu({ setShowModal }) {
 				id='dropdownRemoteLinks'
 				className='flex h-[40%] flex-col items-center justify-center gap-8'
 			>
-				<li>
+				<motion.li variants={linkVariants}>
 					<a
 						href='https://github.com/julianlk522'
 						target='_blank'
@@ -70,8 +83,8 @@ function DropdownMenu({ setShowModal }) {
 					>
 						Github
 					</a>
-				</li>
-				<li>
+				</motion.li>
+				<motion.li variants={linkVariants}>
 					<a
 						href='https://docs.google.com/document/d/e/2PACX-1vQfJyEmppuH3zko7vjioYFQe3ZBsEva8x0kWg8kL-ASaeDoCh5sysfEJus9H61_3Smvub8fXZiN-beA/pub'
 						target='_blank'
@@ -79,7 +92,7 @@ function DropdownMenu({ setShowModal }) {
 					>
 						Resume
 					</a>
-				</li>
+				</motion.li>
 			</ul>
 		</motion.aside>
 	)
