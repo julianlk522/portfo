@@ -34,17 +34,16 @@ function ContactForm() {
 
 	const submitButtonBackdropVariants = {
 		initial: {
-			x: 125,
-			scale: 0.8,
+			x: 0,
+			scale: 0,
 			transition: {
 				x: {
 					delay: 0.1,
-					duration: 0.2,
+					duration: 0.1,
 				},
 			},
 			transitionEnd: {
 				x: -125,
-				scale: 0,
 			},
 		},
 		hovered: {
@@ -152,7 +151,7 @@ function ContactForm() {
 				Submit
 				<motion.div
 					id='contactSubmitButtonBackdrop'
-					className='absolute inset-[1px] z-[-1] rounded-md bg-slate-100 bg-labText opacity-20'
+					className='absolute inset-[1px] z-[-1] rounded-md bg-slate-100 bg-sunrise opacity-40 dark:bg-tomatoToLightPink'
 					animate={submitButtonControls}
 					variants={submitButtonBackdropVariants}
 					initial='initial'

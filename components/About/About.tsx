@@ -91,7 +91,7 @@ export default function About({ darkMode }) {
 				>
 					<motion.div
 						id='aboutTextContent'
-						className='relative flex h-auto flex-col items-start justify-center overflow-x-visible rounded-xl text-left md:max-w-[60%] lg:h-full lg:max-w-lg'
+						className='relative flex h-auto flex-col items-start justify-center overflow-x-visible rounded-xl text-left text-stone-600 dark:text-white md:max-w-[60%] lg:h-full lg:max-w-lg'
 						variants={textVariants}
 						initial='initial'
 						whileInView='visible'
@@ -107,7 +107,7 @@ export default function About({ darkMode }) {
 					>
 						<motion.h2
 							id='aboutTitle'
-							className='bg-sunrise bg-clip-text text-transparent drop-shadow-xl dark:bg-tomatoToLightPink dark:drop-shadow-mediumDark'
+							className='bg-sunrise bg-clip-text font-bold text-transparent drop-shadow-sm dark:bg-tomatoToLightPink dark:drop-shadow-mediumDark'
 							style={{
 								fontSize: 'clamp(1rem, 6vw, 6vh)',
 							}}
@@ -117,45 +117,48 @@ export default function About({ darkMode }) {
 						</motion.h2>
 						<motion.h3
 							className='mt-8 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
-							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
 							Hey! 👋 My name is Julian and I&apos;m a self-taught
-							full stack developer who loves to push the limits of
-							what technology and ingenuity allow.
+							full stack developer who loves to&nbsp;
+							<strong>push the limits</strong> of what technology
+							and ingenuity allow.
 						</motion.h3>
 						<motion.h3
 							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
-							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
-							I&apos;m motivated by puzzles, games, challenges,
-							and careful designwork of all shapes and sizes. 🧩
+							I&apos;m motivated by&nbsp;
+							<strong>puzzles, games, challenges</strong>,
+							and&nbsp;
+							<strong>careful designwork</strong> of all shapes
+							and sizes. 🧩
 						</motion.h3>
 						<motion.h3
 							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
-							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
 							Though I graduated from University of Miami with a
-							degree in Finance, I&apos;ve come to adore web
-							development for offering me endless opportunity to
-							build out new ideas from scratch and try to
-							reverse-engineer 🛠️ mind-blowing orchestrations into
-							bare concepts.
+							degree in Finance, I&apos;ve come to <i>adore</i>
+							&nbsp; web development for offering me endless
+							opportunity to&nbsp;
+							<strong>build out new ideas from scratch</strong>
+							&nbsp;and try to&nbsp;
+							<strong>reverse-engineer</strong> 🛠️ complex
+							orchestrations into bare concepts.
 						</motion.h3>
 						<motion.h3
 							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
-							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
 							Aside from writing code I like to get lost going
-							down Wikipedia rabbit holes, experiment with cooking
-							different types of foods, and spend time with my
-							girlfriend Sneha!
+							down <i>Wikipedia</i> rabbit holes, experiment with
+							cooking different types of foods, and spend time
+							with my girlfriend Sneha!
 						</motion.h3>
 					</motion.div>
 					<PhotoSection
+						darkMode={darkMode}
 						spiralControls={spiralControls}
 						handControls={handControls}
 						containerInView={containerInView}

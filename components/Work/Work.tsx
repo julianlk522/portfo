@@ -92,7 +92,7 @@ export default function Work({ darkMode }) {
 		<section
 			ref={workContainerRef}
 			id='workContainer'
-			className='relative h-screen w-screen'
+			className='relative h-screen w-screen text-stone-600 dark:text-white'
 		>
 			<AnimatePresence>
 				{darkMode && (
@@ -136,13 +136,13 @@ export default function Work({ darkMode }) {
 				></motion.div>
 				<h2
 					id='workTitle'
-					className='my-auto w-full text-left dark:text-white md:mb-8'
+					className='my-auto w-full text-left font-semibold dark:text-white md:mb-8'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
 					}}
 				>
 					Scenes from the
-					<span className='ml-2 bg-labText bg-clip-text font-semibold text-transparent sm:ml-4'>
+					<span className='ml-2 bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink sm:ml-4'>
 						lab
 					</span>
 				</h2>

@@ -67,7 +67,7 @@ function Welcome({ darkMode }) {
 					}}
 				>
 					<span
-						className='opacity-60'
+						className='font-bold opacity-60'
 						style={{
 							fontSize: 'clamp(1rem, 4vw, 4vh)',
 						}}
@@ -85,7 +85,7 @@ function Welcome({ darkMode }) {
 					}}
 				>
 					<span
-						className='opacity-60'
+						className='font-bold opacity-60'
 						style={{
 							fontSize: 'clamp(1rem, 4vw, 4vh)',
 						}}

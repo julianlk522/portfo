@@ -66,7 +66,7 @@ export default function Contact({ darkMode }) {
 		<motion.section
 			ref={containerRef}
 			id='contactContainer'
-			className='relative h-screen w-screen overflow-hidden py-24 text-center lg:pb-0'
+			className='relative h-screen w-screen overflow-hidden py-24 text-center text-stone-600 dark:text-white lg:pb-0'
 			style={{ opacity: opacityTransform }}
 		>
 			<div
@@ -109,7 +109,7 @@ export default function Contact({ darkMode }) {
 				>
 					Let&apos;s design your&nbsp;
 					<span
-						className={`bg-sunrise bg-clip-text text-transparent underline decoration-4 dark:bg-tomatoToLightPink ${styles.titleHighlight}`}
+						className={`bg-sunrise bg-clip-text font-bold text-transparent underline decoration-8 dark:bg-tomatoToLightPink dark:decoration-4 ${styles.titleHighlight}`}
 					>
 						dream&nbsp;
 					</span>

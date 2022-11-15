@@ -5,7 +5,12 @@ import { motion } from 'framer-motion'
 import portrait from '../../public/portrait.webp'
 import scrollUp from '../../public/scrollUp.webp'
 
-function PhotoSection({ spiralControls, handControls, containerInView }) {
+function PhotoSection({
+	spiralControls,
+	handControls,
+	containerInView,
+	darkMode,
+}) {
 	const scrollDownRef = useRef(null)
 
 	const { width } = useWindowDimensions()
@@ -25,15 +30,12 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 		},
 	}
 
-	const photoVariants = {
+	const photoOpacityVariants = {
 		initial: {
 			opacity: 0,
 		},
 		visible: {
 			opacity: 1,
-			transition: {
-				duration: 1,
-			},
 		},
 	}
 
@@ -74,11 +76,13 @@ function PhotoSection({ spiralControls, handControls, containerInView }) {
 			<motion.div
 				id='aboutPhotoMask'
 				className='relative my-24 flex h-48 max-h-[33vh] w-48 max-w-[33vh] items-center justify-center overflow-hidden rounded-full shadow-thick md:my-0 lg:h-72 lg:w-72'
-				variants={photoVariants}
-				style={{
-					backgroundImage:
-						'linear-gradient(166deg, rgba(255,172,198,0.5) 25%, rgba(255,91,35,0.5) 100%)',
+				variants={photoOpacityVariants}
+				animate={{
+					backgroundImage: darkMode
+						? 'linear-gradient(166deg, rgba(255,172,198,0.6) 25%, rgba(255,91,35,0.6) 100%)'
+						: 'linear-gradient(180deg, rgba(255, 0, 0, 0.6) 0%, rgba(255, 91, 35, 0.3) 75%)',
 				}}
+				transition={{ duration: 1, type: 'tween' }}
 			>
 				<Image
 					src={portrait}
