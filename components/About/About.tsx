@@ -139,18 +139,20 @@ export default function About({ darkMode }) {
 						>
 							Though I graduated from University of Miami with a
 							degree in Finance, I&apos;ve come to adore web
-							development for providing endless opportunity to
-							build new ideas from scratch and reverse-engineer 🛠️
-							mind-blowing orchestrations into bare concepts.
+							development for offering me endless opportunity to
+							build out new ideas from scratch and try to
+							reverse-engineer 🛠️ mind-blowing orchestrations into
+							bare concepts.
 						</motion.h3>
 						<motion.h3
 							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
 							style={{ width: 'min(100%, 500px)' }}
 							variants={textChildVariants}
 						>
-							Aside from writing code I like to read nonfiction,
-							experiment with cooking different types of foods,
-							and spend time with my girlfriend Sneha!
+							Aside from writing code I like to get lost going
+							down Wikipedia rabbit holes, experiment with cooking
+							different types of foods, and spend time with my
+							girlfriend Sneha!
 						</motion.h3>
 					</motion.div>
 					<PhotoSection
