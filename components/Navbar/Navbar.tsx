@@ -50,37 +50,28 @@ export default function Navbar({
 					animate={darkMode ? 'darkMode' : 'lightMode'}
 					exit={{ opacity: 0 }}
 				>
-					<div className='text-bold mr-auto items-center'>
-						<h3
-							className='cursor-pointer whitespace-nowrap uppercase'
-							style={{
-								fontSize: 'clamp(0.75rem, 2vw, 2vh)',
-							}}
-							onClick={() => {
-								window.scrollTo({
-									top: 0,
-									left: 0,
-									behavior: 'smooth',
-								})
-							}}
+					<div
+						id='homeButtonFlexContainer'
+						className='text-bold mr-auto items-center'
+					>
+						<NavHomeButton />
+
+						<button
+							id='homeButtonLg'
+							className='hidden px-2 md:block'
 						>
-							<div
-								id='homeButtonContainer'
-								className='h-6 w-6 dark:text-white md:hidden'
-								onClick={() =>
-									window.scrollTo({
-										top: 0,
-										left: 0,
-										behavior: 'smooth',
-									})
-								}
+							<a
+								className='text-lg'
+								style={{
+									fontSize: 'clamp(0.75rem, 2vw, 2vh)',
+								}}
+								href='https://julianlk.vercel.app'
+								target='_self'
+								rel='noreferrer'
 							>
-								<NavHomeButton />
-							</div>
-							<span className='hidden px-2 text-lg underline underline-offset-2 md:block'>
 								JLK
-							</span>
-						</h3>
+							</a>
+						</button>
 					</div>
 
 					{!showModal && (
