@@ -18,7 +18,7 @@ function AboutSpiral({ darkMode, spiralControls, handControls }) {
 
 	return (
 		<motion.svg
-			className='absolute top-1/4 left-[-25%] hidden w-[150%] blur-[2px] xs:block'
+			className='absolute top-0 left-[-25%] w-[150%] blur-[2px] md:top-1/4'
 			width='400'
 			height='400'
 			viewBox='3 3 501 531'
