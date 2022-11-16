@@ -1,5 +1,9 @@
 import React from 'react'
-import { mediumSkillsData, strongSkillsData } from './SkillsData'
+import {
+	futureSkillsData,
+	mediumSkillsData,
+	strongSkillsData,
+} from './SkillsData'
 import SkillRow from './SkillsRow'
 
 function Skills({ darkMode }) {
@@ -19,6 +23,10 @@ function Skills({ darkMode }) {
 			<SkillRow
 				data={mediumSkillsData}
 				caption="I've used these but have a lot to learn!"
+			/>
+			<SkillRow
+				data={futureSkillsData}
+				caption="I haven't used these yet but am excited to try them!"
 			/>
 		</section>
 	)

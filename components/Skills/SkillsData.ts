@@ -3,7 +3,8 @@ import { SkillInterface } from './Skill'
 //  Framer, Cypress icons from freeicons.io
 import framer from '../../public/skillsIcons/framer.webp'
 import cypress from '../../public/skillsIcons/cypress.webp'
-// HTML5 CSS3, JavaScript, TypeScript, React.js, TailwindCSS, MySQL, Git, Node, Docker, PHP, MongoDB, Figma, Next.js, Jest, D3.js, CommandLine, Netlify, Firebase icons from icons8.com
+
+// HTML5 CSS3, JavaScript, TypeScript, React.js, TailwindCSS, MySQL, Git, Node, Docker, PHP, MongoDB, Figma, Next.js, Jest, D3.js, CommandLine, Netlify, Firebase, Kubernetes, Jenkins, Audio, and Blender icons from icons8.com
 import html from '../../public/skillsIcons/html.webp'
 import css from '../../public/skillsIcons/css.webp'
 import js from '../../public/skillsIcons/js.webp'
@@ -24,9 +25,19 @@ import commandLine from '../../public/skillsIcons/commandLine.webp'
 import netlify from '../../public/skillsIcons/netlify.webp'
 import railway from '../../public/skillsIcons/railway.webp'
 import firebase from '../../public/skillsIcons/firebase.webp'
-//  Express icon from vectorlogo.zone
+import kubernetes from '../../public/skillsIcons/kubernetes.webp'
+import jenkins from '../../public/skillsIcons/jenkins.webp'
+import audio from '../../public/skillsIcons/audio.webp'
+import blender from '../../public/skillsIcons/blender.webp'
+
+//  Express icon from https://icon-icons.com/download/169185/PNG/128/
 import express from '../../public/skillsIcons/express.webp'
 
+//  Three.js icon from Mstrdoob, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+import threejs from '../../public/skillsIcons/threejs.webp'
+
+//  React Query icon from https://seeklogo.com/vector-logo/435661/react-query
+import reactQuery from '../../public/skillsIcons/reactQuery.webp'
 export const strongSkillsData: SkillInterface[] = [
 	{
 		src: html,
@@ -68,6 +79,10 @@ export const strongSkillsData: SkillInterface[] = [
 
 export const mediumSkillsData: SkillInterface[] = [
 	{
+		src: commandLine,
+		text: 'Command Line',
+	},
+	{
 		src: node,
 		text: 'Node.js',
 	},
@@ -76,24 +91,24 @@ export const mediumSkillsData: SkillInterface[] = [
 		text: 'Express.js',
 	},
 	{
+		src: mongo,
+		text: 'MongoDB',
+	},
+	{
 		src: docker,
 		text: 'Docker',
 	},
 	{
 		src: php,
-		text: 'PHP',
-	},
-	{
-		src: mongo,
-		text: 'MongoDB',
-	},
-	{
-		src: figma,
-		text: 'Figma',
+		text: '',
 	},
 	{
 		src: nextjs,
 		text: 'Next.js',
+	},
+	{
+		src: figma,
+		text: 'Figma',
 	},
 	{
 		src: cypress,
@@ -108,8 +123,8 @@ export const mediumSkillsData: SkillInterface[] = [
 		text: 'D3.js',
 	},
 	{
-		src: commandLine,
-		text: 'Command Line',
+		src: firebase,
+		text: 'Firebase',
 	},
 	{
 		src: netlify,
@@ -119,8 +134,31 @@ export const mediumSkillsData: SkillInterface[] = [
 		src: railway,
 		text: 'Railway',
 	},
+]
+
+export const futureSkillsData: SkillInterface[] = [
 	{
-		src: firebase,
-		text: 'Firebase',
+		src: audio,
+		text: 'Web Audio API',
+	},
+	{
+		src: reactQuery,
+		text: 'React Query',
+	},
+	{
+		src: jenkins,
+		text: 'Jenkins',
+	},
+	{
+		src: kubernetes,
+		text: 'Kubernetes',
+	},
+	{
+		src: threejs,
+		text: 'Three.js',
+	},
+	{
+		src: blender,
+		text: 'Blender',
 	},
 ]
