@@ -100,7 +100,7 @@ export default function About({ darkMode }) {
 							About Me
 						</motion.h2>
 						<motion.h3
-							className='mt-8 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='aboutText mt-8'
 							variants={textChildVariants}
 						>
 							Hey! 👋 My name is Julian and I&apos;m a self-taught
@@ -109,7 +109,7 @@ export default function About({ darkMode }) {
 							and ingenuity allow.
 						</motion.h3>
 						<motion.h3
-							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='aboutText mt-16'
 							variants={textChildVariants}
 						>
 							I&apos;m motivated by&nbsp;
@@ -119,7 +119,7 @@ export default function About({ darkMode }) {
 							and sizes. 🧩
 						</motion.h3>
 						<motion.h3
-							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='aboutText mt-16'
 							variants={textChildVariants}
 						>
 							Though I graduated from University of Miami with a
@@ -132,7 +132,7 @@ export default function About({ darkMode }) {
 							orchestrations into simple concepts.
 						</motion.h3>
 						<motion.h3
-							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='aboutText mt-16'
 							variants={textChildVariants}
 						>
 							Aside from writing code I like to get lost going
