@@ -23,7 +23,6 @@ function Skills({ darkMode }) {
 			<SkillRow
 				data={mediumSkillsData}
 				caption='I have some experience with these too but also lots to learn and improve on...'
-				shouldAlwaysScroll
 			/>
 			<SkillRow
 				data={futureSkillsData}
