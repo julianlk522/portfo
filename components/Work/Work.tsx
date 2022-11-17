@@ -139,6 +139,9 @@ export default function Work({ darkMode }) {
 					className='my-auto w-full font-semibold dark:text-white md:mb-8'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
+						textShadow: darkMode
+							? '4px 10px 4px rgb(255 255 255 / 5%)'
+							: '4px 10px 4px rgb(0 0 0 / 5%)',
 					}}
 				>
 					Scenes from the

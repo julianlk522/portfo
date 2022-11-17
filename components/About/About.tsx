@@ -94,6 +94,9 @@ export default function About({ darkMode }) {
 							className='bg-sunrise bg-clip-text font-bold text-transparent drop-shadow-sm dark:bg-tomatoToLightPink dark:drop-shadow-mediumDark'
 							style={{
 								fontSize: 'clamp(1rem, 6vw, 6vh)',
+								textShadow: darkMode
+									? '4px 10px 4px rgb(255 255 255 / 5%)'
+									: '4px 10px 4px rgb(0 0 0 / 5%)',
 							}}
 							variants={textChildVariants}
 						>

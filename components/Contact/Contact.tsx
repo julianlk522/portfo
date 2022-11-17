@@ -95,7 +95,7 @@ export default function Contact({ darkMode }) {
 					{!darkMode && showLightModeBg && (
 						<motion.div
 							id='contactLightModeBg'
-							className='fixed inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
+							className='fixed inset-0 z-[-1] h-full w-full bg-introAndOutroBg bg-cover'
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
@@ -105,11 +105,17 @@ export default function Contact({ darkMode }) {
 				<h2
 					id='contactTitle'
 					className='mb-8 w-full max-w-7xl font-semibold dark:text-white lg:text-left'
-					style={{ fontSize: 'clamp(1rem, 6vw, 6vh)' }}
+					style={{
+						fontSize: 'clamp(1rem, 6vw, 6vh)',
+						textShadow: darkMode
+							? '4px 10px 4px rgb(255 255 255 / 5%)'
+							: '4px 10px 4px rgb(0 0 0 / 5%)',
+					}}
 				>
 					Let&apos;s design your&nbsp;
 					<span
 						className={`bg-sunrise bg-clip-text font-bold text-transparent underline decoration-8 dark:bg-tomatoToLightPink dark:decoration-4 ${styles.titleHighlight}`}
+						style={{ textShadow: 'none' }}
 					>
 						dream&nbsp;
 					</span>

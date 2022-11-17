@@ -24,7 +24,7 @@ function Welcome({ darkMode }) {
 				{!darkMode && showLightModeBg && (
 					<motion.div
 						id='welcomeLightModeBg'
-						className='fixed inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
+						className='fixed inset-0 z-[-1] h-full w-full bg-introAndOutroBg bg-cover'
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
@@ -38,7 +38,7 @@ function Welcome({ darkMode }) {
 				></div>
 				<div
 					id='bgCircleEffectBlue'
-					className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
+					className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:hidden sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
 				></div>
 			</motion.div>
 			<div
@@ -131,7 +131,7 @@ function Welcome({ darkMode }) {
 
 			<div
 				id='svgPhotoContainer'
-				className='relative hidden h-full w-[40vw] min-w-0 max-w-3xl items-center justify-center overflow-visible dark:text-black sm:flex'
+				className='relative hidden h-full w-[40vw] min-w-0 max-w-xl items-center justify-center overflow-visible dark:text-black sm:flex'
 			>
 				<SvgPhoto darkMode={darkMode} />
 			</div>

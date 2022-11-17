@@ -52,7 +52,7 @@ export default function Navbar({
 				>
 					<div
 						id='homeButtonFlexContainer'
-						className='text-bold mr-auto items-center'
+						className='text-bold mr-auto items-center opacity-60'
 					>
 						<NavHomeButton />
 
