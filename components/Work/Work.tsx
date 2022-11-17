@@ -115,7 +115,7 @@ export default function Work({ darkMode }) {
 				<motion.div
 					id='bgCircleEffectOrange'
 					custom={1}
-					className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-[#FF5B23] opacity-[7%] blur-3xl sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
+					className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-primaryOrange opacity-[7%] blur-3xl sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
 					variants={bgEffectVariants}
 					initial='minimized'
 					animate={bgEffectControls}
@@ -126,7 +126,7 @@ export default function Work({ darkMode }) {
 					variants={bgEffectVariants}
 					initial='minimized'
 					animate={bgEffectControls}
-					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
+					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
 					onAnimationComplete={() => {
 						if (containerParticallyInView) {
 							gridMemberControls.start('visible')

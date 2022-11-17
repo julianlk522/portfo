@@ -106,7 +106,7 @@ function ProjectGridMember({
 				<p className={`text-3xl ${styles.projectTitle}`}>{title}</p>
 				{description && <p className='text-md'>{description}</p>}
 				<motion.p
-					className='my-4 text-[#00d8ff]'
+					className='my-4 bg-tomatoToLightPink bg-clip-text font-bold text-transparent'
 					animate={stackTextControls}
 					variants={stackTextVariants}
 					onAnimationComplete={() => {

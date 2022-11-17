@@ -7,6 +7,11 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			colors: {
+				primaryOrange: '#FF5B23',
+				primaryPink: '#FFACC6',
+				primaryBlue: '#00d8ff',
+			},
 			spacing: {
 				aboutSpiralTopLg: 'calc(50% - 18rem)',
 			},
