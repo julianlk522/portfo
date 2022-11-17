@@ -1,21 +1,15 @@
 import React, { useRef } from 'react'
-import useWindowDimensions from '../hooks/useWindowDimensions'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useAnimationControls } from 'framer-motion'
 import portrait from '../../public/portrait.webp'
 import scrollUp from '../../public/scrollUp.webp'
 import AboutSpiral from './AboutSpiral'
 
-function PhotoSection({
-	spiralControls,
-	handControls,
-	containerInView,
-	darkMode,
-}) {
+function PhotoSection({ containerInView, darkMode }) {
 	const scrollDownRef = useRef(null)
 
-	const { width } = useWindowDimensions()
-	const mdScreenOrGreater = width && width >= 768
+	const spiralControls = useAnimationControls()
+	const handControls = useAnimationControls()
 
 	const photoSectionVariants = {
 		initial: {
@@ -66,7 +60,7 @@ function PhotoSection({
 			initial='initial'
 			whileInView='visible'
 			viewport={{
-				amount: mdScreenOrGreater ? 'all' : 'some',
+				amount: 'all',
 				once: true,
 			}}
 			onViewportLeave={() => {
@@ -100,12 +94,12 @@ function PhotoSection({
 			<motion.button
 				ref={scrollDownRef}
 				id='photoSectionScrollDownButton'
-				className='buttonContainer md:mt-32'
+				className='buttonContainer md:mt-16'
 				variants={scrollDownVariants}
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
 				onClick={() => {
-					spiralControls.start('hidden')
+					spiralControls.set('hidden')
 					handControls.set('initial')
 					document
 						.getElementById('workContainer')
