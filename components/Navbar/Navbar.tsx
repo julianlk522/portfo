@@ -44,7 +44,7 @@ export default function Navbar({
 			{navVisible && (
 				<motion.nav
 					id='navbar'
-					className='fixed top-0 left-0 z-[1] flex h-16 w-full items-center justify-end px-8 dark:text-white md:justify-evenly md:px-16'
+					className='fixed top-0 left-0 z-[1] flex h-16 w-full items-center justify-end px-16 dark:text-white md:justify-evenly'
 					variants={navVariants}
 					initial={{ opacity: 0 }}
 					animate={darkMode ? 'darkMode' : 'lightMode'}
@@ -58,7 +58,7 @@ export default function Navbar({
 
 						<button
 							id='homeButtonLg'
-							className='hidden px-2 md:block'
+							className='hidden px-2 underline underline-offset-4 md:block'
 						>
 							<a
 								className='text-lg'
@@ -85,7 +85,7 @@ export default function Navbar({
 
 					<ul
 						id='mdScreenNavLinks'
-						className='hidden w-full list-none items-center justify-between md:flex md:max-w-sm'
+						className='hidden w-full list-none items-center justify-between space-x-4 md:flex md:w-auto lg:space-x-8'
 						style={{
 							fontSize: 'clamp(0.5rem, 2vw, 2vh)',
 						}}
@@ -113,7 +113,7 @@ export default function Navbar({
 							></motion.div>
 						</li>
 						<li
-							className='relative mx-2 cursor-pointer'
+							className='relative cursor-pointer'
 							onClick={() =>
 								document
 									.getElementById('workContainer')

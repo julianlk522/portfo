@@ -15,7 +15,7 @@ function Welcome({ darkMode }) {
 	return (
 		<motion.section
 			id='welcomeContainer'
-			className='relative mx-auto flex h-screen max-w-7xl items-center justify-evenly overflow-hidden px-16 text-stone-600 dark:text-white lg:overflow-visible'
+			className='relative mx-auto flex h-screen items-center justify-evenly overflow-hidden px-16 text-stone-600 dark:text-white lg:overflow-visible'
 			style={{
 				opacity: opacityTransform,
 			}}
@@ -43,7 +43,7 @@ function Welcome({ darkMode }) {
 			</motion.div>
 			<div
 				id='welcomeTextContent'
-				className='flex h-full max-h-[50%] flex-col justify-center'
+				className='flex h-full w-full flex-col justify-center sm:w-min'
 			>
 				<h1
 					className='mb-8 font-bold dark:text-white'
@@ -131,7 +131,7 @@ function Welcome({ darkMode }) {
 
 			<div
 				id='svgPhotoContainer'
-				className='relative hidden h-1/2 w-full min-w-0 max-w-md items-center justify-center overflow-visible dark:text-black sm:flex'
+				className='relative hidden h-full w-[40vw] min-w-0 max-w-3xl items-center justify-center overflow-visible dark:text-black sm:flex'
 			>
 				<SvgPhoto darkMode={darkMode} />
 			</div>

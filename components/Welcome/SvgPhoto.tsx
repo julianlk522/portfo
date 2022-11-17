@@ -52,7 +52,7 @@ const SvgPhoto = ({ darkMode }) => {
 
 	return (
 		<motion.svg
-			className='h-full max-h-[40vw] w-auto min-w-0 overflow-visible'
+			className='h-full w-full min-w-0 overflow-visible'
 			xmlns='http://www.w3.org/2000/svg'
 			shapeRendering='geometricPrecision'
 			textRendering='geometricPrecision'
@@ -61,7 +61,7 @@ const SvgPhoto = ({ darkMode }) => {
 			clipRule='evenodd'
 			width='300'
 			height='245'
-			viewBox='0 0 300 245'
+			viewBox='0 15 300 245'
 			stroke='currentcolor'
 			variants={svgVariants}
 			initial='hidden'

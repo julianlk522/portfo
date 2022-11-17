@@ -5,7 +5,7 @@ function DarkModeSwitch({ darkMode, setDarkMode }) {
 	return (
 		<li
 			id='darkModeSwitchContainer'
-			className='mr-16 flex items-center justify-evenly lg:mr-0'
+			className='mr-8 flex items-center justify-evenly sm:mr-16 md:mr-4'
 			onClick={() => {
 				setDarkMode((prev: boolean) => !prev)
 				if (!darkMode) {

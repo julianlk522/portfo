@@ -13,7 +13,7 @@ module.exports = {
 				primaryBlue: '#00d8ff',
 			},
 			spacing: {
-				aboutSpiralTopLg: 'calc(50% - 18rem)',
+				aboutSpiralTopLg: 'calc(50% - 16rem)',
 			},
 			backgroundImage: {
 				tomatoToLightPink:

@@ -37,7 +37,7 @@ export default function Index({
 
 			<div
 				id='dropdownButtonWrapper'
-				className={`fixed top-5 right-8 z-[2] flex h-6 w-6 items-center justify-center dark:text-white md:hidden ${
+				className={`fixed top-5 right-8 z-[2] flex h-6 w-6 items-center justify-center dark:text-white sm:right-16 md:hidden ${
 					showModal ? 'text-white' : 'opacity-60'
 				}`}
 				onClick={() => setShowModal((prev) => !prev)}

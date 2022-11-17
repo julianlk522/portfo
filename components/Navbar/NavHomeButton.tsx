@@ -2,7 +2,10 @@ import React from 'react'
 
 const NavHomeButton = () => {
 	return (
-		<div id='NavHomeButton' className='h-6 w-6 dark:text-white md:hidden'>
+		<div
+			id='NavHomeButton'
+			className='h-6 w-6 opacity-60 dark:text-white md:hidden'
+		>
 			<svg
 				className='max-h-full max-w-full'
 				xmlns='http://www.w3.org/2000/svg'
