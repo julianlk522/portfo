@@ -95,7 +95,7 @@ export default function Contact({ darkMode }) {
 					{!darkMode && showLightModeBg && (
 						<motion.div
 							id='contactLightModeBg'
-							className='fixed inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
+							className='fixed inset-0 z-[-1] h-full w-full bg-introAndOutroBg bg-cover'
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
@@ -105,11 +105,17 @@ export default function Contact({ darkMode }) {
 				<h2
 					id='contactTitle'
 					className='mb-8 w-full max-w-7xl font-semibold dark:text-white lg:text-left'
-					style={{ fontSize: 'clamp(1rem, 6vw, 6vh)' }}
+					style={{
+						fontSize: 'clamp(1rem, 6vw, 6vh)',
+						textShadow: darkMode
+							? '4px 10px 4px rgb(255 255 255 / 5%)'
+							: '4px 10px 4px rgb(0 0 0 / 5%)',
+					}}
 				>
 					Let&apos;s design your&nbsp;
 					<span
 						className={`bg-sunrise bg-clip-text font-bold text-transparent underline decoration-8 dark:bg-tomatoToLightPink dark:decoration-4 ${styles.titleHighlight}`}
+						style={{ textShadow: 'none' }}
 					>
 						dream&nbsp;
 					</span>
@@ -131,8 +137,8 @@ export default function Contact({ darkMode }) {
 					<hr className='mt-8 h-1 w-1/2 opacity-60 dark:opacity-20 lg:hidden' />
 
 					<motion.button
-						id='scrollUpPrompt'
-						className='relative mt-16 mb-32 flex w-full max-w-[12rem] items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden '
+						id='navigateToTopSm'
+						className='buttonContainer mt-16 mb-32 lg:hidden'
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
 						variants={scrollPromptVariants}
@@ -146,7 +152,7 @@ export default function Contact({ darkMode }) {
 					>
 						<div className='relative ml-4 h-4 w-8'>
 							<div
-								id='primaryArrowContainer'
+								id='topArrowContainerSm'
 								className='absolute top-[-50%] h-full w-full'
 							>
 								<Image
@@ -158,7 +164,7 @@ export default function Contact({ darkMode }) {
 								/>
 							</div>
 							<div
-								id='secondaryArrowContainer'
+								id='bottomArrowContainerSm'
 								className='absolute top-0 h-full w-full'
 							>
 								<Image

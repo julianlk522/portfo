@@ -15,7 +15,7 @@ function Welcome({ darkMode }) {
 	return (
 		<motion.section
 			id='welcomeContainer'
-			className='relative mx-auto flex h-screen max-w-7xl items-center justify-evenly overflow-hidden px-16 text-stone-600 dark:text-white lg:overflow-visible'
+			className='relative mx-auto flex h-screen items-center justify-evenly overflow-hidden px-16 text-stone-600 dark:text-white lg:overflow-visible'
 			style={{
 				opacity: opacityTransform,
 			}}
@@ -24,7 +24,7 @@ function Welcome({ darkMode }) {
 				{!darkMode && showLightModeBg && (
 					<motion.div
 						id='welcomeLightModeBg'
-						className='fixed inset-0 z-[-1] h-full w-full bg-mainBg bg-cover'
+						className='fixed inset-0 z-[-1] h-full w-full bg-introAndOutroBg bg-cover'
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
@@ -34,16 +34,16 @@ function Welcome({ darkMode }) {
 			<motion.div id='circleEffects'>
 				<div
 					id='bgCircleEffectPink'
-					className='absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-[#FFACC6] opacity-[12%] blur-xl dark:opacity-5 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
+					className='absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-primaryPink opacity-[12%] blur-xl dark:opacity-5 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
 				></div>
 				<div
 					id='bgCircleEffectBlue'
-					className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] blur-3xl sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
+					className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:hidden sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
 				></div>
 			</motion.div>
 			<div
 				id='welcomeTextContent'
-				className='flex h-full max-h-[50%] flex-col justify-center'
+				className='flex h-full w-full flex-col justify-center sm:w-min'
 			>
 				<h1
 					className='mb-8 font-bold dark:text-white'
@@ -102,7 +102,7 @@ function Welcome({ darkMode }) {
 				>
 					<motion.button
 						id='welcomeContinueButton'
-						className='relative flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg'
+						className='buttonContainer'
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
 						onClick={() => {
@@ -112,13 +112,10 @@ function Welcome({ darkMode }) {
 						}}
 					>
 						<div className='relative h-4 w-8'>
-							<div
-								id='primaryArrowContainer'
-								className='absolute top-[-25%] h-full w-full'
-							>
+							<div className='buttonArrowContainer'>
 								<Image
 									src={scrollDown}
-									alt='scroll to the top'
+									alt='continue to About section'
 									width={19}
 									height={10}
 									className='rotate-180 opacity-20 dark:invert'
@@ -134,7 +131,7 @@ function Welcome({ darkMode }) {
 
 			<div
 				id='svgPhotoContainer'
-				className='relative hidden h-1/2 w-full min-w-0 max-w-md items-center justify-center overflow-visible dark:text-black sm:flex'
+				className='relative hidden h-full w-[40vw] min-w-0 max-w-xl items-center justify-center overflow-visible dark:text-black sm:flex'
 			>
 				<SvgPhoto darkMode={darkMode} />
 			</div>

@@ -115,7 +115,7 @@ export default function Work({ darkMode }) {
 				<motion.div
 					id='bgCircleEffectOrange'
 					custom={1}
-					className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-[#FF5B23] opacity-[7%] blur-3xl sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
+					className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-primaryOrange opacity-[7%] blur-3xl sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
 					variants={bgEffectVariants}
 					initial='minimized'
 					animate={bgEffectControls}
@@ -126,7 +126,7 @@ export default function Work({ darkMode }) {
 					variants={bgEffectVariants}
 					initial='minimized'
 					animate={bgEffectControls}
-					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-[#00d8ff] opacity-[7%] blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
+					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
 					onAnimationComplete={() => {
 						if (containerParticallyInView) {
 							gridMemberControls.start('visible')
@@ -139,6 +139,9 @@ export default function Work({ darkMode }) {
 					className='my-auto w-full font-semibold dark:text-white md:mb-8'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
+						textShadow: darkMode
+							? '4px 10px 4px rgb(255 255 255 / 5%)'
+							: '4px 10px 4px rgb(0 0 0 / 5%)',
 					}}
 				>
 					Scenes from the
@@ -166,8 +169,8 @@ export default function Work({ darkMode }) {
 						</motion.p>
 
 						<motion.button
-							id='workScrollDownPromptLg'
-							className='relative hidden w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg dark:text-white lg:flex'
+							id='workScrollDownButtonLg'
+							className='buttonContainer hidden lg:flex'
 							variants={textBodyChildVariants}
 							whileHover={{ scale: 1.25 }}
 							whileTap={{ scale: 1.1 }}
@@ -178,13 +181,10 @@ export default function Work({ darkMode }) {
 							}
 						>
 							<div className='relative h-4 w-8'>
-								<div
-									id='primaryArrowContainer'
-									className='absolute top-[-25%] h-full w-full'
-								>
+								<div className='buttonArrowContainer'>
 									<Image
 										src={scrollUp}
-										alt='scroll to the top'
+										alt='continue to Contact section'
 										width={19}
 										height={10}
 										className='rotate-180 opacity-20 dark:invert'

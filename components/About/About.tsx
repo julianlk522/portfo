@@ -1,20 +1,14 @@
 import React, { useEffect, useRef } from 'react'
-import {
-	motion,
-	useInView,
-	useAnimationControls,
-	AnimatePresence,
-} from 'framer-motion'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 import styles from './About.module.css'
 import PhotoSection from './PhotoSection'
 
 export default function About({ darkMode }) {
+	const { width } = useWindowDimensions()
 	const textContentRef = useRef(null)
 	const containerRef = useRef(null)
 	const containerInView = useInView(containerRef, { amount: 'all' })
-
-	const spiralControls = useAnimationControls()
-	const handControls = useAnimationControls()
 
 	const textVariants = {
 		initial: {},
@@ -57,7 +51,7 @@ export default function About({ darkMode }) {
 		<section
 			ref={containerRef}
 			id='aboutContainer'
-			className='relative h-screen w-screen'
+			className='relative h-screen w-screen overflow-hidden'
 		>
 			<AnimatePresence>
 				{darkMode && (
@@ -76,27 +70,23 @@ export default function About({ darkMode }) {
 
 			<div
 				id='aboutContent'
-				className='relative h-full flex-col items-center justify-center overflow-hidden px-8 pt-24 dark:text-white sm:px-16 md:flex-row md:pt-0'
+				className='relative h-full flex-col items-center justify-center pt-24 text-stone-600 dark:text-white md:flex-row md:px-16 md:pt-0'
 			>
 				<div
 					ref={textContentRef}
 					id='aboutOverflowContainer'
-					className={`mx-auto flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-y-visible ${styles.aboutOverflowContainer}`}
+					className={`mx-auto flex h-full w-full max-w-7xl flex-col justify-between overflow-y-scroll md:flex-row md:overflow-visible ${styles.aboutOverflowContainer}`}
 				>
 					<motion.div
 						id='aboutTextContent'
-						className='relative flex h-auto flex-col items-start justify-center overflow-x-visible rounded-xl text-left text-stone-600 dark:text-white md:max-w-[60%] lg:h-full lg:max-w-lg'
+						className='relative flex h-auto flex-col items-start justify-center rounded-xl px-16 text-left text-stone-600 dark:text-white md:max-w-[60%] md:px-0 lg:h-full lg:max-w-lg'
 						variants={textVariants}
 						initial='initial'
 						whileInView='visible'
 						viewport={{
 							once: true,
 							margin: '0px 100px',
-						}}
-						onAnimationComplete={() => {
-							if (containerInView) {
-								spiralControls.start('visible')
-							}
+							amount: width >= 768 ? 'all' : 'some',
 						}}
 					>
 						<motion.h2
@@ -104,13 +94,16 @@ export default function About({ darkMode }) {
 							className='bg-sunrise bg-clip-text font-bold text-transparent drop-shadow-sm dark:bg-tomatoToLightPink dark:drop-shadow-mediumDark'
 							style={{
 								fontSize: 'clamp(1rem, 6vw, 6vh)',
+								textShadow: darkMode
+									? '4px 10px 4px rgb(255 255 255 / 5%)'
+									: '4px 10px 4px rgb(0 0 0 / 5%)',
 							}}
 							variants={textChildVariants}
 						>
 							About Me
 						</motion.h2>
 						<motion.h3
-							className='mt-8 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='aboutText mt-8'
 							variants={textChildVariants}
 						>
 							Hey! 👋 My name is Julian and I&apos;m a self-taught
@@ -119,7 +112,7 @@ export default function About({ darkMode }) {
 							and ingenuity allow.
 						</motion.h3>
 						<motion.h3
-							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='aboutText mt-16'
 							variants={textChildVariants}
 						>
 							I&apos;m motivated by&nbsp;
@@ -129,7 +122,7 @@ export default function About({ darkMode }) {
 							and sizes. 🧩
 						</motion.h3>
 						<motion.h3
-							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='aboutText mt-16'
 							variants={textChildVariants}
 						>
 							Though I graduated from University of Miami with a
@@ -142,7 +135,7 @@ export default function About({ darkMode }) {
 							orchestrations into simple concepts.
 						</motion.h3>
 						<motion.h3
-							className='mt-16 max-w-[80%] text-xs opacity-60 sm:max-w-[100%] xl:text-sm'
+							className='aboutText mt-16'
 							variants={textChildVariants}
 						>
 							Aside from writing code I like to get lost going
@@ -153,8 +146,6 @@ export default function About({ darkMode }) {
 					</motion.div>
 					<PhotoSection
 						darkMode={darkMode}
-						spiralControls={spiralControls}
-						handControls={handControls}
 						containerInView={containerInView}
 					/>
 				</div>

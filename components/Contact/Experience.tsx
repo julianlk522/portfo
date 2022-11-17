@@ -50,11 +50,11 @@ function Experience({ darkMode }) {
 			}}
 		>
 			<motion.div
-				className='flex flex-col items-center justify-between sm:flex-row'
+				className='experienceListMember'
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mr-8 sm:mb-0'
+					className='experienceListMemberImage'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {
@@ -94,11 +94,11 @@ function Experience({ darkMode }) {
 				</div>
 			</motion.div>
 			<motion.div
-				className='flex flex-col items-center justify-between sm:flex-row'
+				className='experienceListMember'
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mr-8 sm:mb-0'
+					className='experienceListMemberImage'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {
@@ -139,11 +139,11 @@ function Experience({ darkMode }) {
 				</div>
 			</motion.div>
 			<motion.div
-				className='flex flex-col items-center justify-between sm:flex-row'
+				className='experienceListMember'
 				variants={experienceChildVariants}
 			>
 				<motion.div
-					className='mb-16 flex h-16 w-full max-w-[4rem] items-center justify-center rounded-full border-2 border-[rgba(255,255,255,0.5)] bg-slate-300 bg-opacity-20 p-2 drop-shadow-mediumDark dark:border-[rgba(255,255,255,0.1)] dark:bg-inherit dark:shadow-thick sm:mr-8 sm:mb-0'
+					className='experienceListMemberImage'
 					whileHover={{
 						y: [null, -8, 8],
 						transition: {
@@ -185,8 +185,9 @@ function Experience({ darkMode }) {
 				</div>
 			</motion.div>
 			<motion.button
-				id='scrollUpPromptLg'
-				className='relative ml-32 hidden w-full max-w-[12rem] items-center justify-between self-start rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:tall:flex'
+				id='navigateToTopLg'
+				className='ml-32 hidden w-auto items-center justify-between self-start rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:tall:flex'
+				//	override space-y class on parent
 				style={{ marginBottom: '2rem' }}
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
@@ -201,7 +202,7 @@ function Experience({ darkMode }) {
 			>
 				<div className='relative ml-4 h-4 w-8'>
 					<div
-						id='primaryArrowContainer'
+						id='topArrowContainerLg'
 						className='absolute top-[-50%] h-full w-full'
 					>
 						<Image
@@ -213,7 +214,7 @@ function Experience({ darkMode }) {
 						/>
 					</div>
 					<div
-						id='secondaryArrowContainer'
+						id='bottomArrowContainerLg'
 						className='absolute top-0 h-full w-full'
 					>
 						<Image

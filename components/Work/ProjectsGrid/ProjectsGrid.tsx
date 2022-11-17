@@ -48,7 +48,7 @@ function ProjectsGrid({ gridMemberControls }) {
 			</div>
 			<motion.p
 				id='portfoStackDescriptionSm'
-				className='mt-16 w-full bg-portfoStackTextSm text-xs dark:text-white md:mt-8 lg:hidden'
+				className='mt-16 mb-8 w-full bg-portfoStackTextSm text-xs dark:text-white md:mb-0 md:mt-8 lg:hidden'
 			>
 				This page uses Next.js, Tailwind CSS and Framer Motion
 			</motion.p>

@@ -44,43 +44,34 @@ export default function Navbar({
 			{navVisible && (
 				<motion.nav
 					id='navbar'
-					className='fixed top-0 left-0 z-[1] flex h-16 w-full items-center justify-end px-8 dark:text-white md:justify-evenly md:px-16'
+					className='fixed top-0 left-0 z-[1] flex h-16 w-full items-center justify-end px-16 dark:text-white md:justify-evenly'
 					variants={navVariants}
 					initial={{ opacity: 0 }}
 					animate={darkMode ? 'darkMode' : 'lightMode'}
 					exit={{ opacity: 0 }}
 				>
-					<div className='text-bold mr-auto items-center'>
-						<h3
-							className='cursor-pointer whitespace-nowrap uppercase'
-							style={{
-								fontSize: 'clamp(0.75rem, 2vw, 2vh)',
-							}}
-							onClick={() => {
-								window.scrollTo({
-									top: 0,
-									left: 0,
-									behavior: 'smooth',
-								})
-							}}
+					<div
+						id='homeButtonFlexContainer'
+						className='text-bold mr-auto items-center opacity-60'
+					>
+						<NavHomeButton />
+
+						<button
+							id='homeButtonLg'
+							className='hidden px-2 underline underline-offset-4 md:block'
 						>
-							<div
-								id='homeButtonContainer'
-								className='h-6 w-6 dark:text-white md:hidden'
-								onClick={() =>
-									window.scrollTo({
-										top: 0,
-										left: 0,
-										behavior: 'smooth',
-									})
-								}
+							<a
+								className='text-lg'
+								style={{
+									fontSize: 'clamp(0.75rem, 2vw, 2vh)',
+								}}
+								href='https://julianlk.vercel.app'
+								target='_self'
+								rel='noreferrer'
 							>
-								<NavHomeButton />
-							</div>
-							<span className='hidden px-2 text-lg underline underline-offset-2 md:block'>
 								JLK
-							</span>
-						</h3>
+							</a>
+						</button>
 					</div>
 
 					{!showModal && (
@@ -94,7 +85,7 @@ export default function Navbar({
 
 					<ul
 						id='mdScreenNavLinks'
-						className='hidden w-full list-none items-center justify-between md:flex md:max-w-sm'
+						className='hidden w-full list-none items-center justify-between space-x-4 md:flex md:w-auto lg:space-x-8'
 						style={{
 							fontSize: 'clamp(0.5rem, 2vw, 2vh)',
 						}}
@@ -115,14 +106,14 @@ export default function Navbar({
 						>
 							About
 							<motion.div
-								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
+								className='navLinkUnderline'
 								style={{
 									opacity: aboutUnderlineOpacityTransform,
 								}}
 							></motion.div>
 						</li>
 						<li
-							className='relative mx-2 cursor-pointer'
+							className='relative cursor-pointer'
 							onClick={() =>
 								document
 									.getElementById('workContainer')
@@ -133,7 +124,7 @@ export default function Navbar({
 						>
 							Work
 							<motion.div
-								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
+								className='navLinkUnderline'
 								style={{
 									opacity: workUnderlineOpacityTransform,
 								}}
@@ -151,7 +142,7 @@ export default function Navbar({
 						>
 							Contact
 							<motion.div
-								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
+								className='navLinkUnderline'
 								style={{
 									opacity: contactUnderlineOpacityTransform,
 								}}

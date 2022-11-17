@@ -1,21 +1,15 @@
 import React, { useRef } from 'react'
-import useWindowDimensions from '../hooks/useWindowDimensions'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useAnimationControls } from 'framer-motion'
 import portrait from '../../public/portrait.webp'
 import scrollUp from '../../public/scrollUp.webp'
 import AboutSpiral from './AboutSpiral'
 
-function PhotoSection({
-	spiralControls,
-	handControls,
-	containerInView,
-	darkMode,
-}) {
+function PhotoSection({ containerInView, darkMode }) {
 	const scrollDownRef = useRef(null)
 
-	const { width } = useWindowDimensions()
-	const mdScreenOrGreater = width && width >= 768
+	const spiralControls = useAnimationControls()
+	const handControls = useAnimationControls()
 
 	const photoSectionVariants = {
 		initial: {
@@ -52,7 +46,6 @@ function PhotoSection({
 	const scrollDownVariants = {
 		initial: {
 			opacity: 0,
-			y: 0,
 		},
 		visible: {
 			opacity: 1,
@@ -67,7 +60,7 @@ function PhotoSection({
 			initial='initial'
 			whileInView='visible'
 			viewport={{
-				amount: mdScreenOrGreater ? 'all' : 'some',
+				amount: 'all',
 				once: true,
 			}}
 			onViewportLeave={() => {
@@ -101,12 +94,12 @@ function PhotoSection({
 			<motion.button
 				ref={scrollDownRef}
 				id='photoSectionScrollDownButton'
-				className='relative flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg md:mt-32'
+				className='buttonContainer md:mt-16'
 				variants={scrollDownVariants}
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
 				onClick={() => {
-					spiralControls.start('hidden')
+					spiralControls.set('hidden')
 					handControls.set('initial')
 					document
 						.getElementById('workContainer')
@@ -114,13 +107,10 @@ function PhotoSection({
 				}}
 			>
 				<div className='relative h-4 w-8'>
-					<div
-						id='primaryArrowContainer'
-						className='absolute top-[-25%] h-full w-full'
-					>
+					<div className='buttonArrowContainer'>
 						<Image
 							src={scrollUp}
-							alt='scroll to the top'
+							alt='continue to Work section'
 							width={19}
 							height={10}
 							className='rotate-180 opacity-20 dark:invert'
