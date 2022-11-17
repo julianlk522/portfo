@@ -75,7 +75,7 @@ function ProjectGridMember({
 	return (
 		<motion.div
 			custom={i}
-			className={`relative col-span-3 h-full w-full overflow-hidden rounded-[2rem] shadow-lg xl:shadow-xl ${tailwindStyles}`}
+			className={`projectGridMember ${tailwindStyles}`}
 			style={{
 				background: gridMemberHovered ? 'black' : 'transparent',
 			}}

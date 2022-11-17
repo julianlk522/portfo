@@ -102,7 +102,7 @@ function Welcome({ darkMode }) {
 				>
 					<motion.button
 						id='welcomeContinueButton'
-						className='relative flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg'
+						className='buttonContainer'
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
 						onClick={() => {
@@ -112,13 +112,10 @@ function Welcome({ darkMode }) {
 						}}
 					>
 						<div className='relative h-4 w-8'>
-							<div
-								id='primaryArrowContainer'
-								className='absolute top-[-25%] h-full w-full'
-							>
+							<div className='buttonArrowContainer'>
 								<Image
 									src={scrollDown}
-									alt='scroll to the top'
+									alt='continue to About section'
 									width={19}
 									height={10}
 									className='rotate-180 opacity-20 dark:invert'

@@ -106,7 +106,7 @@ export default function Navbar({
 						>
 							About
 							<motion.div
-								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
+								className='navLinkUnderline'
 								style={{
 									opacity: aboutUnderlineOpacityTransform,
 								}}
@@ -124,7 +124,7 @@ export default function Navbar({
 						>
 							Work
 							<motion.div
-								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
+								className='navLinkUnderline'
 								style={{
 									opacity: workUnderlineOpacityTransform,
 								}}
@@ -142,7 +142,7 @@ export default function Navbar({
 						>
 							Contact
 							<motion.div
-								className='absolute bottom-[-0.25rem] left-0 h-1 w-full rounded-full bg-slate-300 dark:bg-white'
+								className='navLinkUnderline'
 								style={{
 									opacity: contactUnderlineOpacityTransform,
 								}}

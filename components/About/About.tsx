@@ -76,7 +76,7 @@ export default function About({ darkMode }) {
 
 			<div
 				id='aboutContent'
-				className='relative h-full flex-col items-center justify-center overflow-hidden px-8 pt-24 dark:text-white sm:px-16 md:flex-row md:pt-0'
+				className='relative h-full flex-col items-center justify-center overflow-hidden px-8 pt-24 text-stone-600 dark:text-white sm:px-16 md:flex-row md:pt-0'
 			>
 				<div
 					ref={textContentRef}

@@ -131,8 +131,8 @@ export default function Contact({ darkMode }) {
 					<hr className='mt-8 h-1 w-1/2 opacity-60 dark:opacity-20 lg:hidden' />
 
 					<motion.button
-						id='scrollUpPrompt'
-						className='relative mt-16 mb-32 flex w-full max-w-[12rem] items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:hidden '
+						id='navigateToTopSm'
+						className='buttonContainer mt-16 mb-32 lg:hidden'
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
 						variants={scrollPromptVariants}
@@ -146,7 +146,7 @@ export default function Contact({ darkMode }) {
 					>
 						<div className='relative ml-4 h-4 w-8'>
 							<div
-								id='primaryArrowContainer'
+								id='topArrowContainerSm'
 								className='absolute top-[-50%] h-full w-full'
 							>
 								<Image
@@ -158,7 +158,7 @@ export default function Contact({ darkMode }) {
 								/>
 							</div>
 							<div
-								id='secondaryArrowContainer'
+								id='bottomArrowContainerSm'
 								className='absolute top-0 h-full w-full'
 							>
 								<Image
