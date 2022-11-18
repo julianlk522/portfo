@@ -19,8 +19,8 @@ function Skills({ darkMode }) {
 
 	return (
 		<motion.section
-			id='skillsSection'
-			className='relative flex h-screen w-screen flex-col items-center justify-center overflow-x-hidden overflow-y-scroll px-8 pt-24 text-stone-600 dark:text-white sm:px-16'
+			id='skillsContainer'
+			className='relative flex h-screen w-screen flex-col items-center justify-center overflow-hidden pl-8 pt-24 text-stone-600 dark:text-white sm:pl-16'
 			style={{
 				opacity: opacityTransform,
 			}}
@@ -36,7 +36,7 @@ function Skills({ darkMode }) {
 			></div>
 			<motion.h2
 				id='skillsTitle'
-				className='self-start bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'
+				className='my-auto self-start bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink tall:my-0'
 				style={{
 					fontSize: 'clamp(1rem, 6vw, 6vh)',
 					textShadow: darkMode
@@ -54,13 +54,49 @@ function Skills({ darkMode }) {
 				data={mediumSkillsData}
 				caption='I have some experience with these too but also lots to learn and improve on...'
 			/>
-			<SkillRow
-				data={futureSkillsData}
-				caption="...and I haven't yet used these but am excited to try them!"
-			/>
+			<div
+				id='finalSkillRowFlexContainer'
+				className='flex w-full items-end justify-between lg:pb-16'
+			>
+				<SkillRow
+					data={futureSkillsData}
+					caption="...and I haven't yet used these but am excited to try them!"
+				/>
+				<div
+					id='buttonFlexContainerLg'
+					className='hidden h-16 w-full items-center justify-center sm:h-20 lg:flex'
+				>
+					<motion.button
+						id='skillsScrollDownButtonLg'
+						className='buttonContainer flex h-fit'
+						whileHover={{ scale: 1.25 }}
+						whileTap={{ scale: 1.1 }}
+						onClick={() => {
+							document
+								.getElementById('workContainer')
+								.scrollIntoView({ behavior: 'smooth' })
+						}}
+					>
+						<div className='relative h-4 w-8'>
+							<div className='buttonArrowContainer'>
+								<Image
+									src={scrollDown}
+									alt='continue to Work section'
+									width={19}
+									height={10}
+									className='rotate-180 opacity-20 dark:invert'
+								/>
+							</div>
+						</div>
+						<motion.p className='ml-4 w-min text-xs lg:text-[0.6rem] xl:text-xs'>
+							Continue
+						</motion.p>
+					</motion.button>
+				</div>
+			</div>
 			<motion.button
-				id='skillsScrollDownButton'
-				className='buttonContainer my-8 sm:my-16'
+				id='skillsScrollDownButtonSm'
+				className='buttonContainer mb-16 mt-8 mr-8 flex sm:mr-16 lg:hidden tall:lg:hidden'
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
 				onClick={() => {

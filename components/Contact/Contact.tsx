@@ -138,7 +138,7 @@ export default function Contact({ darkMode }) {
 
 					<motion.button
 						id='navigateToTopSm'
-						className='buttonContainer mt-16 mb-32 lg:hidden'
+						className='buttonContainer mt-16 mb-32 flex lg:hidden'
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
 						variants={scrollPromptVariants}

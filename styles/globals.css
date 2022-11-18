@@ -19,7 +19,7 @@ html::-webkit-scrollbar {
 }
 
 .buttonContainer {
-	@apply flex w-auto items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg;
+	@apply w-auto items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg;
 }
 
 .buttonArrowContainer {

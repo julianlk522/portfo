@@ -94,7 +94,7 @@ function PhotoSection({ containerInView, darkMode }) {
 			<motion.button
 				ref={scrollDownRef}
 				id='photoSectionScrollDownButton'
-				className='buttonContainer md:mt-16'
+				className='buttonContainer flex md:mt-16'
 				variants={scrollDownVariants}
 				whileHover={{ scale: 1.25 }}
 				whileTap={{ scale: 1.1 }}
@@ -102,7 +102,7 @@ function PhotoSection({ containerInView, darkMode }) {
 					spiralControls.set('hidden')
 					handControls.set('initial')
 					document
-						.getElementById('workContainer')
+						.getElementById('skillsContainer')
 						.scrollIntoView({ behavior: 'smooth' })
 				}}
 			>

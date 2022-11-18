@@ -9,7 +9,7 @@ export interface SkillInterface {
 function Skill({ src, text }: SkillInterface) {
 	return (
 		<div
-			className='mr-2 flex h-20 w-20 flex-col items-center justify-center whitespace-nowrap rounded-md bg-white bg-opacity-40 p-2 text-center sm:mr-4 sm:p-4'
+			className='mr-2 flex h-16 w-16 flex-col items-center justify-center whitespace-nowrap rounded-md bg-white bg-opacity-40 p-2 text-center sm:mr-4 sm:p-4 tall:h-20 tall:w-20'
 			style={{
 				boxShadow: 'rgb(0 0 0 / 20%) 4px 5px 50px -5px',
 			}}
@@ -33,7 +33,7 @@ function Skill({ src, text }: SkillInterface) {
 				/>
 			</div>
 
-			{text && <p className='text-[8px] sm:text-[10px]'>{text}</p>}
+			{text && <p className='text-[8px] tall:text-[10px]'>{text}</p>}
 		</div>
 	)
 }

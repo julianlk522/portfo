@@ -18,13 +18,13 @@ function SkillRow({ data, caption }: SkillRowInterface) {
 	}, [windowWidth])
 
 	//	margin to prevent Skill component appearing slightly on both sides at the same time
-	const marginRef = useRef(40)
-	//	set to Skill component width (80) / 2
+	const marginRef = useRef(80)
+	//	set to Skill component width (80)
 
 	//	also have to account for section padding, which reduces the width needed to exceed the right side of the viewport
 	const paddingRef = useRef(64)
 
-	//	4rem(64px) total padding until sm screen size, then 8rem (128px) total
+	//	2 * 2rem(64px) total padding until sm screen size, then 2 * 4rem (128px) total
 	if (windowWidth >= 640) {
 		paddingRef.current = 128
 	} else paddingRef.current = 64
@@ -34,7 +34,7 @@ function SkillRow({ data, caption }: SkillRowInterface) {
 		rowWidth >= windowWidth + marginRef.current - paddingRef.current
 
 	return (
-		<div className='flex h-full w-full flex-col items-start justify-end'>
+		<div className='mt-4 flex h-auto w-full flex-col items-start justify-end lg:mt-0 lg:tall:mt-4'>
 			<p className='my-4 text-xs font-bold sm:mt-8 sm:text-sm'>
 				{caption}
 			</p>

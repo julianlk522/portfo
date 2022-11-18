@@ -102,7 +102,7 @@ function Welcome({ darkMode }) {
 				>
 					<motion.button
 						id='welcomeContinueButton'
-						className='buttonContainer'
+						className='buttonContainer flex'
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
 						onClick={() => {
