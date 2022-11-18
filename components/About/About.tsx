@@ -79,7 +79,7 @@ export default function About({ darkMode }) {
 				>
 					<motion.div
 						id='aboutTextContent'
-						className='relative flex h-auto flex-col items-start justify-center rounded-xl px-16 text-left text-stone-600 dark:text-white md:max-w-[60%] md:px-0 lg:h-full lg:max-w-lg'
+						className='relative flex h-auto flex-col items-start justify-center rounded-xl px-16 text-left text-stone-600 dark:text-white md:max-h-[80vh] md:max-w-[50%] md:self-center md:px-0 lg:h-full'
 						variants={textVariants}
 						initial='initial'
 						whileInView='visible'

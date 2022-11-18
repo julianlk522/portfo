@@ -59,7 +59,7 @@ export default function Index({
 					{darkMode && (
 						<motion.div
 							id='staticDarkModeBg'
-							className='absolute inset-0 z-[-1] h-[400vh] w-full'
+							className='absolute inset-0 z-[-1] h-[500vh] w-full'
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
@@ -69,16 +69,16 @@ export default function Index({
 						></motion.div>
 					)}
 				</AnimatePresence>
-				<div
+				<motion.div
 					id='modalBlurWrapper'
-					className={`${showModal ? 'blur-sm' : ''}`}
+					animate={showModal ? { filter: 'blur(4px)' } : {}}
 				>
 					<Welcome darkMode={darkMode} />
 					<About darkMode={darkMode} />
 					<Skills darkMode={darkMode} />
 					<Work darkMode={darkMode} />
 					<Contact darkMode={darkMode} />
-				</div>
+				</motion.div>
 			</div>
 		</>
 	)

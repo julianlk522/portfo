@@ -31,7 +31,7 @@ html::-webkit-scrollbar {
 }
 
 .aboutText {
-	@apply max-w-[80%] text-xs opacity-60 sm:max-w-full lg:text-sm;
+	@apply max-w-[80%] text-xs opacity-60 sm:max-w-full tall:text-sm;
 }
 
 .projectGridMember {
