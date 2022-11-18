@@ -8,6 +8,7 @@ import DropdownMenu from '../components/Navbar/DropdownMenu'
 import { AnimatePresence, motion } from 'framer-motion'
 import NavDropdownButton from '../components/Navbar/NavDropdownButton'
 import Welcome from '../components/Welcome/Welcome'
+import Skills from '../components/Skills/Skills'
 
 export default function Index({
 	darkMode,
@@ -37,7 +38,7 @@ export default function Index({
 
 			<div
 				id='dropdownButtonWrapper'
-				className={`fixed top-5 right-8 z-[2] flex h-6 w-6 items-center justify-center dark:text-white sm:right-16 md:hidden ${
+				className={`fixed top-5 right-8 z-[2] flex h-6 w-6 items-center justify-center dark:text-white sm:right-16 ${
 					showModal ? 'text-white' : 'opacity-60'
 				}`}
 				onClick={() => setShowModal((prev) => !prev)}
@@ -74,6 +75,7 @@ export default function Index({
 				>
 					<Welcome darkMode={darkMode} />
 					<About darkMode={darkMode} />
+					<Skills darkMode={darkMode} />
 					<Work darkMode={darkMode} />
 					<Contact darkMode={darkMode} />
 				</div>

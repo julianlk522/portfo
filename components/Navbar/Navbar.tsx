@@ -61,7 +61,6 @@ export default function Navbar({
 							className='hidden px-2 underline underline-offset-4 md:block'
 						>
 							<a
-								className='text-lg'
 								style={{
 									fontSize: 'clamp(0.75rem, 2vw, 2vh)',
 								}}
@@ -75,80 +74,11 @@ export default function Navbar({
 					</div>
 
 					{!showModal && (
-						<div id='darkModeSwitchSmWrapper' className='md:hidden'>
-							<DarkModeSwitch
-								darkMode={darkMode}
-								setDarkMode={setDarkMode}
-							/>
-						</div>
-					)}
-
-					<ul
-						id='mdScreenNavLinks'
-						className='hidden w-full list-none items-center justify-between space-x-4 md:flex md:w-auto lg:space-x-8'
-						style={{
-							fontSize: 'clamp(0.5rem, 2vw, 2vh)',
-						}}
-					>
 						<DarkModeSwitch
 							darkMode={darkMode}
 							setDarkMode={setDarkMode}
 						/>
-						<li
-							className='relative cursor-pointer'
-							onClick={() =>
-								document
-									.getElementById('aboutContainer')
-									.scrollIntoView({
-										behavior: 'smooth',
-									})
-							}
-						>
-							About
-							<motion.div
-								className='navLinkUnderline'
-								style={{
-									opacity: aboutUnderlineOpacityTransform,
-								}}
-							></motion.div>
-						</li>
-						<li
-							className='relative cursor-pointer'
-							onClick={() =>
-								document
-									.getElementById('workContainer')
-									.scrollIntoView({
-										behavior: 'smooth',
-									})
-							}
-						>
-							Work
-							<motion.div
-								className='navLinkUnderline'
-								style={{
-									opacity: workUnderlineOpacityTransform,
-								}}
-							></motion.div>
-						</li>
-						<li
-							className='relative cursor-pointer'
-							onClick={() =>
-								document
-									.getElementById('contactContainer')
-									.scrollIntoView({
-										behavior: 'smooth',
-									})
-							}
-						>
-							Contact
-							<motion.div
-								className='navLinkUnderline'
-								style={{
-									opacity: contactUnderlineOpacityTransform,
-								}}
-							></motion.div>
-						</li>
-					</ul>
+					)}
 				</motion.nav>
 			)}
 		</AnimatePresence>

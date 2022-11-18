@@ -22,18 +22,18 @@ function DropdownMenu({ setShowModal }) {
 	const linkVariants = {
 		hidden: {
 			opacity: 0,
-			y: -10,
+			x: 10,
 		},
 		visible: {
 			opacity: 1,
-			y: 0,
+			x: 0,
 		},
 	}
 
 	return (
 		<motion.aside
 			id='modalDropdown'
-			className='fixed top-0 left-[40%] z-[1] flex h-full w-[60%] flex-col items-center justify-center bg-black bg-opacity-80 px-8 py-16 text-white'
+			className='fixed top-0 right-0 z-[1] flex h-full w-[60%] max-w-lg flex-col items-center justify-center bg-black bg-opacity-80 px-8 py-16 text-white'
 			variants={dropdownVariants}
 			initial='hidden'
 			animate='visible'
@@ -49,6 +49,14 @@ function DropdownMenu({ setShowModal }) {
 						onClick={() => setShowModal(false)}
 					>
 						About
+					</a>
+				</motion.li>
+				<motion.li variants={linkVariants}>
+					<a
+						href='#skillsContainer'
+						onClick={() => setShowModal(false)}
+					>
+						Skills
 					</a>
 				</motion.li>
 				<motion.li variants={linkVariants}>
