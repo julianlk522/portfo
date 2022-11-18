@@ -91,7 +91,7 @@ export default function About({ darkMode }) {
 					>
 						<motion.h2
 							id='aboutTitle'
-							className='bg-sunrise bg-clip-text font-bold text-transparent drop-shadow-sm dark:bg-tomatoToLightPink dark:drop-shadow-mediumDark'
+							className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'
 							style={{
 								fontSize: 'clamp(1rem, 6vw, 6vh)',
 								textShadow: darkMode

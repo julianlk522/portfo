@@ -24,7 +24,7 @@ function Welcome({ darkMode }) {
 				{!darkMode && showLightModeBg && (
 					<motion.div
 						id='welcomeLightModeBg'
-						className='fixed inset-0 z-[-1] h-full w-full bg-introAndOutroBg bg-cover'
+						className='pointer-events-none fixed inset-0 z-[-1] h-full w-full bg-introAndOutroBg bg-cover'
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
