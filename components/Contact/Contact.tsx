@@ -67,7 +67,6 @@ export default function Contact({ darkMode }) {
 			ref={containerRef}
 			id='contactContainer'
 			className='relative h-screen w-screen overflow-hidden py-24 text-center text-stone-600 dark:text-white lg:py-0 lg:pb-0'
-			style={{ opacity: opacityTransform }}
 		>
 			<div
 				id='layeredWavesContainer'
@@ -90,6 +89,7 @@ export default function Contact({ darkMode }) {
 			<motion.section
 				id='contactOpacityTransformContainer'
 				className='relative m-auto flex h-full max-w-7xl flex-col items-center justify-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
+				style={{ opacity: opacityTransform }}
 			>
 				<AnimatePresence>
 					{!darkMode && showLightModeBg && (
