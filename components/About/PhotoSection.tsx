@@ -60,8 +60,8 @@ function PhotoSection({ containerInView, darkMode }) {
 			initial='initial'
 			whileInView='visible'
 			viewport={{
-				amount: 'all',
-				once: true,
+				amount: 'some',
+				margin: '-200px 0px',
 			}}
 			onViewportLeave={() => {
 				spiralControls.set('hidden')
