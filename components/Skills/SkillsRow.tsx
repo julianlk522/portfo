@@ -19,19 +19,25 @@ function SkillRow({ data, caption }: SkillRowInterface) {
 
 	//	margin to prevent Skill component appearing slightly on both sides at the same time
 	const marginRef = useRef(40)
-	//	set to 64 on sm. screen size and up (1/2 of Skill component width)
-	if (windowWidth >= 640) {
-		marginRef.current = 64
-	} else marginRef.current = 40
+	//	set to Skill component width (80) / 2
 
-	const overflowing = rowWidth && rowWidth >= windowWidth + marginRef.current
+	//	also have to account for section padding, which reduces the width needed to exceed the right side of the viewport
+	const paddingRef = useRef(64)
+
+	//	4rem(64px) total padding until sm screen size, then 8rem (128px) total
+	if (windowWidth >= 640) {
+		paddingRef.current = 128
+	} else paddingRef.current = 64
+
+	const overflowing =
+		rowWidth &&
+		rowWidth >= windowWidth + marginRef.current - paddingRef.current
+
 	return (
-		<div
-			className={`mb-8 flex h-full w-full flex-col ${
-				overflowing ? 'items-start' : 'items-center'
-			} sm:mb-12 sm:mt-8`}
-		>
-			<p className='mb-4 px-4 font-bold sm:mb-8 sm:px-8'>{caption}</p>
+		<div className='flex h-full w-full flex-col items-start justify-end'>
+			<p className='my-4 text-xs font-bold sm:mt-8 sm:text-sm'>
+				{caption}
+			</p>
 			<div
 				className={`${
 					overflowing ? styles.scrolling : styles.notScrolling
