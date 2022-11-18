@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useScroll } from 'framer-motion'
 import '../styles/globals.css'
 import { Toaster } from 'react-hot-toast'
@@ -11,6 +11,8 @@ function MyApp({ Component, pageProps }) {
 	const [navVisible, setNavVisible] = useState(true)
 	const [darkMode, setDarkMode] = useState(false)
 	const [showModal, setShowModal] = useState(false)
+
+	const numSectionsRef = useRef(5)
 
 	useEffect(() => {
 		return scrollYProgress.onChange((currentYProgress) => {
@@ -40,24 +42,32 @@ function MyApp({ Component, pageProps }) {
 	useEffect(() => {
 		if (navReactsToScroll) return
 		const scrollNearestSectionIntoView = () => {
-			const numSections = 4
-
-			if (currentScrollPercent < 1 / (2 * (numSections - 1))) {
+			if (currentScrollPercent < 1 / (2 * (numSectionsRef.current - 1))) {
 				return window.scrollTo({
 					top: 0,
 					left: 0,
 					behavior: 'smooth',
 				})
 			} else if (
-				currentScrollPercent >= 1 / (2 * (numSections - 1)) &&
-				currentScrollPercent < 3 / (2 * (numSections - 1))
+				currentScrollPercent >=
+					1 / (2 * (numSectionsRef.current - 1)) &&
+				currentScrollPercent < 3 / (2 * (numSectionsRef.current - 1))
 			) {
 				return document
 					.getElementById('aboutContainer')
 					.scrollIntoView({ behavior: 'smooth' })
 			} else if (
-				currentScrollPercent >= 3 / (2 * (numSections - 1)) &&
-				currentScrollPercent < 5 / (2 * (numSections - 1))
+				currentScrollPercent >=
+					3 / (2 * (numSectionsRef.current - 1)) &&
+				currentScrollPercent < 5 / (2 * (numSectionsRef.current - 1))
+			) {
+				return document
+					.getElementById('skillsContainer')
+					.scrollIntoView({ behavior: 'smooth' })
+			} else if (
+				currentScrollPercent >=
+					5 / (2 * (numSectionsRef.current - 1)) &&
+				currentScrollPercent < 7 / (2 * (numSectionsRef.current - 1))
 			) {
 				return document
 					.getElementById('workContainer')
