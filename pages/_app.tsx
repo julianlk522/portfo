@@ -1,9 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
-import { useScroll } from 'framer-motion'
+import { useRouter } from 'next/router'
+import { motion, useScroll, AnimatePresence } from 'framer-motion'
 import '../styles/globals.css'
 import { Toaster } from 'react-hot-toast'
+import Navbar from '../components/Navbar/Navbar'
+import NavDropdownButton from '../components/Navbar/NavDropdownButton'
+import DropdownMenu from '../components/Navbar/DropdownMenu'
 
 function MyApp({ Component, pageProps }) {
+	const router = useRouter()
 	const { scrollYProgress } = useScroll()
 	const [currentScrollPercent, setCurrentScrollPercent] = useState(0)
 	const [scrollDirection, setScrollDirection] = useState(null)
@@ -32,6 +37,7 @@ function MyApp({ Component, pageProps }) {
 	//	wait 0.5s after user stops scrolling to disable responsive Navbar visibility
 	useEffect(() => {
 		const userScrollingTimeout = setTimeout(() => {
+			if (router.pathname !== '/') return
 			setNavReactsToScroll(false)
 		}, 500)
 
@@ -40,7 +46,7 @@ function MyApp({ Component, pageProps }) {
 
 	// autoscroll section into view after userScrollingTimeout, re-enable responsive Navbar after 1s
 	useEffect(() => {
-		if (navReactsToScroll) return
+		if (navReactsToScroll || router.pathname !== '/') return
 		const scrollNearestSectionIntoView = () => {
 			if (currentScrollPercent < 1 / (2 * (numSectionsRef.current - 1))) {
 				return window.scrollTo({
@@ -137,14 +143,56 @@ function MyApp({ Component, pageProps }) {
 					},
 				}}
 			/>
-			<Component
-				{...pageProps}
+			<Navbar
 				navVisible={navVisible}
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
 				showDropdown={showDropdown}
-				setShowDropdown={setShowDropdown}
 			/>
+
+			<div
+				id='dropdownButtonWrapper'
+				className={`fixed top-5 right-8 z-[2] flex h-6 w-6 items-center justify-center dark:text-white sm:right-16 ${
+					showDropdown ? 'text-white' : 'opacity-60'
+				}`}
+				onClick={() => setShowDropdown((prev) => !prev)}
+			>
+				<NavDropdownButton showDropdown={showDropdown} />
+			</div>
+
+			<AnimatePresence>
+				{showDropdown && (
+					<DropdownMenu setShowDropdown={setShowDropdown} />
+				)}
+			</AnimatePresence>
+			<div
+				id='appContainer'
+				onClick={() => {
+					showDropdown && setShowDropdown(false)
+				}}
+			>
+				<AnimatePresence>
+					{darkMode && (
+						<motion.div
+							id='staticDarkModeBg'
+							className='absolute inset-0 z-[-1] w-full'
+							style={{
+								height: `${numSectionsRef.current}00vh`,
+								backgroundColor: 'rgb(30 41 59)',
+							}}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+						></motion.div>
+					)}
+				</AnimatePresence>
+				<motion.div
+					id='modalBlurWrapper'
+					animate={showDropdown ? { filter: 'blur(4px)' } : {}}
+				>
+					<Component {...pageProps} darkMode={darkMode} />
+				</motion.div>
+			</div>
 		</>
 	)
 }
