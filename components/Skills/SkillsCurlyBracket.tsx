@@ -4,7 +4,7 @@ const SkillsCurlyBracket = ({ closing }) => {
 	return (
 		<div
 			className={`absolute top-0 hidden h-full w-min dark:text-white lg:block ${
-				closing ? 'left-[95%]  rotate-180' : 'right-[95%]'
+				closing ? 'left-full  rotate-180' : 'right-full'
 			}`}
 		>
 			<svg

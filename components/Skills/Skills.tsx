@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 import {
 	strongSkillsData,
 	mediumSkillsData,
@@ -9,6 +10,7 @@ import SkillRow from './SkillsRow'
 import Image from 'next/image'
 import scrollDown from '../../public/scrollUp.webp'
 import SkillsCurlyBracket from './SkillsCurlyBracket'
+import SkillsEllipsis from './SkillsEllipsis'
 
 function Skills({ darkMode }) {
 	const { scrollYProgress } = useScroll()
@@ -18,6 +20,7 @@ function Skills({ darkMode }) {
 		[0, 1, 0]
 	)
 
+	const { width } = useWindowDimensions()
 	const [bracesWidth, setBracesWidth] = useState(0)
 	const bracesWidthRef = useRef(null)
 
@@ -27,7 +30,7 @@ function Skills({ darkMode }) {
 
 			console.log(bracesWidthRef.current.offsetWidth)
 		}
-	}, [])
+	}, [width])
 
 	return (
 		<motion.section
@@ -52,7 +55,7 @@ function Skills({ darkMode }) {
 			>
 				<motion.h2
 					id='skillsTitle'
-					className='my-auto self-start bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink lg:self-center tall:my-0 tall:mb-4 tall:lg:mb-16'
+					className='my-auto self-start bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink lg:self-center tall:my-0 tall:mb-8'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
 						textShadow: darkMode
@@ -80,7 +83,7 @@ function Skills({ darkMode }) {
 					/>
 					<div
 						id='finalSkillRowFlexContainer'
-						className='flex w-full items-end lg:justify-center lg:pb-16'
+						className='flex w-full items-end lg:justify-center lg:pb-[6.5rem]'
 					>
 						<SkillRow
 							data={futureSkillsData}
@@ -141,6 +144,7 @@ function Skills({ darkMode }) {
 						</motion.p>
 					</motion.button>
 					<SkillsCurlyBracket closing />
+					<SkillsEllipsis />
 				</div>
 			</div>
 		</motion.section>

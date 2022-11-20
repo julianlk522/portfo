@@ -30,10 +30,11 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 		paddingRef.current = 128
 	} else paddingRef.current = 64
 
-	const overflowing = bracesWidth
-		? rowWidth >= bracesWidth + marginRef.current - paddingRef.current
-		: rowWidth &&
-		  rowWidth >= windowWidth + marginRef.current - paddingRef.current
+	const overflowing =
+		bracesWidth && windowWidth >= 1024
+			? rowWidth >= bracesWidth + marginRef.current - paddingRef.current
+			: rowWidth &&
+			  rowWidth >= windowWidth + marginRef.current - paddingRef.current
 
 	console.log(`bracesWidth: ${bracesWidth}`)
 	console.log(`rowWidth: ${rowWidth}`)
