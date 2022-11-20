@@ -2,7 +2,7 @@ import React from 'react'
 
 const SkillsEllipsis = () => {
 	return (
-		<div className='absolute left-0 hidden h-full w-full items-end justify-center pb-2 text-black opacity-20 lg:flex'>
+		<div className='pointer-events-none absolute left-0 hidden h-full w-full items-end justify-center text-black opacity-20 tall:lg:flex'>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
 				className='h-min w-min'

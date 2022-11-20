@@ -23,26 +23,26 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 	//	set to Skill component width (80)
 
 	//	also have to account for section padding, which reduces the width needed to exceed the right side of the viewport
-	const paddingRef = useRef(64)
+	const paddingRef = useRef(32)
 
-	//	2 * 2rem(64px) total padding until sm screen size, then 2 * 4rem (128px) total
+	//	2rem (32px) padding until sm screen size, then 4rem (64px)
 	if (windowWidth >= 640) {
-		paddingRef.current = 128
-	} else paddingRef.current = 64
+		paddingRef.current = 64
+	} else paddingRef.current = 32
 
 	const overflowing =
-		bracesWidth && windowWidth >= 1024
+		bracesWidth && rowWidth && windowWidth >= 1024
 			? rowWidth >= bracesWidth + marginRef.current - paddingRef.current
-			: rowWidth &&
-			  rowWidth >= windowWidth + marginRef.current - paddingRef.current
-
-	console.log(`bracesWidth: ${bracesWidth}`)
-	console.log(`rowWidth: ${rowWidth}`)
-	console.log(`overflowing: ${overflowing}`)
+			: rowWidth >=
+			  windowWidth + marginRef.current - paddingRef.current * 2
 
 	return (
-		<div className='mt-4 flex h-auto w-auto flex-col items-start justify-end overflow-hidden lg:mt-0 lg:tall:mt-4'>
-			<p className='my-4 w-full text-xs font-bold sm:text-sm lg:mt-8'>
+		<div
+			className={`'mt-4 flex h-auto w-auto flex-col items-start ${
+				!overflowing ? 'lg:items-center' : ''
+			} lg:mt-0' justify-end`}
+		>
+			<p className='my-4 w-full text-xs font-bold sm:text-sm'>
 				{caption}
 			</p>
 			<div

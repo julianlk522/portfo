@@ -14,7 +14,7 @@ function Skill({ src, text }: SkillInterface) {
 				boxShadow: 'rgb(0 0 0 / 20%) 4px 5px 50px -5px',
 			}}
 		>
-			<div className='block sm:hidden'>
+			<div className='block tall:hidden'>
 				<Image
 					className='h-1/2 opacity-60'
 					src={src}
@@ -23,7 +23,7 @@ function Skill({ src, text }: SkillInterface) {
 					width={text ? 24 : 36}
 				/>
 			</div>
-			<div className='hidden sm:block'>
+			<div className='hidden tall:block'>
 				<Image
 					className='h-1/2 opacity-60'
 					src={src}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SkillsCurlyBracket = ({ closing }) => {
+const SkillsCurlyBraces = ({ closing }) => {
 	return (
 		<div
 			className={`absolute top-0 hidden h-full w-min dark:text-white lg:block ${
@@ -33,4 +33,4 @@ const SkillsCurlyBracket = ({ closing }) => {
 	)
 }
 
-export default SkillsCurlyBracket
+export default SkillsCurlyBraces
