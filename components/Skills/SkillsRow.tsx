@@ -6,9 +6,10 @@ import styles from './SkillsRow.module.css'
 interface SkillRowInterface {
 	data: SkillInterface[]
 	caption: string
+	bracesWidth: number
 }
 
-function SkillRow({ data, caption }: SkillRowInterface) {
+function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 	const widthRef = useRef(null)
 	const [rowWidth, setRowWidth] = useState(0)
 	const { width: windowWidth } = useWindowDimensions()
@@ -29,9 +30,14 @@ function SkillRow({ data, caption }: SkillRowInterface) {
 		paddingRef.current = 128
 	} else paddingRef.current = 64
 
-	const overflowing =
-		rowWidth &&
-		rowWidth >= windowWidth + marginRef.current - paddingRef.current
+	const overflowing = bracesWidth
+		? rowWidth >= bracesWidth + marginRef.current - paddingRef.current
+		: rowWidth &&
+		  rowWidth >= windowWidth + marginRef.current - paddingRef.current
+
+	console.log(`bracesWidth: ${bracesWidth}`)
+	console.log(`rowWidth: ${rowWidth}`)
+	console.log(`overflowing: ${overflowing}`)
 
 	return (
 		<div className='mt-4 flex h-auto w-auto flex-col items-start justify-end overflow-hidden lg:mt-0 lg:tall:mt-4'>

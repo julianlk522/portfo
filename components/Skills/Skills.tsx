@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
 	strongSkillsData,
@@ -17,6 +17,17 @@ function Skills({ darkMode }) {
 		[0.375, 0.5, 0.625],
 		[0, 1, 0]
 	)
+
+	const [bracesWidth, setBracesWidth] = useState(0)
+	const bracesWidthRef = useRef(null)
+
+	useEffect(() => {
+		if (bracesWidthRef.current) {
+			setBracesWidth(bracesWidthRef.current.offsetWidth)
+
+			console.log(bracesWidthRef.current.offsetWidth)
+		}
+	}, [])
 
 	return (
 		<motion.section
@@ -37,11 +48,11 @@ function Skills({ darkMode }) {
 			></div>
 			<div
 				id='skillsContentContainer'
-				className='flex h-full w-full max-w-7xl flex-col'
+				className='flex h-full w-full max-w-7xl flex-col justify-center 2xl:max-w-[1500px]'
 			>
 				<motion.h2
 					id='skillsTitle'
-					className='my-auto self-start bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink tall:my-0 tall:mb-4'
+					className='my-auto self-start bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink lg:self-center tall:my-0 tall:mb-4 tall:lg:mb-16'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
 						textShadow: darkMode
@@ -52,6 +63,7 @@ function Skills({ darkMode }) {
 					Software Skills
 				</motion.h2>
 				<div
+					ref={bracesWidthRef}
 					id='bracesContainer'
 					className='relative flex flex-col lg:max-w-[60%] lg:self-center lg:text-center'
 				>
@@ -59,10 +71,12 @@ function Skills({ darkMode }) {
 					<SkillRow
 						data={strongSkillsData}
 						caption="Some of the tools I'm most comfortable using..."
+						bracesWidth={bracesWidth}
 					/>
 					<SkillRow
 						data={mediumSkillsData}
 						caption='I have some experience with these too but also lots to learn and improve on...'
+						bracesWidth={bracesWidth}
 					/>
 					<div
 						id='finalSkillRowFlexContainer'
@@ -71,6 +85,7 @@ function Skills({ darkMode }) {
 						<SkillRow
 							data={futureSkillsData}
 							caption="...and I haven't yet used these but am excited to try them!"
+							bracesWidth={bracesWidth}
 						/>
 						{/* <motion.button
 							id='skillsScrollDownButtonLg'
