@@ -8,6 +8,7 @@ import {
 import SkillRow from './SkillsRow'
 import Image from 'next/image'
 import scrollDown from '../../public/scrollUp.webp'
+import SkillsCurlyBracket from './SkillsCurlyBracket'
 
 function Skills({ darkMode }) {
 	const { scrollYProgress } = useScroll()
@@ -20,7 +21,7 @@ function Skills({ darkMode }) {
 	return (
 		<motion.section
 			id='skillsContainer'
-			className='relative flex h-screen w-screen flex-col items-center justify-center overflow-hidden pl-8 pt-24 text-stone-600 dark:text-white sm:pl-16'
+			className='relative flex h-screen w-screen flex-col items-center justify-center overflow-hidden pl-8 pt-24 text-stone-600 dark:text-white sm:pl-16 lg:px-16'
 			style={{
 				opacity: opacityTransform,
 			}}
@@ -36,11 +37,11 @@ function Skills({ darkMode }) {
 			></div>
 			<div
 				id='skillsContentContainer'
-				className='flex w-full max-w-7xl flex-col'
+				className='flex h-full w-full max-w-7xl flex-col'
 			>
 				<motion.h2
 					id='skillsTitle'
-					className='my-auto self-start bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink tall:my-0'
+					className='my-auto self-start bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink tall:my-0 tall:mb-4'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
 						textShadow: darkMode
@@ -50,25 +51,57 @@ function Skills({ darkMode }) {
 				>
 					Software Skills
 				</motion.h2>
-				<SkillRow
-					data={strongSkillsData}
-					caption="Some of the tools I'm most comfortable using..."
-				/>
-				<SkillRow
-					data={mediumSkillsData}
-					caption='I have some experience with these too but also lots to learn and improve on...'
-				/>
 				<div
-					id='finalSkillRowFlexContainer'
-					className='flex w-full items-end lg:pb-16'
+					id='bracesContainer'
+					className='relative flex flex-col lg:max-w-[60%] lg:self-center lg:text-center'
 				>
+					<SkillsCurlyBracket closing={false} />
 					<SkillRow
-						data={futureSkillsData}
-						caption="...and I haven't yet used these but am excited to try them!"
+						data={strongSkillsData}
+						caption="Some of the tools I'm most comfortable using..."
 					/>
+					<SkillRow
+						data={mediumSkillsData}
+						caption='I have some experience with these too but also lots to learn and improve on...'
+					/>
+					<div
+						id='finalSkillRowFlexContainer'
+						className='flex w-full items-end lg:justify-center lg:pb-16'
+					>
+						<SkillRow
+							data={futureSkillsData}
+							caption="...and I haven't yet used these but am excited to try them!"
+						/>
+						{/* <motion.button
+							id='skillsScrollDownButtonLg'
+							className='buttonContainer ml-32 mb-4 hidden h-fit lg:flex'
+							whileHover={{ scale: 1.25 }}
+							whileTap={{ scale: 1.1 }}
+							onClick={() => {
+								document
+									.getElementById('workContainer')
+									.scrollIntoView({ behavior: 'smooth' })
+							}}
+						>
+							<div className='relative h-4 w-8'>
+								<div className='buttonArrowContainer'>
+									<Image
+										src={scrollDown}
+										alt='continue to Work section'
+										width={19}
+										height={10}
+										className='rotate-180 opacity-20 dark:invert'
+									/>
+								</div>
+							</div>
+							<motion.p className='ml-4 w-min text-xs lg:text-[0.6rem] xl:text-xs'>
+								Continue
+							</motion.p>
+						</motion.button> */}
+					</div>
 					<motion.button
-						id='skillsScrollDownButtonLg'
-						className='buttonContainer ml-32 mb-4 hidden h-fit lg:flex'
+						id='skillsScrollDownButtonSm'
+						className='buttonContainer mb-16 mt-8 mr-8 flex self-center sm:mr-16 lg:hidden tall:mt-16'
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
 						onClick={() => {
@@ -92,33 +125,8 @@ function Skills({ darkMode }) {
 							Continue
 						</motion.p>
 					</motion.button>
+					<SkillsCurlyBracket closing />
 				</div>
-				<motion.button
-					id='skillsScrollDownButtonSm'
-					className='buttonContainer mb-16 mt-8 mr-8 flex self-center sm:mr-16 lg:hidden tall:mt-16'
-					whileHover={{ scale: 1.25 }}
-					whileTap={{ scale: 1.1 }}
-					onClick={() => {
-						document
-							.getElementById('workContainer')
-							.scrollIntoView({ behavior: 'smooth' })
-					}}
-				>
-					<div className='relative h-4 w-8'>
-						<div className='buttonArrowContainer'>
-							<Image
-								src={scrollDown}
-								alt='continue to Work section'
-								width={19}
-								height={10}
-								className='rotate-180 opacity-20 dark:invert'
-							/>
-						</div>
-					</div>
-					<motion.p className='ml-4 w-min text-xs lg:text-[0.6rem] xl:text-xs'>
-						Continue
-					</motion.p>
-				</motion.button>
 			</div>
 		</motion.section>
 	)

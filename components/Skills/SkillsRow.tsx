@@ -34,8 +34,8 @@ function SkillRow({ data, caption }: SkillRowInterface) {
 		rowWidth >= windowWidth + marginRef.current - paddingRef.current
 
 	return (
-		<div className='mt-4 flex h-auto w-auto flex-col items-start justify-end lg:mt-0 lg:tall:mt-4'>
-			<p className='my-4 text-xs font-bold sm:mt-8 sm:text-sm'>
+		<div className='mt-4 flex h-auto w-auto flex-col items-start justify-end overflow-hidden lg:mt-0 lg:tall:mt-4'>
+			<p className='my-4 w-full text-xs font-bold sm:text-sm lg:mt-8'>
 				{caption}
 			</p>
 			<div
