@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-function DropdownMenu({ setShowModal }) {
+function DropdownMenu({ setShowDropdown }) {
 	const dropdownVariants = {
 		hidden: {
 			opacity: 0,
@@ -46,7 +46,7 @@ function DropdownMenu({ setShowModal }) {
 				<motion.li variants={linkVariants}>
 					<a
 						href='#aboutContainer'
-						onClick={() => setShowModal(false)}
+						onClick={() => setShowDropdown(false)}
 					>
 						About
 					</a>
@@ -54,7 +54,7 @@ function DropdownMenu({ setShowModal }) {
 				<motion.li variants={linkVariants}>
 					<a
 						href='#skillsContainer'
-						onClick={() => setShowModal(false)}
+						onClick={() => setShowDropdown(false)}
 					>
 						Skills
 					</a>
@@ -62,7 +62,7 @@ function DropdownMenu({ setShowModal }) {
 				<motion.li variants={linkVariants}>
 					<a
 						href='#workContainer'
-						onClick={() => setShowModal(false)}
+						onClick={() => setShowDropdown(false)}
 					>
 						Work
 					</a>
@@ -70,7 +70,7 @@ function DropdownMenu({ setShowModal }) {
 				<motion.li variants={linkVariants}>
 					<a
 						href='#contactContainer'
-						onClick={() => setShowModal(false)}
+						onClick={() => setShowDropdown(false)}
 					>
 						Contact
 					</a>

@@ -34,11 +34,11 @@ function Welcome({ darkMode }) {
 			<motion.div id='circleEffects'>
 				<div
 					id='bgCircleEffectPink'
-					className='absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-primaryPink opacity-[12%] blur-xl dark:opacity-5 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
+					className='pointer-events-none absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-primaryPink opacity-[12%] blur-xl dark:opacity-5 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
 				></div>
 				<div
 					id='bgCircleEffectBlue'
-					className='absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:hidden sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
+					className='pointer-events-none absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:hidden sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
 				></div>
 			</motion.div>
 			<div
@@ -46,7 +46,7 @@ function Welcome({ darkMode }) {
 				className='flex h-full w-full flex-col justify-center sm:w-min'
 			>
 				<h1
-					className='mb-8 font-bold dark:text-white'
+					className='font-bold dark:text-white'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
 					}}
@@ -54,7 +54,7 @@ function Welcome({ darkMode }) {
 					Julian Lindsay-Kaufman
 				</h1>
 				<h2
-					className='min-w-fit opacity-60 dark:text-white'
+					className='mt-8 min-w-fit opacity-60 dark:text-white'
 					style={{
 						fontSize: 'clamp(1rem, 2vw, 2vh)',
 					}}
@@ -62,43 +62,24 @@ function Welcome({ darkMode }) {
 					a well-rounded repertoire of
 				</h2>
 				<h2
+					className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'
 					style={{
 						fontSize: 'clamp(1rem, 6vw, 6vh)',
 					}}
 				>
-					<span
-						className='font-bold opacity-60'
-						style={{
-							fontSize: 'clamp(1rem, 4vw, 4vh)',
-						}}
-					>
+					<span className='bg-none text-stone-600 opacity-60 dark:text-white'>
 						full-stack&nbsp;
 					</span>
-					<span className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'>
-						design&nbsp;
-					</span>
-				</h2>
-				<h2
-					className='mb-8'
-					style={{
-						fontSize: 'clamp(1rem, 6vw, 6vh)',
-					}}
-				>
-					<span
-						className='font-bold opacity-60'
-						style={{
-							fontSize: 'clamp(1rem, 4vw, 4vh)',
-						}}
-					>
+					design&nbsp;
+					<br />
+					<span className='bg-none font-normal text-stone-600 opacity-60 dark:text-white'>
 						and&nbsp;
 					</span>
-					<span className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'>
-						development.
-					</span>
+					development.
 				</h2>
 				<div
 					id='continueButtonFlexContainer'
-					className='mt-8 max-w-3xl'
+					className='mt-16 max-w-3xl'
 				>
 					<motion.button
 						id='welcomeContinueButton'

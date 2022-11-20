@@ -13,8 +13,8 @@ import Skills from '../components/Skills/Skills'
 export default function Index({
 	darkMode,
 	setDarkMode,
-	showModal,
-	setShowModal,
+	showDropdown,
+	setShowDropdown,
 	navVisible,
 }) {
 	return (
@@ -33,26 +33,28 @@ export default function Index({
 				navVisible={navVisible}
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
-				showModal={showModal}
+				showDropdown={showDropdown}
 			/>
 
 			<div
 				id='dropdownButtonWrapper'
 				className={`fixed top-5 right-8 z-[2] flex h-6 w-6 items-center justify-center dark:text-white sm:right-16 ${
-					showModal ? 'text-white' : 'opacity-60'
+					showDropdown ? 'text-white' : 'opacity-60'
 				}`}
-				onClick={() => setShowModal((prev) => !prev)}
+				onClick={() => setShowDropdown((prev) => !prev)}
 			>
-				<NavDropdownButton showModal={showModal} />
+				<NavDropdownButton showDropdown={showDropdown} />
 			</div>
 
 			<AnimatePresence>
-				{showModal && <DropdownMenu setShowModal={setShowModal} />}
+				{showDropdown && (
+					<DropdownMenu setShowDropdown={setShowDropdown} />
+				)}
 			</AnimatePresence>
 			<div
 				id='appContainer'
 				onClick={() => {
-					showModal && setShowModal(false)
+					showDropdown && setShowDropdown(false)
 				}}
 			>
 				<AnimatePresence>
@@ -71,7 +73,7 @@ export default function Index({
 				</AnimatePresence>
 				<motion.div
 					id='modalBlurWrapper'
-					animate={showModal ? { filter: 'blur(4px)' } : {}}
+					animate={showDropdown ? { filter: 'blur(4px)' } : {}}
 				>
 					<Welcome darkMode={darkMode} />
 					<About darkMode={darkMode} />

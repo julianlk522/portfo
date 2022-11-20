@@ -6,7 +6,7 @@ export default function Navbar({
 	navVisible,
 	darkMode,
 	setDarkMode,
-	showModal,
+	showDropdown,
 }) {
 	const { scrollYProgress } = useScroll()
 
@@ -73,7 +73,7 @@ export default function Navbar({
 						</button>
 					</div>
 
-					{!showModal && (
+					{!showDropdown && (
 						<DarkModeSwitch
 							darkMode={darkMode}
 							setDarkMode={setDarkMode}

@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './NavDropdownButton.module.css'
 
-const NavDropdownButton = ({ showModal }) => {
+const NavDropdownButton = ({ showDropdown }) => {
 	const circleVariants = {
 		menuShown: {
 			opacity: 0,
@@ -29,7 +29,7 @@ const NavDropdownButton = ({ showModal }) => {
 			viewBox='0 0 517 323'
 			fill='currentcolor'
 			initial='menuHidden'
-			animate={showModal ? 'menuShown' : 'menuHidden'}
+			animate={showDropdown ? 'menuShown' : 'menuHidden'}
 		>
 			<motion.circle
 				variants={circleVariants}
@@ -40,7 +40,7 @@ const NavDropdownButton = ({ showModal }) => {
 			<motion.rect
 				className={styles.animatedRect}
 				animate={
-					showModal
+					showDropdown
 						? {
 								rotate: '45deg',
 								x: '20%',
@@ -63,9 +63,9 @@ const NavDropdownButton = ({ showModal }) => {
 				r='37.5'
 			/>
 			<motion.rect
-				animate={showModal ? { opacity: 0 } : { opacity: 1 }}
+				animate={showDropdown ? { opacity: 0 } : { opacity: 1 }}
 				transition={
-					showModal
+					showDropdown
 						? {
 								duration: 0.1,
 						  }
@@ -86,7 +86,7 @@ const NavDropdownButton = ({ showModal }) => {
 			<motion.rect
 				className={styles.animatedRect}
 				animate={
-					showModal
+					showDropdown
 						? {
 								rotate: '-45deg',
 								x: '-25%',

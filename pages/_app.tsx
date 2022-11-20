@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
 	const [navReactsToScroll, setNavReactsToScroll] = useState(true)
 	const [navVisible, setNavVisible] = useState(true)
 	const [darkMode, setDarkMode] = useState(false)
-	const [showModal, setShowModal] = useState(false)
+	const [showDropdown, setShowDropdown] = useState(false)
 
 	const numSectionsRef = useRef(5)
 
@@ -115,14 +115,14 @@ function MyApp({ Component, pageProps }) {
 
 	//	prevent scroll if modal shown, reactivate scrolling when modal closes
 	useEffect(() => {
-		if (showModal) {
+		if (showDropdown) {
 			document.querySelector('html').classList.add('overflow-hidden')
-			setShowModal(true)
+			setShowDropdown(true)
 		} else {
 			document.querySelector('html').classList.remove('overflow-hidden')
-			setShowModal(false)
+			setShowDropdown(false)
 		}
-	}, [showModal])
+	}, [showDropdown])
 
 	return (
 		<>
@@ -142,8 +142,8 @@ function MyApp({ Component, pageProps }) {
 				navVisible={navVisible}
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
-				showModal={showModal}
-				setShowModal={setShowModal}
+				showDropdown={showDropdown}
+				setShowDropdown={setShowDropdown}
 			/>
 		</>
 	)
