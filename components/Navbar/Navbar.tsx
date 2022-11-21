@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import DarkModeSwitch from './DarkModeSwitch'
 import NavHomeButton from './NavHomeButton'
 
@@ -8,24 +8,6 @@ export default function Navbar({
 	setDarkMode,
 	showDropdown,
 }) {
-	const { scrollYProgress } = useScroll()
-
-	const aboutUnderlineOpacityTransform = useTransform(
-		scrollYProgress,
-		[0, 0.33, 0.46],
-		[0, 0.5, 0]
-	)
-	const workUnderlineOpacityTransform = useTransform(
-		scrollYProgress,
-		[0.46, 0.66, 0.86],
-		[0, 0.5, 0]
-	)
-	const contactUnderlineOpacityTransform = useTransform(
-		scrollYProgress,
-		[0.86, 1],
-		[0, 0.5]
-	)
-
 	const navVariants = {
 		darkMode: {
 			opacity: 1,
