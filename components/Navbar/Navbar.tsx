@@ -1,6 +1,6 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import DarkModeSwitch from './DarkModeSwitch'
-import NavHomeButton from './NavHomeButton'
+import HomeButtonLogo from './HomeButtonLogo'
 
 export default function Navbar({
 	navVisible,
@@ -8,24 +8,6 @@ export default function Navbar({
 	setDarkMode,
 	showDropdown,
 }) {
-	const { scrollYProgress } = useScroll()
-
-	const aboutUnderlineOpacityTransform = useTransform(
-		scrollYProgress,
-		[0, 0.33, 0.46],
-		[0, 0.5, 0]
-	)
-	const workUnderlineOpacityTransform = useTransform(
-		scrollYProgress,
-		[0.46, 0.66, 0.86],
-		[0, 0.5, 0]
-	)
-	const contactUnderlineOpacityTransform = useTransform(
-		scrollYProgress,
-		[0.86, 1],
-		[0, 0.5]
-	)
-
 	const navVariants = {
 		darkMode: {
 			opacity: 1,
@@ -46,32 +28,11 @@ export default function Navbar({
 					id='navbar'
 					className='fixed top-0 left-0 z-[1] flex h-16 w-full items-center justify-end px-16 dark:text-white md:justify-evenly'
 					variants={navVariants}
-					initial={{ opacity: 0 }}
+					initial={false}
 					animate={darkMode ? 'darkMode' : 'lightMode'}
 					exit={{ opacity: 0 }}
 				>
-					<div
-						id='homeButtonFlexContainer'
-						className='text-bold mr-auto items-center opacity-60'
-					>
-						<NavHomeButton />
-
-						<button
-							id='homeButtonLg'
-							className='hidden px-2 underline underline-offset-4 md:block'
-						>
-							<a
-								style={{
-									fontSize: 'clamp(0.75rem, 2vw, 2vh)',
-								}}
-								href='https://julianlk.vercel.app'
-								target='_self'
-								rel='noreferrer'
-							>
-								JLK
-							</a>
-						</button>
-					</div>
+					<HomeButtonLogo darkMode={darkMode} />
 
 					{!showDropdown && (
 						<DarkModeSwitch
