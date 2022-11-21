@@ -175,9 +175,8 @@ function MyApp({ Component, pageProps }) {
 					{darkMode && (
 						<motion.div
 							id='staticDarkModeBg'
-							className='absolute inset-0 z-[-1] w-full'
+							className='fixed inset-0 h-full w-full'
 							style={{
-								height: `${numSectionsRef.current}00vh`,
 								backgroundColor: 'rgb(30 41 59)',
 							}}
 							initial={{ opacity: 0 }}
@@ -187,7 +186,7 @@ function MyApp({ Component, pageProps }) {
 					)}
 				</AnimatePresence>
 				<motion.div
-					id='modalBlurWrapper'
+					id='dropdownBlurWrapper'
 					animate={showDropdown ? { filter: 'blur(4px)' } : {}}
 				>
 					<Component {...pageProps} darkMode={darkMode} />

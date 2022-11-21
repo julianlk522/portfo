@@ -42,7 +42,7 @@ function Skills({ darkMode }) {
 		>
 			<div
 				id='skillsBg'
-				className='pointer-events-none fixed inset-0 z-[-1] h-full w-full bg-cover opacity-10 dark:opacity-10'
+				className='pointer-events-none fixed inset-0 h-full w-full bg-cover opacity-10 dark:opacity-10'
 				style={{
 					backgroundImage: darkMode
 						? 'linear-gradient(-10deg, rgba(255, 91, 35, 0) 0%, rgb(0, 216, 255) 45%, rgba(255, 91, 35, 0) 85%)'
