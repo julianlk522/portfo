@@ -1,9 +1,10 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 //  engineered with https://fffuel.co/dddraw/
 const HomeButtonLogo = ({ darkMode }) => {
 	return (
-		<div
+		<motion.div
 			id='HomeButtonLogo'
 			className='before:dark relative mr-auto h-8 w-8 rounded-full before:absolute before:inset-0 before:z-[-1] before:h-full before:w-full before:rounded-full before:bg-sunrise before:opacity-20 before:blur-[4px] dark:text-white before:dark:bg-white/20 before:dark:bg-none lg:h-12 lg:w-12'
 			style={{
@@ -11,6 +12,8 @@ const HomeButtonLogo = ({ darkMode }) => {
 					? 'rgb(255 255 255 / 20%) 0px 0px 8px'
 					: 'rgb(0 0 0 / 20%) 0px 0px 20px',
 			}}
+			animate={darkMode ? { y: 32 } : { y: 0 }}
+			transition={{ duration: 0.15, type: 'tween' }}
 		>
 			<svg
 				className='flex max-h-full max-w-full items-center text-stone-600 dark:text-white'
@@ -62,7 +65,7 @@ const HomeButtonLogo = ({ darkMode }) => {
 					/>
 				</a>
 			</svg>
-		</div>
+		</motion.div>
 	)
 }
 
