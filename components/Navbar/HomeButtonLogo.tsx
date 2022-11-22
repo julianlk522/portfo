@@ -35,13 +35,13 @@ const HomeButtonLogo = ({ darkMode }) => {
 					>
 						<stop
 							offset='0%'
-							stop-color='rgba(255, 0, 0, 0.9)'
-							stop-opacity='1'
+							stopColor='rgba(255, 0, 0, 0.9)'
+							stopOpacity='1'
 						/>
 						<stop
 							offset='100%'
-							stop-color='rgba(255, 91, 35, 0.3)'
-							stop-opacity='1'
+							stopColor='rgba(255, 91, 35, 0.3)'
+							stopOpacity='1'
 						/>
 					</linearGradient>
 				</defs>
