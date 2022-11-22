@@ -11,12 +11,12 @@ export default function Navbar({
 	const navVariants = {
 		darkMode: {
 			opacity: 1,
-			backgroundColor: 'rgba(51 65 85 0.75)',
+			backgroundColor: 'rgba(51, 65, 85, 0.75)',
 			boxShadow: '0px 0px 10px rgba(153, 153, 153, 0.5)',
 		},
 		lightMode: {
 			opacity: 1,
-			backgroundColor: 'rgba(51 65 85 0)',
+			backgroundColor: 'rgba(51, 65, 85, 0)',
 			boxShadow: '0px 0px 0px rgba(153, 153, 153, 0)',
 		},
 	}
