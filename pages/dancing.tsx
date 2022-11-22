@@ -34,12 +34,12 @@ function DancingButtonDetails({ darkMode }) {
 
 					<div className='flex h-auto w-4/5 flex-col space-y-8 pl-8'>
 						<p>
-							I <i>love</i> games (word games, video games,
-							psychological games like trying to exercise a
-							certain number of times per week, virtually any
-							other kind of game), and so my first goal after
-							gaining some experience with JavaScript/HTML/CSS was
-							of course to try to make a game.
+							I <i>love</i> games of virtually any kind (word
+							games, video games, even psychological games like
+							trying to exercise a certain number of times per
+							week), and so my first goal after gaining some
+							experience with JavaScript/HTML/CSS was of course to
+							try to make a game.
 						</p>
 						<p>
 							Some of my favorites games are ones where speed and
@@ -114,21 +114,25 @@ function DancingButtonDetails({ darkMode }) {
 							stop!
 						</p>
 					</div>
-					<video
-						controls
-						controlsList='nodownload nofullscreen'
-						autoPlay
-						muted
-						disablePictureInPicture
-						playsInline
-						className='mt-16 max-w-[80%] pl-8'
-					>
-						<source
-							src={'/projectDetails/crashLanding.mp4'}
-							type='video/mp4'
-						/>
-						Your browser doesn&apos;t support the video tag.
-					</video>
+					<figure className='mt-16 flex max-w-[80%] flex-col items-center pl-8'>
+						<video
+							controls
+							controlsList='nodownload nofullscreen'
+							autoPlay
+							muted
+							disablePictureInPicture
+							playsInline
+						>
+							<source
+								src={'/projectDetails/crashLanding.mp4'}
+								type='video/mp4'
+							/>
+							Your browser doesn&apos;t support the video tag.
+						</video>
+						<figcaption className='mt-4 text-xs'>
+							Rocket crash-landing sequence
+						</figcaption>
+					</figure>
 				</section>
 				<section className='flex h-auto w-1/2 flex-col'>
 					<h2
@@ -317,13 +321,10 @@ function DancingButtonDetails({ darkMode }) {
 					</ul>
 				</div>
 
-				<div
-					id='footerSecondaryLinks'
-					className='flex w-auto items-center'
-				>
-					<ul className='flex flex-col items-center justify-center'>
+				<div id='footerSecondaryLinks' className='flex w-auto'>
+					<ul className='flex items-center'>
 						<li>Github</li>
-						<hr className='my-2 w-1/2 opacity-20' />
+						<li className='mx-4 opacity-60'>|</li>
 						<li>Resume</li>
 					</ul>
 				</div>
