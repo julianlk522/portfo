@@ -3,6 +3,8 @@ import React from 'react'
 import headerImg from '../public/projectDetails/dancingButtonHeader.webp'
 import mainImg from '../public/projectDetails/dancingButtonMain.webp'
 import fakeButton from '../public/projectDetails/dancingFakeButton.webp'
+import imperativeStyling from '../public/projectDetails/uglyImperativeStyles.webp'
+import declarativeStyling from '../public/projectDetails/prettyDeclarativeStylesEdited.webp'
 
 function DancingButtonDetails({ darkMode }) {
 	return (
@@ -27,7 +29,6 @@ function DancingButtonDetails({ darkMode }) {
 						<li>HTML</li>
 						<li className='font-bold'>CSS</li>
 						<li>JavaScript</li>
-						<li>Vite</li>
 						<li>Jest</li>
 					</ul>
 
@@ -89,14 +90,30 @@ function DancingButtonDetails({ darkMode }) {
 					>
 						What Went Well
 					</h2>
-					<p className='max-w-[80%] pl-8'>
-						This project served as my welcoming ceremony into the
-						world of CSS animations. Animating such features as the
-						rocket crash-landing sequence and the spinning border on
-						the game timer seemed dauning at first, though bit by
-						bit they became not only functional but, I think, also
-						fun to experience in the game!
-					</p>
+					<div className='max-w-[80%] space-y-8 pl-8'>
+						<p>
+							This project served as my welcoming ceremony into
+							the world of CSS animations, and quickly turned into
+							our honeymoon as well.
+						</p>
+						<p>
+							Going in, I had little experience writing animation
+							keyframes. Bit by bit though, I experimented - first
+							with the button hover effect, then the rotating
+							timer border, then the pulsing and screen-shaking
+							streak effects, then finally the rocket
+							crash-landing sequence - and found over and over
+							that it was a joy and that I wanted to keep adding
+							more!
+						</p>
+						<p>
+							Ultimately this straight-forward game amounted to a
+							hulking 950-line stylesheet, about <sup>1</sup>
+							&frasl;<sub>3</sub> of which was dedicated to
+							animation keyframes, because I just couldn&apos;t
+							stop!
+						</p>
+					</div>
 					<video
 						controls
 						controlsList='nodownload nofullscreen'
@@ -176,7 +193,7 @@ function DancingButtonDetails({ darkMode }) {
 							>
 								Regex101.com
 							</a>{' '}
-							I was able to eventually achieve this regex which
+							I was able to piece together this expression which
 							gets the job done:
 						</p>
 						<code
@@ -198,7 +215,7 @@ function DancingButtonDetails({ darkMode }) {
 			<div id='mainImgWrapper' className='my-32'>
 				<Image src={mainImg} className='w-full' />
 			</div>
-			<div id='takeaways'>
+			<section id='takeaways' className='mb-32'>
 				<h2
 					style={{
 						fontSize: 'clamp(1rem, 4vw, 4vh)',
@@ -209,27 +226,51 @@ function DancingButtonDetails({ darkMode }) {
 				<div className='mt-16 flex flex-col pl-8'>
 					<p>
 						More than anything else, this project taught me the
-						beauty of declarative programming.
+						beauty of <strong>declarative programming.</strong>
 					</p>
-					<p>
-						Huh? A vanilla JavaScript application? Allow me to
-						explain...
+					<p className='mt-8'>
+						<i>Huh? A vanilla JavaScript application?</i> Allow me
+						to explain...
 					</p>
-					<div className='mt-16 flex h-auto flex-col'>
-						<ol>
+					<div className='mt-16 flex h-auto max-w-[80%] flex-col pl-16'>
+						<ul
+							className='space-y-8'
+							style={{ listStyleType: 'circle' }}
+						>
 							<li>
-								It was while coding the Dancing Button Game that
-								I discovered CSS functions min(), max() and
-								clamp() that have since become crucial tools in
-								my frontend toolkit.{' '}
+								It was while coding DBD that I discovered CSS
+								functions <i>min()</i>, <i>max()</i> and{' '}
+								<i>clamp()</i> that have since become crucial
+								tools in my frontend toolkit. With simple,
+								declarative styling made possible using these
+								functions I was able to shave about 300 lines of
+								code from the original media queries used to
+								achieve a responsive layout.
 							</li>
-							<li>
-								For this project, I was able to shave over 300
-								lines of code from the original media queries
-								used to achieve a responsive layout after
-								replacing them with simple, declarative styling
-								using the above functions.
-							</li>
+							<div
+								id='takeawaysImages'
+								className='flex justify-around'
+							>
+								<figure className='relative flex max-h-80 w-auto flex-col items-center'>
+									<Image
+										src={imperativeStyling}
+										objectFit='cover'
+									/>
+									<figcaption className='mt-4 text-xs'>
+										Icky repeated code ❌
+									</figcaption>
+								</figure>
+								<figure className='relative flex max-h-80 w-auto flex-col items-center'>
+									<Image
+										src={declarativeStyling}
+										objectFit='cover'
+										objectPosition='bottom'
+									/>
+									<figcaption className='mt-4 text-xs'>
+										One size fits all ✔️
+									</figcaption>
+								</figure>
+							</div>
 							<li>
 								After fighting my way through 26 variable
 								declarations for different DOM selectors that
@@ -240,17 +281,18 @@ function DancingButtonDetails({ darkMode }) {
 								a huge productivity boost to JavaScript
 								developers.
 							</li>
-						</ol>
+						</ul>
 					</div>
-					<p>
-						Dancing Button Game is also the first project I
-						configured automated pre-deployment testing for using
-						Github Actions, a workflow enhancement that I am eager
-						to spread to more projects moving forward!
+					<p className='mt-16'>
+						DBD is also the first project for which I configured{' '}
+						<strong>automated pre-deployment testing</strong> using
+						Github Actions and the Jest testing framework, a
+						workflow enhancement that I am eager to spread to more
+						projects moving forward!
 					</p>
 				</div>
-			</div>
-			<footer className='absolute bottom-0 left-0 flex h-32 w-full bg-slate-700 px-8 lg:px-16'>
+			</section>
+			<footer className='absolute bottom-0 left-0 flex h-32 w-full bg-slate-700 px-8 text-white lg:px-16'>
 				<div id='footerMainLinks' className='flex w-full items-center'>
 					<button
 						id='homeButton'
