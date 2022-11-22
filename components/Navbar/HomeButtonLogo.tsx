@@ -13,7 +13,7 @@ const HomeButtonLogo = ({ darkMode }) => {
 					: 'rgb(0 0 0 / 20%) 0px 0px 20px',
 			}}
 			animate={darkMode ? { y: 32 } : { y: 0 }}
-			transition={{ duration: 0.15, type: 'tween' }}
+			transition={{ type: 'tween' }}
 		>
 			<svg
 				className='flex max-h-full max-w-full items-center text-stone-600 dark:text-white'
