@@ -142,7 +142,7 @@ function DancingButtonDetails({ darkMode }) {
 						</p>
 						<p>
 							Ultimately this straight-forward game amounted to a
-							hulking 950-line stylesheet, about <sup>1</sup>
+							950-line stylesheet, about <sup>1</sup>
 							&frasl;<sub>3</sub> of which was dedicated to
 							animation keyframes, because I just couldn&apos;t
 							stop!
