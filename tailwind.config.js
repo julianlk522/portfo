@@ -14,6 +14,7 @@ module.exports = {
 			},
 			spacing: {
 				aboutSpiralTopLg: 'calc(50% - 16rem)',
+				fakeButtonImageSm: 'calc(100vw - 8rem)',
 			},
 			backgroundImage: {
 				introAndOutroBg: "url('../public/introAndOutroBg.webp')",

@@ -12,12 +12,12 @@ function DancingButtonDetails({ darkMode }) {
 			id='dancingButtonDetails'
 			className='relative h-full w-screen px-8 pt-24 pb-32 text-stone-600 dark:text-white lg:px-16'
 		>
-			<header className='mb-32 flex'>
-				<div id='headerText' className='w-1/2'>
+			<header className='mb-32 flex flex-col items-center justify-between md:flex-row'>
+				<div id='headerText' className='md:w-1/2'>
 					<h1
-						className='mb-4'
+						className='mb-8'
 						style={{
-							fontSize: 'clamp(1rem, 6vw, 6vh)',
+							fontSize: 'clamp(3rem, 6vw, 6vh)',
 						}}
 					>
 						Dancing Button of Doom
@@ -32,7 +32,34 @@ function DancingButtonDetails({ darkMode }) {
 						<li>Jest</li>
 					</ul>
 
-					<div className='flex h-auto w-4/5 flex-col space-y-8 pl-8'>
+					<div
+						id='headerImgFlexWrapperSm'
+						className='my-16 flex w-full items-center md:hidden'
+					>
+						<div
+							id='headerImageWrapper'
+							className='relative flex max-h-[50vh]'
+							style={
+								darkMode
+									? {
+											boxShadow:
+												'rgba(255, 255, 255, 5%) 0px 5px 50px',
+									  }
+									: {
+											boxShadow:
+												'rgba(0, 0, 0, 25%) 0px 5px 50px',
+									  }
+							}
+						>
+							<Image
+								src={headerImg}
+								objectFit='cover'
+								objectPosition='top'
+							/>
+						</div>
+					</div>
+
+					<div className='flex h-auto flex-col space-y-8 px-8 md:w-4/5 md:pr-0'>
 						<p>
 							I <i>love</i> games of virtually any kind (word
 							games, video games, even psychological games like
@@ -49,27 +76,31 @@ function DancingButtonDetails({ darkMode }) {
 							the way no doubt.
 						</p>
 						<p>
-							DBD is designed to appeal to those out there who
-							share a love for the same exhilarating,
-							accuracy-driven style of gameplay.
+							The Dancing Button of Doom (DBD) game is designed to
+							appeal to those out there who share a love for the
+							same exhilarating, accuracy-driven style of
+							gameplay.
 						</p>
 					</div>
 				</div>
 
 				<div
-					id='headerImgFlexWrapper'
-					className='flex h-auto w-full max-w-[50%] items-center'
+					id='headerImgFlexWrapperMd'
+					className='hidden max-w-[45%] items-center md:flex'
 				>
 					<div
 						id='headerImageWrapper'
-						className='relative flex h-min max-h-[50vh] shadow-xl dark:shadow-none'
+						className='relative flex max-h-[50vh]'
 						style={
 							darkMode
 								? {
 										boxShadow:
-											'rgb(255 255 255 / 5%) 0px 5px 50px',
+											'rgba(255, 255, 255, 5%) 0px 5px 50px',
 								  }
-								: {}
+								: {
+										boxShadow:
+											'rgba(0, 0, 0, 25%) 0px 5px 50px',
+								  }
 						}
 					>
 						<Image
@@ -80,17 +111,20 @@ function DancingButtonDetails({ darkMode }) {
 					</div>
 				</div>
 			</header>
-			<div id='centralTextContent' className='flex h-auto'>
-				<section className='flex h-auto w-1/2 flex-col'>
+			<div
+				id='centralTextContent'
+				className='flex h-auto flex-col md:flex-row'
+			>
+				<section className='mb-32 flex h-auto flex-col md:mb-0 md:w-1/2'>
 					<h2
 						className='mb-16'
 						style={{
-							fontSize: 'clamp(1rem, 4vw, 4vh)',
+							fontSize: 'clamp(2rem, 4vw, 4vh)',
 						}}
 					>
 						What Went Well
 					</h2>
-					<div className='max-w-[80%] space-y-8 pl-8'>
+					<div className='space-y-8 px-8 md:max-w-[80%] md:pr-0'>
 						<p>
 							This project served as my welcoming ceremony into
 							the world of CSS animations, and quickly turned into
@@ -114,7 +148,7 @@ function DancingButtonDetails({ darkMode }) {
 							stop!
 						</p>
 					</div>
-					<figure className='mt-16 flex max-w-[80%] flex-col items-center pl-8'>
+					<figure className='mt-16 flex flex-col items-center md:max-w-[80%] md:pl-8'>
 						<video
 							controls
 							controlsList='nodownload nofullscreen'
@@ -122,6 +156,17 @@ function DancingButtonDetails({ darkMode }) {
 							muted
 							disablePictureInPicture
 							playsInline
+							style={
+								darkMode
+									? {
+											boxShadow:
+												'rgba(255, 255, 255, 5%) 0px 5px 50px',
+									  }
+									: {
+											boxShadow:
+												'rgba(0, 0, 0, 25%) 0px 5px 50px',
+									  }
+							}
 						>
 							<source
 								src={'/projectDetails/crashLanding.mp4'}
@@ -130,23 +175,23 @@ function DancingButtonDetails({ darkMode }) {
 							Your browser doesn&apos;t support the video tag.
 						</video>
 						<figcaption className='mt-4 text-xs'>
-							Rocket crash-landing sequence
+							Rocket crash-landing animation sequence
 						</figcaption>
 					</figure>
 				</section>
-				<section className='flex h-auto w-1/2 flex-col'>
+				<section className='flex h-auto flex-col md:w-1/2'>
 					<h2
 						className='mb-16'
-						style={{ fontSize: 'clamp(1rem, 4vw, 4vh)' }}
+						style={{ fontSize: 'clamp(2rem, 4vw, 4vh)' }}
 					>
 						What Was Tricky
 					</h2>
-					<div className='space-y-8 pl-8'>
+					<div className='space-y-8 px-8 md:max-w-[80%] md:pr-0'>
 						<p>
-							A key feature of the Dancing Button Game is that
-							occasionally the user is prompted with a fake button
-							that they must recognize and avoid clicking in order
-							to maximize their score.
+							A key feature of the DBD is that occasionally the
+							user is prompted with a fake button that they must
+							recognize and avoid clicking in order to maximize
+							their score.
 						</p>
 						<p>
 							The fake button misspells the word “clicks” in order
@@ -159,7 +204,7 @@ function DancingButtonDetails({ darkMode }) {
 						</p>
 						<div
 							id='fakeButtonImgWrapper'
-							className='relative flex h-auto w-auto justify-center'
+							className='relative flex h-auto w-fakeButtonImageSm justify-center md:w-auto'
 						>
 							<Image src={fakeButton} />
 						</div>
@@ -201,13 +246,13 @@ function DancingButtonDetails({ darkMode }) {
 							gets the job done:
 						</p>
 						<code
-							className='inline-block pl-8 text-sm italic'
+							className='inline-block bg-black/5 text-sm italic dark:bg-white/5 lg:pl-8'
 							style={{ marginTop: '4rem' }}
 						>
 							/cl(?:([ick]))(?:(?!\1)([ick]))(?:(?!\1|\2)([ick]))s;\)
 							10$/
 						</code>
-						<div className='flex w-full pl-8'>
+						<div className='flex w-full md:pl-8'>
 							<p className='w-full italic'>e.g. "Clckis; 10"</p>
 							<span className='w-full pr-8 text-right text-xs'>
 								10 is the user’s current score*
@@ -216,18 +261,31 @@ function DancingButtonDetails({ darkMode }) {
 					</div>
 				</section>
 			</div>
-			<div id='mainImgWrapper' className='my-32'>
+			<div
+				id='mainImgWrapper'
+				className='my-32'
+				style={
+					darkMode
+						? {
+								boxShadow:
+									'rgba(255, 255, 255, 5%) 0px 5px 50px',
+						  }
+						: {
+								boxShadow: 'rgba(0, 0, 0, 25%) 0px 5px 50px',
+						  }
+				}
+			>
 				<Image src={mainImg} className='w-full' />
 			</div>
-			<section id='takeaways' className='mb-32'>
+			<section id='takeaways' className='mb-64 md:mb-32'>
 				<h2
 					style={{
-						fontSize: 'clamp(1rem, 4vw, 4vh)',
+						fontSize: 'clamp(2rem, 4vw, 4vh)',
 					}}
 				>
 					Key Takeaways
 				</h2>
-				<div className='mt-16 flex flex-col pl-8'>
+				<div className='mt-16 flex flex-col px-8 md:pr-0'>
 					<p>
 						More than anything else, this project taught me the
 						beauty of <strong>declarative programming.</strong>
@@ -236,7 +294,7 @@ function DancingButtonDetails({ darkMode }) {
 						<i>Huh? A vanilla JavaScript application?</i> Allow me
 						to explain...
 					</p>
-					<div className='mt-16 flex h-auto max-w-[80%] flex-col pl-16'>
+					<div className='mt-16 flex h-auto flex-col md:max-w-[80%] md:pl-16'>
 						<ul
 							className='space-y-8'
 							style={{ listStyleType: 'circle' }}
@@ -253,9 +311,9 @@ function DancingButtonDetails({ darkMode }) {
 							</li>
 							<div
 								id='takeawaysImages'
-								className='flex justify-around'
+								className='flex flex-col justify-around md:flex-row'
 							>
-								<figure className='relative flex max-h-80 w-auto flex-col items-center'>
+								<figure className='relative my-16 flex max-h-80 w-auto flex-col items-center md:my-0 md:max-w-[45%]'>
 									<Image
 										src={imperativeStyling}
 										objectFit='cover'
@@ -264,7 +322,7 @@ function DancingButtonDetails({ darkMode }) {
 										Icky repeated code ❌
 									</figcaption>
 								</figure>
-								<figure className='relative flex max-h-80 w-auto flex-col items-center'>
+								<figure className='relative mb-16 flex max-h-80 w-auto flex-col items-center md:mb-0 md:max-w-[45%]'>
 									<Image
 										src={declarativeStyling}
 										objectFit='cover'
@@ -296,8 +354,11 @@ function DancingButtonDetails({ darkMode }) {
 					</p>
 				</div>
 			</section>
-			<footer className='absolute bottom-0 left-0 flex h-32 w-full bg-slate-700 px-8 text-white lg:px-16'>
-				<div id='footerMainLinks' className='flex w-full items-center'>
+			<footer className='absolute bottom-0 left-0 flex h-64 w-full bg-slate-700 px-8 text-white md:h-32 lg:px-16'>
+				<div
+					id='footerMainLinks'
+					className='mr-16 flex w-min items-center md:w-full'
+				>
 					<button
 						id='homeButton'
 						className='mr-16 underline underline-offset-4'
@@ -313,7 +374,7 @@ function DancingButtonDetails({ darkMode }) {
 							JLK
 						</a>
 					</button>
-					<ul className='flex space-x-4'>
+					<ul className='flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4'>
 						<li>About</li>
 						<li>Skills</li>
 						<li>Work</li>
@@ -321,10 +382,14 @@ function DancingButtonDetails({ darkMode }) {
 					</ul>
 				</div>
 
-				<div id='footerSecondaryLinks' className='flex w-auto'>
-					<ul className='flex items-center'>
+				<div
+					id='footerSecondaryLinks'
+					className='flex w-auto items-center'
+				>
+					<ul className='flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0'>
 						<li>Github</li>
-						<li className='mx-4 opacity-60'>|</li>
+						<li className='mx-4 hidden opacity-20 md:block'>|</li>
+						<hr className='block h-1 w-1/2 opacity-20 md:hidden' />
 						<li>Resume</li>
 					</ul>
 				</div>
