@@ -61,21 +61,41 @@ function Welcome({ darkMode }) {
 				>
 					a well-rounded repertoire of
 				</h2>
-				<h2
-					className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'
-					style={{
-						fontSize: 'clamp(1rem, 6vw, 6vh)',
-					}}
-				>
-					<span className='bg-none text-stone-600 opacity-60 dark:text-white'>
+				<h2>
+					<span
+						className='bg-none font-bold text-stone-600 opacity-60 dark:text-white'
+						style={{
+							fontSize: 'clamp(1rem, 4vw, 4vh)',
+						}}
+					>
 						full-stack&nbsp;
 					</span>
-					design&nbsp;
-					<br />
-					<span className='bg-none font-normal text-stone-600 opacity-60 dark:text-white'>
+					<span
+						className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'
+						style={{
+							fontSize: 'clamp(1rem, 6vw, 6vh)',
+						}}
+					>
+						design&nbsp;
+					</span>
+				</h2>
+				<h2>
+					<span
+						className='bg-none font-normal text-stone-600 opacity-60 dark:text-white'
+						style={{
+							fontSize: 'clamp(1rem, 4vw, 4vh)',
+						}}
+					>
 						and&nbsp;
 					</span>
-					development.
+					<span
+						className='bg-sunrise bg-clip-text font-bold text-transparent dark:bg-tomatoToLightPink'
+						style={{
+							fontSize: 'clamp(1rem, 6vw, 6vh)',
+						}}
+					>
+						development.
+					</span>
 				</h2>
 				<div
 					id='continueButtonFlexContainer'
