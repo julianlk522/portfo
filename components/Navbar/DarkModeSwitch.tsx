@@ -20,17 +20,20 @@ function DarkModeSwitch({ darkMode, setDarkMode }) {
 			<span className='flex h-6 w-6 items-center justify-center text-xs lg:text-lg'>
 				{darkMode ? '🌙' : '🔆'}
 			</span>
-			<div
+			<motion.div
 				id='darkModeSwitch'
 				className='ml-2 flex h-4 w-12 items-center rounded-[2rem] bg-slate-300 px-1 dark:bg-slate-800'
-				style={darkMode ? { justifyContent: 'flex-end' } : {}}
+				style={{
+					justifyContent: darkMode ? 'flex-end' : 'flex-start',
+				}}
+				initial={false}
 			>
 				<motion.div
 					layout
 					id='slider'
 					className='h-6 w-6 cursor-pointer rounded-full bg-slate-100'
 				></motion.div>
-			</div>
+			</motion.div>
 		</li>
 	)
 }

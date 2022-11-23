@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 //  engineered with https://fffuel.co/dddraw/
-const HomeButtonLogo = ({ darkMode, footer }) => {
+const HomeButtonLogo = ({ darkMode, footer = false }) => {
 	return (
 		<motion.div
 			id='HomeButtonLogo'
