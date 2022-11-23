@@ -8,6 +8,7 @@ export interface GridMemberProps {
 	stackItems: string[]
 	ghLink: string
 	liveLink?: string
+	detailsLink?: string
 }
 
 const projectsData: GridMemberProps[] = [
@@ -47,6 +48,7 @@ const projectsData: GridMemberProps[] = [
 		],
 		ghLink: 'https://github.com/julianlk522/hyper-typer',
 		liveLink: 'https://hyper-typer-2000.netlify.app/start',
+		detailsLink: '/typing',
 	},
 	{
 		tailwindStyles: 'row-start-3 md:col-span-1 md:row-start-2',
@@ -57,6 +59,7 @@ const projectsData: GridMemberProps[] = [
 		stackItems: ['Javascript', 'CSS', 'HTML'],
 		ghLink: 'https://github.com/julianlk522/dancing-button',
 		liveLink: 'https://dancing-button-of-doom.netlify.app/',
+		detailsLink: '/dancing',
 	},
 	{
 		tailwindStyles: 'row-start-4 md:col-span-2 md:row-start-2',

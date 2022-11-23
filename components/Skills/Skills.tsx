@@ -27,8 +27,6 @@ function Skills({ darkMode }) {
 	useEffect(() => {
 		if (bracesWidthRef.current) {
 			setBracesWidth(bracesWidthRef.current.offsetWidth)
-
-			console.log(bracesWidthRef.current.offsetWidth)
 		}
 	}, [width])
 

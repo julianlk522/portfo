@@ -28,6 +28,7 @@ function ProjectsGrid({ gridMemberControls }) {
 						stackItems,
 						ghLink,
 						liveLink,
+						detailsLink,
 					} = gridMember
 					return (
 						<ProjectGridMember
@@ -41,6 +42,7 @@ function ProjectsGrid({ gridMemberControls }) {
 							stackItems={stackItems}
 							ghLink={ghLink}
 							liveLink={liveLink}
+							detailsLink={detailsLink}
 							gridMemberControls={gridMemberControls}
 						/>
 					)

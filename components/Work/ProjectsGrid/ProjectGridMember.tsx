@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AnimationControls, motion, useAnimationControls } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import socialScreenshot from '../../../public/socialScreenshot.webp'
 import dancingScreenshot from '../../../public/dancingScreenshot.webp'
 import typingScreenshot from '../../../public/typingScreenshot.webp'
@@ -25,6 +26,7 @@ interface GridMemberPropsWithControls extends GridMemberProps {
 	stackItems: string[]
 	ghLink: string
 	liveLink?: string
+	detailsLink?: string
 	i: number
 	gridMemberControls: AnimationControls
 }
@@ -39,6 +41,7 @@ function ProjectGridMember({
 	stackItems,
 	ghLink,
 	liveLink,
+	detailsLink,
 	i,
 	gridMemberControls,
 }: GridMemberPropsWithControls) {
@@ -53,7 +56,7 @@ function ProjectGridMember({
 		flicker: {
 			opacity: [0, 1, 0],
 			transition: {
-				duration: 1,
+				duration: 0.75,
 			},
 		},
 	}
@@ -121,11 +124,18 @@ function ProjectGridMember({
 				<div
 					className={`flex w-full justify-evenly text-xs ${styles.projectLinks}`}
 				>
-					<a href={ghLink}>Github</a>
-					{liveLink ? (
-						<a href={liveLink}>Live</a>
-					) : (
-						<p>Live demo coming soon!</p>
+					<a href={ghLink} target='_blank' rel='noreferrer'>
+						Github
+					</a>
+
+					{liveLink && (
+						<a href={liveLink} target='_blank' rel='noreferrer'>
+							Live
+						</a>
+					)}
+
+					{detailsLink && (
+						<Link href={detailsLink}>More Information</Link>
 					)}
 				</div>
 			</div>

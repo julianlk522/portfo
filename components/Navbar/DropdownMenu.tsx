@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 function DropdownMenu({ setShowDropdown }) {
@@ -43,37 +44,37 @@ function DropdownMenu({ setShowDropdown }) {
 				id='dropdownLocalLinks'
 				className='flex h-[60%] flex-col items-center justify-center gap-8'
 			>
-				<motion.li variants={linkVariants}>
-					<a
-						href='#aboutContainer'
-						onClick={() => setShowDropdown(false)}
-					>
+				<motion.li
+					variants={linkVariants}
+					onClick={() => setShowDropdown(false)}
+				>
+					<Link href='/#aboutContainer' scroll={false}>
 						About
-					</a>
+					</Link>
 				</motion.li>
-				<motion.li variants={linkVariants}>
-					<a
-						href='#skillsContainer'
-						onClick={() => setShowDropdown(false)}
-					>
+				<motion.li
+					variants={linkVariants}
+					onClick={() => setShowDropdown(false)}
+				>
+					<Link href='/#skillsContainer' scroll={false}>
 						Skills
-					</a>
+					</Link>
 				</motion.li>
-				<motion.li variants={linkVariants}>
-					<a
-						href='#workContainer'
-						onClick={() => setShowDropdown(false)}
-					>
+				<motion.li
+					variants={linkVariants}
+					onClick={() => setShowDropdown(false)}
+				>
+					<Link href='/#workContainer' scroll={false}>
 						Work
-					</a>
+					</Link>
 				</motion.li>
-				<motion.li variants={linkVariants}>
-					<a
-						href='#contactContainer'
-						onClick={() => setShowDropdown(false)}
-					>
+				<motion.li
+					variants={linkVariants}
+					onClick={() => setShowDropdown(false)}
+				>
+					<Link href='/#contactContainer' scroll={false}>
 						Contact
-					</a>
+					</Link>
 				</motion.li>
 			</ul>
 

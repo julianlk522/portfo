@@ -5,3 +5,7 @@
 .projectContentContainer:hover .projectLinks {
 	z-index: 2;
 }
+
+.projectLinks a:nth-child(3) {
+	font-weight: 700;
+}
