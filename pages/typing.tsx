@@ -53,6 +53,7 @@ function HyperTyperDetails({ darkMode }) {
 							}
 						>
 							<Image
+								alt='Hyper Typer 2000 interactive words-per-minute chart, completed word list, timer and word input field'
 								src={headerImg}
 								objectFit='cover'
 								objectPosition='top'
@@ -131,6 +132,7 @@ function HyperTyperDetails({ darkMode }) {
 						}
 					>
 						<Image
+							alt='Hyper Typer 2000 interactive words-per-minute chart, completed word list, timer and word input field'
 							src={headerImg}
 							objectFit='cover'
 							objectPosition='top'
@@ -190,7 +192,10 @@ function HyperTyperDetails({ darkMode }) {
 						id='autoTypingImgWrapper'
 						className='relative mt-16 flex h-auto flex-col justify-center text-center md:w-auto md:max-w-[80%] md:pl-8'
 					>
-						<Image src={useTypewriter} />
+						<Image
+							alt='Example usage of the useTypewriter hook from React Simple Typewriter'
+							src={useTypewriter}
+						/>
 						<figcaption className='mt-4 text-xs'>
 							Assigning the Title Screen text state to the product
 							of the useTypewriter hook, with a few small
@@ -214,15 +219,18 @@ function HyperTyperDetails({ darkMode }) {
 								Netlify.com
 							</a>
 							). I quickly ran into issues with page redirects
-							causing a 404 "Page Not Found" error, even at key
-							app routes with specified content that seemingly
-							would not need to redirect.
+							causing a 404 &quot;Page Not Found&quot; error, even
+							at key app routes with specified content that
+							seemingly would not need to redirect.
 						</p>
 						<div
 							id='errorImgWrapper'
 							className='relative mx-auto flex h-auto justify-center md:w-auto md:max-w-[60%]'
 						>
-							<Image src={netlifyError} />
+							<Image
+								alt='Error message from Netlify due to faulty redirects'
+								src={netlifyError}
+							/>
 						</div>
 						<p>
 							Fortunately this error is well-documented and can be
@@ -245,6 +253,7 @@ function HyperTyperDetails({ darkMode }) {
 							className='relative mx-auto flex h-auto max-h-80 justify-center md:w-auto'
 						>
 							<Image
+								alt='Revised word list to be used for generating a random typing prompt'
 								src={wordList}
 								objectFit='cover'
 								objectPosition='top'
@@ -275,7 +284,11 @@ function HyperTyperDetails({ darkMode }) {
 						  }
 				}
 			>
-				<Image src={mainImg} objectFit='cover' />
+				<Image
+					alt='Hyper Typer start screen with a title, start button, and start button caption'
+					src={mainImg}
+					objectFit='cover'
+				/>
 			</div>
 			<section id='takeaways' className='mb-64 md:mb-32'>
 				<h2

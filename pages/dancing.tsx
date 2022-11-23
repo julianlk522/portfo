@@ -53,6 +53,7 @@ function DancingButtonDetails({ darkMode }) {
 							}
 						>
 							<Image
+								alt='Dancing Button Game rocket and heads-up-display'
 								src={headerImg}
 								objectFit='cover'
 								objectPosition='top'
@@ -71,10 +72,8 @@ function DancingButtonDetails({ darkMode }) {
 						</p>
 						<p>
 							The Dancing Button of Doom (DBD) leverages essential
-							web development technologies to deliver a
-							fully-featured game with a fast-paced, thrilling
-							nature despite its relatively simple premise. Be
-							ready for lots of animation!
+							web development technologies to deliver a simple but
+							enjoyable game. Be ready for lots of animation!
 						</p>
 					</div>
 
@@ -127,6 +126,7 @@ function DancingButtonDetails({ darkMode }) {
 						}
 					>
 						<Image
+							alt='Dancing Button Game rocket and heads-up-display'
 							src={headerImg}
 							objectFit='cover'
 							objectPosition='top'
@@ -217,19 +217,20 @@ function DancingButtonDetails({ darkMode }) {
 							their score.
 						</p>
 						<p>
-							The fake button misspells the word “clicks” in order
-							to give the user enough of a visual cue to detect
-							the difference. But the misspelling cannot be so bad
-							that the word doesn&apos;t resemble “clicks” at all
-							or else it would be too easy to notice. So the
-							perfect fake button text looks something like
-							“clkics.”
+							The fake button misspells the word
+							&quot;clicks&quot; in order to give the user enough
+							of a visual cue to detect the difference. But the
+							misspelling cannot be so bad that the word
+							doesn&apos;t resemble &quot;clicks&quot; at all or
+							else it would be too easy to notice. So the perfect
+							fake button text looks something like
+							&quot;clkics.&quot;
 						</p>
 						<div
 							id='fakeButtonImgWrapper'
 							className='relative flex h-auto w-fakeButtonImageSm justify-center md:w-auto'
 						>
-							<Image src={fakeButton} />
+							<Image alt='fake dancing button' src={fakeButton} />
 						</div>
 
 						<p>
@@ -276,9 +277,11 @@ function DancingButtonDetails({ darkMode }) {
 							10$/
 						</code>
 						<div className='flex w-full md:pl-8'>
-							<p className='w-full italic'>e.g. "Clckis; 10"</p>
+							<p className='w-full italic'>
+								e.g. &quot;Clckis; 10&quot;
+							</p>
 							<span className='w-full pr-8 text-right text-xs'>
-								10 is the user’s current score*
+								10 is the user&apos;s current score*
 							</span>
 						</div>
 					</div>
@@ -298,7 +301,11 @@ function DancingButtonDetails({ darkMode }) {
 						  }
 				}
 			>
-				<Image src={mainImg} className='w-full' />
+				<Image
+					alt='Dancing Button of Doom game screen showcasing the dancing button, timer, and title text'
+					src={mainImg}
+					className='w-full'
+				/>
 			</div>
 			<section id='takeaways' className='mb-64 md:mb-32'>
 				<h2

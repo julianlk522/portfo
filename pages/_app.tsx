@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
 		}, 500)
 
 		return () => clearTimeout(userScrollingTimeout)
-	}, [currentScrollPercent])
+	}, [currentScrollPercent, router.pathname])
 
 	// autoscroll section into view after userScrollingTimeout, re-enable responsive Navbar after 1s
 	useEffect(() => {
@@ -93,7 +93,7 @@ function MyApp({ Component, pageProps }) {
 		}, 1000)
 
 		return () => clearTimeout(resumeNavbarResponsivenessTimeout)
-	}, [navReactsToScroll, currentScrollPercent])
+	}, [navReactsToScroll, currentScrollPercent, router.pathname])
 
 	useEffect(() => {
 		if (scrollDirection === 'up' && navReactsToScroll) {
