@@ -2,21 +2,26 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 //  engineered with https://fffuel.co/dddraw/
-const HomeButtonLogo = ({ darkMode }) => {
+const HomeButtonLogo = ({ darkMode, footer }) => {
 	return (
 		<motion.div
 			id='HomeButtonLogo'
-			className='before:dark relative mr-auto h-8 w-8 rounded-full before:absolute before:inset-0 before:z-[-1] before:h-full before:w-full before:rounded-full before:bg-sunrise before:opacity-20 before:blur-[4px] dark:text-white before:dark:bg-white/20 before:dark:bg-none lg:h-12 lg:w-12'
+			className={`relative h-8 w-8 rounded-full before:absolute before:inset-0 before:z-[-1] before:h-full before:w-full before:rounded-full before:opacity-20 before:blur-[4px] dark:text-white before:dark:bg-white/20 before:dark:bg-none lg:h-12 lg:w-12 ${
+				footer
+					? 'mr-16 text-white'
+					: 'mr-auto text-stone-600 before:bg-sunrise'
+			}`}
 			style={{
-				boxShadow: darkMode
-					? 'rgb(255 255 255 / 20%) 0px 0px 8px'
-					: 'rgb(0 0 0 / 20%) 0px 0px 20px',
+				boxShadow:
+					!footer && darkMode
+						? 'rgb(255 255 255 / 20%) 0px 0px 8px'
+						: 'rgb(0 0 0 / 20%) 0px 0px 20px',
 			}}
-			animate={darkMode ? { y: 32 } : { y: 0 }}
+			animate={!footer && darkMode ? { y: 32 } : { y: 0 }}
 			transition={{ type: 'tween' }}
 		>
 			<svg
-				className='flex max-h-full max-w-full items-center text-stone-600 dark:text-white'
+				className='flex max-h-full max-w-full items-center'
 				xmlns='http://www.w3.org/2000/svg'
 				version='1.1'
 				viewBox='0 0 1000 1066'

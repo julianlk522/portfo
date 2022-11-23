@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
+import HomeButtonLogo from '../Navbar/HomeButtonLogo'
 
-function Footer() {
+function Footer({ darkMode }) {
 	const sections = ['about', 'skills', 'work', 'contact']
 	return (
 		<footer className='absolute bottom-0 left-0 flex h-64 w-full bg-slate-700 px-8 text-white sm:px-16 md:h-32'>
@@ -9,21 +10,7 @@ function Footer() {
 				id='footerMainLinks'
 				className='mr-auto flex w-min items-center md:mr-16 md:w-full'
 			>
-				<button
-					id='homeButton'
-					className='mr-16 underline underline-offset-4'
-				>
-					<a
-						style={{
-							fontSize: 'clamp(0.75rem, 2vw, 2vh)',
-						}}
-						href='https://julianlk.vercel.app'
-						target='_self'
-						rel='noreferrer'
-					>
-						JLK
-					</a>
-				</button>
+				<HomeButtonLogo darkMode={darkMode} footer />
 				<ul className='flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4'>
 					{sections.map((section, i) => {
 						return (
