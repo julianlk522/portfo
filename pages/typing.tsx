@@ -11,7 +11,7 @@ function HyperTyperDetails({ darkMode }) {
 	return (
 		<div
 			id='hyperTyperDetails'
-			className='relative h-full w-screen px-8 pt-24 pb-32 text-stone-600 dark:text-white lg:px-16'
+			className='relative h-full w-screen px-8 py-32 text-stone-600 dark:text-white lg:px-16'
 		>
 			<header className='mb-32 flex flex-col items-center justify-between md:flex-row'>
 				<div id='headerText' className='md:w-1/2'>
@@ -24,12 +24,11 @@ function HyperTyperDetails({ darkMode }) {
 						Hyper Typer 2000
 					</h1>
 					<ul
-						id='dancingButtonStackTextItems'
+						id='stackTextItems'
 						className='mb-16 flex w-auto space-x-4 text-center text-xs md:space-x-8'
 					>
 						<li>React.js</li>
 						<li>TypeScript</li>
-						<li>Context API</li>
 						<li>D3.js</li>
 						<li>Cypress Testing Library</li>
 					</ul>
@@ -82,6 +81,34 @@ function HyperTyperDetails({ darkMode }) {
 							until becoming what it is today.
 						</p>
 					</div>
+
+					<ul
+						id='demoLinks'
+						className='mt-16 flex w-auto justify-center space-x-8 text-xs md:max-w-[80%] md:pl-8'
+					>
+						<li>
+							<button className='rounded-sm bg-black/60 p-2 font-bold text-white dark:bg-white/80 dark:text-stone-600'>
+								<a
+									href='https://hyper-typer-2000.netlify.app/'
+									target='_blank'
+									rel='noreferrer'
+								>
+									Live demo
+								</a>
+							</button>
+						</li>
+						<li>
+							<button className='rounded-sm bg-black/60 p-2 font-bold text-white dark:bg-white/80 dark:text-stone-600'>
+								<a
+									href='https://github.com/julianlk522/hyper-typer'
+									target='_blank'
+									rel='noreferrer'
+								>
+									Source Code
+								</a>
+							</button>
+						</li>
+					</ul>
 				</div>
 
 				<div
@@ -207,11 +234,11 @@ function HyperTyperDetails({ darkMode }) {
 						<p>
 							Hyper Typer also saw issues early on with generating
 							appropriate words from the API endpoint that it was
-							originally configured to request from. Since there
-							were little configuration options available, I had
-							to scrap the preconfigured API altogether and
-							instead add an array of (consistently inoffensive)
-							words directly to the app contents.
+							originally configured to request from. Since few
+							configuration options were available, I had to scrap
+							the preconfigured API altogether and instead add an
+							array of (consistently inoffensive) words directly
+							to the app contents.
 						</p>
 						<div
 							id='errorImgWrapper'
@@ -272,7 +299,7 @@ function HyperTyperDetails({ darkMode }) {
 					</p>
 				</div>
 			</section>
-			<Footer />
+			<Footer darkMode={darkMode} />
 		</div>
 	)
 }

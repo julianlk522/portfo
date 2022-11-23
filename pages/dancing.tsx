@@ -11,7 +11,7 @@ function DancingButtonDetails({ darkMode }) {
 	return (
 		<div
 			id='dancingButtonDetails'
-			className='relative h-full w-screen px-8 pt-24 pb-32 text-stone-600 dark:text-white lg:px-16'
+			className='relative h-full w-screen px-8 py-32 text-stone-600 dark:text-white lg:px-16'
 		>
 			<header className='mb-32 flex flex-col items-center justify-between md:flex-row'>
 				<div id='headerText' className='md:w-1/2'>
@@ -24,7 +24,7 @@ function DancingButtonDetails({ darkMode }) {
 						Dancing Button of Doom
 					</h1>
 					<ul
-						id='dancingButtonStackTextItems'
+						id='stackTextItems'
 						className='mb-16 flex w-auto space-x-8 text-xs'
 					>
 						<li>HTML</li>
@@ -70,13 +70,41 @@ function DancingButtonDetails({ darkMode }) {
 							try to make a game.
 						</p>
 						<p>
-							The Dancing Button of Doom (DBD) game leverages
-							essential web development technologies to deliver a
+							The Dancing Button of Doom (DBD) leverages essential
+							web development technologies to deliver a
 							fully-featured game with a fast-paced, thrilling
 							nature despite its relatively simple premise. Be
 							ready for lots of animation!
 						</p>
 					</div>
+
+					<ul
+						id='demoLinks'
+						className='mt-16 flex w-auto justify-center space-x-8 text-xs md:max-w-[80%] md:pl-8'
+					>
+						<li>
+							<button className='rounded-sm bg-black/60 p-2 font-bold text-white dark:bg-white/80 dark:text-stone-600'>
+								<a
+									href='https://dancing-button-of-doom.netlify.app/'
+									target='_blank'
+									rel='noreferrer'
+								>
+									Live demo
+								</a>
+							</button>
+						</li>
+						<li>
+							<button className='rounded-sm bg-black/60 p-2 font-bold text-white dark:bg-white/80 dark:text-stone-600'>
+								<a
+									href='https://github.com/julianlk522/dancing-button'
+									target='_blank'
+									rel='noreferrer'
+								>
+									Source Code
+								</a>
+							</button>
+						</li>
+					</ul>
 				</div>
 
 				<div
@@ -333,7 +361,7 @@ function DancingButtonDetails({ darkMode }) {
 								declarations in the main script file for
 								different DOM selectors that would be needed to
 								make the app run properly, I also began to
-								appreciate more why React.js&apos;s
+								appreciate more how React.js&apos;s
 								component-based architecture and declarative
 								conditional re-rendering API are a huge
 								productivity boost to JavaScript developers.
@@ -349,7 +377,7 @@ function DancingButtonDetails({ darkMode }) {
 					</p>
 				</div>
 			</section>
-			<Footer />
+			<Footer darkMode={darkMode} />
 		</div>
 	)
 }
