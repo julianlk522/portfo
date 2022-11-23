@@ -3,8 +3,8 @@ import React from 'react'
 import headerImg from '../public/projectDetails/dancingButtonHeader.webp'
 import mainImg from '../public/projectDetails/dancingButtonMain.webp'
 import fakeButton from '../public/projectDetails/dancingFakeButton.webp'
-import imperativeStyling from '../public/projectDetails/uglyImperativeStyles.webp'
-import declarativeStyling from '../public/projectDetails/prettyDeclarativeStylesEdited.webp'
+import imperativeStyling from '../public/projectDetails/dancingUglyImperativeStyles.webp'
+import declarativeStyling from '../public/projectDetails/dancingPrettyDeclarativeStyles.webp'
 
 function DancingButtonDetails({ darkMode }) {
 	return (
@@ -69,17 +69,11 @@ function DancingButtonDetails({ darkMode }) {
 							try to make a game.
 						</p>
 						<p>
-							Some of my favorites games are ones where speed and
-							accuracy are a central component to success. There's
-							something so rewarding about finally triumphing in
-							those games, after enduring numerous near-wins along
-							the way no doubt.
-						</p>
-						<p>
-							The Dancing Button of Doom (DBD) game is designed to
-							appeal to those out there who share a love for the
-							same exhilarating, accuracy-driven style of
-							gameplay.
+							The Dancing Button of Doom (DBD) game leverages
+							essential web development technologies to deliver a
+							fully-featured game with a fast-paced, thrilling
+							nature despite its relatively simple premise. Be
+							ready for lots of animation!
 						</p>
 					</div>
 				</div>
@@ -335,13 +329,13 @@ function DancingButtonDetails({ darkMode }) {
 							</div>
 							<li>
 								After fighting my way through 26 variable
-								declarations for different DOM selectors that
-								would be needed to make the app run properly, I
-								also started to understand and appreciate more
-								why React.js&apos;s component-based architecture
-								and declarative conditional re-rendering API are
-								a huge productivity boost to JavaScript
-								developers.
+								declarations in the main script file for
+								different DOM selectors that would be needed to
+								make the app run properly, I also began to
+								appreciate more why React.js&apos;s
+								component-based architecture and declarative
+								conditional re-rendering API are a huge
+								productivity boost to JavaScript developers.
 							</li>
 						</ul>
 					</div>
@@ -354,10 +348,10 @@ function DancingButtonDetails({ darkMode }) {
 					</p>
 				</div>
 			</section>
-			<footer className='absolute bottom-0 left-0 flex h-64 w-full bg-slate-700 px-8 text-white md:h-32 lg:px-16'>
+			<footer className='absolute bottom-0 left-0 flex h-64 w-full bg-slate-700 px-8 text-white sm:px-16 md:h-32'>
 				<div
 					id='footerMainLinks'
-					className='mr-16 flex w-min items-center md:w-full'
+					className='mr-auto flex w-min items-center md:mr-16 md:w-full'
 				>
 					<button
 						id='homeButton'
@@ -389,7 +383,7 @@ function DancingButtonDetails({ darkMode }) {
 					<ul className='flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0'>
 						<li>Github</li>
 						<li className='mx-4 hidden opacity-20 md:block'>|</li>
-						<hr className='block h-1 w-1/2 opacity-20 md:hidden' />
+						<hr className='block h-1 w-1/4 opacity-20 md:hidden' />
 						<li>Resume</li>
 					</ul>
 				</div>
