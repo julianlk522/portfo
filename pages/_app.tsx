@@ -19,10 +19,21 @@ function MyApp({ Component, pageProps }) {
 
 	const numSectionsRef = useRef(5)
 
+	//	prevent autoscrolling within first few renders so the page doesn't scroll when the user refreshes or navigates from a different route
+	const renderSafetyWindowRef = useRef(0)
+
+	useEffect(() => {
+		renderSafetyWindowRef.current = 0
+	}, [router.pathname])
+
 	useEffect(() => {
 		return scrollYProgress.onChange((currentYProgress) => {
 			if (!navReactsToScroll) return
-			// prevent immediate Navbar invisibility on page load due to micro layout shift
+			if (renderSafetyWindowRef.current < 5) {
+				renderSafetyWindowRef.current += 1
+				return
+			}
+			// prevent immediate navbar invisibility on page load due to micro layout shift
 			if (scrollYProgress.getPrevious() <= 0.01)
 				return setNavVisible(true)
 			if (scrollYProgress.getPrevious() <= currentYProgress) {
@@ -34,17 +45,23 @@ function MyApp({ Component, pageProps }) {
 		})
 	}, [scrollYProgress, navReactsToScroll])
 
-	//	wait 0.5s after user stops scrolling to disable responsive Navbar visibility
+	//	wait 0.5s after user stops scrolling to disables reactive navbar visibility on scroll
 	useEffect(() => {
+		if (
+			scrollDirection === null ||
+			router.pathname !== '/' ||
+			renderSafetyWindowRef.current < 5
+		)
+			return
 		const userScrollingTimeout = setTimeout(() => {
-			if (router.pathname !== '/') return
+			setScrollDirection(null)
 			setNavReactsToScroll(false)
 		}, 500)
 
 		return () => clearTimeout(userScrollingTimeout)
-	}, [currentScrollPercent, router.pathname])
+	}, [currentScrollPercent, router.pathname, scrollDirection])
 
-	// autoscroll section into view after userScrollingTimeout, re-enable responsive Navbar after 1s
+	// autoscroll section into view after previous effect, re-enable reactive navbar after 1s
 	useEffect(() => {
 		if (navReactsToScroll || router.pathname !== '/') return
 		const scrollNearestSectionIntoView = () => {
@@ -88,13 +105,13 @@ function MyApp({ Component, pageProps }) {
 		scrollNearestSectionIntoView()
 
 		const resumeNavbarResponsivenessTimeout = setTimeout(() => {
-			setScrollDirection(null)
 			setNavReactsToScroll(true)
 		}, 1000)
 
 		return () => clearTimeout(resumeNavbarResponsivenessTimeout)
 	}, [navReactsToScroll, currentScrollPercent, router.pathname])
 
+	//	show nav based on scrollDirection
 	useEffect(() => {
 		if (scrollDirection === 'up' && navReactsToScroll) {
 			setNavVisible(true)

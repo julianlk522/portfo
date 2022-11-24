@@ -38,15 +38,16 @@ function Skills({ darkMode }) {
 				opacity: opacityTransform,
 			}}
 		>
-			<div
-				id='skillsBg'
-				className='pointer-events-none fixed inset-0 h-full w-full bg-cover opacity-10 dark:opacity-10'
-				style={{
-					backgroundImage: darkMode
-						? 'linear-gradient(-10deg, rgba(255, 91, 35, 0) 0%, rgb(0, 216, 255) 45%, rgba(255, 91, 35, 0) 85%)'
-						: 'linear-gradient(135deg,hsl(341deg 100% 84%) 0%,hsl(353deg 100% 79%) 9%,hsl(3deg 100% 73%) 20%,hsl(15deg 100% 57%) 50%,hsl(3deg 100% 73%) 80%,hsl(353deg 100% 79%) 91%,hsl(341deg 100% 84%) 100%)',
-				}}
-			></div>
+			{darkMode && (
+				<div
+					id='skillsBg'
+					className='pointer-events-none fixed inset-0 h-full w-full bg-cover opacity-10 dark:opacity-10'
+					style={{
+						backgroundImage:
+							'linear-gradient(-10deg, rgba(255, 91, 35, 0) 0%, rgb(0, 216, 255) 45%, rgba(255, 91, 35, 0) 85%)',
+					}}
+				></div>
+			)}
 			<div
 				id='skillsContentContainer'
 				className='flex h-full w-full max-w-7xl flex-col justify-center 2xl:max-w-[1500px]'

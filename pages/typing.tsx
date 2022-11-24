@@ -176,16 +176,16 @@ function HyperTyperDetails({ darkMode }) {
 						<p>
 							I was also keen on the idea from the very start of
 							using self-typing text as an aesthetic sprinkle for
-							this project given its theme, but feared it would
-							tricky. I was delighted to find the{' '}
+							this project given its theme, and was delighted to
+							find along the way the{' '}
 							<a
 								className='underline'
 								href='https://www.npmjs.com/package/react-simple-typewriter'
 							>
 								React Simple Typewriter
 							</a>{' '}
-							NPM package which actually makes this task very
-							simple and straightforward!
+							NPM package which makes this task very simple and
+							straightforward!
 						</p>
 					</div>
 					<figure

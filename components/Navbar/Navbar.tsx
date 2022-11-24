@@ -12,19 +12,21 @@ export default function Navbar({
 		hidden: {
 			y: -48,
 			opacity: 0,
-			boxShadow: 'none',
 		},
+		//	keyframes instead of single values to reset opacity and boxShadow properties on animation start, lessening the contrast produced in the first few frames
 		darkMode: {
-			opacity: 0.75,
-			backgroundColor: 'rgb(51, 65, 85)',
-			boxShadow: '0px 0px 10px rgba(153, 153, 153, 0.5)',
-			y: 0,
+			opacity: [0, 1],
+			backgroundColor: ['rgb(51, 65, 85)', 'rgba(51, 65, 85, 0.9)'],
+			boxShadow: [
+				'0px 0px 10px rgba(153, 153, 153, 0)',
+				'0px 0px 10px rgba(153, 153, 153, 0.5)',
+			],
+			y: [null, 0],
 		},
 		lightMode: {
-			opacity: 1,
-			backgroundColor: 'rgb(255,255,255)',
-			boxShadow: 'none',
-			y: 0,
+			opacity: [0, 1],
+			backgroundColor: ['rgb(255,255,255)', 'rgb(255,255,255)'],
+			y: [null, 0],
 		},
 	}
 
