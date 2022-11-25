@@ -28,7 +28,6 @@ export default function Work({ darkMode }) {
 	const gridMemberControls = useAnimationControls()
 
 	useEffect(() => {
-		console.log(containerFullyInView)
 		if (containerFullyInView) {
 			bgEffectControls.start('expanded')
 		} else {

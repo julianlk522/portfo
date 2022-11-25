@@ -305,11 +305,6 @@ function HyperTyperDetails({ darkMode }) {
 						ideas come from experimentation and sometimes just
 						messing around a bit!
 					</p>
-					<p className='mt-8'>
-						Also that adding a bit of interactivity, like for
-						example a responsive line chart, can help a lot to bring
-						life to an otherwise simple idea for an application.
-					</p>
 				</div>
 			</section>
 			<Footer darkMode={darkMode} />
