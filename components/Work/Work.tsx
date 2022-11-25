@@ -16,7 +16,10 @@ export default function Work({ darkMode }) {
 	const containerParticallyInView = useInView(workContainerRef, {
 		amount: 'some',
 	})
-	const containerFullyInView = useInView(workContainerRef, { amount: 'all' })
+	const containerFullyInView = useInView(workContainerRef, {
+		amount: 'all',
+		margin: '100px',
+	})
 	const gridAndSideTextContainerRef = useRef(null)
 
 	const textBodyControls = useAnimationControls()
@@ -25,6 +28,7 @@ export default function Work({ darkMode }) {
 	const gridMemberControls = useAnimationControls()
 
 	useEffect(() => {
+		console.log(containerFullyInView)
 		if (containerFullyInView) {
 			bgEffectControls.start('expanded')
 		} else {
