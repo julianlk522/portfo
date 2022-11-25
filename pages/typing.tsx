@@ -64,10 +64,11 @@ function HyperTyperDetails({ darkMode }) {
 					<div className='flex h-auto flex-col space-y-8 px-8 md:w-4/5 md:pr-0'>
 						<p>
 							Some of my favorite games are ones where speed and
-							accuracy are a central component to success. There's
-							something so rewarding about finally triumphing or
-							hitting a new personal best score in those games
-							after enduring numerous close misses along the way.
+							accuracy are a central component to success.
+							There&apos;s something so rewarding about finally
+							triumphing or hitting a new personal best score in
+							those games after enduring numerous close misses
+							along the way.
 						</p>
 						<p>
 							Hyper Typer 2000 is designed to appeal to those out

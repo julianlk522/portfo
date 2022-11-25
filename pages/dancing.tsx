@@ -345,6 +345,7 @@ function DancingButtonDetails({ darkMode }) {
 							>
 								<figure className='relative my-16 flex max-h-80 w-auto flex-col items-center md:my-0 md:max-w-[45%]'>
 									<Image
+										alt='example of many repeated or very similar imperative lines of code needed for a responsive layout without using CSS functions'
 										src={imperativeStyling}
 										objectFit='cover'
 									/>
@@ -354,6 +355,7 @@ function DancingButtonDetails({ darkMode }) {
 								</figure>
 								<figure className='relative mb-16 flex max-h-80 w-auto flex-col items-center md:mb-0 md:max-w-[45%]'>
 									<Image
+										alt='example of clean and concise responsive styling using declarative CSS functions'
 										src={declarativeStyling}
 										objectFit='cover'
 										objectPosition='bottom'
