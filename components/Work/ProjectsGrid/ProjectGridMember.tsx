@@ -124,6 +124,11 @@ function ProjectGridMember({
 				<div
 					className={`flex w-full justify-evenly text-xs ${styles.projectLinks}`}
 				>
+					{detailsLink && (
+						<Link href={detailsLink} passHref>
+							<a className={styles.detailsLink}>More Info</a>
+						</Link>
+					)}
 					<a href={ghLink} target='_blank' rel='noreferrer'>
 						Github
 					</a>
@@ -132,10 +137,6 @@ function ProjectGridMember({
 						<a href={liveLink} target='_blank' rel='noreferrer'>
 							Live
 						</a>
-					)}
-
-					{detailsLink && (
-						<Link href={detailsLink}>More Information</Link>
 					)}
 				</div>
 			</div>

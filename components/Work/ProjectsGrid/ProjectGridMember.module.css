@@ -6,6 +6,6 @@
 	z-index: 2;
 }
 
-.projectLinks a:nth-child(3) {
+.detailsLink {
 	font-weight: 700;
 }
