@@ -30,6 +30,7 @@ const projectsData: GridMemberProps[] = [
 		],
 		ghLink: 'https://github.com/julianlk522/pet-social-media',
 		liveLink: 'https://pet-social-project.netlify.app',
+		detailsLink: '/petsocial',
 	},
 	{
 		tailwindStyles:

@@ -192,7 +192,7 @@ function DancingButtonDetails({ darkMode }) {
 							}
 						>
 							<source
-								src={'/projectDetails/crashLanding.mp4'}
+								src={'/projectDetails/dancingCrashLanding.mp4'}
 								type='video/mp4'
 							/>
 							Your browser doesn&apos;t support the video tag.
