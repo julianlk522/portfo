@@ -58,6 +58,7 @@ function PetSocialDetails({ darkMode }) {
 								src={headerImg}
 								objectFit='cover'
 								objectPosition='top'
+								priority
 							/>
 						</div>
 					</div>
@@ -136,6 +137,7 @@ function PetSocialDetails({ darkMode }) {
 							src={headerImg}
 							objectFit='cover'
 							objectPosition='top'
+							priority
 						/>
 					</div>
 				</div>
@@ -314,7 +316,7 @@ function PetSocialDetails({ darkMode }) {
 							function, I concluded that you must provide type
 							definitions for:{' '}
 						</p>
-						<ol className='list-decimal space-y-8 pl-8 text-sm'>
+						<ol className='list-decimal space-y-4 pl-8 text-sm'>
 							<li>
 								Payload values to be incorporated into global
 								state

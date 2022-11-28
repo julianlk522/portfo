@@ -57,6 +57,7 @@ function HyperTyperDetails({ darkMode }) {
 								src={headerImg}
 								objectFit='cover'
 								objectPosition='top'
+								priority
 							/>
 						</div>
 					</div>
@@ -137,6 +138,7 @@ function HyperTyperDetails({ darkMode }) {
 							src={headerImg}
 							objectFit='cover'
 							objectPosition='top'
+							priority
 						/>
 					</div>
 				</div>

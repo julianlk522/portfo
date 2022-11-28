@@ -57,6 +57,7 @@ function DancingButtonDetails({ darkMode }) {
 								src={headerImg}
 								objectFit='cover'
 								objectPosition='top'
+								priority
 							/>
 						</div>
 					</div>
@@ -130,6 +131,7 @@ function DancingButtonDetails({ darkMode }) {
 							src={headerImg}
 							objectFit='cover'
 							objectPosition='top'
+							priority
 						/>
 					</div>
 				</div>
