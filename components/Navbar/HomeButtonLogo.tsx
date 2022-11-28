@@ -17,7 +17,6 @@ const HomeButtonLogo = ({ darkMode, footer = false }) => {
 						? 'rgb(255 255 255 / 20%) 0px 0px 8px'
 						: 'rgb(0 0 0 / 20%) 0px 0px 20px',
 			}}
-			animate={!footer && darkMode ? { y: 32 } : { y: 0 }}
 			transition={{ type: 'tween' }}
 		>
 			<svg
