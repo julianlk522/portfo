@@ -79,7 +79,7 @@ function PetSocialDetails({ darkMode }) {
 							It was built with the purpose of centralizing these
 							interractions and providing a platform to easily
 							navigate existing pet-related content based on a
-							particular theme, for example "fish."
+							particular theme, for example &quot;fish.&quot;
 						</p>
 					</div>
 
@@ -203,7 +203,7 @@ function PetSocialDetails({ darkMode }) {
 							/>
 						</div>
 						<p>
-							Additionally, PetSocial's post and user data is
+							Additionally, PetSocial&apos;s post and user data is
 							stored in a MongoDB database which is queried and
 							updated through an Express.js server. MongoDB and
 							Express.js were both technologies that I used for
@@ -304,7 +304,7 @@ function PetSocialDetails({ darkMode }) {
 							converting PetSocial all at once with only a working
 							understanding of TypeScript was a headache. One
 							noteworthy example of a tricky adaptation was adding
-							type safety to Redux Toolkit's{' '}
+							type safety to Redux Toolkit&apos;s{' '}
 							<i>createAsyncThunk()</i> function that is used to
 							maintain global state based on interractions with a
 							backend.
