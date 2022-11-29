@@ -292,9 +292,9 @@ function PetSocialDetails({ darkMode }) {
 									integrate elegantly into your layout.
 								</li>
 							</ol>
-							<div
+							<figure
 								id='oAuthScriptImgWrapper'
-								className='relative mx-auto flex h-auto justify-center md:w-auto'
+								className='relative mx-auto flex h-auto flex-col justify-center text-center md:w-auto'
 							>
 								<Image
 									alt='Code snapshot of the OAuth client script injection'
@@ -302,7 +302,12 @@ function PetSocialDetails({ darkMode }) {
 									objectFit='cover'
 									objectPosition='top'
 								/>
-							</div>
+								<figcaption className='mt-4 text-xs'>
+									Code snapshot of the awkward 🤔 script
+									injection and replacement when toggling
+									between signup and login
+								</figcaption>
+							</figure>
 							<p>
 								Another challenge while building PetSocial was
 								converting from JavaScript to TypeScript after

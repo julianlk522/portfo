@@ -300,7 +300,7 @@ function DancingButtonDetails({ darkMode }) {
 				</div>
 				<motion.div
 					id='mainImgWrapper'
-					className='my-32'
+					className='my-32 text-[0px]'
 					style={
 						darkMode
 							? {
