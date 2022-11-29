@@ -28,10 +28,10 @@ function PetSocialDetails({ darkMode }) {
 						id='stackTextItems'
 						className='mb-16 flex w-auto space-x-4 text-center text-xs md:space-x-8'
 					>
-						<li>React.js</li>
+						<li>Material UI</li>
 						<li>Redux Toolkit</li>
 						<li>MongoDB</li>
-						<li>Material UI</li>
+						<li>Google OAuth</li>
 					</ul>
 
 					<div
@@ -368,7 +368,7 @@ function PetSocialDetails({ darkMode }) {
 				}
 			>
 				<Image
-					alt='Hyper Typer start screen with a title, start button, and start button caption'
+					alt='PetSocial authentication screen main banner'
 					src={mainImg}
 					objectFit='cover'
 				/>
