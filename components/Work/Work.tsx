@@ -18,7 +18,6 @@ export default function Work({ darkMode }) {
 	})
 	const containerFullyInView = useInView(workContainerRef, {
 		amount: 'all',
-		margin: '100px',
 	})
 	const gridAndSideTextContainerRef = useRef(null)
 
@@ -113,12 +112,12 @@ export default function Work({ darkMode }) {
 			</AnimatePresence>
 			<motion.div
 				id='workContent'
-				className='relative flex h-full flex-col items-center justify-center overflow-hidden px-16 py-24 text-center  md:justify-between md:overflow-y-hidden'
+				className='flex h-full flex-col items-center justify-center overflow-hidden px-16 py-24 text-center md:justify-between'
 			>
 				<motion.div
 					id='bgCircleEffectOrange'
 					custom={1}
-					className='absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-primaryOrange opacity-[7%] blur-3xl sm:right-1/2 sm:top-[-5%] sm:h-[60vw] sm:w-[60vw]'
+					className='absolute hidden rounded-full bg-primaryOrange opacity-[7%] blur-3xl sm:right-[60%] sm:top-[5%] sm:block sm:h-[40vw] sm:w-[40vw]'
 					variants={bgEffectVariants}
 					initial='minimized'
 					animate={bgEffectControls}
@@ -129,7 +128,7 @@ export default function Work({ darkMode }) {
 					variants={bgEffectVariants}
 					initial='minimized'
 					animate={bgEffectControls}
-					className='absolute bottom-1/2 left-1/4 hidden h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:left-1/2 sm:bottom-[-10%] sm:block sm:h-[60vw] sm:w-[60vw]'
+					className='absolute hidden rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:left-[60%] sm:bottom-[5%] sm:block sm:h-[40vw] sm:w-[40vw]'
 					onAnimationComplete={() => {
 						if (containerParticallyInView) {
 							gridMemberControls.start('visible')
@@ -155,7 +154,7 @@ export default function Work({ darkMode }) {
 				<div
 					ref={gridAndSideTextContainerRef}
 					id='gridAndSideTextContainer'
-					className={`flex h-full w-full max-w-5xl items-center justify-around overflow-y-scroll md:max-h-[80%] lg:max-h-[80%] lg:justify-between lg:overflow-y-visible xl:max-w-7xl xl:justify-around ${styles.gridAndSideTextContainer}`}
+					className={`flex h-full w-full max-w-5xl items-center justify-around overflow-scroll md:max-h-[80%] lg:max-h-[80%] lg:justify-between lg:overflow-visible xl:max-w-7xl xl:justify-around ${styles.gridAndSideTextContainer}`}
 				>
 					<motion.div
 						id='projectsSideTextLg'

@@ -23,8 +23,6 @@ module.exports = {
 				sunrise:
 					'linear-gradient(180deg, rgba(255, 0, 0, 0.9) 0%, rgba(255, 91, 35, 0.3) 100%)',
 				layeredWaves: "url('../public/contactBgLayeredWaves.svg')",
-				// labText:
-				// 	'linear-gradient(45deg, hsl(189deg 100% 50%) 0%, hsl(196deg 100% 59%) 0%, hsl(221deg 100% 77%) 8%, hsl(279deg 99% 78%) 20%, hsl(323deg 100% 70%) 38%, hsl(345deg 100% 65%) 63%, hsl(15deg 100% 57%) 100%)',
 				portfoStackTextSm:
 					'linear-gradient(135deg, rgba(255,91,35,0) 0%, rgba(255,0,0,0.025) 20%, rgba(255,91,35,0.1) 45%, rgba(255,0,0,0.025) 70%, rgba(255,91,35,0) 100%)',
 				portfoStackTextLg:
@@ -35,6 +33,8 @@ module.exports = {
 			},
 			boxShadow: {
 				thick: '0px 4px 12px 0px rgba(0,0,0,0.5)',
+				gridMemberDark: '0px 10px 30px -15px rgb(255 255 255 / 15%)',
+				gridMemberLight: '0px 10px 30px -15px rgb(0 0 0 / 25%)',
 			},
 		},
 		screens: {

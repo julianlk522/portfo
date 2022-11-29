@@ -35,7 +35,7 @@ html::-webkit-scrollbar {
 }
 
 .projectGridMember {
-	@apply relative col-span-3 h-full w-full overflow-hidden rounded-[2rem] shadow-lg xl:shadow-xl;
+	@apply relative col-span-3 h-full w-full overflow-hidden rounded-lg shadow-gridMemberLight dark:shadow-gridMemberDark;
 }
 
 .experienceListMember {

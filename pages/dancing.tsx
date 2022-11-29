@@ -218,10 +218,10 @@ function DancingButtonDetails({ darkMode }) {
 						</h2>
 						<div className='space-y-8 px-8 md:max-w-[80%] md:pr-0'>
 							<p>
-								A key feature of the DBD is that occasionally
-								the user is prompted with a fake button that
-								they must recognize and avoid clicking in order
-								to maximize their score.
+								A key feature of DBD is that occasionally the
+								user is prompted with a fake button that they
+								must recognize and avoid clicking in order to
+								maximize their score.
 							</p>
 							<p>
 								The fake button misspells the word
