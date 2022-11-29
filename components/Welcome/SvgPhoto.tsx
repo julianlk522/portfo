@@ -52,16 +52,11 @@ const SvgPhoto = ({ darkMode }) => {
 
 	return (
 		<motion.svg
-			className='h-full max-h-[50vh] w-full min-w-0 overflow-visible text-primaryBlue'
+			className='h-full max-h-[40vh] w-min min-w-0 overflow-visible text-primaryBlue'
 			xmlns='http://www.w3.org/2000/svg'
-			shapeRendering='geometricPrecision'
-			textRendering='geometricPrecision'
-			imageRendering='optimizeQuality'
 			fillRule='evenodd'
 			clipRule='evenodd'
-			width='300'
-			height='245'
-			viewBox='0 15 300 245'
+			viewBox='37 24 237 222'
 			variants={svgVariants}
 			initial='hidden'
 			whileInView='shown'
@@ -70,16 +65,16 @@ const SvgPhoto = ({ darkMode }) => {
 		>
 			{darkMode && (
 				<motion.rect
-					className='blur-2xl'
-					width='110%'
-					//  1.1 * (300 / 245) = 1.3469
-					height='134.69%'
+					className='blur-3xl'
+					width='150%'
+					//  1.5 * (237 / 222) = 1.60135135
+					height='160.14%'
 					rx='100%'
 					ry='100%'
-					y='0'
-					x='-5%'
+					x='-7.52%'
+					y='-15.04%'
 					fill='currentcolor'
-					fillOpacity='0.1'
+					fillOpacity='0.2'
 					variants={bgVariants}
 					initial='hidden'
 					animate={bgControls}
