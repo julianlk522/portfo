@@ -16,7 +16,6 @@ function Skill({ src, text }: SkillInterface) {
 		>
 			<div className='block tall:hidden'>
 				<Image
-					priority
 					className='h-1/2 opacity-60'
 					src={src}
 					alt={text}
@@ -26,7 +25,6 @@ function Skill({ src, text }: SkillInterface) {
 			</div>
 			<div className='hidden tall:block'>
 				<Image
-					priority
 					className='h-1/2 opacity-60'
 					src={src}
 					alt={text}
