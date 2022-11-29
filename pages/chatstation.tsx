@@ -14,7 +14,7 @@ function ChatStationDetails({ darkMode }) {
 		<MotionConfig transition={{ duration: 1, ease: 'easeOut' }}>
 			<div
 				id='chatStationDetails'
-				className='relative h-full w-screen px-8 py-32 text-stone-600 dark:text-white lg:px-16'
+				className='relative h-full w-screen overflow-hidden px-8 py-32 text-stone-600 dark:text-white lg:px-16'
 			>
 				<header className='mb-32 flex flex-col items-center justify-between md:flex-row'>
 					<div id='headerText' className='md:w-1/2'>
@@ -37,7 +37,7 @@ function ChatStationDetails({ darkMode }) {
 						</ul>
 						<div
 							id='headerImgFlexWrapperSm'
-							className='my-16 flex w-full items-center overflow-hidden md:hidden'
+							className='my-16 flex w-full items-center md:hidden'
 						>
 							<motion.div
 								id='headerImageWrapper'
@@ -115,13 +115,11 @@ function ChatStationDetails({ darkMode }) {
 							</li>
 						</ul>
 					</div>
-					<motion.div
+					<div
 						id='headerImgFlexWrapperMd'
 						className='hidden max-w-[45%] items-center md:flex'
-						initial={{ x: '25%', opacity: 0 }}
-						animate={{ x: 0, opacity: 1 }}
 					>
-						<div
+						<motion.div
 							id='headerImageWrapper'
 							className='relative flex max-h-[50vh]'
 							style={
@@ -135,6 +133,8 @@ function ChatStationDetails({ darkMode }) {
 												'rgba(0, 0, 0, 25%) 0px 5px 50px',
 									  }
 							}
+							initial={{ x: '25%', opacity: 0 }}
+							animate={{ x: 0, opacity: 1 }}
 						>
 							<Image
 								alt="A user's name, nickname, and chosen avatar picture to be used during their chat sessions on ChatStation"
@@ -143,8 +143,8 @@ function ChatStationDetails({ darkMode }) {
 								objectPosition='top'
 								priority
 							/>
-						</div>
-					</motion.div>
+						</motion.div>
+					</div>
 				</header>
 				<div
 					id='centralTextContent'
@@ -318,7 +318,7 @@ function ChatStationDetails({ darkMode }) {
 				</div>
 				<motion.div
 					id='mainImgWrapper'
-					className='mx-auto mt-32 mb-64 flex max-h-[60vh] w-full flex-col justify-center overflow-hidden text-center md:mb-32 lg:w-fit'
+					className='mx-auto mt-32 mb-64 flex max-h-[60vh] w-full flex-col justify-center text-center md:mb-32 lg:w-fit'
 					style={
 						darkMode
 							? {
