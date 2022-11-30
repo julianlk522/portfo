@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { AnimationControls, motion, useAnimationControls } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import socialScreenshot from '../../../public/socialScreenshot.webp'
-import dancingScreenshot from '../../../public/dancingScreenshot.webp'
-import typingScreenshot from '../../../public/typingScreenshot.webp'
+import socialScreenshot from '../../../public/projectDetails/petSocialHeader.webp'
+import dancingScreenshot from '../../../public/projectDetails/dancingButtonHeader.webp'
+import typingScreenshot from '../../../public/projectDetails/typingHeader.webp'
 import chatScreenshot from '../../../public/chatScreenshot.webp'
 import styles from './ProjectGridMember.module.css'
 import { GridMemberProps } from './ProjectData'
@@ -102,9 +102,10 @@ function ProjectGridMember({
 				<Image
 					src={screenshots[screenshotId]}
 					alt={altImgText}
-					layout='fill'
-					className={`object-cover ${objectPosition} ? ${objectPosition} : ''`}
 					style={{ opacity: gridMemberHovered ? '10%' : '1' }}
+					layout='fill'
+					objectFit='cover'
+					objectPosition={objectPosition ? objectPosition : ''}
 				/>
 				<p className={`text-3xl ${styles.projectTitle}`}>{title}</p>
 				{description && <p className='text-md'>{description}</p>}

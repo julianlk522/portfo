@@ -21,6 +21,7 @@ function ProjectsGrid({ gridMemberControls }) {
 				{projectsData.map((gridMember, i) => {
 					const {
 						tailwindStyles,
+						objectPosition,
 						screenshotId,
 						title,
 						description,
@@ -35,6 +36,7 @@ function ProjectsGrid({ gridMemberControls }) {
 							key={i}
 							i={i}
 							tailwindStyles={tailwindStyles}
+							objectPosition={objectPosition}
 							screenshotId={screenshotId}
 							title={title}
 							description={description}
@@ -79,9 +81,7 @@ function ProjectsGrid({ gridMemberControls }) {
 						/>
 					</div>
 				</div>
-				<p className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'>
-					Continue
-				</p>
+				<p className='ml-4 w-min text-xs'>Continue</p>
 			</motion.button>
 		</div>
 	)

@@ -64,7 +64,7 @@ const projectsData: GridMemberProps[] = [
 	},
 	{
 		tailwindStyles: 'row-start-4 md:col-span-2 md:row-start-2',
-		objectPosition: 'object-left-bottom',
+		objectPosition: 'top',
 		screenshotId: 3,
 		title: 'Chat Station',
 		description: 'Quickly and conveniently message your friends',
