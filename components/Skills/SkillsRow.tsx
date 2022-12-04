@@ -36,8 +36,12 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 	const overflowing =
 		bracesWidth && rowWidth && windowWidth >= 1024
 			? rowWidth >= bracesWidth
-			: rowWidth >=
-			  windowWidth - sectionPaddingRef.current - iconPaddingRef.current
+			: rowWidth &&
+			  windowWidth &&
+			  rowWidth >=
+					windowWidth -
+						sectionPaddingRef.current -
+						iconPaddingRef.current
 
 	return (
 		<div
