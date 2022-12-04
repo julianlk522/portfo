@@ -55,11 +55,7 @@ const HomeButtonLogo = ({ darkMode, footer = false }) => {
 					stroke='currentColor'
 					strokeWidth={20}
 				></path>
-				<a
-					href='https://julianlk.vercel.app'
-					target='_self'
-					rel='noreferrer'
-				>
+				<a href='https://julianlk.com' target='_self' rel='noreferrer'>
 					<rect
 						x='0'
 						y='0'
