@@ -18,23 +18,26 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 		widthRef.current && setRowWidth(widthRef.current.offsetWidth)
 	}, [windowWidth])
 
-	//	margin to prevent Skill component appearing slightly on both sides at the same time
-	const marginRef = useRef(80)
-	//	set to Skill component width (80)
-
 	//	also have to account for section padding, which reduces the width needed to exceed the right side of the viewport
-	const paddingRef = useRef(32)
-
 	//	2rem (32px) padding until sm screen size, then 4rem (64px)
+	const sectionPaddingRef = useRef(32)
+
+	//	and icon padding: 0.5rem (8px) up to sm. screen size then 1rem (16px)
+	const iconPaddingRef = useRef(8)
+
 	if (windowWidth >= 640) {
-		paddingRef.current = 64
-	} else paddingRef.current = 32
+		sectionPaddingRef.current = 64
+		iconPaddingRef.current = 16
+	} else {
+		sectionPaddingRef.current = 32
+		iconPaddingRef.current = 8
+	}
 
 	const overflowing =
 		bracesWidth && rowWidth && windowWidth >= 1024
-			? rowWidth >= bracesWidth + marginRef.current - paddingRef.current
+			? rowWidth >= bracesWidth
 			: rowWidth >=
-			  windowWidth + marginRef.current - paddingRef.current * 2
+			  windowWidth - sectionPaddingRef.current - iconPaddingRef.current
 
 	return (
 		<div
