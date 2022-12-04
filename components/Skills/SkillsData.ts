@@ -4,7 +4,7 @@ import { SkillInterface } from './Skill'
 import framer from '../../public/skillsIcons/framer.webp'
 import cypress from '../../public/skillsIcons/cypress.webp'
 
-// HTML5 CSS3, JavaScript, TypeScript, React.js, TailwindCSS, MySQL, Git, Node, Docker, PHP, MongoDB, Figma, Next.js, Jest, D3.js, CommandLine, Netlify, Firebase, Kubernetes, Jenkins, Audio, and Blender icons from icons8.com
+// HTML5 CSS3, JavaScript, TypeScript, React.js, TailwindCSS, MySQL, Git, Node, Docker, PHP, MongoDB, Figma, Next.js, Jest, D3.js, CommandLine, Netlify, Firebase, Kubernetes, Jenkins, Audio, Angular, GraphQL and Blender icons from icons8.com
 import html from '../../public/skillsIcons/html.webp'
 import css from '../../public/skillsIcons/css.webp'
 import js from '../../public/skillsIcons/js.webp'
@@ -28,6 +28,8 @@ import firebase from '../../public/skillsIcons/firebase.webp'
 import kubernetes from '../../public/skillsIcons/kubernetes.webp'
 import jenkins from '../../public/skillsIcons/jenkins.webp'
 import audio from '../../public/skillsIcons/audio.webp'
+import angular from '../../public/skillsIcons/angular.webp'
+import graphql from '../../public/skillsIcons/graphql.webp'
 import blender from '../../public/skillsIcons/blender.webp'
 
 //  Express icon from https://icon-icons.com/download/169185/PNG/128/
@@ -134,12 +136,20 @@ export const mediumSkillsData: SkillInterface[] = [
 		src: railway,
 		text: 'Railway',
 	},
+	{
+		src: angular,
+		text: 'Angular',
+	},
+	{
+		src: audio,
+		text: 'Web Audio API',
+	},
 ]
 
 export const futureSkillsData: SkillInterface[] = [
 	{
-		src: audio,
-		text: 'Web Audio API',
+		src: graphql,
+		text: 'GraphQL',
 	},
 	{
 		src: reactQuery,
