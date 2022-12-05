@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import styles from './DropdownMenu.module.css'
 
 function DropdownMenu({ setShowDropdown }) {
 	const dropdownVariants = {
@@ -34,7 +35,7 @@ function DropdownMenu({ setShowDropdown }) {
 	return (
 		<motion.aside
 			id='modalDropdown'
-			className='fixed top-0 right-0 z-[1] flex h-full w-[60%] max-w-lg flex-col items-center justify-center bg-black bg-opacity-80 px-8 py-16 text-white'
+			className={`fixed top-0 right-0 z-[1] flex h-full w-[60%] max-w-lg flex-col items-center justify-center bg-black bg-opacity-80 px-8 py-16 text-white ${styles.dropdownLinks}`}
 			variants={dropdownVariants}
 			initial='hidden'
 			animate='visible'
