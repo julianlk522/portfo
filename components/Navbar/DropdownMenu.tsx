@@ -47,6 +47,7 @@ function DropdownMenu({ setShowDropdown }) {
 				<motion.li
 					variants={linkVariants}
 					onClick={() => setShowDropdown(false)}
+					whileHover={{ scale: 1.2 }}
 				>
 					<Link href='/#aboutContainer' scroll={false}>
 						About
@@ -55,6 +56,7 @@ function DropdownMenu({ setShowDropdown }) {
 				<motion.li
 					variants={linkVariants}
 					onClick={() => setShowDropdown(false)}
+					whileHover={{ scale: 1.2 }}
 				>
 					<Link href='/#skillsContainer' scroll={false}>
 						Skills
@@ -63,6 +65,7 @@ function DropdownMenu({ setShowDropdown }) {
 				<motion.li
 					variants={linkVariants}
 					onClick={() => setShowDropdown(false)}
+					whileHover={{ scale: 1.2 }}
 				>
 					<Link href='/#workContainer' scroll={false}>
 						Work
@@ -71,6 +74,7 @@ function DropdownMenu({ setShowDropdown }) {
 				<motion.li
 					variants={linkVariants}
 					onClick={() => setShowDropdown(false)}
+					whileHover={{ scale: 1.2 }}
 				>
 					<Link href='/#contactContainer' scroll={false}>
 						Contact
@@ -84,7 +88,7 @@ function DropdownMenu({ setShowDropdown }) {
 				id='dropdownRemoteLinks'
 				className='flex h-[40%] flex-col items-center justify-center gap-8'
 			>
-				<motion.li variants={linkVariants}>
+				<motion.li variants={linkVariants} whileHover={{ scale: 1.2 }}>
 					<a
 						href='https://github.com/julianlk522'
 						target='_blank'
@@ -93,13 +97,22 @@ function DropdownMenu({ setShowDropdown }) {
 						Github
 					</a>
 				</motion.li>
-				<motion.li variants={linkVariants}>
+				<motion.li variants={linkVariants} whileHover={{ scale: 1.2 }}>
 					<a
 						href='https://docs.google.com/document/d/e/2PACX-1vQfJyEmppuH3zko7vjioYFQe3ZBsEva8x0kWg8kL-ASaeDoCh5sysfEJus9H61_3Smvub8fXZiN-beA/pub'
 						target='_blank'
 						rel='noreferrer'
 					>
 						Resume
+					</a>
+				</motion.li>
+				<motion.li variants={linkVariants} whileHover={{ scale: 1.2 }}>
+					<a
+						href='https://www.linkedin.com/in/julian-lindsay-kaufman-4572a8157/'
+						target='_blank'
+						rel='noreferrer'
+					>
+						LinkedIn
 					</a>
 				</motion.li>
 			</ul>
