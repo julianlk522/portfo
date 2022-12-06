@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
-import useWindowDimensions from '../hooks/useWindowDimensions'
 import Image from 'next/image'
+import useWindowDimensions from '../hooks/useWindowDimensions'
+import { useTypewriter } from 'react-simple-typewriter'
 import { motion, useAnimationControls } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { toast } from 'react-hot-toast'
@@ -9,12 +10,19 @@ import styles from './ContactForm.module.css'
 
 function ContactForm() {
 	const formRef = useRef(null)
+
 	const { width } = useWindowDimensions()
 	const mdScreenOrLesser = width && width < 1024
 
 	const submitButtonControls = useAnimationControls()
 	const speechBubbleControls = useAnimationControls()
-	let speechBubbleTimeout
+	let speechBubbleTimeout: NodeJS.Timeout
+
+	const [typewriterText] = useTypewriter({
+		words: ['', 'Yes, I actually receive and see these emails! 🤗'],
+		delaySpeed: 4000,
+		typeSpeed: 20,
+	})
 
 	const contactFormVariants = {
 		initial: {
@@ -61,10 +69,15 @@ function ContactForm() {
 	}
 
 	const speechBubbleWrapperVariants = {
-		hidden: {},
+		hidden: {
+			transition: {
+				staggerChildren: 0.2,
+				staggerDirection: -1,
+			},
+		},
 		shown: {
 			transition: {
-				delayChildren: 2,
+				delayChildren: 2.5,
 				staggerChildren: 0.5,
 			},
 		},
@@ -158,7 +171,7 @@ function ContactForm() {
 					autoComplete='off'
 					placeholder="I'm looking for a developer to help build our exciting new project. When can we meet to discuss this?"
 					className='w-full resize-none border-b-2 border-b-slate-300 border-opacity-80 bg-transparent pb-1 focus:border-opacity-100 focus:outline-none dark:border-white dark:border-opacity-40 dark:focus:border-opacity-80'
-					rows={4}
+					rows={3}
 				></textarea>
 			</div>
 			<motion.button
@@ -193,7 +206,7 @@ function ContactForm() {
 							speechBubbleControls.start('shown')
 							speechBubbleTimeout = setTimeout(() => {
 								speechBubbleControls.start('hidden')
-							}, 5000)
+							}, 9000)
 						}}
 						onViewportLeave={() => {
 							speechBubbleControls.start('hidden')
@@ -213,10 +226,10 @@ function ContactForm() {
 						></motion.div>
 						<motion.div
 							id='speechBubbleDotLg'
-							className='absolute bottom-[150%] left-[200%] flex h-16 w-32 items-center rounded-full bg-white px-4 text-stone-600'
+							className='absolute bottom-[150%] left-[200%] flex h-16 w-32 items-center justify-center rounded-full bg-white px-4 text-stone-600'
 							variants={speechBubbleChildVariants}
 						>
-							Yes, I actually receive and see these emails! 😉
+							{typewriterText}
 						</motion.div>
 					</motion.div>
 				</div>
