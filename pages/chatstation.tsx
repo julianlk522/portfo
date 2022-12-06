@@ -78,13 +78,13 @@ function ChatStationDetails({ darkMode }) {
 								conversation.
 							</p>
 							<p>
-								For me this project was mostly made with the
+								This project was engineered with the primary
 								goal in mind of getting comfortable using a
-								relational database alongside a React.js
-								frontend, though I also wanted to challenge
-								myself to build a functional full-stack
-								application using only a UI sketch as a
-								reference.
+								relational database (MySQL in this case)
+								alongside a React.js frontend, though I also
+								loved the idea of challenging myself to build a
+								functional full-stack application using only a
+								UI sketch as a reference!
 							</p>
 						</div>
 						<ul
@@ -185,12 +185,17 @@ function ChatStationDetails({ darkMode }) {
 								</figcaption>
 							</figure>
 							<p>
-								With that said, I&apos;m pretty happy with how
-								everything came out, and having the experience
-								of growing ChatStation from a barebones UI
-								snapshot has given me more confidence moving
-								forward with other projects using little initial
-								guidance.
+								Overall it was a great learning experience in
+								translating a mockup into an effective frontend,
+								but also in independent planning and
+								implementation of key backend features.
+							</p>
+							<p>
+								Integrating an Express.js server and a MySQL
+								database was not something I had experience with
+								prior to building ChatStation, but with some
+								persistence I was able to achieve an end product
+								that easily satisfies the needs of the frontend.
 							</p>
 						</div>
 					</section>
@@ -259,12 +264,13 @@ function ChatStationDetails({ darkMode }) {
 							<p>
 								I found this somewhat unintuitive, though
 								I&apos;m probably just spoiled by the
-								simplification that MongoDB grants to its users.
-								In any case, the experience of manually
-								configuring a database dump and recreation in
-								Docker will no doubt prove useful in the future
-								while using MySQL databases in other
-								applications.
+								simplification that MongoDB grants to its users,
+								particularly when running the MongoDB process in
+								a Docker container. In any case, the experience
+								of manually configuring a database dump and
+								recreation in Docker will no doubt prove useful
+								while using MySQL or other relational database
+								systems in future applications.
 							</p>
 							<p>
 								I also had issues deploying the compiled

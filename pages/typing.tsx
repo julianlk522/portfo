@@ -7,6 +7,7 @@ import mainImg from '../public/projectDetails/typingMain.webp'
 import netlifyError from '../public/projectDetails/typingNetlifyError.webp'
 import wordList from '../public/projectDetails/typingWordList.webp'
 import useTypewriter from '../public/projectDetails/typingUseTypewriter.webp'
+import Link from 'next/link'
 
 function HyperTyperDetails({ darkMode }) {
 	return (
@@ -68,7 +69,7 @@ function HyperTyperDetails({ darkMode }) {
 							<p>
 								Some of my favorite games are ones where speed
 								and accuracy are a central component to success.
-								There&apos;s something so rewarding about
+								There&apos;s something <i>so rewarding</i> about
 								finally triumphing or hitting a new personal
 								best score in those games after enduring
 								numerous close misses along the way.
@@ -77,14 +78,19 @@ function HyperTyperDetails({ darkMode }) {
 								Hyper Typer 2000 is designed to appeal to those
 								out there who share a love for the same
 								exhilarating, accuracy-driven style of gameplay,
-								and also those who take pride in their typing
-								skills.
+								and also those who take pride in their ⌨ typing
+								skills!
 							</p>
 							<p>
-								Originally intended as a React.js port of the
-								Dancing Button of Doom game, this project
-								quickly snowballed into a mass of spontaneous
-								innovation until becoming what it is today.
+								Originally intended as a React.js port of the{' '}
+								<Link href={'/dancing'} passHref>
+									<a className='underline'>
+										Dancing Button of Doom
+									</a>
+								</Link>
+								, this project quickly snowballed into a mass of
+								spontaneous innovation until becoming what it is
+								today.
 							</p>
 						</div>
 						<ul
@@ -251,13 +257,14 @@ function HyperTyperDetails({ darkMode }) {
 							</p>
 							<p>
 								Hyper Typer also saw issues early on with
-								generating appropriate words from the API
-								endpoint that it was originally configured to
-								request from. Since few configuration options
-								were available, I had to scrap the preconfigured
-								API altogether and instead add an array of
-								(consistently inoffensive) words directly to the
-								app contents.
+								generating appropriate words from the word bank
+								API endpoint that it was originally configured
+								to request from. Since few configuration options
+								were available, I scrapped the preconfigured API
+								altogether and instead added a separate file
+								containing a large array of (consistently
+								inoffensive) words directly into the app
+								contents.
 							</p>
 							<div
 								id='errorImgWrapper'
@@ -271,13 +278,11 @@ function HyperTyperDetails({ darkMode }) {
 								/>
 							</div>
 							<p>
-								This approach amounted to slightly more work
-								initially (finding the word bank, creating a
-								script to choose one of its members randomly)
-								but ultimately more flexibility in the
-								implementation (e.g. filtering for words of a
-								certain length) and more freedom from
-								third-party resources.
+								This approach amounts to a <i>slightly</i>{' '}
+								larger project size but also offers more
+								flexibility in the implementation (e.g.
+								filtering for words of a certain length) and
+								more freedom from third-party resources.
 							</p>
 						</div>
 					</section>
@@ -314,12 +319,24 @@ function HyperTyperDetails({ darkMode }) {
 					>
 						Key Takeaways
 					</h2>
-					<div className='mt-16 flex flex-col px-8 md:pr-0'>
+					<div className='mt-16 flex flex-col space-y-8 px-8 md:pr-0'>
 						<p>
 							What I learned perhaps more than any framework or
 							architectural pattern while making this app is that
-							good ideas come from experimentation and sometimes
-							just messing around a bit!
+							one great idea for a project may come unexpectedly
+							as a result of experimenting in a different project.
+						</p>
+						<p>
+							So the moral of the story is:{' '}
+							<strong>keep coding and making projects!</strong>{' '}
+							👨‍💻️
+						</p>
+						<p>
+							Hyper Typer, and in particular working with D3 for
+							the interactive words-per-minute chart, has also
+							strengthened my comfort level working with SVG
+							imagery and has encouraged me to implement it more
+							often in recent projects!
 						</p>
 					</div>
 				</section>

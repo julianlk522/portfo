@@ -254,6 +254,8 @@ function DancingButtonDetails({ darkMode }) {
 								<a
 									className='underline'
 									href='https://www.rexegg.com/regex-lookarounds.html'
+									target='_blank'
+									rel='noreferrer'
 								>
 									lookarounds
 								</a>{' '}
@@ -261,6 +263,8 @@ function DancingButtonDetails({ darkMode }) {
 								<a
 									className='underline'
 									href='https://regexone.com/lesson/capturing_groups'
+									target='_blank'
+									rel='noreferrer'
 								>
 									numbered capturing groups
 								</a>{' '}
@@ -274,6 +278,8 @@ function DancingButtonDetails({ darkMode }) {
 								<a
 									className='underline'
 									href='https://regex101.com/'
+									target='_blank'
+									rel='noreferrer'
 								>
 									Regex101.com
 								</a>{' '}
@@ -382,14 +388,16 @@ function DancingButtonDetails({ darkMode }) {
 									</figure>
 								</div>
 								<li>
-									After fighting my way through 26 variable
-									declarations in the main script file for
-									different DOM selectors that would be needed
-									to make the app run properly, I also began
-									to appreciate more how React.js&apos;s
+									After fighting through 26 variable
+									declarations at the beginning of the main
+									script file, used for different DOM
+									selectors that would be needed for various
+									app functionalities, I also began to
+									appreciate more how React.js&apos;s
 									component-based architecture and declarative
 									conditional re-rendering API are a huge
-									productivity boost to JavaScript developers.
+									boost to productivity and project
+									organization for JavaScript developers.
 								</li>
 							</ul>
 						</div>

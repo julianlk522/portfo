@@ -85,7 +85,7 @@ function PetSocialDetails({ darkMode }) {
 								these interractions and providing a platform to
 								easily navigate existing pet-related content
 								based on a particular theme, for example
-								&quot;fish.&quot;
+								<i>&quot;fish.&quot;</i>
 							</p>
 						</div>
 						<ul
@@ -210,13 +210,13 @@ function PetSocialDetails({ darkMode }) {
 								/>
 							</div>
 							<p>
-								Additionally, PetSocial&apos;s post and user
-								data is stored in a MongoDB database which is
-								queried and updated through an Express.js
-								server. MongoDB and Express.js were both
-								technologies that I used for the first time in
-								making this project, and I found them both
-								intuitive and enjoyable to use!
+								Additionally, post and user data for PetSocial
+								is stored in a MongoDB database which is queried
+								and updated through an Express.js server. Both
+								MongoDB and Express.js were technologies that I
+								used for the first time in making this project,
+								and I found them both intuitive and enjoyable to
+								use!
 							</p>
 						</div>
 					</section>
@@ -232,35 +232,39 @@ function PetSocialDetails({ darkMode }) {
 								<a
 									className='underline'
 									href='https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid'
+									target='_blank'
+									rel='noreferrer'
 								>
-									Configuring an OAuth client for a JavaScript
-									app
+									Configuring Google OAuth credentials for a
+									web application
 								</a>{' '}
 								is fortunately well-documented and involves
-								fairly few steps. The steps required to render
-								the login button in an app, however, were quite
-								confusing and came with unforeseen complications
-								in both the code implementation and in the
-								UI/UX.
+								fairly few steps. The steps required to load the
+								JavaScript client library and render a
+								sign-up/login button in an app, however, were
+								confusing at times and led to complications in
+								both the code implementation and in the UI/UX.
 							</p>
 							<p>
 								The{' '}
 								<a
 									className='underline'
 									href='https://developers.google.com/identity/gsi/web/guides/client-library'
+									target='_blank'
+									rel='noreferrer'
 								>
 									method that I attempted
 								</a>{' '}
 								for rendering a &quot;sign-up/login with
 								Google&quot; button involved injecting a custom
-								script into the document which loads the client
-								library needed to run signup/login functions.
-								Once the client library is loaded you can call
-								the initialize() method to provide a callback
-								function for successful signups/logins and the
-								renderButton() method to create a clickable
-								element that executes the callback. This method
-								came with a few unfortunate challenges:
+								script into the document with an HTML
+								&lt;script&gt; tag. Once the client library
+								script is loaded you can call the initialize()
+								method to provide a callback function for
+								successful signups/logins and the renderButton()
+								method to create a clickable element that
+								executes the callback. This method came with
+								some spicy unexpected challenges:
 							</p>
 							<ol className='list-decimal space-y-4 pl-8 text-sm'>
 								<li>
@@ -268,21 +272,25 @@ function PetSocialDetails({ darkMode }) {
 									callback functions - like, for signing up{' '}
 									<i>and</i> logging in - you will need to
 									remove the script, replace it, and re-render
-									your app to swap the current callback, all
-									of which makes for an unpolished UX and
-									awkward developer experience.
+									your app to swap the current callback, which
+									results in an awkward code implementation
+									and potentially also problems in UX if the
+									page reload causes a noticeable hiccup.
 								</li>
 								<li>
-									You must define your own IdConfiguration
-									interface based on the{' '}
+									The IdConfiguration interface that is
+									required and defined{' '}
 									<a
 										className='underline'
 										href='https://developers.google.com/identity/gsi/web/reference/js-reference#IdConfiguration'
+										target='_blank'
+										rel='noreferrer'
 									>
-										JavaScript API reference in the docs
+										here in the docs
 									</a>{' '}
-									and if not then prepare to do battle with
-									the TypeScript linter.
+									is hefty, and cannot be easily copied to
+									your project. (Or, at least, I struggled to
+									find out how to do that.)
 								</li>
 								<li>
 									Very few style configurations can be applied
@@ -315,19 +323,19 @@ function PetSocialDetails({ darkMode }) {
 							</p>
 							<p>
 								Though I enjoy the added type safety of working
-								with TypeScript codebase, I can honestly say
-								that converting PetSocial all at once with only
-								a working understanding of TypeScript was a
-								headache. One noteworthy example of a tricky
-								adaptation was adding type safety to Redux
-								Toolkit&apos;s <i>createAsyncThunk()</i>{' '}
-								function that is used to maintain global state
-								based on interractions with a backend.
+								with TypeScript codebase, converting PetSocial
+								all at once with only a working understanding of
+								TypeScript was a bit of a headache. 😅 One
+								noteworthy example of a tricky adaptation was
+								adding type safety to Redux Toolkit&apos;s{' '}
+								<i>createAsyncThunk()</i> function that is used
+								to maintain global state based on interractions
+								with a backend.
 							</p>
 							<p>
-								To satisfy the TS linter and correctly run the
-								function, I concluded that you must provide type
-								definitions for:{' '}
+								To satisfy the TS linter and run or compile your
+								application, it seemed that you must provide
+								type definitions for:{' '}
 							</p>
 							<ol className='list-decimal space-y-4 pl-8 text-sm'>
 								<li>
@@ -338,7 +346,7 @@ function PetSocialDetails({ darkMode }) {
 									Input values, if any, of the payload creator
 									callback function
 								</li>
-								<li>Global state</li>
+								<li>Your global app state</li>
 							</ol>
 							<div
 								id='thunkTypingImgWrapper'
@@ -350,19 +358,13 @@ function PetSocialDetails({ darkMode }) {
 								/>
 							</div>
 							<p>
-								I concluded this only after much experimentation
-								since the{' '}
-								<a
-									className='underline'
-									href='https://redux-toolkit.js.org/api/createAsyncThunk'
-								>
-									Redux Toolkit documentation
-								</a>{' '}
-								is, I think, not very explicit about correct
-								typing of <i>createAsyncThunk()</i>. This
-								experience served as great practice however in
-								dealing with functions that work with generic
-								types.
+								Arriving at that conclusion, however, took a
+								solid chunk of time experimenting and trying to
+								wrap my head around generic function types,
+								though it has also helped me to better
+								understand them while working with TypeScript
+								codebases since beginning the TS conversion of
+								PetSocial.
 							</p>
 						</div>
 					</section>
@@ -401,19 +403,21 @@ function PetSocialDetails({ darkMode }) {
 					</h2>
 					<div className='mt-16 flex flex-col space-y-8 px-8 md:pr-0'>
 						<p>
-							A <i>significant</i> amount of time is often spent
-							loading while PetSocial re-queries it&apos;s backend
-							between routes and after small user changes like
-							submitting a comment, which takes away greatly from
-							the overall UX. Moving forward, to circumvent this
-							unneeded wait time wherever possible, any full stack
-							app I make will incorporate{' '}
+							A significant amount of time is often spent loading
+							while PetSocial re-queries its backend between
+							routes and after small user changes like submitting
+							a comment, which can feel sluggish and take away
+							from the overall UX. Moving forward, to circumvent
+							this unneeded wait time wherever possible, I will
+							incorporate{' '}
 							<strong>caching mechanisms for global state</strong>{' '}
 							and <strong>optimistic mutations</strong> such as
 							those provided by{' '}
 							<a
 								className='underline'
 								href='https://redux-toolkit.js.org/rtk-query/overview'
+								target='_blank'
+								rel='noreferrer'
 							>
 								RTK Query
 							</a>{' '}
@@ -421,10 +425,13 @@ function PetSocialDetails({ darkMode }) {
 							<a
 								className='underline'
 								href='https://tanstack.com/query/v4/docs/overview'
+								target='_blank'
+								rel='noreferrer'
 							>
 								React Query
-							</a>
-							.
+							</a>{' '}
+							into full-stack projects to maximize the fluidity of
+							the user experience.
 						</p>
 						<figure
 							id='loadingImgWrapper'
