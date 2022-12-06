@@ -13,6 +13,8 @@ function ContactForm() {
 	const mdScreenOrLesser = width && width < 1024
 
 	const submitButtonControls = useAnimationControls()
+	const speechBubbleControls = useAnimationControls()
+	let speechBubbleTimeout
 
 	const contactFormVariants = {
 		initial: {
@@ -55,6 +57,25 @@ function ContactForm() {
 					duration: 0.2,
 				},
 			},
+		},
+	}
+
+	const speechBubbleWrapperVariants = {
+		hidden: {},
+		shown: {
+			transition: {
+				delayChildren: 2,
+				staggerChildren: 0.5,
+			},
+		},
+	}
+
+	const speechBubbleChildVariants = {
+		hidden: {
+			opacity: 0,
+		},
+		shown: {
+			opacity: 1,
 		},
 	}
 
@@ -142,7 +163,7 @@ function ContactForm() {
 			</div>
 			<motion.button
 				id='contactFormSubmitButton'
-				className='relative flex w-auto overflow-hidden rounded-md border-[1px] border-slate-700 border-opacity-5 bg-slate-100 px-4 py-2 text-xs shadow-lg hover:font-bold hover:text-white focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:pb-2'
+				className='relative flex w-auto rounded-md border-[1px] border-slate-700 border-opacity-5 bg-slate-100 px-4 py-2 text-xs shadow-lg hover:font-bold hover:text-white focus:outline-none dark:bg-slate-700 dark:bg-opacity-50 lg:pb-2'
 				onHoverStart={() => submitButtonControls.start('hovered')}
 				onHoverEnd={() => submitButtonControls.start('initial')}
 				whileHover={{ scale: 1.25 }}
@@ -163,6 +184,41 @@ function ContactForm() {
 						width={16}
 						height={16}
 					/>
+					<motion.div
+						id='speechBubbleContent'
+						variants={speechBubbleWrapperVariants}
+						initial='hidden'
+						animate={speechBubbleControls}
+						onViewportEnter={() => {
+							speechBubbleControls.start('shown')
+							speechBubbleTimeout = setTimeout(() => {
+								speechBubbleControls.start('hidden')
+							}, 5000)
+						}}
+						onViewportLeave={() => {
+							speechBubbleControls.start('hidden')
+							clearTimeout(speechBubbleTimeout)
+						}}
+						viewport={{ amount: 'all' }}
+					>
+						<motion.div
+							id='speechBubbleDotSm'
+							className='absolute bottom-full left-[125%] h-2 w-2 rounded-full bg-white'
+							variants={speechBubbleChildVariants}
+						></motion.div>
+						<motion.div
+							id='speechBubbleDotMd'
+							className='absolute bottom-[125%] left-[175%] h-3 w-3 rounded-full bg-white'
+							variants={speechBubbleChildVariants}
+						></motion.div>
+						<motion.div
+							id='speechBubbleDotLg'
+							className='absolute bottom-[150%] left-[200%] flex h-16 w-32 items-center rounded-full bg-white px-4 text-stone-600'
+							variants={speechBubbleChildVariants}
+						>
+							Yes, I actually receive and see these emails! 😉
+						</motion.div>
+					</motion.div>
 				</div>
 			</motion.button>
 		</motion.form>
