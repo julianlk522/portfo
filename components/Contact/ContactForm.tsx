@@ -19,9 +19,10 @@ function ContactForm() {
 	let speechBubbleTimeout: NodeJS.Timeout
 
 	const [typewriterText] = useTypewriter({
-		words: ['', 'Yes, I actually receive and see these emails! 🤗'],
-		delaySpeed: 4000,
+		words: ['', '', 'Yes, I actually receive and see these emails! 🤗', ''],
+		delaySpeed: 1900,
 		typeSpeed: 20,
+		deleteSpeed: 20,
 	})
 
 	const contactFormVariants = {
@@ -48,12 +49,9 @@ function ContactForm() {
 			scale: 0,
 			transition: {
 				x: {
-					delay: 0.1,
-					duration: 0.1,
+					delay: 0.05,
+					duration: 0.05,
 				},
-			},
-			transitionEnd: {
-				x: -125,
 			},
 		},
 		hovered: {
@@ -61,8 +59,7 @@ function ContactForm() {
 			scale: 1,
 			transition: {
 				scale: {
-					delay: 0.1,
-					duration: 0.2,
+					duration: 0.1,
 				},
 			},
 		},
@@ -206,7 +203,7 @@ function ContactForm() {
 							speechBubbleControls.start('shown')
 							speechBubbleTimeout = setTimeout(() => {
 								speechBubbleControls.start('hidden')
-							}, 9000)
+							}, 8500)
 						}}
 						onViewportLeave={() => {
 							speechBubbleControls.start('hidden')
