@@ -262,7 +262,7 @@ function ContactForm() {
 							variants={speechBubbleChildVariants}
 							onAnimationComplete={resetSpeechBubbleText}
 						>
-							{screenCanFitSpeechBubbles && typewriterText}
+							{typewriterText}
 						</motion.div>
 					</motion.div>
 				</div>
