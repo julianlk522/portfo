@@ -145,7 +145,7 @@ function ContactForm() {
 		) {
 			setDelay(2800)
 			setSpeechBubbleText(
-				'Yes, I actually receive and see these emails 🤗'
+				'Yes, I actually receive and see these emails! 🤗'
 			)
 		} else {
 			setDelay(0)
@@ -238,22 +238,22 @@ function ContactForm() {
 					>
 						<motion.div
 							id='speechBubbleDotSm'
-							className='absolute bottom-full left-[125%] h-2 w-2 rounded-full bg-slate-500'
+							className='absolute bottom-full left-[125%] h-2 w-2 rounded-full bg-slate-200 dark:bg-slate-500'
 							variants={speechBubbleChildVariants}
 						></motion.div>
 						<motion.div
 							id='speechBubbleDotMd'
-							className='absolute bottom-[115%] left-[150%] h-3 w-3 rounded-full bg-slate-400'
+							className='absolute bottom-[115%] left-[150%] h-3 w-3 rounded-full bg-slate-300 dark:bg-slate-400'
 							variants={speechBubbleChildVariants}
 						></motion.div>
 						<motion.div
 							id='speechBubbleDotLg'
-							className='absolute bottom-[130%] left-[190%] h-6 w-6 rounded-full bg-slate-300'
+							className='absolute bottom-[130%] left-[190%] h-6 w-6 rounded-full bg-slate-400 dark:bg-slate-300'
 							variants={speechBubbleChildVariants}
 						></motion.div>
 						<motion.div
 							id='mainSpeechBubble'
-							className='absolute bottom-[150%] left-[225%] flex h-16 w-32 items-center justify-center rounded-full bg-white px-4 text-stone-600'
+							className='absolute bottom-[150%] left-[225%] flex h-16 w-32 items-center justify-center rounded-full bg-slate-500 px-4 text-white dark:text-stone-600'
 							variants={speechBubbleChildVariants}
 							onAnimationComplete={resetSpeechBubbleText}
 						>
