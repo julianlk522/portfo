@@ -50,9 +50,9 @@ function Welcome({ darkMode }) {
 				<motion.div
 					id='welcomeTextContent'
 					className='flex h-full w-full flex-col justify-center sm:mr-8 sm:w-min lg:mr-32 2xl:mr-64'
-					initial={{ y: 10, opacity: 0 }}
+					initial={{ y: 20, opacity: 0 }}
 					whileInView={{ y: 0, opacity: 1 }}
-					transition={{ duration: 2, delay: 1 }}
+					transition={{ duration: 1 }}
 					viewport={{ once: true }}
 				>
 					<h1
