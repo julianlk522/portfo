@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import { useTypewriter } from 'react-simple-typewriter'
@@ -10,6 +10,8 @@ import styles from './ContactForm.module.css'
 
 function ContactForm() {
 	const formRef = useRef(null)
+	const [delay, setDelay] = useState(0)
+	const [speechBubbleText, setSpeechBubbleText] = useState('')
 
 	const { width } = useWindowDimensions()
 	const mdScreenOrLesser = width && width < 1024
@@ -19,10 +21,11 @@ function ContactForm() {
 	let speechBubbleTimeout: NodeJS.Timeout
 
 	const [typewriterText] = useTypewriter({
-		words: ['', '', 'Yes, I actually receive and see these emails! 🤗', ''],
-		delaySpeed: 1900,
+		words: [speechBubbleText],
+		delaySpeed: delay,
 		typeSpeed: 20,
 		deleteSpeed: 20,
+		loop: false,
 	})
 
 	const contactFormVariants = {
@@ -68,14 +71,14 @@ function ContactForm() {
 	const speechBubbleWrapperVariants = {
 		hidden: {
 			transition: {
-				staggerChildren: 0.2,
+				staggerChildren: 0.15,
 				staggerDirection: -1,
 			},
 		},
 		shown: {
 			transition: {
-				delayChildren: 2.5,
-				staggerChildren: 0.5,
+				delayChildren: 2,
+				staggerChildren: 0.25,
 			},
 		},
 	}
@@ -118,6 +121,36 @@ function ContactForm() {
 				to help me find the bug.
 			</span>
 		))
+	}
+
+	const showSpeechBubbles = () => {
+		if (!mdScreenOrLesser) {
+			speechBubbleControls.start('shown')
+			speechBubbleTimeout = setTimeout(() => {
+				speechBubbleControls.start('hidden')
+			}, 8000)
+		}
+	}
+
+	const clearSpeechBubbles = () => {
+		if (!mdScreenOrLesser) {
+			speechBubbleControls.start('hidden')
+			clearTimeout(speechBubbleTimeout)
+		}
+	}
+
+	const resetSpeechBubbleText = () => {
+		if (
+			document.getElementById('mainSpeechBubble')?.style?.opacity === '1'
+		) {
+			setDelay(2800)
+			setSpeechBubbleText(
+				'Yes, I actually receive and see these emails 🤗'
+			)
+		} else {
+			setDelay(0)
+			setSpeechBubbleText('')
+		}
 	}
 
 	return (
@@ -199,34 +232,32 @@ function ContactForm() {
 						variants={speechBubbleWrapperVariants}
 						initial='hidden'
 						animate={speechBubbleControls}
-						onViewportEnter={() => {
-							speechBubbleControls.start('shown')
-							speechBubbleTimeout = setTimeout(() => {
-								speechBubbleControls.start('hidden')
-							}, 8500)
-						}}
-						onViewportLeave={() => {
-							speechBubbleControls.start('hidden')
-							clearTimeout(speechBubbleTimeout)
-						}}
+						onViewportEnter={showSpeechBubbles}
+						onViewportLeave={clearSpeechBubbles}
 						viewport={{ amount: 'all' }}
 					>
 						<motion.div
 							id='speechBubbleDotSm'
-							className='absolute bottom-full left-[125%] h-2 w-2 rounded-full bg-white'
+							className='absolute bottom-full left-[125%] h-2 w-2 rounded-full bg-slate-500'
 							variants={speechBubbleChildVariants}
 						></motion.div>
 						<motion.div
 							id='speechBubbleDotMd'
-							className='absolute bottom-[125%] left-[175%] h-3 w-3 rounded-full bg-white'
+							className='absolute bottom-[115%] left-[150%] h-3 w-3 rounded-full bg-slate-400'
 							variants={speechBubbleChildVariants}
 						></motion.div>
 						<motion.div
 							id='speechBubbleDotLg'
-							className='absolute bottom-[150%] left-[200%] flex h-16 w-32 items-center justify-center rounded-full bg-white px-4 text-stone-600'
+							className='absolute bottom-[130%] left-[190%] h-6 w-6 rounded-full bg-slate-300'
 							variants={speechBubbleChildVariants}
+						></motion.div>
+						<motion.div
+							id='mainSpeechBubble'
+							className='absolute bottom-[150%] left-[225%] flex h-16 w-32 items-center justify-center rounded-full bg-white px-4 text-stone-600'
+							variants={speechBubbleChildVariants}
+							onAnimationComplete={resetSpeechBubbleText}
 						>
-							{typewriterText}
+							{!mdScreenOrLesser && typewriterText}
 						</motion.div>
 					</motion.div>
 				</div>
