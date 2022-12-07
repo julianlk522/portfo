@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import { useTypewriter } from 'react-simple-typewriter'
@@ -15,10 +15,15 @@ function ContactForm() {
 
 	const { width } = useWindowDimensions()
 	const mdScreenOrLesser = width && width < 1024
+	const screenCanFitSpeechBubbles = width && width >= 500
 
 	const submitButtonControls = useAnimationControls()
 	const speechBubbleControls = useAnimationControls()
 	let speechBubbleTimeout: NodeJS.Timeout
+
+	useEffect(() => {
+		!screenCanFitSpeechBubbles && speechBubbleControls.set('hidden')
+	}, [screenCanFitSpeechBubbles, speechBubbleControls])
 
 	const [typewriterText] = useTypewriter({
 		words: [speechBubbleText],
@@ -124,7 +129,7 @@ function ContactForm() {
 	}
 
 	const showSpeechBubbles = () => {
-		if (!mdScreenOrLesser) {
+		if (screenCanFitSpeechBubbles) {
 			speechBubbleControls.start('shown')
 			speechBubbleTimeout = setTimeout(() => {
 				speechBubbleControls.start('hidden')
@@ -133,7 +138,7 @@ function ContactForm() {
 	}
 
 	const clearSpeechBubbles = () => {
-		if (!mdScreenOrLesser) {
+		if (screenCanFitSpeechBubbles) {
 			speechBubbleControls.start('hidden')
 			clearTimeout(speechBubbleTimeout)
 		}
@@ -257,7 +262,7 @@ function ContactForm() {
 							variants={speechBubbleChildVariants}
 							onAnimationComplete={resetSpeechBubbleText}
 						>
-							{!mdScreenOrLesser && typewriterText}
+							{screenCanFitSpeechBubbles && typewriterText}
 						</motion.div>
 					</motion.div>
 				</div>
