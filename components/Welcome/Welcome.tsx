@@ -47,9 +47,13 @@ function Welcome({ darkMode }) {
 				id='welcomeContentFlexWrapper'
 				className='flex h-full justify-center'
 			>
-				<div
+				<motion.div
 					id='welcomeTextContent'
 					className='flex h-full w-full flex-col justify-center sm:mr-8 sm:w-min lg:mr-32 2xl:mr-64'
+					initial={{ y: 10, opacity: 0 }}
+					whileInView={{ y: 0, opacity: 1 }}
+					transition={{ duration: 2, delay: 1 }}
+					viewport={{ once: true }}
 				>
 					<h1
 						className='font-bold dark:text-white'
@@ -134,7 +138,7 @@ function Welcome({ darkMode }) {
 							</p>
 						</motion.button>
 					</div>
-				</div>
+				</motion.div>
 				<div
 					id='svgPhotoContainer'
 					className='relative hidden h-full min-w-0 max-w-xl items-center justify-center overflow-visible dark:text-black sm:flex'

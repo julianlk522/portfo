@@ -258,7 +258,7 @@ function ContactForm() {
 						></motion.div>
 						<motion.div
 							id='mainSpeechBubble'
-							className='absolute bottom-[150%] left-[225%] flex h-16 w-32 items-center justify-center rounded-full bg-slate-500 px-4 text-white dark:text-stone-600'
+							className='absolute bottom-[150%] left-[225%] flex h-16 w-32 items-center justify-center rounded-full bg-slate-500 px-4 text-white dark:bg-white dark:text-stone-600'
 							variants={speechBubbleChildVariants}
 							onAnimationComplete={resetSpeechBubbleText}
 						>
