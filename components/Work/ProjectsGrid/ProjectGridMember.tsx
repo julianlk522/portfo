@@ -105,7 +105,7 @@ function ProjectGridMember({
 					style={{ opacity: gridMemberHovered ? '10%' : '1' }}
 					layout='fill'
 					objectFit='cover'
-					objectPosition={objectPosition ? objectPosition : ''}
+					objectPosition={objectPosition ? objectPosition : 'center'}
 				/>
 				<p className={`text-3xl ${styles.projectTitle}`}>{title}</p>
 				{description && <p className='text-md'>{description}</p>}
