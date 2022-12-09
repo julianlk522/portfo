@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import { motion } from 'framer-motion'
-import Skill, { SkillInterface } from './Skill'
+import { SkillInterface } from './SkillsData'
+import Skill, { SkillComponentInterface } from './Skill'
 import styles from './SkillsRow.module.css'
 
 interface SkillRowInterface {
@@ -11,11 +12,14 @@ interface SkillRowInterface {
 }
 
 function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
+	const { width: windowWidth } = useWindowDimensions()
 	const widthRef = useRef(null)
 	const [rowWidth, setRowWidth] = useState(0)
+
 	const [dragging, setDragging] = useState(false)
 	const [readyToAnimate, setReadyToAnimate] = useState(true)
-	const { width: windowWidth } = useWindowDimensions()
+
+	const [hoveredIcon, setHoveredIcon] = useState(null)
 
 	useEffect(() => {
 		widthRef.current && setRowWidth(widthRef.current.offsetWidth)
@@ -50,6 +54,7 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 		let timeoutId = null
 		if (dragging) {
 			setReadyToAnimate(false)
+			setHoveredIcon(null)
 		} else {
 			timeoutId = setTimeout(() => {
 				setReadyToAnimate(true)
@@ -80,10 +85,20 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 				dragSnapToOrigin
 				onDragStart={() => setDragging(true)}
 				onDragEnd={() => setDragging(false)}
+				onHoverEnd={() => setHoveredIcon(null)}
 			>
 				<div ref={widthRef} className='row1 grid grid-flow-col'>
-					{data.map((item: SkillInterface, i: number) => {
-						return <Skill key={i} src={item.src} text={item.text} />
+					{data.map((item: SkillComponentInterface, i: number) => {
+						return (
+							<Skill
+								key={i}
+								index={i}
+								src={item.src}
+								text={item.text}
+								hoveredIcon={hoveredIcon}
+								setHoveredIcon={setHoveredIcon}
+							/>
+						)
 					})}
 				</div>
 				<div
@@ -92,8 +107,17 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 					}`}
 					style={{ transform: 'translateX(-200%)' }}
 				>
-					{data.map((item: SkillInterface, j: number) => {
-						return <Skill key={j} src={item.src} text={item.text} />
+					{data.map((item: SkillComponentInterface, j: number) => {
+						return (
+							<Skill
+								key={j}
+								index={j}
+								src={item.src}
+								text={item.text}
+								hoveredIcon={hoveredIcon}
+								setHoveredIcon={setHoveredIcon}
+							/>
+						)
 					})}
 				</div>
 			</motion.div>

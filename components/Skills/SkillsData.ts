@@ -1,4 +1,4 @@
-import { SkillInterface } from './Skill'
+import { StaticImageData } from 'next/image'
 
 //  Framer, Cypress icons from freeicons.io
 import framer from '../../public/skillsIcons/framer.webp'
@@ -40,6 +40,12 @@ import threejs from '../../public/skillsIcons/threejs.webp'
 
 //  React Query icon from https://seeklogo.com/vector-logo/435661/react-query
 import reactQuery from '../../public/skillsIcons/reactQuery.webp'
+
+export interface SkillInterface {
+	src: StaticImageData
+	text: string
+}
+
 export const strongSkillsData: SkillInterface[] = [
 	{
 		src: html,
