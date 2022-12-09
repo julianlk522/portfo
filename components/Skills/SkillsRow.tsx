@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import useWindowDimensions from '../hooks/useWindowDimensions'
+import { motion } from 'framer-motion'
 import Skill, { SkillInterface } from './Skill'
 import styles from './SkillsRow.module.css'
 
@@ -12,6 +13,8 @@ interface SkillRowInterface {
 function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 	const widthRef = useRef(null)
 	const [rowWidth, setRowWidth] = useState(0)
+	const [dragging, setDragging] = useState(false)
+	const [readyToAnimate, setReadyToAnimate] = useState(true)
 	const { width: windowWidth } = useWindowDimensions()
 
 	useEffect(() => {
@@ -43,6 +46,19 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 						sectionPaddingRef.current -
 						iconPaddingRef.current
 
+	useEffect(() => {
+		let timeoutId = null
+		if (dragging) {
+			setReadyToAnimate(false)
+		} else {
+			timeoutId = setTimeout(() => {
+				setReadyToAnimate(true)
+			}, 1000)
+		}
+
+		return () => clearTimeout(timeoutId)
+	}, [dragging])
+
 	return (
 		<div
 			className={`'mt-4 flex h-auto w-auto flex-col items-start ${
@@ -52,10 +68,18 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 			<p className='my-4 w-full text-xs font-bold sm:text-sm'>
 				{caption}
 			</p>
-			<div
-				className={`${
-					overflowing ? styles.scrolling : styles.notScrolling
-				} flex`}
+			<motion.div
+				className={`flex ${styles.row} ${
+					overflowing && readyToAnimate ? styles.scrolling : ''
+				} ${dragging || !readyToAnimate ? styles.dragging : ''}`}
+				drag={overflowing ? 'x' : false}
+				dragConstraints={{
+					left: 0,
+					right: rowWidth,
+				}}
+				dragSnapToOrigin
+				onDragStart={() => setDragging(true)}
+				onDragEnd={() => setDragging(false)}
 			>
 				<div ref={widthRef} className='row1 grid grid-flow-col'>
 					{data.map((item: SkillInterface, i: number) => {
@@ -72,7 +96,7 @@ function SkillRow({ data, caption, bracesWidth }: SkillRowInterface) {
 						return <Skill key={j} src={item.src} text={item.text} />
 					})}
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	)
 }

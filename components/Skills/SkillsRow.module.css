@@ -1,9 +1,14 @@
-.scrolling {
-	animation: 15s linear infinite slide;
+.row div:last-child {
+	margin-right: 0;
 }
 
-.notScrolling div:last-child {
-	margin-right: 0;
+.dragging > div > div:last-child,
+.scrolling > div > div:last-child {
+	margin-right: 0.5rem;
+}
+
+.scrolling {
+	animation: 15s linear infinite slide;
 }
 
 @keyframes slide {
@@ -12,5 +17,12 @@
 	}
 	100% {
 		transform: translateX(50%);
+	}
+}
+
+@media (min-width: 640px) {
+	.dragging > div > div:last-child,
+	.scrolling > div > div:last-child {
+		margin-right: 1rem;
 	}
 }
