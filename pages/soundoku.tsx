@@ -76,8 +76,8 @@ function SoundokuDetails({ darkMode }) {
 								notch. I&apos;m also passionate about all kinds
 								of music and have for long been curious about
 								the building blocks of audio engineering. When I
-								learned of JavaScript's Web Audio API, I knew I
-								had to try it!
+								learned of JavaScript&apos;s Web Audio API, I
+								knew I had to try it!
 							</p>
 							<p>
 								From the intersection of puzzle making, problem
@@ -203,9 +203,10 @@ function SoundokuDetails({ darkMode }) {
 									>
 										{audioInterfaces.length} total
 									</option>
-									{audioInterfaces.map((name) => {
+									{audioInterfaces.map((name, i) => {
 										return (
 											<option
+												key={i}
 												className='dark:text-stone-600'
 												value={name}
 												disabled
@@ -222,8 +223,9 @@ function SoundokuDetails({ darkMode }) {
 								for Soundoku in only a few lines of code and
 								without needing to absorb the meanings of all of
 								the available tooling options provided. (Though
-								I'm still curious about the unused features and
-								am looking for ways to add more to Soundoku!)
+								I&apos;m still curious about the unused features
+								and am looking for ways to add more to
+								Soundoku!)
 							</p>
 							<figure
 								id='oscillatorCodeImgWrapper'
@@ -351,8 +353,9 @@ function SoundokuDetails({ darkMode }) {
 							</p>
 							<p>
 								The familiarity is coming together steadily bit
-								by bit, though I've had a particularly tough
-								time wrapping my head around the concepts of{' '}
+								by bit, though I&apos;ve had a particularly
+								tough time wrapping my head around the concepts
+								of{' '}
 								<a
 									className='underline'
 									href='https://rxjs.dev/guide/overview'
@@ -429,9 +432,9 @@ function SoundokuDetails({ darkMode }) {
 							<strong>
 								simplify the process of understanding
 							</strong>{' '}
-							someone else's code{' '}
+							someone else&apos;s code{' '}
 							<strong>
-								that you're not immediately familiar with
+								that you&apos;re not immediately familiar with
 							</strong>
 							.
 						</p>
