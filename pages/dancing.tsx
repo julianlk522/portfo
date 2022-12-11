@@ -243,8 +243,8 @@ function DancingButtonDetails({ darkMode }) {
 								/>
 							</div>
 							<p>
-								This feature wasn’t too difficult to implement
-								in JavaScript using some random number
+								This feature wasn&apos;t too difficult to
+								implement in JavaScript using some random number
 								generation and string concatentation, but what
 								really threw me was the regex required to
 								accurately test this feature.

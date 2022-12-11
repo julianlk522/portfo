@@ -5,6 +5,7 @@ import Link from 'next/link'
 import socialScreenshot from '../../../public/projectDetails/petSocialHeader.webp'
 import dancingScreenshot from '../../../public/projectDetails/dancingButtonHeader.webp'
 import typingScreenshot from '../../../public/projectDetails/typingHeader.webp'
+import sudokuScreenshot from '../../../public/projectDetails/soundokuFilledCell.webp'
 import chatScreenshot from '../../../public/chatScreenshot.webp'
 import styles from './ProjectGridMember.module.css'
 import { GridMemberProps } from './ProjectData'
@@ -13,6 +14,7 @@ const screenshots = [
 	socialScreenshot,
 	typingScreenshot,
 	dancingScreenshot,
+	sudokuScreenshot,
 	chatScreenshot,
 ]
 
