@@ -2,10 +2,15 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, MotionConfig } from 'framer-motion'
-import Footer from '../components/ProjectDetails/Footer'
-import headerImg from '../public/projectDetails/soundokuFilledCell.webp'
-import mainImg from '../public/projectDetails/soundokuWin.webp'
 import { audioInterfaces } from './soundokuAudioInterfaces'
+import Footer from '../components/ProjectDetails/Footer'
+import headerImg from '../public/projectDetails/soundokuSelection.webp'
+import mainImg from '../public/projectDetails/soundokuWin.webp'
+import oscillatorCode from '../public/projectDetails/soundokuOscillatorCode.webp'
+import passingCode1 from '../public/projectDetails/soundokuPassing1.webp'
+import failingCode1 from '../public/projectDetails/soundokuFailing1.webp'
+import passingCode2 from '../public/projectDetails/soundokuPassing2.webp'
+import failingCode2 from '../public/projectDetails/soundokuFailing2.webp'
 
 function SoundokuDetails({ darkMode }) {
 	return (
@@ -39,7 +44,7 @@ function SoundokuDetails({ darkMode }) {
 						>
 							<motion.div
 								id='headerImageWrapper'
-								className='relative flex max-h-[50vh]'
+								className='relative flex'
 								style={
 									darkMode
 										? {
@@ -55,7 +60,7 @@ function SoundokuDetails({ darkMode }) {
 								animate={{ x: 0, opacity: 1 }}
 							>
 								<Image
-									alt='Dancing Button Game rocket and heads-up-display'
+									alt='Soundoku cell selection UI'
 									src={headerImg}
 									objectFit='cover'
 									objectPosition='top'
@@ -66,26 +71,26 @@ function SoundokuDetails({ darkMode }) {
 						<div className='flex h-auto flex-col space-y-8 px-8 md:w-4/5 md:pr-0'>
 							<p>
 								Since I really love trying to solve puzzles and
-								sudoku is one of my favorite kinds, I wanted to
-								recreate sudoku but take it up a notch. I&apos;m
-								also passionate about all kinds of music and
-								have for long been curious about the building
-								blocks of audio engineering. When I learned of
-								JavaScript's Web Audio API, I knew I had to try
-								it!
+								sudoku is one of my favorite puzzle games, I
+								wanted to recreate sudoku but take it up a
+								notch. I&apos;m also passionate about all kinds
+								of music and have for long been curious about
+								the building blocks of audio engineering. When I
+								learned of JavaScript's Web Audio API, I knew I
+								had to try it!
 							</p>
 							<p>
 								From the intersection of puzzle making, problem
-								solving and a fascination with the anatomy of
-								audio, Soundoku 🌱 came to life.
+								solving and a peek into the anatomy of audio,
+								Soundoku 🌱 came to life.
 							</p>
 							<p>
 								In Soundoku the user can&apos;t see the numbers
 								on the board but instead must listen for the
 								tone that each cell emits. By listening to those
 								tones and keeping a mental map of their numeric
-								translations, the user can determine cell values
-								and eventually the solution to the board.
+								equivalents, the user can determine hidden cell
+								values and eventually the solution to the board.
 							</p>
 							<p>
 								Removing the visual stimuli normally used as
@@ -129,7 +134,7 @@ function SoundokuDetails({ darkMode }) {
 					>
 						<motion.div
 							id='headerImageWrapper'
-							className='relative flex max-h-[50vh]'
+							className='relative flex'
 							style={
 								darkMode
 									? {
@@ -145,10 +150,9 @@ function SoundokuDetails({ darkMode }) {
 							animate={{ x: 0, opacity: 1 }}
 						>
 							<Image
-								alt='Dancing Button Game rocket and heads-up-display'
+								alt='Soundoku cell selection UI'
 								src={headerImg}
 								objectFit='cover'
-								objectPosition='top'
 								priority
 							/>
 						</motion.div>
@@ -169,12 +173,13 @@ function SoundokuDetails({ darkMode }) {
 						</h2>
 						<div className='space-y-8 px-8 md:max-w-[80%] md:pr-0'>
 							<p>
-								Glancing at the contents of the Web Audio API on
-								occasion previously, I was at first intimidated
-								by the volume of varying interfaces and their
-								complete tree of properties and methods that can
-								be used together for sound engineering.{' '}
-								<i>What the heck is all this for?</i> I thought.
+								Glancing at the contents of the Web Audio API
+								previously, I was at first intimidated by the
+								volume of varying interfaces and their complete
+								tree of properties and methods that can be used
+								together for sound engineering.{' '}
+								<i>What the heck is all this for?</i> 😨 I
+								thought.
 							</p>
 							<div
 								id='selectFlexWrapper'
@@ -220,35 +225,22 @@ function SoundokuDetails({ darkMode }) {
 								I'm still curious about the unused features and
 								am looking for ways to add more to Soundoku!)
 							</p>
-							<pre className='overflow-auto bg-black/5 text-xs italic dark:bg-white/5'>
-								<code>
-									{`play(index: number) {
-    this.audioCtx = new AudioContext();
-    const gainNode = this.audioCtx.createGain();
-    const oscillator = this.audioCtx.createOscillator();
-    oscillator.type = 'sine';
-
-    const now = this.audioCtx.currentTime;
-
-    gainNode.gain.setValueAtTime(0, 0);
-    gainNode.gain.linearRampToValueAtTime(0.5, now + this.attackTime);
-    gainNode.gain.linearRampToValueAtTime(
-    this.sustainLevel,
-    now + this.attackTime + this.decayTime
-    );
-    gainNode.gain.setValueAtTime(this.sustainLevel, now + 1 - this.releaseTime);
-    gainNode.gain.linearRampToValueAtTime(0, now + 1);
-
-    oscillator.connect(gainNode);
-    gainNode.connect(this.audioCtx.destination);
-
-    oscillator.frequency.value = this.notes[index].frequency;
-    oscillator.start(now);
-    oscillator.stop(now + 1);
-}
-    `}
-								</code>
-							</pre>
+							<figure
+								id='oscillatorCodeImgWrapper'
+								className='relative mx-auto flex h-auto flex-col justify-center text-center md:w-auto'
+							>
+								<Image
+									alt='Code snapshot of the code used to create the various tones used in Soundoku'
+									src={oscillatorCode}
+									objectFit='cover'
+									objectPosition='top'
+								/>
+								<figcaption className='mt-4 text-xs'>
+									Code required to create short oscillations
+									according to the value (1-9) passed as an
+									argument
+								</figcaption>
+							</figure>
 							<p>
 								Working with the Web Audio API was something I
 								anticipated would be a leading challenge of
@@ -281,6 +273,75 @@ function SoundokuDetails({ darkMode }) {
 						</h2>
 						<div className='space-y-8 px-8 md:max-w-[80%] md:pr-0'>
 							<p>
+								I had some peculiar experiences working with the
+								Jasmine test suite that is native to Angular
+								apps. Some tests failed for reasons that I still
+								don&apos;t understand while other seemingly
+								equal ones passed. Have a look at these
+								examples, which seem to share the same essential
+								test setups but produce different results.{' '}
+								<i className='text-xs'>
+									(If you know what&apos;s causing this
+									behavior and feel like sharing, please drop
+									me a message in the{' '}
+									<span className='underline'>
+										<Link
+											href='/#contactContainer'
+											scroll={false}
+										>
+											Contact section
+										</Link>
+									</span>
+									!)
+								</i>
+							</p>
+							<div className='flex w-full flex-col text-sm md:pl-8'>
+								<figure id='passingCodeSample1Wrapper'>
+									<Image
+										alt='Passing code example 1'
+										src={passingCode1}
+									/>
+									<figcaption className='pr-8 text-right text-xs font-bold'>
+										passes 😎
+									</figcaption>
+								</figure>
+								<figure
+									id='failingCodeSample1Wrapper'
+									className='mt-2'
+								>
+									<Image
+										alt='Failing code example 1'
+										src={failingCode1}
+									/>
+									<figcaption className='pr-8 text-right text-xs font-bold'>
+										fails 🤔
+									</figcaption>
+								</figure>
+								<p className='my-8'>and also...</p>
+
+								<figure id='passingCodeSample2Wrapper'>
+									<Image
+										alt='Passing code example 2'
+										src={passingCode2}
+									/>
+									<figcaption className='pr-8 text-right text-xs font-bold'>
+										passes 😁
+									</figcaption>
+								</figure>
+								<figure
+									id='failingCodeSample2Wrapper'
+									className='mt-2'
+								>
+									<Image
+										alt='Failing code example 2'
+										src={failingCode2}
+									/>
+									<figcaption className='pr-8 text-right text-xs font-bold'>
+										fails 😰
+									</figcaption>
+								</figure>
+							</div>
+							<p>
 								Soundoku is the first project I made using
 								Angular, and coming from a background in
 								React.js I notice many similarities but overall
@@ -304,65 +365,6 @@ function SoundokuDetails({ darkMode }) {
 								of their ideal use cases over a service
 								injection using standard properties.
 							</p>
-							<p>
-								I also had some peculiar interactions with the
-								Jasmine test suite that is native to Angular
-								apps. Some tests failed for reasons that I still
-								don&apos;t understand while other,
-								similar-looking ones passed. Have a look at
-								these examples, which seem to share the same
-								essential test setups but produce different
-								results.{' '}
-								<i className='text-xs'>
-									(If you know what&apos;s causing this
-									behavior and feel like sharing, please drop
-									me a message in the{' '}
-									<Link
-										href='/#contactContainer'
-										scroll={false}
-									>
-										Contact section
-									</Link>
-									!)
-								</i>
-							</p>
-							<div className='flex w-full flex-col text-sm md:pl-8'>
-								<code className='inline-block bg-black/5 italic dark:bg-white/5'>
-									spyOnAllFunctions(service);
-									expect(service.formatSeconds(10)).toBe('0:
-									10');
-								</code>
-								<span className='w-full pr-8 text-right text-xs font-bold'>
-									passes 😎
-								</span>
-								<code className='inline-block bg-black/5 italic dark:bg-white/5'>
-									spyOn(service, 'formatSeconds');
-									expect(service.formatSeconds(10)).toBe('0:
-									10');
-								</code>
-								<span className='w-full pr-8 text-right text-xs font-bold'>
-									fails 🤔
-								</span>
-
-								<p className='my-8'>and also...</p>
-
-								<code className='inline-block bg-black/5 italic dark:bg-white/5'>
-									{`spyOnAllFunctions(component);
-		component.handleCellSelected({ overallIndex: 10, value: false });
-        expect(component.handleCellSelected).toHaveBeenCalled();`}
-								</code>
-								<span className='w-full pr-8 text-right text-xs font-bold'>
-									passes 😁
-								</span>
-								<code className='inline-block bg-black/5 italic dark:bg-white/5'>
-									{`spyOn(component, 'handleCellSelected');
-                                    component.handleCellSelected({ overallIndex: 10, value: false });
-    		expect(component.handleCellSelected).toHaveBeenCalled();`}
-								</code>
-								<span className='w-full pr-8 text-right text-xs font-bold'>
-									fails 😰
-								</span>
-							</div>
 						</div>
 					</section>
 				</div>
@@ -385,7 +387,7 @@ function SoundokuDetails({ darkMode }) {
 					viewport={{ once: true }}
 				>
 					<Image
-						alt='Dancing Button of Doom game screen showcasing the dancing button, timer, and title text'
+						alt="Soundoku win screen, showcasing the user's game time and error count for the completed round"
 						src={mainImg}
 						objectFit='cover'
 					/>
@@ -404,37 +406,39 @@ function SoundokuDetails({ darkMode }) {
 							<strong>save you stress</strong> when building out
 							component/service interactions or writing tests due
 							to the safe foundations of the{' '}
-							<strong>
-								object-oriented and dependency injection-driven
-							</strong>{' '}
+							<strong>object-oriented</strong> and{' '}
+							<strong>dependency injection-driven</strong>{' '}
 							architecture.
 						</p>
 						<p className='pl-8'>
-							For writing a{' '}
-							<i>
-								<strong>little more code</strong>
-							</i>
-							, it seems to me that you as the dev are{' '}
-							<i>
-								<strong>rewarded with the blessing</strong>
-							</i>{' '}
-							of having much of the thinking done already when
-							extending the functionality of a component or
-							service - very satisfying, and very worth the
+							For writing a <i>little more</i> code, it seems to
+							me that you as the dev are rewarded with the
+							blessing of having{' '}
+							<strong>
+								much of the thinking done already when extending
+							</strong>{' '}
+							the functionality of a component or service - very
+							satisfying when that happens, and very worth the
 							trouble!
 						</p>
 						<p className='pl-8'>
 							I can also see how working with an Angular code base
-							would be convenient for teams since intellisense
-							from OOP and thorough, descriptive test suites could
-							really simplify the process of understanding someone
-							else's code that you're not immediately familiar
-							with.
+							would be convenient for teams since OOP-based
+							intellisense as well as thorough, descriptive test
+							suites could really{' '}
+							<strong>
+								simplify the process of understanding
+							</strong>{' '}
+							someone else's code{' '}
+							<strong>
+								that you're not immediately familiar with
+							</strong>
+							.
 						</p>
 						<p>
 							Also, the JavaScript Web Audio API is not as
 							insurmountable as it appears, so I (and everyone
-							else) should use it more 🎸
+							else) should use it more! 🎸
 						</p>
 					</div>
 				</section>
