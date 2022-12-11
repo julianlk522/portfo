@@ -320,7 +320,7 @@ function HyperTyperDetails({ darkMode }) {
 							fontSize: 'clamp(2rem, 4vw, 4vh)',
 						}}
 					>
-						Key Takeaways and Benefits of Making Hyper Typer
+						Key Takeaways
 					</h2>
 					<div className='mt-16 flex flex-col space-y-8 px-8 md:pr-0'>
 						<p>
