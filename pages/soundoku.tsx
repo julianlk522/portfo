@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, MotionConfig } from 'framer-motion'
-import { audioInterfaces } from './soundokuAudioInterfaces'
+import { audioInterfaces } from '../components/Work/ProjectsGrid/soundokuAudioInterfaces'
 import Footer from '../components/ProjectDetails/Footer'
 import headerImg from '../public/projectDetails/soundokuSelection.webp'
 import mainImg from '../public/projectDetails/soundokuWin.webp'
@@ -195,15 +195,15 @@ function SoundokuDetails({ darkMode }) {
 									className='bg-black/5 dark:bg-white/5'
 									name='audioInterfaces'
 									id='audioInterfaces'
+									value={audioInterfaces.length + ' total'}
 								>
 									<option
 										className=' dark:text-stone-600'
 										disabled
-										selected
 									>
-										{audioInterfaces.length} total
+										{audioInterfaces.length + ' total'}
 									</option>
-									{audioInterfaces.map((name, i) => {
+									{audioInterfaces.map((name, i: number) => {
 										return (
 											<option
 												key={i}
