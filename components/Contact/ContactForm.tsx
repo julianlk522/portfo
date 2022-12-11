@@ -150,7 +150,7 @@ function ContactForm() {
 		) {
 			setDelay(2800)
 			setSpeechBubbleText(
-				'Yes, I actually receive and see these emails! 🤗'
+				'Yes, I actually receive and see these emails! 😊'
 			)
 		} else {
 			setDelay(0)

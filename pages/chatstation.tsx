@@ -191,11 +191,24 @@ function ChatStationDetails({ darkMode }) {
 								implementation of key backend features.
 							</p>
 							<p>
-								Integrating an Express.js server and a MySQL
-								database was not something I had experience with
-								prior to building ChatStation, but with some
-								persistence I was able to achieve an end product
-								that easily satisfies the needs of the frontend.
+								Additionally, integrating an Express.js server
+								and a MySQL database was not something I had
+								experience with prior to building ChatStation.
+								With some experimenting and persistence though,
+								I was able to locate the{' '}
+								<a
+									className='underline'
+									href='https://github.com/sidorares/node-mysql2'
+									target='_blank'
+									rel='noreferrer'
+								>
+									MySQL Node.js client package
+								</a>
+								, learn about best practices such as employing
+								connection pools to reuse MySQL server
+								connections and reduce query latency, and to
+								ultimately achieve an end result that satisfies
+								the needs of the frontend.
 							</p>
 						</div>
 					</section>
@@ -208,76 +221,10 @@ function ChatStationDetails({ darkMode }) {
 						</h2>
 						<div className='space-y-8 px-8 md:max-w-[80%] md:pr-0'>
 							<p>
-								When I configured ChatStation to run through
-								Docker and Docker-Compose, I had a much harder
-								time establishing data volumes that would
-								persist the database the structure and contents
-								than while creating volumes for{' '}
-								<Link href={'/petsocial'} passHref>
-									<a className='underline'>PetSocial</a>
-								</Link>
-								, another one of my projects which uses MongoDB
-								for its databasing.
-							</p>
-							<p>
-								Unlike in a containerized application using
-								MongoDB, one using MySQL requires that a dump of
-								the existing database be placed in the{' '}
-								<i>/docker-entrypoint-initdb.d</i> directory to
-								be recreated upon container startup, as
-								described in{' '}
-								<a
-									className='underline'
-									href='https://hub.docker.com/_/mysql'
-									target='_blank'
-									rel='noreferrer'
-								>
-									Docker Hub&apos;s MySQL image reference page
-								</a>{' '}
-								in the &quot;Initializing a fresh instance&quot;
-								section.
-							</p>
-							<figure
-								id='deploymentImgWrapper'
-								className='flex w-full flex-col justify-center text-center lg:w-fit'
-							>
-								<Image
-									alt='Deployment environment on Railway.app'
-									src={deploymentImg}
-									objectFit='cover'
-									objectPosition='top'
-								/>
-								<figcaption className='mt-4 text-xs'>
-									Deploying ChatStation live on{' '}
-									<a
-										className='underline'
-										href='https://railway.app'
-										target='_blank'
-										rel='noreferrer'
-									>
-										Railway.app
-									</a>{' '}
-									also required a dump and import of the
-									existing MySQL database
-								</figcaption>
-							</figure>
-							<p>
-								I found this somewhat unintuitive, though
-								I&apos;m probably just spoiled by the
-								simplification that MongoDB grants to its users,
-								particularly when running the MongoDB process in
-								a Docker container. In any case, the experience
-								of manually configuring a database dump and
-								recreation in Docker will no doubt prove useful
-								while using MySQL or other relational database
-								systems in future applications.
-							</p>
-							<p>
-								I also had issues deploying the compiled
-								JavaScript version of this TypeScript
-								application due to a strange syntactical quirk
-								that the TypeScript compiler really wanted to
-								include. Some{' '}
+								I had issues deploying the compiled JavaScript
+								version of ChatStation&apos;s backend due to a
+								strange syntactical quirk that the TypeScript
+								compiler really wanted to include. Some{' '}
 								<a
 									className='underline'
 									href='https://github.com/microsoft/TypeScript/issues/38552'
@@ -318,6 +265,73 @@ function ChatStationDetails({ darkMode }) {
 								<i>void 0</i> resulted in the correct assignment
 								of environment variable values needed to allow
 								ChatStation to run properly after deployment.
+							</p>
+							<p>
+								While configuring ChatStation to run in Docker
+								and Docker-Compose, I also had a tougher time
+								establishing data volumes that would persist the
+								database the structure and contents than while
+								creating volumes for{' '}
+								<Link href={'/petsocial'} passHref>
+									<a className='underline'>PetSocial</a>
+								</Link>
+								, another one of my projects which uses MongoDB
+								for its databasing.
+							</p>
+							<p>
+								Unlike in a containerized application using
+								MongoDB, one using MySQL requires that a dump of
+								the existing database be placed in the{' '}
+								<i>/docker-entrypoint-initdb.d</i> directory to
+								be mounted upon container startup, as described
+								in{' '}
+								<a
+									className='underline'
+									href='https://hub.docker.com/_/mysql'
+									target='_blank'
+									rel='noreferrer'
+								>
+									Docker Hub&apos;s MySQL image reference page
+								</a>{' '}
+								in the &quot;Initializing a fresh instance&quot;
+								section.
+							</p>
+							<figure
+								id='deploymentImgWrapper'
+								className='flex w-full flex-col justify-center text-center lg:w-fit'
+							>
+								<Image
+									alt='Deployment environment on Railway.app'
+									src={deploymentImg}
+									objectFit='cover'
+									objectPosition='top'
+								/>
+								<figcaption className='mt-4 text-xs'>
+									Deploying ChatStation live on{' '}
+									<a
+										className='underline'
+										href='https://railway.app'
+										target='_blank'
+										rel='noreferrer'
+									>
+										Railway.app
+									</a>{' '}
+									also required a dump and import of the
+									existing MySQL database
+								</figcaption>
+							</figure>
+							<p>
+								This process was a little awkward I thought,
+								mostly due to the esoteric naming of the{' '}
+								<i>/docker-entrypoint-initdb.d</i> directory.
+								But I&apos;m probably just spoiled by the
+								simplification that MongoDB grants to its users,
+								particularly when running the MongoDB server in
+								a Docker container. In any case, the experience
+								of manually configuring a database dump and
+								mounting in Docker will no doubt prove useful
+								while using MySQL or other relational database
+								systems in future applications.
 							</p>
 						</div>
 					</section>

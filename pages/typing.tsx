@@ -89,8 +89,8 @@ function HyperTyperDetails({ darkMode }) {
 									</a>
 								</Link>
 								, this project quickly snowballed into a mass of
-								spontaneous innovation until becoming what it is
-								today.
+								spontaneous experimentation until becoming what
+								it is today.
 							</p>
 						</div>
 						<ul
@@ -174,8 +174,8 @@ function HyperTyperDetails({ darkMode }) {
 								Now having experimented with it somewhat in
 								order to achieve the interactive
 								words-per-minute chart featured in the app,
-								I&apos;m glad to have some experience using it
-								to draw from in future projects.
+								I&apos;m glad to have some experience with D3 to
+								draw from in future projects.
 							</p>
 							<p>
 								As a tangent to gaining experience with D3 I was
@@ -197,8 +197,8 @@ function HyperTyperDetails({ darkMode }) {
 								>
 									React Simple Typewriter
 								</a>{' '}
-								NPM package which makes this task very simple
-								and straightforward!
+								NPM package which makes this task very
+								straightforward!
 							</p>
 						</div>
 						<figure
@@ -210,9 +210,10 @@ function HyperTyperDetails({ darkMode }) {
 								src={useTypewriter}
 							/>
 							<figcaption className='mt-4 text-xs'>
-								Assigning the Title Screen text state to the
-								product of the useTypewriter hook, with a few
-								small configurations.
+								Assigning state to the return value of the React
+								Simple Typewriter useTypewriter hook to achieve
+								self-typing text, with a few small
+								configurations.
 							</figcaption>
 						</figure>
 					</section>
@@ -279,10 +280,12 @@ function HyperTyperDetails({ darkMode }) {
 							</div>
 							<p>
 								This approach amounts to a <i>slightly</i>{' '}
-								larger project size but also offers more
-								flexibility in the implementation (e.g.
-								filtering for words of a certain length) and
-								more freedom from third-party resources.
+								larger project size (by ~27kb) but also offers
+								more freedom from third-party resources and
+								therefore more flexibility in the implementation
+								(e.g. filtering for words of a certain length
+								without needing to make many requests to the API
+								and possibly hitting rate limits).
 							</p>
 						</div>
 					</section>
@@ -317,26 +320,26 @@ function HyperTyperDetails({ darkMode }) {
 							fontSize: 'clamp(2rem, 4vw, 4vh)',
 						}}
 					>
-						Key Takeaways
+						Key Takeaways and Benefits of Making Hyper Typer
 					</h2>
 					<div className='mt-16 flex flex-col space-y-8 px-8 md:pr-0'>
 						<p>
-							What I learned perhaps more than any framework or
-							architectural pattern while making this app is that
-							one great idea for a project may come unexpectedly
-							as a result of experimenting in a different project.
-						</p>
-						<p>
-							So the moral of the story is:{' '}
-							<strong>keep coding and making projects!</strong>{' '}
-							👨‍💻️
-						</p>
-						<p>
 							Hyper Typer, and in particular working with D3 for
-							the interactive words-per-minute chart, has also
-							strengthened my comfort level working with SVG
-							imagery and has encouraged me to implement it more
-							often in recent projects!
+							the interactive words-per-minute chart, strengthened
+							my comfort level working with SVG images and has
+							since encouraged me to implement them more often in
+							recent projects!
+						</p>
+						<p>
+							What I learned possibly more than any framework or
+							architectural pattern while making this app,
+							however, is that a worthwhile project idea may come
+							unexpectedly as a result of experimenting in a
+							different one.
+						</p>
+						<p>
+							So <strong>keep coding and making projects!</strong>{' '}
+							👨‍💻️
 						</p>
 					</div>
 				</section>

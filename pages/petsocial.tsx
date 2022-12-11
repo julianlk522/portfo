@@ -241,7 +241,7 @@ function PetSocialDetails({ darkMode }) {
 								is fortunately well-documented and involves
 								fairly few steps. The steps required to load the
 								JavaScript client library and render a
-								sign-up/login button in an app, however, were
+								sign-up/login button in PetSocial, however, were
 								confusing at times and led to complications in
 								both the code implementation and in the UI/UX.
 							</p>
@@ -255,16 +255,16 @@ function PetSocialDetails({ darkMode }) {
 								>
 									method that I attempted
 								</a>{' '}
-								for rendering a &quot;sign-up/login with
-								Google&quot; button involved injecting a custom
-								script into the document with an HTML
-								&lt;script&gt; tag. Once the client library
-								script is loaded you can call the initialize()
-								method to provide a callback function for
-								successful signups/logins and the renderButton()
-								method to create a clickable element that
-								executes the callback. This method came with
-								some spicy unexpected challenges:
+								for rendering a <i>sign-up/login with Google</i>{' '}
+								button involved injecting a custom script into
+								the document with an HTML &lt;script&gt; tag.
+								Once the client library script is loaded you can
+								call the <i>initialize()</i> method to provide a
+								callback function for successful signups/logins
+								and the <i>renderButton()</i> method to create a
+								clickable element that executes the callback.
+								This method came with some spicy unexpected
+								challenges:
 							</p>
 							<ol className='list-decimal space-y-4 pl-8 text-sm'>
 								<li>
@@ -294,7 +294,7 @@ function PetSocialDetails({ darkMode }) {
 								</li>
 								<li>
 									Very few style configurations can be applied
-									to the login/signup button - manual
+									to the sign-up/login button - manual
 									alterations will be overridden by the client
 									library script - so it can be difficult to
 									integrate elegantly into your layout.
@@ -313,7 +313,7 @@ function PetSocialDetails({ darkMode }) {
 								<figcaption className='mt-4 text-xs'>
 									Code snapshot of the awkward 🤔 script
 									injection and replacement when toggling
-									between signup and login
+									between sign-up and login
 								</figcaption>
 							</figure>
 							<p>
@@ -325,15 +325,15 @@ function PetSocialDetails({ darkMode }) {
 								Though I enjoy the added type safety of working
 								with TypeScript codebase, converting PetSocial
 								all at once with only a working understanding of
-								TypeScript was a bit of a headache. 😅 One
-								noteworthy example of a tricky adaptation was
-								adding type safety to Redux Toolkit&apos;s{' '}
+								TypeScript was a bit of a headache at times. 😅
+								One noteworthy example of a tricky adaptation
+								was adding type safety to Redux Toolkit&apos;s{' '}
 								<i>createAsyncThunk()</i> function that is used
 								to maintain global state based on interractions
 								with a backend.
 							</p>
 							<p>
-								To satisfy the TS linter and run or compile your
+								To satisfy the TS linter and compile the
 								application, it seemed that you must provide
 								type definitions for:{' '}
 							</p>
@@ -348,15 +348,19 @@ function PetSocialDetails({ darkMode }) {
 								</li>
 								<li>Your global app state</li>
 							</ol>
-							<div
+							<figure
 								id='thunkTypingImgWrapper'
-								className='relative mx-auto flex h-auto justify-center md:w-auto'
+								className='relative mx-auto flex h-auto flex-col justify-center text-center md:w-auto'
 							>
 								<Image
 									alt='providing explicit typing for createAsyncThunk()'
 									src={thunkTypingImg}
 								/>
-							</div>
+								<figcaption className='mt-4 text-xs'>
+									Redux Toolkit&apos;s{' '}
+									<i>createAsyncThunk()</i>
+								</figcaption>
+							</figure>
 							<p>
 								Arriving at that conclusion, however, took a
 								solid chunk of time experimenting and trying to
