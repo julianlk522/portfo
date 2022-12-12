@@ -177,9 +177,7 @@ function SoundokuDetails({ darkMode }) {
 								previously, I was at first intimidated by the
 								volume of varying interfaces and their complete
 								tree of properties and methods that can be used
-								together for sound engineering.{' '}
-								<i>What the heck is all this for?</i> 😨 I
-								thought.
+								together in audio engineering.
 							</p>
 							<div
 								id='selectFlexWrapper'

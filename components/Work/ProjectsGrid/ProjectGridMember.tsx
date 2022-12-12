@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { AnimationControls, motion, useAnimationControls } from 'framer-motion'
+import { GridMemberProps } from './ProjectData'
 import Image from 'next/image'
 import Link from 'next/link'
+import { AnimationControls, motion, useAnimationControls } from 'framer-motion'
+import styles from './ProjectGridMember.module.css'
 import socialScreenshot from '../../../public/projectDetails/petSocialHeader.webp'
 import dancingScreenshot from '../../../public/projectDetails/dancingButtonHeader.webp'
 import typingScreenshot from '../../../public/projectDetails/typingHeader.webp'
 import sudokuScreenshot from '../../../public/projectDetails/soundokuFilledCell.webp'
 import chatScreenshot from '../../../public/chatScreenshot.webp'
-import styles from './ProjectGridMember.module.css'
-import { GridMemberProps } from './ProjectData'
 
 const screenshots = [
 	socialScreenshot,
@@ -80,7 +80,7 @@ function ProjectGridMember({
 	return (
 		<motion.div
 			custom={i}
-			className={`projectGridMember ${tailwindStyles}`}
+			className={`projectGridMember ${tailwindStyles} relative flex h-full w-full flex-col items-center justify-evenly p-4 text-white`}
 			style={{
 				background: gridMemberHovered ? 'black' : 'transparent',
 			}}
@@ -98,50 +98,61 @@ function ProjectGridMember({
 			initial='initial'
 			animate={gridMemberControls}
 		>
-			<div
-				className={`relative flex h-full w-full flex-col items-center justify-evenly p-4 text-white ${styles.projectContentContainer}`}
+			<Image
+				src={screenshots[screenshotId]}
+				alt={altImgText}
+				style={{
+					opacity: gridMemberHovered ? '0.1' : '1',
+					pointerEvents: 'none',
+					userSelect: 'none',
+				}}
+				layout='fill'
+				objectFit='cover'
+				objectPosition={objectPosition ? objectPosition : 'center'}
+			/>
+			<p
+				className={`text-3xl ${styles.projectTitle} ${
+					gridMemberHovered ? 'z-[1]' : ''
+				}`}
 			>
-				<Image
-					src={screenshots[screenshotId]}
-					alt={altImgText}
-					style={{ opacity: gridMemberHovered ? '10%' : '1' }}
-					layout='fill'
-					objectFit='cover'
-					objectPosition={objectPosition ? objectPosition : 'center'}
-				/>
-				<p className={`text-3xl ${styles.projectTitle}`}>{title}</p>
-				{description && <p className='text-md'>{description}</p>}
-				<motion.p
-					className='my-4 bg-tomatoToLightPink bg-clip-text font-bold text-transparent'
-					animate={stackTextControls}
-					variants={stackTextVariants}
-					onAnimationComplete={() => {
-						setStackItemIndex((prev) => prev + 1)
-						if (gridMemberHovered) {
-							stackTextControls.start('flicker')
-						}
-					}}
-				>
-					{stackItems[stackItemIndex % stackItems.length]}
-				</motion.p>
-				<div
-					className={`flex w-full justify-evenly text-xs ${styles.projectLinks}`}
-				>
-					{detailsLink && (
-						<Link href={detailsLink} passHref>
-							<a className={styles.detailsLink}>More Info</a>
-						</Link>
-					)}
-					<a href={ghLink} target='_blank' rel='noreferrer'>
-						Github
+				{title}
+			</p>
+			{description && (
+				<p className={`text-md ${gridMemberHovered ? 'z-[1]' : ''}`}>
+					{description}
+				</p>
+			)}
+			<motion.p
+				className='my-4 bg-tomatoToLightPink bg-clip-text font-bold text-transparent'
+				animate={stackTextControls}
+				variants={stackTextVariants}
+				onAnimationComplete={() => {
+					setStackItemIndex((prev) => prev + 1)
+					if (gridMemberHovered) {
+						stackTextControls.start('flicker')
+					}
+				}}
+			>
+				{stackItems[stackItemIndex % stackItems.length]}
+			</motion.p>
+			<div
+				className={`flex w-full justify-evenly text-xs ${
+					gridMemberHovered ? 'z-[1]' : ''
+				}`}
+			>
+				{detailsLink && (
+					<Link href={detailsLink} passHref>
+						<a className='font-bold'>More Info</a>
+					</Link>
+				)}
+				<a href={ghLink} target='_blank' rel='noreferrer'>
+					Github
+				</a>
+				{liveLink && (
+					<a href={liveLink} target='_blank' rel='noreferrer'>
+						Live
 					</a>
-
-					{liveLink && (
-						<a href={liveLink} target='_blank' rel='noreferrer'>
-							Live
-						</a>
-					)}
-				</div>
+				)}
 			</div>
 		</motion.div>
 	)

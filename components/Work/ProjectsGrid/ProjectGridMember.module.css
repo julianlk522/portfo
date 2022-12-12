@@ -1,11 +1,3 @@
 .projectTitle {
 	font-family: 'Lobster', cursive;
 }
-
-.projectContentContainer:hover .projectLinks {
-	z-index: 2;
-}
-
-.detailsLink {
-	font-weight: 700;
-}

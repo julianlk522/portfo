@@ -27,11 +27,13 @@ const SvgPhoto = ({ darkMode }) => {
 	const bgVariants = {
 		hidden: {
 			opacity: 0,
+			scale: 0,
 		},
 		shown: {
 			opacity: 1,
+			scale: 1,
 			transition: {
-				duration: 2,
+				duration: 3,
 			},
 		},
 	}
