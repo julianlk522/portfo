@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './NavDropdownButton.module.css'
 
-const NavDropdownButton = ({ showDropdown }) => {
+const NavDropdownButton = ({ showDropdown, setShowDropdown }) => {
 	const circleVariants = {
 		menuShown: {
 			opacity: 0,
@@ -17,7 +17,9 @@ const NavDropdownButton = ({ showDropdown }) => {
 
 	return (
 		<motion.svg
-			className='h-full max-w-full'
+			className={`fixed top-5 right-8 z-[2] flex h-6 w-6 cursor-pointer dark:text-white sm:right-16 ${
+				showDropdown ? 'text-white' : 'opacity-60'
+			}`}
 			xmlns='http://www.w3.org/2000/svg'
 			shapeRendering='geometricPrecision'
 			textRendering='geometricPrecision'
@@ -30,6 +32,7 @@ const NavDropdownButton = ({ showDropdown }) => {
 			fill='currentcolor'
 			initial='menuHidden'
 			animate={showDropdown ? 'menuShown' : 'menuHidden'}
+			onClick={() => setShowDropdown((prev) => !prev)}
 		>
 			<motion.circle
 				variants={circleVariants}
