@@ -102,7 +102,7 @@ function PhotoSection({ containerInView, darkMode }) {
 					spiralControls.set('hidden')
 					handControls.set('initial')
 					document
-						.getElementById('skillsContainer')
+						.getElementById('skills')
 						.scrollIntoView({ behavior: 'smooth' })
 				}}
 			>

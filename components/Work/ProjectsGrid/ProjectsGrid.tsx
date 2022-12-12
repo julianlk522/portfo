@@ -8,8 +8,8 @@ import projectsData from './ProjectData'
 function ProjectsGrid({ gridMemberControls }) {
 	return (
 		<div
-			id='gridContentContainer'
-			className='m-auto flex h-auto w-full flex-col items-center justify-between self-start overflow-x-visible sm:overflow-y-scroll md:h-full lg:max-w-4xl lg:overflow-visible'
+			id='gridContent'
+			className='m-auto flex h-auto w-full flex-col items-center justify-between self-start overflow-x-visible sm:overflow-y-scroll md:h-full lg:overflow-visible'
 		>
 			<p className='my-16 text-xs opacity-60 dark:text-white md:hidden'>
 				Scroll down to see more
@@ -50,12 +50,12 @@ function ProjectsGrid({ gridMemberControls }) {
 					)
 				})}
 			</div>
-			<motion.p
+			<p
 				id='portfoStackDescriptionSm'
 				className='mt-16 mb-8 w-full bg-portfoStackTextSm text-xs dark:text-white md:mb-0 md:mt-8 lg:hidden'
 			>
 				This page uses Next.js, Tailwind CSS and Framer Motion
-			</motion.p>
+			</p>
 			<motion.button
 				id='workScrollDownButtonSm'
 				className='relative my-16 flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg dark:text-white lg:hidden'
@@ -63,7 +63,7 @@ function ProjectsGrid({ gridMemberControls }) {
 				whileTap={{ scale: 1.1 }}
 				onClick={() => {
 					document
-						.getElementById('contactContainer')
+						.getElementById('contact')
 						.scrollIntoView({ behavior: 'smooth' })
 				}}
 			>

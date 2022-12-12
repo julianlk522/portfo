@@ -10,7 +10,7 @@ const SvgPhoto = ({ darkMode }) => {
 		shown: {
 			transition: {
 				staggerChildren: 0.03,
-				delayChildren: 0.25,
+				delayChildren: 0.5,
 			},
 		},
 	}
@@ -33,7 +33,7 @@ const SvgPhoto = ({ darkMode }) => {
 			opacity: 1,
 			scale: 1,
 			transition: {
-				duration: 3,
+				duration: 2,
 			},
 		},
 	}
@@ -55,7 +55,7 @@ const SvgPhoto = ({ darkMode }) => {
 	return (
 		<motion.svg
 			id='svgPhoto'
-			className='hidden h-full max-h-[40vh] max-w-xl  text-primaryBlue dark:text-black sm:block'
+			className='hidden h-full max-h-[40vh] max-w-xl  overflow-visible text-primaryBlue sm:block'
 			xmlns='http://www.w3.org/2000/svg'
 			fillRule='evenodd'
 			clipRule='evenodd'

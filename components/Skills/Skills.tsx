@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
 import useWindowDimensions from '../hooks/useWindowDimensions'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import {
 	strongSkillsData,
 	mediumSkillsData,
 	futureSkillsData,
 } from './SkillsData'
 import SkillRow from './SkillsRow'
-import Image from 'next/image'
-import scrollDown from '../../public/scrollUp.webp'
 import SkillsCurlyBraces from './SkillsCurlyBraces'
 import SkillsEllipsis from './SkillsEllipsis'
+import scrollDown from '../../public/scrollUp.webp'
 
 function Skills({ darkMode }) {
 	const { scrollYProgress } = useScroll()
@@ -32,7 +32,7 @@ function Skills({ darkMode }) {
 
 	return (
 		<motion.section
-			id='skillsContainer'
+			id='skills'
 			className='relative flex h-screen w-screen flex-col items-center justify-center overflow-hidden pl-8 pt-24 text-stone-600 dark:text-white sm:pl-16 lg:px-16'
 			style={{
 				opacity: opacityTransform,
@@ -49,7 +49,7 @@ function Skills({ darkMode }) {
 				></div>
 			)}
 			<div
-				id='skillsContentContainer'
+				id='skillsContent'
 				className='flex h-full w-full max-w-7xl flex-col justify-center 2xl:max-w-[1500px]'
 			>
 				<motion.h2
@@ -86,10 +86,7 @@ function Skills({ darkMode }) {
 							caption='I have some experience with these too but also lots to learn and improve on...'
 							bracesWidth={bracesWidth}
 						/>
-						<div
-							id='finalSkillRowFlexContainer'
-							className='flex w-full items-end lg:justify-center tall:lg:pb-20'
-						>
+						<div className='tall:lg:pb-20'>
 							<SkillRow
 								data={futureSkillsData}
 								caption="...and I haven't yet used these but am excited to try them!"
@@ -103,7 +100,7 @@ function Skills({ darkMode }) {
 							whileTap={{ scale: 1.1 }}
 							onClick={() => {
 								document
-									.getElementById('workContainer')
+									.getElementById('work')
 									.scrollIntoView({ behavior: 'smooth' })
 							}}
 						>
@@ -134,7 +131,7 @@ function Skills({ darkMode }) {
 					whileTap={{ scale: 1.1 }}
 					onClick={() => {
 						document
-							.getElementById('workContainer')
+							.getElementById('work')
 							.scrollIntoView({ behavior: 'smooth' })
 					}}
 				>

@@ -50,7 +50,7 @@ function DropdownMenu({ setShowDropdown }) {
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
 				>
-					<Link href='/#aboutContainer' scroll={false}>
+					<Link href='/#about' scroll={false}>
 						About
 					</Link>
 				</motion.li>
@@ -59,7 +59,7 @@ function DropdownMenu({ setShowDropdown }) {
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
 				>
-					<Link href='/#skillsContainer' scroll={false}>
+					<Link href='/#skills' scroll={false}>
 						Skills
 					</Link>
 				</motion.li>
@@ -68,7 +68,7 @@ function DropdownMenu({ setShowDropdown }) {
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
 				>
-					<Link href='/#workContainer' scroll={false}>
+					<Link href='/#work' scroll={false}>
 						Work
 					</Link>
 				</motion.li>
@@ -77,7 +77,7 @@ function DropdownMenu({ setShowDropdown }) {
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
 				>
-					<Link href='/#contactContainer' scroll={false}>
+					<Link href='/#contact' scroll={false}>
 						Contact
 					</Link>
 				</motion.li>

@@ -3,7 +3,6 @@ import Image from 'next/image'
 import {
 	motion,
 	useInView,
-	useAnimationControls,
 	AnimatePresence,
 	useScroll,
 	useTransform,
@@ -24,33 +23,6 @@ export default function Contact({ darkMode }) {
 	const containerRef = useRef(null)
 	const containerInView = useInView(containerRef, { amount: 'all' })
 	const contentBodyRef = useRef(null)
-	const scrollUpSmRef = useRef(null)
-	const scrollUpInView = useInView(scrollUpSmRef)
-	const scrollPromptSmControls = useAnimationControls()
-
-	const scrollPromptVariants = {
-		initial: {
-			y: 0,
-			transition: {
-				delay: 1,
-			},
-		},
-		visible: {
-			transition: {
-				delayChildren: 0.5,
-				staggerChildren: 0.5,
-			},
-		},
-	}
-
-	useEffect(() => {
-		if (scrollUpInView) {
-			scrollPromptSmControls.start('bouncing')
-		} else {
-			scrollPromptSmControls.stop()
-			scrollPromptSmControls.set('initial')
-		}
-	}, [scrollUpInView, scrollPromptSmControls])
 
 	useEffect(() => {
 		const containerScrollTimeout = setTimeout(() => {
@@ -65,28 +37,14 @@ export default function Contact({ darkMode }) {
 	return (
 		<motion.section
 			ref={containerRef}
-			id='contactContainer'
+			id='contact'
 			className='relative h-screen w-screen overflow-hidden py-24 text-center text-stone-600 dark:text-white lg:py-0 lg:pb-0'
 		>
 			<div
 				id='layeredWavesContainer'
 				className='absolute bottom-[-20%] z-[2] h-[35%] w-full bg-layeredWaves bg-cover opacity-40 dark:opacity-10 sm:bottom-[-25%] lg:right-[-5%] lg:skew-y-[350deg] lg:skew-x-[350deg]'
 			></div>
-			<AnimatePresence>
-				{darkMode && (
-					<motion.div
-						id='staticDarkModeBg'
-						className='absolute inset-0 z-[-1] h-full w-full'
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-						style={{
-							backgroundColor: 'rgb(30 41 59)',
-						}}
-					></motion.div>
-				)}
-			</AnimatePresence>
-			<motion.section
+			<motion.div
 				id='contactOpacityTransformContainer'
 				className='relative m-auto flex h-full max-w-7xl flex-col items-center justify-center overflow-hidden px-8 xs:px-16 md:pt-0 lg:overflow-hidden'
 				style={{ opacity: opacityTransform }}
@@ -123,7 +81,7 @@ export default function Contact({ darkMode }) {
 				</h2>
 				<div
 					ref={contentBodyRef}
-					id='contactContentBody'
+					id='contactContent'
 					className={`mt-8 flex h-auto w-full max-w-7xl flex-col items-center overflow-x-hidden overflow-y-scroll text-start lg:mt-0 lg:max-h-[80%] lg:flex-row lg:overflow-visible ${styles.contactContentBody}`}
 				>
 					<Experience darkMode={darkMode} />
@@ -141,7 +99,6 @@ export default function Contact({ darkMode }) {
 						className='buttonContainer mt-16 mb-32 flex lg:hidden'
 						whileHover={{ scale: 1.25 }}
 						whileTap={{ scale: 1.1 }}
-						variants={scrollPromptVariants}
 						onClick={() =>
 							window.scrollTo({
 								top: 0,
@@ -181,7 +138,7 @@ export default function Contact({ darkMode }) {
 						</p>
 					</motion.button>
 				</div>
-			</motion.section>
+			</motion.div>
 		</motion.section>
 	)
 }

@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps }) {
 				currentScrollPercent < 3 / (2 * (numSectionsRef.current - 1))
 			) {
 				return document
-					.getElementById('aboutContainer')
+					.getElementById('about')
 					.scrollIntoView({ behavior: 'smooth' })
 			} else if (
 				currentScrollPercent >=
@@ -85,7 +85,7 @@ function MyApp({ Component, pageProps }) {
 				currentScrollPercent < 5 / (2 * (numSectionsRef.current - 1))
 			) {
 				return document
-					.getElementById('skillsContainer')
+					.getElementById('skills')
 					.scrollIntoView({ behavior: 'smooth' })
 			} else if (
 				currentScrollPercent >=
@@ -93,11 +93,11 @@ function MyApp({ Component, pageProps }) {
 				currentScrollPercent < 7 / (2 * (numSectionsRef.current - 1))
 			) {
 				return document
-					.getElementById('workContainer')
+					.getElementById('work')
 					.scrollIntoView({ behavior: 'smooth' })
 			} else {
 				return document
-					.getElementById('contactContainer')
+					.getElementById('contact')
 					.scrollIntoView({ behavior: 'smooth' })
 			}
 		}

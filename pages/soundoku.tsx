@@ -285,10 +285,7 @@ function SoundokuDetails({ darkMode }) {
 									behavior and feel like sharing, please drop
 									me a message in the{' '}
 									<span className='underline'>
-										<Link
-											href='/#contactContainer'
-											scroll={false}
-										>
+										<Link href='/#contact' scroll={false}>
 											Contact section
 										</Link>
 									</span>

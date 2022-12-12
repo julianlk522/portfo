@@ -108,7 +108,7 @@ function Welcome({ darkMode }) {
 						whileTap={{ scale: 1.1 }}
 						onClick={() => {
 							document
-								.getElementById('aboutContainer')
+								.getElementById('about')
 								.scrollIntoView({ behavior: 'smooth' })
 						}}
 					>
