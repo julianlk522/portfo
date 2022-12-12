@@ -14,7 +14,7 @@ function Welcome({ darkMode }) {
 
 	return (
 		<motion.section
-			id='welcomeContainer'
+			id='welcome'
 			className='relative h-screen overflow-hidden px-16 text-stone-600 dark:text-white'
 			style={{
 				opacity: opacityTransform,
@@ -31,16 +31,10 @@ function Welcome({ darkMode }) {
 					></motion.div>
 				)}
 			</AnimatePresence>
-			<motion.div id='circleEffects'>
-				<div
-					id='bgCircleEffectPink'
-					className='pointer-events-none absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-primaryPink opacity-[12%] blur-3xl dark:opacity-5 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'
-				></div>
+			<motion.div id='bgCircleEffects'>
+				<div className='pointer-events-none absolute top-[10%] right-[40%] h-64 w-64 rounded-full bg-primaryPink opacity-[12%] blur-3xl dark:opacity-5 sm:h-[60vw] sm:w-[60vw] lg:right-[50%] lg:h-1/2 lg:w-1/2'></div>
 				{!darkMode && (
-					<div
-						id='bgCircleEffectBlue'
-						className='pointer-events-none absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'
-					></div>
+					<div className='pointer-events-none absolute bottom-[10%] left-[40%] h-64 w-64 rounded-full bg-primaryBlue opacity-[7%] blur-3xl sm:h-[60vw] sm:w-[60vw] lg:left-[50%] lg:h-1/2 lg:w-1/2'></div>
 				)}
 			</motion.div>
 			<div
@@ -107,42 +101,34 @@ function Welcome({ darkMode }) {
 							development.
 						</span>
 					</h2>
-					<div
-						id='continueButtonFlexContainer'
-						className='mt-16 max-w-3xl'
+					<motion.button
+						id='welcomeContinueButton'
+						className='buttonContainer mt-16 flex max-w-fit'
+						whileHover={{ scale: 1.25 }}
+						whileTap={{ scale: 1.1 }}
+						onClick={() => {
+							document
+								.getElementById('aboutContainer')
+								.scrollIntoView({ behavior: 'smooth' })
+						}}
 					>
-						<motion.button
-							id='welcomeContinueButton'
-							className='buttonContainer flex'
-							whileHover={{ scale: 1.25 }}
-							whileTap={{ scale: 1.1 }}
-							onClick={() => {
-								document
-									.getElementById('aboutContainer')
-									.scrollIntoView({ behavior: 'smooth' })
-							}}
-						>
-							<div className='relative h-4 w-8'>
-								<div className='buttonArrowContainer'>
-									<Image
-										src={scrollDown}
-										alt='continue to About section'
-										width={19}
-										height={10}
-										className='rotate-180 opacity-20 dark:invert'
-									/>
-								</div>
+						<div className='relative h-4 w-8'>
+							<div className='buttonArrowContainer'>
+								<Image
+									src={scrollDown}
+									alt='continue to About section'
+									width={19}
+									height={10}
+									className='rotate-180 opacity-20 dark:invert'
+								/>
 							</div>
-							<p className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'>
-								Continue
-							</p>
-						</motion.button>
-					</div>
+						</div>
+						<p className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'>
+							Continue
+						</p>
+					</motion.button>
 				</motion.div>
-				<div
-					id='svgPhotoContainer'
-					className='relative hidden h-full min-w-0 max-w-xl items-center justify-center overflow-visible dark:text-black sm:flex'
-				>
+				<div className='flex items-center'>
 					<SvgPhoto darkMode={darkMode} />
 				</div>
 			</div>

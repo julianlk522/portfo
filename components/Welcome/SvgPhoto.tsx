@@ -54,7 +54,8 @@ const SvgPhoto = ({ darkMode }) => {
 
 	return (
 		<motion.svg
-			className='h-full max-h-[40vh] w-min min-w-0 overflow-visible text-primaryBlue'
+			id='svgPhoto'
+			className='hidden h-full max-h-[40vh] max-w-xl  text-primaryBlue dark:text-black sm:block'
 			xmlns='http://www.w3.org/2000/svg'
 			fillRule='evenodd'
 			clipRule='evenodd'
