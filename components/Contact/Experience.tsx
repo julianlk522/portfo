@@ -186,7 +186,7 @@ function Experience({ darkMode }) {
 			</motion.div>
 			<motion.button
 				id='navigateToTopLg'
-				className='ml-32 hidden w-auto items-center justify-between self-start rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg lg:tall:flex'
+				className='buttonContainer ml-32 hidden self-start lg:tall:flex'
 				//	override space-y class on parent
 				style={{ marginBottom: '2rem' }}
 				whileHover={{ scale: 1.25 }}
@@ -201,10 +201,7 @@ function Experience({ darkMode }) {
 				}
 			>
 				<div className='relative ml-4 h-4 w-8'>
-					<div
-						id='topArrowContainerLg'
-						className='absolute top-[-50%] h-full w-full'
-					>
+					<div className='absolute top-[-50%] h-full w-full'>
 						<Image
 							src={scrollUp}
 							alt='scroll to the top'
@@ -213,13 +210,10 @@ function Experience({ darkMode }) {
 							className='opacity-20 dark:invert'
 						/>
 					</div>
-					<div
-						id='bottomArrowContainerLg'
-						className='absolute top-0 h-full w-full'
-					>
+					<div className='absolute top-0 h-full w-full'>
 						<Image
 							src={scrollUp}
-							alt='secondary image for scroll button'
+							alt='secondary image for scroll up button'
 							width={19}
 							height={10}
 							className='opacity-10 dark:invert'

@@ -108,10 +108,7 @@ export default function Contact({ darkMode }) {
 						}
 					>
 						<div className='relative ml-4 h-4 w-8'>
-							<div
-								id='topArrowContainerSm'
-								className='absolute top-[-50%] h-full w-full'
-							>
+							<div className='absolute top-[-50%] h-full w-full'>
 								<Image
 									src={scrollUp}
 									alt='scroll to the top'
@@ -120,20 +117,17 @@ export default function Contact({ darkMode }) {
 									className='opacity-20 dark:invert'
 								/>
 							</div>
-							<div
-								id='bottomArrowContainerSm'
-								className='absolute top-0 h-full w-full'
-							>
+							<div className='absolute top-0 h-full w-full'>
 								<Image
 									src={scrollUp}
-									alt='secondary image for scroll button'
+									alt='secondary image for scroll up button'
 									width={19}
 									height={10}
 									className='opacity-10 dark:invert'
 								/>
 							</div>
 						</div>
-						<p className='ml-4 w-full text-xs dark:text-white lg:text-[0.6rem] 2xl:text-xs'>
+						<p className='ml-4 w-full text-xs dark:text-white lg:text-sm 2xl:text-base'>
 							Navigate to top
 						</p>
 					</motion.button>

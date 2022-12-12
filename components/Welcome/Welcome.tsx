@@ -1,7 +1,6 @@
 import React from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
-import scrollDown from '../../public/scrollUp.webp'
+import ScrollButton from '../ScrollButton'
 import SvgPhoto from './SvgPhoto'
 
 function Welcome({ darkMode }) {
@@ -101,32 +100,7 @@ function Welcome({ darkMode }) {
 							development.
 						</span>
 					</h2>
-					<motion.button
-						id='welcomeContinueButton'
-						className='buttonContainer mt-16 flex max-w-fit'
-						whileHover={{ scale: 1.25 }}
-						whileTap={{ scale: 1.1 }}
-						onClick={() => {
-							document
-								.getElementById('about')
-								.scrollIntoView({ behavior: 'smooth' })
-						}}
-					>
-						<div className='relative h-4 w-8'>
-							<div className='buttonArrowContainer'>
-								<Image
-									src={scrollDown}
-									alt='continue to About section'
-									width={19}
-									height={10}
-									className='rotate-180 opacity-20 dark:invert'
-								/>
-							</div>
-						</div>
-						<p className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'>
-							Continue
-						</p>
-					</motion.button>
+					<ScrollButton section='about' styles='mt-16' />
 				</motion.div>
 				<div className='flex items-center'>
 					<SvgPhoto darkMode={darkMode} />

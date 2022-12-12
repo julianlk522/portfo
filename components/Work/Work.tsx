@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react'
-import scrollUp from '../../public/scrollUp.webp'
-import Image from 'next/image'
 import { motion, useAnimationControls, useInView } from 'framer-motion'
 import ProjectsGrid from './ProjectsGrid/ProjectsGrid'
+import ScrollButton from '../ScrollButton'
 import styles from './Work.module.css'
 
 export default function Work({ darkMode }) {
@@ -30,13 +29,13 @@ export default function Work({ darkMode }) {
 	}, [containerFullyInView, bgEffectControls])
 
 	useEffect(() => {
-		const containerScrollTimeout = setTimeout(() => {
+		const textScrollTimeout = setTimeout(() => {
 			if (!containerFullyInView) {
 				gridAndSideTextWrapperRef.current.scrollTop = 0
 			}
 		}, 3000)
 
-		return () => clearTimeout(containerScrollTimeout)
+		return () => clearTimeout(textScrollTimeout)
 	}, [containerFullyInView])
 
 	const bgEffectVariants = {
@@ -143,33 +142,7 @@ export default function Work({ darkMode }) {
 						Hover over a project to learn more!
 					</motion.p>
 
-					<motion.button
-						id='workScrollDownButtonLg'
-						className='buttonContainer hidden lg:flex'
-						variants={textBodyChildVariants}
-						whileHover={{ scale: 1.25 }}
-						whileTap={{ scale: 1.1 }}
-						onClick={() =>
-							document
-								.getElementById('contact')
-								.scrollIntoView({ behavior: 'smooth' })
-						}
-					>
-						<div className='relative h-4 w-8'>
-							<div className='buttonArrowContainer'>
-								<Image
-									src={scrollUp}
-									alt='continue to Contact section'
-									width={19}
-									height={10}
-									className='rotate-180 opacity-20 dark:invert'
-								/>
-							</div>
-						</div>
-						<p className='ml-4 w-min text-xs lg:text-[0.6rem] 2xl:text-xs'>
-							Continue
-						</p>
-					</motion.button>
+					<ScrollButton section='contact' styles='hidden lg:flex' />
 				</motion.div>
 				<ProjectsGrid gridMemberControls={gridMemberControls} />
 			</div>

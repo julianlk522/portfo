@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
@@ -10,7 +9,7 @@ import {
 import SkillRow from './SkillsRow'
 import SkillsCurlyBraces from './SkillsCurlyBraces'
 import SkillsEllipsis from './SkillsEllipsis'
-import scrollDown from '../../public/scrollUp.webp'
+import ScrollButton from '../ScrollButton'
 
 function Skills({ darkMode }) {
 	const { scrollYProgress } = useScroll()
@@ -66,12 +65,12 @@ function Skills({ darkMode }) {
 				</motion.h2>
 				<div
 					ref={bracesWidthRef}
-					id='bracesContainer'
+					id='bracesWrapper'
 					className='relative flex flex-col lg:max-w-[80%] lg:self-center lg:text-center 2xl:max-w-[60%]'
 				>
 					<SkillsCurlyBraces closing={false} />
 					<div
-						id='bracesOverflowContainer'
+						id='bracesOverflowWrapper'
 						className={`flex h-full w-full flex-col overflow-hidden border-dotted border-x-black border-opacity-5 ${
 							darkMode ? '' : 'border-x-[1px]'
 						}`}
@@ -93,63 +92,14 @@ function Skills({ darkMode }) {
 								bracesWidth={bracesWidth}
 							/>
 						</div>
-						<motion.button
-							id='skillsScrollDownButtonSm'
-							className='buttonContainer mb-16 mt-8 mr-8 flex self-center sm:mr-16 lg:hidden tall:mt-16'
-							whileHover={{ scale: 1.25 }}
-							whileTap={{ scale: 1.1 }}
-							onClick={() => {
-								document
-									.getElementById('work')
-									.scrollIntoView({ behavior: 'smooth' })
-							}}
-						>
-							<div className='relative h-4 w-8'>
-								<div className='buttonArrowContainer'>
-									<Image
-										src={scrollDown}
-										alt='continue to Work section'
-										width={19}
-										height={10}
-										className='rotate-180 opacity-20 dark:invert'
-									/>
-								</div>
-							</div>
-							<motion.p className='ml-4 w-min text-xs lg:text-[0.6rem] xl:text-xs'>
-								Continue
-							</motion.p>
-						</motion.button>
 					</div>
 					<SkillsCurlyBraces closing />
 					<SkillsEllipsis />
 				</div>
-				<motion.button
-					id='skillsScrollDownButtonLg'
-					className='buttonContainer mt-8 mb-16 hidden self-center lg:flex'
-					style={{ width: 'min-content' }}
-					whileHover={{ scale: 1.25 }}
-					whileTap={{ scale: 1.1 }}
-					onClick={() => {
-						document
-							.getElementById('work')
-							.scrollIntoView({ behavior: 'smooth' })
-					}}
-				>
-					<div className='relative h-4 w-8'>
-						<div className='buttonArrowContainer'>
-							<Image
-								src={scrollDown}
-								alt='continue to Work section'
-								width={19}
-								height={10}
-								className='rotate-180 opacity-20 dark:invert'
-							/>
-						</div>
-					</div>
-					<motion.p className='ml-4 w-min text-xs lg:text-[0.6rem] xl:text-xs'>
-						Continue
-					</motion.p>
-				</motion.button>
+				<ScrollButton
+					section='work'
+					styles='mb-16 mt-8 mr-8 lg:mr-0 self-center sm:mr-16 tall:mt-16 lg:tall:mt-8'
+				/>
 			</div>
 		</motion.section>
 	)

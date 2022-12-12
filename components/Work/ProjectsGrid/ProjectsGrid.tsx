@@ -1,9 +1,7 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import scrollUp from '../../../public/scrollUp.webp'
-import ProjectGridMember from './ProjectGridMember'
 import projectsData from './ProjectData'
+import ProjectGridMember from './ProjectGridMember'
+import ScrollButton from '../../ScrollButton'
 
 function ProjectsGrid({ gridMemberControls }) {
 	return (
@@ -56,33 +54,7 @@ function ProjectsGrid({ gridMemberControls }) {
 			>
 				This page uses Next.js, Tailwind CSS and Framer Motion
 			</p>
-			<motion.button
-				id='workScrollDownButtonSm'
-				className='relative my-16 flex w-min items-center justify-between rounded-lg border-[1px] border-slate-700 border-opacity-5 bg-slate-300 bg-opacity-5 p-4 shadow-lg dark:text-white lg:hidden'
-				whileHover={{ scale: 1.25 }}
-				whileTap={{ scale: 1.1 }}
-				onClick={() => {
-					document
-						.getElementById('contact')
-						.scrollIntoView({ behavior: 'smooth' })
-				}}
-			>
-				<div className='relative h-4 w-8'>
-					<div
-						id='primaryArrowContainer'
-						className='absolute top-[-25%] h-full w-full'
-					>
-						<Image
-							src={scrollUp}
-							alt='scroll to the top'
-							width={19}
-							height={10}
-							className='rotate-180 opacity-20 dark:invert'
-						/>
-					</div>
-				</div>
-				<p className='ml-4 w-min text-xs'>Continue</p>
-			</motion.button>
+			<ScrollButton section='contact' styles='lg:hidden my-16' />
 		</div>
 	)
 }

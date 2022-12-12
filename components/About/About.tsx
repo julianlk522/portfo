@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import styles from './About.module.css'
 import PhotoSection from './PhotoSection'

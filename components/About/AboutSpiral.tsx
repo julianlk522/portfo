@@ -1,10 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-function AboutSpiral({ darkMode, spiralControls, handControls }) {
+function AboutSpiral({ darkMode, spiralControls }) {
 	const spiralVariants = {
-		initial: { strokeWidth: 0, pathLength: 0 },
-		hidden: { strokeWidth: 0 },
+		hidden: { strokeWidth: 0, strokeOpacity: 0, pathLength: 0 },
 		visible: {
 			strokeWidth: [null, 10, 0, 5, null],
 			pathLength: 1,
@@ -32,12 +31,9 @@ function AboutSpiral({ darkMode, spiralControls, handControls }) {
 				strokeOpacity={darkMode ? '0.05' : '0.1'}
 				strokeWidth='0'
 				strokeLinecap='round'
-				initial='initial'
+				initial='hidden'
 				animate={spiralControls}
 				variants={spiralVariants}
-				onAnimationComplete={() => {
-					handControls.start('waving')
-				}}
 			/>
 		</motion.svg>
 	)
