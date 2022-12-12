@@ -142,7 +142,11 @@ export default function Work({ darkMode }) {
 						Hover over a project to learn more!
 					</motion.p>
 
-					<ScrollButton section='contact' styles='hidden lg:flex' />
+					<ScrollButton
+						section='contact'
+						styles='hidden lg:flex'
+						variants={textBodyChildVariants}
+					/>
 				</motion.div>
 				<ProjectsGrid gridMemberControls={gridMemberControls} />
 			</div>
