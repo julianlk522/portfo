@@ -4,7 +4,7 @@ import { StaticImageData } from 'next/image'
 import framer from '../../public/skillsIcons/framer.webp'
 import cypress from '../../public/skillsIcons/cypress.webp'
 
-// HTML5 CSS3, JavaScript, TypeScript, React.js, TailwindCSS, MySQL, Git, Node, Docker, PHP, MongoDB, Figma, Next.js, Jest, D3.js, CommandLine, Netlify, Firebase, Kubernetes, Jenkins, Audio, Angular, GraphQL and Blender icons from icons8.com
+// HTML5 CSS3, JavaScript, TypeScript, React.js, TailwindCSS, MySQL, Git, Node, Docker, PHP, MongoDB, Figma, Next.js, Jest, D3.js, CommandLine, Netlify, Firebase, Kubernetes, Audio, Angular, GraphQL, Blender, Svelte, Spring Boot icons from icons8.com
 import html from '../../public/skillsIcons/html.webp'
 import css from '../../public/skillsIcons/css.webp'
 import js from '../../public/skillsIcons/js.webp'
@@ -26,11 +26,12 @@ import netlify from '../../public/skillsIcons/netlify.webp'
 import railway from '../../public/skillsIcons/railway.webp'
 import firebase from '../../public/skillsIcons/firebase.webp'
 import kubernetes from '../../public/skillsIcons/kubernetes.webp'
-import jenkins from '../../public/skillsIcons/jenkins.webp'
 import audio from '../../public/skillsIcons/audio.webp'
 import angular from '../../public/skillsIcons/angular.webp'
 import graphql from '../../public/skillsIcons/graphql.webp'
 import blender from '../../public/skillsIcons/blender.webp'
+import svelte from '../../public/skillsIcons/svelte.webp'
+import sb from '../../public/skillsIcons/spring-boot.webp'
 
 //  Express icon from https://icon-icons.com/download/169185/PNG/128/
 import express from '../../public/skillsIcons/express.webp'
@@ -40,6 +41,9 @@ import threejs from '../../public/skillsIcons/threejs.webp'
 
 //  React Query icon from https://seeklogo.com/vector-logo/435661/react-query
 import reactQuery from '../../public/skillsIcons/reactQuery.webp'
+
+// Astro.js icon from https://seeklogo.com/vector-logo/428045/astro
+import astro from '../../public/skillsIcons/astro.webp'
 
 export interface SkillInterface {
 	src: StaticImageData
@@ -147,6 +151,10 @@ export const mediumSkillsData: SkillInterface[] = [
 		text: 'Angular',
 	},
 	{
+		src: sb,
+		text: 'Spring Boot',
+	},
+	{
 		src: audio,
 		text: 'Web Audio API',
 	},
@@ -154,20 +162,16 @@ export const mediumSkillsData: SkillInterface[] = [
 
 export const futureSkillsData: SkillInterface[] = [
 	{
-		src: graphql,
-		text: 'GraphQL',
+		src: svelte,
+		text: 'Svelte',
+	},
+	{
+		src: astro,
+		text: '',
 	},
 	{
 		src: reactQuery,
 		text: 'React Query',
-	},
-	{
-		src: jenkins,
-		text: 'Jenkins',
-	},
-	{
-		src: kubernetes,
-		text: 'Kubernetes',
 	},
 	{
 		src: threejs,
@@ -176,5 +180,13 @@ export const futureSkillsData: SkillInterface[] = [
 	{
 		src: blender,
 		text: 'Blender',
+	},
+	{
+		src: graphql,
+		text: 'GraphQL',
+	},
+	{
+		src: kubernetes,
+		text: 'Kubernetes',
 	},
 ]
