@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import ScrollButton from '../ScrollButton'
 import SvgPhoto from './SvgPhoto'
 
 function Welcome({ darkMode }) {
+	const scrollRef = useRef(null)
 	const { scrollYProgress } = useScroll()
 	const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [1, 0])
 	const showLightModeBg = useTransform(
@@ -13,6 +14,7 @@ function Welcome({ darkMode }) {
 
 	return (
 		<motion.section
+			ref={scrollRef}
 			id='welcome'
 			className='relative h-screen overflow-hidden px-16 text-stone-600 dark:text-white'
 			style={{
@@ -100,7 +102,11 @@ function Welcome({ darkMode }) {
 							development.
 						</span>
 					</h2>
-					<ScrollButton section='about' styles='mt-16' />
+					<ScrollButton
+						section='about'
+						styles='mt-16'
+						scrollRef={scrollRef}
+					/>
 				</motion.div>
 				<div className='flex items-center'>
 					<SvgPhoto darkMode={darkMode} />

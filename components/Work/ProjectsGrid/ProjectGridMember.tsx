@@ -94,6 +94,12 @@ function ProjectGridMember({
 				stackTextControls.set('hidden')
 				setStackItemIndex((prev) => prev + 1)
 			}}
+			onFocus={() => {
+				setGridMemberHovered(true)
+			}}
+			onBlur={() => {
+				setGridMemberHovered(false)
+			}}
 			variants={gridMemberVariants}
 			initial='initial'
 			animate={gridMemberControls}

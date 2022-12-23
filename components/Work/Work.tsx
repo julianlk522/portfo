@@ -146,6 +146,7 @@ export default function Work({ darkMode }) {
 						section='contact'
 						styles='hidden lg:flex'
 						variants={textBodyChildVariants}
+						scrollRef={workWrapperRef}
 					/>
 				</motion.div>
 				<ProjectsGrid gridMemberControls={gridMemberControls} />

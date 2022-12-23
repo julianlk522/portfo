@@ -6,6 +6,7 @@ import AboutSpiral from './AboutSpiral'
 import ScrollButton from '../ScrollButton'
 
 function PhotoSection({ containerInView, darkMode }) {
+	const scrollRef = useRef(null)
 	const spiralControls = useAnimationControls()
 	const photoSectionVariants = {
 		initial: {
@@ -32,6 +33,7 @@ function PhotoSection({ containerInView, darkMode }) {
 
 	return (
 		<motion.div
+			ref={scrollRef}
 			id='photoSection'
 			className='relative flex w-full flex-col items-center justify-center pb-16 md:pb-0'
 			variants={photoSectionVariants}
@@ -78,6 +80,7 @@ function PhotoSection({ containerInView, darkMode }) {
 					spiralControls.stop()
 					spiralControls.set('hidden')
 				}}
+				scrollRef={scrollRef}
 			/>
 		</motion.div>
 	)

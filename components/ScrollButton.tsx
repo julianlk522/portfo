@@ -8,6 +8,7 @@ interface ScrollButtonInterface {
 	styles?: string
 	variants?: Variants
 	clickEvent?: () => void
+	scrollRef?: React.MutableRefObject<any>
 }
 
 function ScrollButton({
@@ -15,6 +16,7 @@ function ScrollButton({
 	styles,
 	variants,
 	clickEvent,
+	scrollRef,
 }: ScrollButtonInterface) {
 	return (
 		<motion.button
@@ -28,6 +30,7 @@ function ScrollButton({
 					.getElementById(section)
 					.scrollIntoView({ behavior: 'smooth' })
 			}}
+			onFocus={() => scrollRef && scrollRef.current.scrollIntoView()}
 		>
 			<div className='relative h-4 w-8'>
 				<div className='buttonArrowContainer'>

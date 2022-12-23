@@ -12,6 +12,7 @@ import SkillsEllipsis from './SkillsEllipsis'
 import ScrollButton from '../ScrollButton'
 
 function Skills({ darkMode }) {
+	const scrollRef = useRef(null)
 	const { scrollYProgress } = useScroll()
 	const opacityTransform = useTransform(
 		scrollYProgress,
@@ -31,6 +32,7 @@ function Skills({ darkMode }) {
 
 	return (
 		<motion.section
+			ref={scrollRef}
 			id='skills'
 			className='relative flex h-screen w-screen flex-col items-center justify-center overflow-hidden pl-8 pt-24 text-stone-600 dark:text-white sm:pl-16 lg:px-16'
 			style={{
@@ -99,6 +101,7 @@ function Skills({ darkMode }) {
 				<ScrollButton
 					section='work'
 					styles='mb-16 mt-8 mr-8 lg:mr-0 self-center sm:mr-16 tall:mt-16 lg:tall:mt-8'
+					scrollRef={scrollRef}
 				/>
 			</div>
 		</motion.section>

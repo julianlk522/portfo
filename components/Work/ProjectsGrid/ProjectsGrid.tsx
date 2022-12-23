@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import projectsData from './ProjectData'
 import ProjectGridMember from './ProjectGridMember'
 import ScrollButton from '../../ScrollButton'
 
 function ProjectsGrid({ gridMemberControls }) {
+	const scrollRef = useRef(null)
 	return (
 		<div
+			ref={scrollRef}
 			id='gridContent'
 			className='m-auto flex h-auto w-full flex-col items-center justify-between self-start overflow-x-visible sm:overflow-y-scroll md:h-full lg:overflow-visible'
 		>
@@ -54,7 +56,11 @@ function ProjectsGrid({ gridMemberControls }) {
 			>
 				This page uses Next.js, Tailwind CSS and Framer Motion
 			</p>
-			<ScrollButton section='contact' styles='lg:hidden my-16' />
+			<ScrollButton
+				section='contact'
+				styles='lg:hidden my-16'
+				scrollRef={scrollRef}
+			/>
 		</div>
 	)
 }
