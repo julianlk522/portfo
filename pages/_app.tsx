@@ -4,7 +4,7 @@ import { motion, useScroll, AnimatePresence } from 'framer-motion'
 import '../styles/globals.css'
 import { Toaster } from 'react-hot-toast'
 import Navbar from '../components/Navbar/Navbar'
-import NavDropdownButton from '../components/Navbar/NavDropdownButton'
+import DropdownButton from '../components/Navbar/DropdownButton'
 import DropdownMenu from '../components/Navbar/DropdownMenu'
 
 function MyApp({ Component, pageProps }) {
@@ -196,9 +196,10 @@ function MyApp({ Component, pageProps }) {
 					<DropdownMenu setShowDropdown={setShowDropdown} />
 				)}
 			</AnimatePresence>
-			<NavDropdownButton
+			<DropdownButton
 				showDropdown={showDropdown}
 				setShowDropdown={setShowDropdown}
+				setNavVisible={setNavVisible}
 			/>
 		</>
 	)

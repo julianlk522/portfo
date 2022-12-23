@@ -1,8 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import styles from './NavDropdownButton.module.css'
+import styles from './DropdownButton.module.css'
 
-const NavDropdownButton = ({ showDropdown, setShowDropdown }) => {
+const DropdownButton = ({ showDropdown, setShowDropdown, setNavVisible }) => {
 	const circleVariants = {
 		menuShown: {
 			opacity: 0,
@@ -17,9 +17,11 @@ const NavDropdownButton = ({ showDropdown, setShowDropdown }) => {
 
 	return (
 		<motion.svg
+			id='dropdownToggleButton'
 			className={`fixed top-5 right-8 z-[2] flex h-6 w-6 cursor-pointer dark:text-white sm:right-16 ${
 				showDropdown ? 'text-white' : 'opacity-60'
 			}`}
+			tabIndex={3}
 			xmlns='http://www.w3.org/2000/svg'
 			shapeRendering='geometricPrecision'
 			textRendering='geometricPrecision'
@@ -33,6 +35,15 @@ const NavDropdownButton = ({ showDropdown, setShowDropdown }) => {
 			initial='menuHidden'
 			animate={showDropdown ? 'menuShown' : 'menuHidden'}
 			onClick={() => setShowDropdown((prev) => !prev)}
+			onKeyDown={(e: React.KeyboardEvent) => {
+				if (e.code === 'Enter' || e.code === 'Space') {
+					e.preventDefault()
+					setShowDropdown((prev) => !prev)
+				} else if (e.code === 'Escape' && showDropdown) {
+					setShowDropdown(false)
+				}
+			}}
+			onFocus={() => setNavVisible(true)}
 		>
 			<motion.circle
 				variants={circleVariants}
@@ -109,4 +120,4 @@ const NavDropdownButton = ({ showDropdown, setShowDropdown }) => {
 	)
 }
 
-export default NavDropdownButton
+export default DropdownButton

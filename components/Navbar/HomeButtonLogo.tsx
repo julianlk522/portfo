@@ -17,6 +17,7 @@ const HomeButtonLogo = ({ darkMode, footer = false }) => {
 						? 'rgb(255 255 255 / 20%) 0px 0px 8px'
 						: 'rgb(0 0 0 / 20%) 0px 0px 20px',
 			}}
+			tabIndex={1}
 			transition={{ type: 'tween' }}
 		>
 			<svg
@@ -55,7 +56,12 @@ const HomeButtonLogo = ({ darkMode, footer = false }) => {
 					stroke='currentColor'
 					strokeWidth={20}
 				></path>
-				<a href='https://julianlk.com' target='_self' rel='noreferrer'>
+				<a
+					aria-label='Home'
+					href='https://julianlk.com'
+					target='_self'
+					rel='noreferrer'
+				>
 					<rect
 						x='0'
 						y='0'

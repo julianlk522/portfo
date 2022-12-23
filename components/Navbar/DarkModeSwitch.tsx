@@ -2,20 +2,29 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 function DarkModeSwitch({ darkMode, setDarkMode }) {
+	function toggleDarkMode() {
+		setDarkMode((prev: boolean) => !prev)
+		if (!darkMode) {
+			localStorage.setItem('theme', 'dark')
+			document.documentElement.classList.add('dark')
+		} else {
+			localStorage.setItem('theme', 'light')
+			document.documentElement.classList.remove('dark')
+		}
+	}
+
 	return (
-		<li
+		<div
 			id='darkModeSwitchContainer'
 			className='mr-4 flex items-center justify-evenly sm:mr-20'
-			onClick={() => {
-				setDarkMode((prev: boolean) => !prev)
-				if (!darkMode) {
-					localStorage.setItem('theme', 'dark')
-					document.documentElement.classList.add('dark')
-				} else {
-					localStorage.setItem('theme', 'light')
-					document.documentElement.classList.remove('dark')
+			tabIndex={2}
+			onKeyDown={(e: React.KeyboardEvent) => {
+				if (e.code === 'Enter' || e.code === 'Space') {
+					e.preventDefault()
+					toggleDarkMode()
 				}
 			}}
+			onClick={toggleDarkMode}
 		>
 			<span className='flex h-6 w-6 items-center justify-center text-xs lg:text-lg'>
 				{darkMode ? '🌙' : '🔆'}
@@ -34,7 +43,7 @@ function DarkModeSwitch({ darkMode, setDarkMode }) {
 					className='h-6 w-6 cursor-pointer rounded-full bg-slate-100'
 				></motion.div>
 			</motion.div>
-		</li>
+		</div>
 	)
 }
 

@@ -40,6 +40,11 @@ function DropdownMenu({ setShowDropdown }) {
 			initial='hidden'
 			animate='visible'
 			exit='hidden'
+			onKeyDown={(e: React.KeyboardEvent) => {
+				if (e.code === 'Escape') {
+					setShowDropdown(false)
+				}
+			}}
 		>
 			<ul
 				id='dropdownLocalLinks'
@@ -47,6 +52,7 @@ function DropdownMenu({ setShowDropdown }) {
 			>
 				<motion.li
 					variants={linkVariants}
+					tabIndex={4}
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
 				>
@@ -56,6 +62,7 @@ function DropdownMenu({ setShowDropdown }) {
 				</motion.li>
 				<motion.li
 					variants={linkVariants}
+					tabIndex={5}
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
 				>
@@ -65,6 +72,7 @@ function DropdownMenu({ setShowDropdown }) {
 				</motion.li>
 				<motion.li
 					variants={linkVariants}
+					tabIndex={6}
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
 				>
@@ -74,6 +82,7 @@ function DropdownMenu({ setShowDropdown }) {
 				</motion.li>
 				<motion.li
 					variants={linkVariants}
+					tabIndex={7}
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
 				>
@@ -89,7 +98,11 @@ function DropdownMenu({ setShowDropdown }) {
 				id='dropdownRemoteLinks'
 				className='flex h-[40%] flex-col items-center justify-center gap-8'
 			>
-				<motion.li variants={linkVariants} whileHover={{ scale: 1.2 }}>
+				<motion.li
+					variants={linkVariants}
+					tabIndex={8}
+					whileHover={{ scale: 1.2 }}
+				>
 					<a
 						href='https://github.com/julianlk522'
 						target='_blank'
@@ -98,7 +111,11 @@ function DropdownMenu({ setShowDropdown }) {
 						Github
 					</a>
 				</motion.li>
-				<motion.li variants={linkVariants} whileHover={{ scale: 1.2 }}>
+				<motion.li
+					variants={linkVariants}
+					tabIndex={9}
+					whileHover={{ scale: 1.2 }}
+				>
 					<a
 						href='https://docs.google.com/document/d/e/2PACX-1vQfJyEmppuH3zko7vjioYFQe3ZBsEva8x0kWg8kL-ASaeDoCh5sysfEJus9H61_3Smvub8fXZiN-beA/pub'
 						target='_blank'
@@ -107,7 +124,19 @@ function DropdownMenu({ setShowDropdown }) {
 						Resume
 					</a>
 				</motion.li>
-				<motion.li variants={linkVariants} whileHover={{ scale: 1.2 }}>
+				<motion.li
+					variants={linkVariants}
+					tabIndex={10}
+					onKeyDown={(e: React.KeyboardEvent) => {
+						if (e.code === 'Tab') {
+							e.preventDefault()
+							document
+								.getElementById('dropdownToggleButton')
+								?.focus()
+						}
+					}}
+					whileHover={{ scale: 1.2 }}
+				>
 					<a
 						href='https://www.linkedin.com/in/julian-lindsay-kaufman-4572a8157/'
 						target='_blank'
