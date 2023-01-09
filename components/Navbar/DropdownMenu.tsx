@@ -112,17 +112,12 @@ function DropdownMenu({ setShowDropdown }) {
 					</a>
 				</motion.li>
 				<motion.li
-					variants={linkVariants}
 					tabIndex={9}
+					onClick={() => setShowDropdown(false)}
+					variants={linkVariants}
 					whileHover={{ scale: 1.2 }}
 				>
-					<a
-						href='https://docs.google.com/document/d/e/2PACX-1vQfJyEmppuH3zko7vjioYFQe3ZBsEva8x0kWg8kL-ASaeDoCh5sysfEJus9H61_3Smvub8fXZiN-beA/pub'
-						target='_blank'
-						rel='noreferrer'
-					>
-						Resume
-					</a>
+					<Link href='/resume.pdf'>Resume</Link>
 				</motion.li>
 				<motion.li
 					variants={linkVariants}
