@@ -15,10 +15,7 @@ function Footer({ darkMode }) {
 					{sections.map((section, i) => {
 						return (
 							<li key={i}>
-								<Link
-									href={`/#${section}Container`}
-									scroll={false}
-								>
+								<Link href={`/#${section}`} scroll={false}>
 									{section.at(0).toUpperCase() +
 										section.slice(1)}
 								</Link>
