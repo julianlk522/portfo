@@ -95,10 +95,20 @@ function ProjectGridMember({
 				setStackItemIndex((prev) => prev + 1)
 			}}
 			onFocus={() => {
-				setGridMemberHovered(true)
+				if (!gridMemberHovered) {
+					setGridMemberHovered(true)
+					stackTextControls.start('flicker')
+				}
 			}}
 			onBlur={() => {
-				setGridMemberHovered(false)
+				if (
+					!document.querySelector('.projectGridMember :focus-within')
+				) {
+					setGridMemberHovered(false)
+					stackTextControls.stop()
+					stackTextControls.set('hidden')
+					setStackItemIndex((prev) => prev + 1)
+				}
 			}}
 			variants={gridMemberVariants}
 			initial='initial'
