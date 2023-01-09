@@ -4,7 +4,7 @@ import { StaticImageData } from 'next/image'
 import framer from '../../public/skillsIcons/framer.webp'
 import cypress from '../../public/skillsIcons/cypress.webp'
 
-// HTML5 CSS3, JavaScript, TypeScript, React.js, TailwindCSS, MySQL, Git, Node, Docker, PHP, MongoDB, Figma, Next.js, Jest, D3.js, CommandLine, Netlify, Firebase, Kubernetes, Audio, Angular, GraphQL, Blender, Svelte, Spring Boot icons from icons8.com
+// HTML5 CSS3, JavaScript, TypeScript, React.js, TailwindCSS, MySQL, Git, Node, Docker, PHP, MongoDB, Figma, Next.js, Jest, D3.js, CommandLine, Netlify, Firebase, Audio, Angular, GraphQL, Svelte, Spring Boot icons from icons8.com
 import html from '../../public/skillsIcons/html.webp'
 import css from '../../public/skillsIcons/css.webp'
 import js from '../../public/skillsIcons/js.webp'
@@ -25,11 +25,9 @@ import commandLine from '../../public/skillsIcons/commandLine.webp'
 import netlify from '../../public/skillsIcons/netlify.webp'
 import railway from '../../public/skillsIcons/railway.webp'
 import firebase from '../../public/skillsIcons/firebase.webp'
-import kubernetes from '../../public/skillsIcons/kubernetes.webp'
 import audio from '../../public/skillsIcons/audio.webp'
 import angular from '../../public/skillsIcons/angular.webp'
 import graphql from '../../public/skillsIcons/graphql.webp'
-import blender from '../../public/skillsIcons/blender.webp'
 import svelte from '../../public/skillsIcons/svelte.webp'
 import sb from '../../public/skillsIcons/spring-boot.webp'
 
@@ -178,15 +176,7 @@ export const futureSkillsData: SkillInterface[] = [
 		text: 'Three.js',
 	},
 	{
-		src: blender,
-		text: 'Blender',
-	},
-	{
 		src: graphql,
 		text: 'GraphQL',
-	},
-	{
-		src: kubernetes,
-		text: 'Kubernetes',
 	},
 ]
