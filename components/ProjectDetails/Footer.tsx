@@ -42,13 +42,7 @@ function Footer({ darkMode }) {
 					<li className='mx-4 hidden opacity-20 md:block'>|</li>
 					<hr className='block h-1 w-1/4 opacity-20 md:hidden' />
 					<li>
-						<a
-							href='https://docs.google.com/document/d/e/2PACX-1vQfJyEmppuH3zko7vjioYFQe3ZBsEva8x0kWg8kL-ASaeDoCh5sysfEJus9H61_3Smvub8fXZiN-beA/pub'
-							target='_blank'
-							rel='noreferrer'
-						>
-							Resume
-						</a>
+						<Link href='/resume.pdf'>Resume</Link>
 					</li>
 				</ul>
 			</div>

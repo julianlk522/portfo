@@ -55,6 +55,12 @@ function DropdownMenu({ setShowDropdown }) {
 					tabIndex={4}
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
+					onKeyDown={(e: React.KeyboardEvent) => {
+						if (e.code === 'Enter') {
+							setShowDropdown(false)
+							document.getElementById('about').scrollIntoView()
+						}
+					}}
 				>
 					<Link href='/#about' scroll={false}>
 						About
@@ -65,6 +71,12 @@ function DropdownMenu({ setShowDropdown }) {
 					tabIndex={5}
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
+					onKeyDown={(e: React.KeyboardEvent) => {
+						if (e.code === 'Enter') {
+							setShowDropdown(false)
+							document.getElementById('skills').scrollIntoView()
+						}
+					}}
 				>
 					<Link href='/#skills' scroll={false}>
 						Skills
@@ -75,6 +87,12 @@ function DropdownMenu({ setShowDropdown }) {
 					tabIndex={6}
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
+					onKeyDown={(e: React.KeyboardEvent) => {
+						if (e.code === 'Enter') {
+							setShowDropdown(false)
+							document.getElementById('work').scrollIntoView()
+						}
+					}}
 				>
 					<Link href='/#work' scroll={false}>
 						Work
@@ -85,6 +103,12 @@ function DropdownMenu({ setShowDropdown }) {
 					tabIndex={7}
 					onClick={() => setShowDropdown(false)}
 					whileHover={{ scale: 1.2 }}
+					onKeyDown={(e: React.KeyboardEvent) => {
+						if (e.code === 'Enter') {
+							setShowDropdown(false)
+							document.getElementById('contact').scrollIntoView()
+						}
+					}}
 				>
 					<Link href='/#contact' scroll={false}>
 						Contact
@@ -102,8 +126,14 @@ function DropdownMenu({ setShowDropdown }) {
 					variants={linkVariants}
 					tabIndex={8}
 					whileHover={{ scale: 1.2 }}
+					onKeyDown={(e: React.KeyboardEvent) => {
+						if (e.code === 'Enter') {
+							document.getElementById('githubLink').click()
+						}
+					}}
 				>
 					<a
+						id='githubLink'
 						href='https://github.com/julianlk522'
 						target='_blank'
 						rel='noreferrer'
@@ -113,11 +143,22 @@ function DropdownMenu({ setShowDropdown }) {
 				</motion.li>
 				<motion.li
 					tabIndex={9}
-					onClick={() => setShowDropdown(false)}
 					variants={linkVariants}
 					whileHover={{ scale: 1.2 }}
+					onKeyDown={(e: React.KeyboardEvent) => {
+						if (e.code === 'Enter') {
+							document.getElementById('resumeLink').click()
+						}
+					}}
 				>
-					<Link href='/resume.pdf'>Resume</Link>
+					<a
+						id='resumeLink'
+						href='https://julianlk.com/resume.pdf'
+						target='_blank'
+						rel='noreferrer'
+					>
+						Resume
+					</a>
 				</motion.li>
 				<motion.li
 					variants={linkVariants}
@@ -128,11 +169,14 @@ function DropdownMenu({ setShowDropdown }) {
 							document
 								.getElementById('dropdownToggleButton')
 								?.focus()
+						} else if (e.code === 'Enter') {
+							document.getElementById('linkedInLink').click()
 						}
 					}}
 					whileHover={{ scale: 1.2 }}
 				>
 					<a
+						id='linkedInLink'
 						href='https://www.linkedin.com/in/julian-lindsay-kaufman-4572a8157/'
 						target='_blank'
 						rel='noreferrer'

@@ -106,7 +106,7 @@ export default function About({ darkMode }) {
 						variants={textChildVariants}
 					>
 						Though I graduated from University of Miami with a
-						degree in Finance, I&apos;ve come to adore web
+						degree in business, I&apos;ve come to adore web
 						development for offering me endless opportunity to&nbsp;
 						<strong>build out new ideas from scratch</strong>
 						&nbsp;and try to&nbsp;
