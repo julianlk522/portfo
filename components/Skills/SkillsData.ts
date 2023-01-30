@@ -74,6 +74,10 @@ export const strongSkillsData: SkillInterface[] = [
 		text: 'Git',
 	},
 	{
+		src: commandLine,
+		text: 'Command Line',
+	},
+	{
 		src: mysql,
 		text: '',
 	},
@@ -88,10 +92,6 @@ export const strongSkillsData: SkillInterface[] = [
 ]
 
 export const mediumSkillsData: SkillInterface[] = [
-	{
-		src: commandLine,
-		text: 'Command Line',
-	},
 	{
 		src: node,
 		text: 'Node.js',
@@ -156,12 +156,16 @@ export const mediumSkillsData: SkillInterface[] = [
 		src: audio,
 		text: 'Web Audio API',
 	},
+	{
+		src: svelte,
+		text: 'Svelte',
+	},
 ]
 
 export const futureSkillsData: SkillInterface[] = [
 	{
-		src: svelte,
-		text: 'Svelte',
+		src: graphql,
+		text: 'GraphQL',
 	},
 	{
 		src: astro,
@@ -174,9 +178,5 @@ export const futureSkillsData: SkillInterface[] = [
 	{
 		src: threejs,
 		text: 'Three.js',
-	},
-	{
-		src: graphql,
-		text: 'GraphQL',
 	},
 ]
