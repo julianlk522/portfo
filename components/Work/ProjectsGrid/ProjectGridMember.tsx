@@ -19,16 +19,6 @@ const screenshots = [
 ]
 
 interface GridMemberPropsWithControls extends GridMemberProps {
-	tailwindStyles: string
-	objectPosition?: string
-	screenshotId: number
-	title: string
-	description?: string
-	altImgText: string
-	stackItems: string[]
-	ghLink: string
-	liveLink?: string
-	detailsLink?: string
 	i: number
 	gridMemberControls: AnimationControls
 }
@@ -59,6 +49,7 @@ function ProjectGridMember({
 			opacity: [0, 1, 0],
 			transition: {
 				duration: 0.75,
+				delay: gridMemberHovered ? 0 : 0.25,
 			},
 		},
 	}
@@ -80,10 +71,7 @@ function ProjectGridMember({
 	return (
 		<motion.div
 			custom={i}
-			className={`projectGridMember ${tailwindStyles} relative flex h-full w-full flex-col items-center justify-evenly p-4 text-white`}
-			style={{
-				background: gridMemberHovered ? 'black' : 'transparent',
-			}}
+			className={`projectGridMember ${tailwindStyles} relative  bg-black p-4 text-white`}
 			onMouseEnter={() => {
 				setGridMemberHovered(true)
 				stackTextControls.start('flicker')
@@ -114,62 +102,89 @@ function ProjectGridMember({
 			initial='initial'
 			animate={gridMemberControls}
 		>
-			<Image
-				src={screenshots[screenshotId]}
-				alt={altImgText}
-				style={{
-					opacity: gridMemberHovered ? '0.1' : '1',
-					pointerEvents: 'none',
-					userSelect: 'none',
-				}}
-				layout='fill'
-				objectFit='cover'
-				objectPosition={objectPosition ? objectPosition : 'center'}
-			/>
-			<p
-				className={`text-3xl ${styles.projectTitle} ${
-					gridMemberHovered ? 'z-[1]' : ''
-				}`}
+			<motion.div
+				animate={
+					gridMemberHovered
+						? {
+								opacity: 0.05,
+						  }
+						: { opacity: 1 }
+				}
+				transition={{ duration: 0.5, type: 'tween' }}
 			>
-				{title}
-			</p>
-			{description && (
-				<p className={`text-md ${gridMemberHovered ? 'z-[1]' : ''}`}>
-					{description}
+				<Image
+					src={screenshots[screenshotId]}
+					alt={altImgText}
+					className='pointer-events-none select-none'
+					layout='fill'
+					objectFit='cover'
+					objectPosition={objectPosition ? objectPosition : 'center'}
+				/>
+			</motion.div>
+			<motion.div
+				className='flex h-full w-full flex-col items-center justify-evenly'
+				animate={
+					gridMemberHovered
+						? {
+								opacity: 1,
+						  }
+						: { opacity: 0 }
+				}
+				transition={{
+					duration: 0.5,
+					type: 'tween',
+					delay: gridMemberHovered ? 0.25 : 0,
+				}}
+			>
+				<p
+					className={`text-3xl ${styles.projectTitle} ${
+						gridMemberHovered ? 'z-[1]' : ''
+					}`}
+				>
+					{title}
 				</p>
-			)}
-			<motion.p
-				className='my-4 bg-tomatoToLightPink bg-clip-text font-bold text-transparent'
-				animate={stackTextControls}
-				variants={stackTextVariants}
-				onAnimationComplete={() => {
-					setStackItemIndex((prev) => prev + 1)
-					if (gridMemberHovered) {
-						stackTextControls.start('flicker')
-					}
-				}}
-			>
-				{stackItems[stackItemIndex % stackItems.length]}
-			</motion.p>
-			<div
-				className={`flex w-full justify-evenly text-xs ${
-					gridMemberHovered ? 'z-[1]' : ''
-				}`}
-			>
-				{detailsLink && (
-					<Link href={detailsLink} passHref>
-						<a className='font-bold'>More Info</a>
-					</Link>
+				{description && (
+					<p
+						className={`text-md ${
+							gridMemberHovered ? 'z-[1]' : ''
+						}`}
+					>
+						{description}
+					</p>
 				)}
-				<a href={ghLink} target='_blank' rel='noreferrer'>
-					Github
-				</a>
-				{liveLink && (
-					<a href={liveLink} target='_blank' rel='noreferrer'>
-						Live
+				<motion.p
+					className='my-4 bg-tomatoToLightPink bg-clip-text font-bold text-transparent'
+					animate={stackTextControls}
+					variants={stackTextVariants}
+					onAnimationComplete={() => {
+						setStackItemIndex((prev) => prev + 1)
+						if (gridMemberHovered) {
+							stackTextControls.start('flicker')
+						}
+					}}
+				>
+					{stackItems[stackItemIndex % stackItems.length]}
+				</motion.p>
+				<div
+					className={`flex w-full justify-evenly text-xs ${
+						gridMemberHovered ? 'z-[1]' : ''
+					}`}
+				>
+					{detailsLink && (
+						<Link href={detailsLink} passHref>
+							<a className='font-bold'>More Info</a>
+						</Link>
+					)}
+					<a href={ghLink} target='_blank' rel='noreferrer'>
+						Github
 					</a>
-				)}
-			</div>
+					{liveLink && (
+						<a href={liveLink} target='_blank' rel='noreferrer'>
+							Live
+						</a>
+					)}
+				</div>
+			</motion.div>
 		</motion.div>
 	)
 }
