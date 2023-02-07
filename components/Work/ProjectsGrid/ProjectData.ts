@@ -69,11 +69,11 @@ const projectsData: GridMemberProps[] = [
 		description: 'Classic sudoku with a tricky twist',
 		altImgText: 'an audio-based sudoku game',
 		stackItems: [
+			'Svelte',
 			'Angular',
 			'TypeScript',
 			'Web Audio API',
 			'Jasmine',
-			'Karma',
 		],
 		ghLink: 'https://github.com/julianlk522/soundoku',
 		liveLink: 'https://soundoku.netlify.app/',
