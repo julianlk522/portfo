@@ -3,7 +3,7 @@ import { GridMemberProps } from './ProjectData'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnimationControls, motion, useAnimationControls } from 'framer-motion'
-import styles from './ProjectGridMember.module.css'
+import styles from './ProjectsGridMember.module.css'
 import socialScreenshot from '../../../public/projectDetails/petSocialHeader.webp'
 import dancingScreenshot from '../../../public/projectDetails/dancingButtonHeader.webp'
 import typingScreenshot from '../../../public/projectDetails/typingHeader.webp'
@@ -23,7 +23,7 @@ interface GridMemberPropsWithControls extends GridMemberProps {
 	gridMemberControls: AnimationControls
 }
 
-function ProjectGridMember({
+function ProjectsGridMember({
 	tailwindStyles,
 	objectPosition,
 	screenshotId,
@@ -49,6 +49,7 @@ function ProjectGridMember({
 			opacity: [0, 1, 0],
 			transition: {
 				duration: 0.75,
+				//	delay added to offset text content hover state transition time
 				delay: gridMemberHovered ? 0 : 0.25,
 			},
 		},
@@ -71,7 +72,7 @@ function ProjectGridMember({
 	return (
 		<motion.div
 			custom={i}
-			className={`projectGridMember ${tailwindStyles} relative  bg-black p-4 text-white`}
+			className={`projectsGridMember ${tailwindStyles} relative  bg-black p-4 text-white`}
 			onMouseEnter={() => {
 				setGridMemberHovered(true)
 				stackTextControls.start('flicker')
@@ -90,7 +91,7 @@ function ProjectGridMember({
 			}}
 			onBlur={() => {
 				if (
-					!document.querySelector('.projectGridMember :focus-within')
+					!document.querySelector('.projectsGridMember :focus-within')
 				) {
 					setGridMemberHovered(false)
 					stackTextControls.stop()
@@ -103,13 +104,9 @@ function ProjectGridMember({
 			animate={gridMemberControls}
 		>
 			<motion.div
-				animate={
-					gridMemberHovered
-						? {
-								opacity: 0.05,
-						  }
-						: { opacity: 1 }
-				}
+				animate={{
+					opacity: gridMemberHovered ? 0.05 : 1,
+				}}
 				transition={{ duration: 0.5, type: 'tween' }}
 			>
 				<Image
@@ -123,13 +120,9 @@ function ProjectGridMember({
 			</motion.div>
 			<motion.div
 				className='flex h-full w-full flex-col items-center justify-evenly'
-				animate={
-					gridMemberHovered
-						? {
-								opacity: 1,
-						  }
-						: { opacity: 0 }
-				}
+				animate={{
+					opacity: gridMemberHovered ? 1 : 0,
+				}}
 				transition={{
 					duration: 0.5,
 					type: 'tween',
@@ -189,4 +182,4 @@ function ProjectGridMember({
 	)
 }
 
-export default ProjectGridMember
+export default ProjectsGridMember

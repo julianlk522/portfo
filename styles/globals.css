@@ -34,7 +34,7 @@ html::-webkit-scrollbar {
 	@apply text-xs opacity-60 tall:text-sm;
 }
 
-.projectGridMember {
+.projectsGridMember {
 	@apply relative col-span-3 h-full w-full overflow-hidden rounded-lg shadow-gridMemberLight dark:shadow-gridMemberDark;
 }
 

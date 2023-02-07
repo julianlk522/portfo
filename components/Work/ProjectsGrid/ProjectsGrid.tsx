@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import projectsData from './ProjectData'
-import ProjectGridMember from './ProjectGridMember'
+import ProjectsGridMember from './ProjectsGridMember'
 import ScrollButton from '../../ScrollButton'
 
 function ProjectsGrid({ gridMemberControls }) {
@@ -32,7 +32,7 @@ function ProjectsGrid({ gridMemberControls }) {
 						detailsLink,
 					} = gridMember
 					return (
-						<ProjectGridMember
+						<ProjectsGridMember
 							key={i}
 							i={i}
 							tailwindStyles={tailwindStyles}
