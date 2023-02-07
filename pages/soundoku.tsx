@@ -120,8 +120,8 @@ function SoundokuDetails({ darkMode }) {
 									links.
 								</p>
 								<p className='mt-8'>
-									If you're interested in seeing the original
-									Angular source code, you can{' '}
+									If you&apos;re interested in seeing the
+									original Angular source code, you can{' '}
 									<a
 										href='https://github.com/julianlk522/soundoku'
 										target='_blank'
@@ -214,7 +214,7 @@ function SoundokuDetails({ darkMode }) {
 								together in audio engineering.
 							</p>
 							<p>
-								<i>"So much power!</i> 😱"
+								<i>&quot;So much power!</i> 😱&quot;
 							</p>
 							<div
 								id='selectFlexWrapper'
@@ -402,7 +402,7 @@ function SoundokuDetails({ darkMode }) {
 								time (basically startup time to produce audible
 								sound) and cancel earlier oscillators when the
 								notes are played rapidly, then quickly cut
-								attack time again and don't cancel ongoing
+								attack time again and don&apos;t cancel ongoing
 								oscillators if the waiting time is sufficient
 								for longer, fuller notes. It works pretty well,
 								I think!
