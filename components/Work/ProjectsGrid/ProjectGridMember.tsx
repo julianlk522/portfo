@@ -7,7 +7,7 @@ import styles from './ProjectGridMember.module.css'
 import socialScreenshot from '../../../public/projectDetails/petSocialHeader.webp'
 import dancingScreenshot from '../../../public/projectDetails/dancingButtonHeader.webp'
 import typingScreenshot from '../../../public/projectDetails/typingHeader.webp'
-import sudokuScreenshot from '../../../public/projectDetails/soundokuFilledCell.webp'
+import sudokuScreenshot from '../../../public/projectDetails/soundokuBoard.webp'
 import chatScreenshot from '../../../public/chatScreenshot.webp'
 
 const screenshots = [

@@ -7,6 +7,7 @@ import Footer from '../components/ProjectDetails/Footer'
 import headerImg from '../public/projectDetails/soundokuSelection.webp'
 import mainImg from '../public/projectDetails/soundokuWin.webp'
 import oscillatorCode from '../public/projectDetails/soundokuOscillatorCode.webp'
+import attackTimeCode from '../public/projectDetails/soundokuAttackTimeCode.webp'
 import passingCode1 from '../public/projectDetails/soundokuPassing1.webp'
 import failingCode1 from '../public/projectDetails/soundokuFailing1.webp'
 import passingCode2 from '../public/projectDetails/soundokuPassing2.webp'
@@ -34,9 +35,10 @@ function SoundokuDetails({ darkMode }) {
 							className='mb-16 flex w-auto space-x-8 text-xs'
 						>
 							<li>Web Audio API</li>
+							<li>Jasmine Test Suite</li>
 							<li className='font-bold'>Angular</li>
-							<li>Jasmine</li>
-							<li>Karma</li>
+							<li className='font-bold'>/</li>
+							<li className='font-bold'>Svelte</li>
 						</ul>
 						<div
 							id='headerImgFlexWrapperSm'
@@ -99,6 +101,38 @@ function SoundokuDetails({ darkMode }) {
 								satisfaction of achieving a solution. Try it if
 								you dare! 😈
 							</p>
+							<div className='ml-16'>
+								<h3 className='my-16 font-bold'>
+									UPDATE (2/7/23):
+								</h3>
+								<p>
+									I rebuilt Soundoku in{' '}
+									<a
+										href='https://svelte.dev/'
+										target='_blank'
+										rel='noreferrer'
+										className='underline'
+									>
+										Svelte&nbsp;
+									</a>
+									and have since replaced the original Angular
+									project in the live demo and source code
+									links.
+								</p>
+								<p className='mt-8'>
+									If you're interested in seeing the original
+									Angular source code, you can{' '}
+									<a
+										href='https://github.com/julianlk522/soundoku'
+										target='_blank'
+										rel='noreferrer'
+										className='underline'
+									>
+										find that here
+									</a>
+									.
+								</p>
+							</div>
 						</div>
 						<ul
 							id='demoLinks'
@@ -118,7 +152,7 @@ function SoundokuDetails({ darkMode }) {
 							<li>
 								<button className='rounded-sm bg-black/60 p-2 font-bold text-white dark:bg-white/80 dark:text-stone-600'>
 									<a
-										href='https://github.com/julianlk522/soundoku'
+										href='https://github.com/julianlk522/soundoku-svelte'
 										target='_blank'
 										rel='noreferrer'
 									>
@@ -179,6 +213,9 @@ function SoundokuDetails({ darkMode }) {
 								tree of properties and methods that can be used
 								together in audio engineering.
 							</p>
+							<p>
+								<i>"So much power!</i> 😱"
+							</p>
 							<div
 								id='selectFlexWrapper'
 								className='flex flex-col'
@@ -230,15 +267,14 @@ function SoundokuDetails({ darkMode }) {
 								className='relative mx-auto flex h-auto flex-col justify-center text-center md:w-auto'
 							>
 								<Image
-									alt='Code snapshot of the code used to create the various tones used in Soundoku'
+									alt='Snapshot of the code used to create the various tones used in Soundoku'
 									src={oscillatorCode}
 									objectFit='cover'
 									objectPosition='top'
 								/>
 								<figcaption className='mt-4 text-xs'>
-									Code required to create short oscillations
-									according to the value (1-9) passed as an
-									argument
+									Code to create short oscillations according
+									to the value (1-9) passed as an argument
 								</figcaption>
 							</figure>
 							<p>
@@ -251,9 +287,9 @@ function SoundokuDetails({ darkMode }) {
 							<p>
 								I was also slightly intimidated by
 								Angular&apos;s object-oriented nature at first
-								since my projects thus far have been built
-								mostly using functional programming techniques,
-								but getting more comfortable with OOP has been
+								since my projects thus far have been built using
+								mainly functional programming techniques, but
+								getting more comfortable with OOP has been
 								refreshing.
 							</p>
 							<p>
@@ -272,6 +308,18 @@ function SoundokuDetails({ darkMode }) {
 							What Was Tricky
 						</h2>
 						<div className='space-y-8 px-8 md:max-w-[80%] md:pr-0'>
+							<p>
+								Soundoku is the first project I made using
+								Angular, and coming from a background in
+								React.js I notice many similarities but overall
+								was wildly confused more times than I care to
+								admit along my path to the current stage of the
+								project. 😅
+							</p>
+							<p className='ml-16'>
+								<span className='font-bold'>Edit:</span> Svelte
+								to the rescue!
+							</p>
 							<p>
 								I had some peculiar experiences working with the
 								Jasmine test suite that is native to Angular
@@ -339,30 +387,41 @@ function SoundokuDetails({ darkMode }) {
 								</figure>
 							</div>
 							<p>
-								Soundoku is the first project I made using
-								Angular, and coming from a background in
-								React.js I notice many similarities but overall
-								have been wildly confused more often than not
-								along my path to the current stage of the
-								project. 😅
+								I also ran into some tricky UX logistics
+								regarding rapid starting and stopping of the
+								generated oscillators. Stopping an oscillator
+								while the gain (basically volume) is still high
+								causes an unpleasant flickering effect, but
+								crushing the gain too quickly as a prophylactic
+								measure results in short, unsatisfying tones
+								that are more difficult to analyze.
 							</p>
 							<p>
-								The familiarity is coming together steadily bit
-								by bit, though I&apos;ve had a particularly
-								tough time wrapping my head around the concepts
-								of{' '}
-								<a
-									className='underline'
-									href='https://rxjs.dev/guide/overview'
-									target='_blank'
-									rel='noreferrer'
-								>
-									Observables and Subjects
-								</a>{' '}
-								and am still trying to solidify an understanding
-								of their ideal use cases over a service
-								injection using standard properties.
+								As a workaround, I measure the waiting time
+								between notes and quickly throttle the attack
+								time (basically startup time to produce audible
+								sound) and cancel earlier oscillators when the
+								notes are played rapidly, then quickly cut
+								attack time again and don't cancel ongoing
+								oscillators if the waiting time is sufficient
+								for longer, fuller notes. It works pretty well,
+								I think!
 							</p>
+							<figure
+								id='attackTimeCodeImgWrapper'
+								className='relative mx-auto flex h-auto flex-col justify-center text-center md:w-auto'
+							>
+								<Image
+									alt='Snapshot of the code to throttle tones played in rapid succession'
+									src={attackTimeCode}
+									objectFit='cover'
+									objectPosition='top'
+								/>
+								<figcaption className='mt-4 text-xs'>
+									Code to throttle tones played in rapid
+									succession
+								</figcaption>
+							</figure>
 						</div>
 					</section>
 				</div>
@@ -427,16 +486,14 @@ function SoundokuDetails({ darkMode }) {
 							<strong>
 								simplify the process of understanding
 							</strong>{' '}
-							someone else&apos;s code{' '}
-							<strong>
-								that you&apos;re not immediately familiar with
-							</strong>
-							.
+							someone else&apos;s code that you&apos;re not
+							immediately familiar with .
 						</p>
 						<p>
 							Also, the JavaScript Web Audio API is not as
 							insurmountable as it appears, so I (and everyone
-							else) should use it more! 🎸
+							else who likes making music and writing code) should
+							play with it more often! 🎸
 						</p>
 					</div>
 				</section>

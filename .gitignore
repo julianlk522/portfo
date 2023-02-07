@@ -31,7 +31,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-portf notes.txt
 *.txt
 
 _app2.tsx
