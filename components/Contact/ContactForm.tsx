@@ -234,6 +234,7 @@ function ContactForm() {
 					/>
 					<motion.div
 						id='speechBubbleContent'
+						className='pointer-events-none'
 						variants={speechBubbleWrapperVariants}
 						initial='hidden'
 						animate={speechBubbleControls}
